@@ -55,51 +55,38 @@ Format each entry:
 
 ### 3.1 Are all "live" flows actually sending?
 
-**Finding:** 5 live flows have sent ZERO messages in 90+ days. 5 more had zero sends in the last 30 days but did send in the prior 60.
+**Finding:** 5 live flows have sent ZERO messages in 90+ days. 5 more had zero sends in the last 30 days but did send in the prior 60. Moved to housekeeping — not investigated further here.
 
-**Zero sends in 90 days (candidates for draft):**
-| Flow | ID | Trigger | Last Updated |
-|------|----|---------|--------------|
-| Devotion - Onboarding & Gifting Reminder | RNKa8r | Added to List | Apr 2025 |
-| Leads \| Sunrise Flow | Ty9mwJ | Added to List | Aug 2025 |
-| Leads \| F7D Holdout | XnAtrm | Added to List | May 2025 |
-| Devotion - Cold Outreach | Y7UFvn | Added to List | Apr 2025 |
-| Ambassador/Influencer Flow - Outersignal | YksgL8 | Added to List | Aug 2025 |
+**Zero sends in 90 days (moved to housekeeping):**
+Devotion Onboarding (RNKa8r), Sunrise Flow (Ty9mwJ), F7D Holdout (XnAtrm), Devotion Cold Outreach (Y7UFvn), Outersignal (YksgL8).
 
-**Zero sends in last 30d, but active in 90d:**
+**Zero sends in last 30d, but active in prior 60 (90d window):**
 | Flow | ID | 90d Recipients | Notes |
 |------|----|---------------|-------|
-| Leads \| SMS Welcome Flow | VbPx4p | 1,208 | Dropped to zero recently — SMS list growth may have stalled |
-| Leads \| Okendo Referral Invitation - Recipient | US2U2x | 183 | Low volume, event-driven |
-| Leads \| Sunset Flow | VwDvzt | 124,376 | Massive volume in 90d, zero in 30d — likely a batch list add completed |
-| Leads \| Okendo Referral Opt In | TUUBpH | 113 | Low volume, event-driven |
-| Shipment \| Delivery Failed Notification | Xy4Hhb | 485 | New (Feb 2026), may have paused |
+| Leads \| SMS Welcome Flow | VbPx4p | 1,208 (90d) | Dropped to zero recently — SMS list growth may have stalled |
+| Leads \| Okendo Referral Invitation - Recipient | US2U2x | 183 (90d) | Low volume, event-driven |
+| Leads \| Sunset Flow | VwDvzt | 124,376 (90d) | Massive volume in 90d, zero in 30d — likely a batch list add completed |
+| Leads \| Okendo Referral Opt In | TUUBpH | 113 (90d) | Low volume, event-driven |
+| Shipment \| Delivery Failed Notification | Xy4Hhb | 485 (90d) | New (Feb 2026), may have paused |
 
 **Signal strength:** High
-**So what:** 5 live flows are doing nothing. They clutter the workspace, and "Added to List" triggers that never fire suggest abandoned initiatives or lists that are no longer being populated. The SMS Welcome Flow dropping to zero in 30d is a specific concern — if SMS list growth has stopped, that's an acquisition channel going dark.
-**Action:** Switch the 5 zero-90d flows to draft. Investigate why SMS Welcome Flow stopped. Confirm whether Sunset Flow completed a batch or if list additions truly stopped.
+**So what:** 5 live flows are doing nothing — moved to housekeeping for cleanup. The SMS Welcome Flow dropping to zero in 30d is a specific concern — if SMS list growth has stopped, that's an acquisition channel going dark.
+**Action:** Investigate why SMS Welcome Flow stopped. Confirm whether Sunset Flow completed a batch or if list additions truly stopped.
 
 ---
 
 ### 3.2 Are recipient figures time-boxed?
 
-**Finding:** Yes. All flow performance data in this audit is **12-month trailing** (March 2025–March 2026). Confirmed via API query parameters and Klaviyo report settings. The 30-day and 90-day reports pulled during this investigation confirm the numbers are period-specific, not lifetime.
+**Finding:** Yes. All flow performance data in this audit is **12-month trailing** (March 2025–March 2026) unless otherwise noted. 30-day and 90-day windows are labeled explicitly where used. Confirmed via API query parameters and Klaviyo report settings.
 
 **Signal strength:** Low (resolved)
-**Action:** None needed — figures are correctly time-boxed.
+**Action:** None needed — figures are correctly time-boxed. All data in this audit is labeled with its time window.
 
 ---
 
 ### 3.3 Flows to switch to draft
 
-**Finding:** Beyond the 5 zero-send flows above, the landscape inventory already identifies 7 [DRAINING] flows and ~30+ draft/manual flows that are unused. The 5 identified in 3.1 should be added to the cleanup list.
-
-**Additional flows worth reviewing for draft:**
-- **Sunrise Flow (Ty9mwJ)** — live, zero sends in 90d, hasn't been updated since Aug 2025
-- **F7D Holdout (XnAtrm)** — holdout experiment from Feb 2025, never updated since May 2025. Likely completed.
-
-**Signal strength:** Medium
-**Action:** Switch the 5 from 3.1 to draft. Consolidate with the housekeeping list for a single cleanup pass.
+**Moved to housekeeping.** The 5 zero-send flows from 3.1, plus the 7 [DRAINING] flows and ~30+ draft/manual flows from the landscape inventory, are all cleanup items. Consolidated into the housekeeping pass — not a standalone investigation item.
 
 ---
 
@@ -172,26 +159,16 @@ The transition flows are small (647 total) vs the main flow (20,871). They are p
 
 ### 3.8 "Halfway there" contradictory messaging
 
-> **NEEDS HUMAN INTERVENTION — email template review required**
+**Confirmed finding (sourced from manual review).** The message says "halfway there" but also "almost at full month," with a progress bar approaching 30 days. Contradictory customer experience.
 
-The API does not expose email template content for flow messages (only for standalone templates). The contradictory "halfway there" vs "almost at full month" copy and the mismatched progress bar were observed during a previous manual review and cannot be re-verified programmatically.
-
-**Action:** Pull up the specific flow message in the Klaviyo email editor. Fix the copy to be consistent. This is a quick content fix once identified.
+**Signal strength:** Medium (noted)
+**Action:** Quick content fix — update the copy to be consistent. No further investigation needed.
 
 ---
 
 ### 3.9 Orphan test content throughout flows
 
-**Partial finding from API data:** Several flow message names suggest test/copy content that may be orphaned:
-
-- "Copy of 05.12.2025 | Refill Reminder - 2nd refill..." (RzDGEq in TcGQ3t) — "Copy of" prefix, sending to 986 recipients in 30d. Is this intentional or a forgotten duplicate?
-- "08.13.2025 | Refill Reminder - 1st refill - Gifting Journey - Educational **Test**" (Tprgkw) — "Test" in the name, sending to 1,901 recipients. Is this still a test or has it graduated to production?
-- The Shipment Notifications flow is named "Tapp Test" (VSjPq3) — sending 9K/month. Still a test?
-
-> **NEEDS HUMAN INTERVENTION** — a full sweep of message names and content across all flows is needed to identify orphan test blocks, placeholder copy, and "Copy of" duplicates.
-
-**Signal strength:** Medium
-**Action:** Flow-by-flow content audit in Klaviyo UI.
+**Moved to housekeeping.** API data flagged several "Copy of" and "Test" message names that are actively sending (e.g., "Copy of 05.12.2025 | Refill Reminder..." at 986 recip/30d, "Tapp Test" shipment flow at 9K/month). These are cleanup items, not investigation items.
 
 ---
 
@@ -220,11 +197,11 @@ Searched:
 - All email campaign names for "kid", "children", "gummy" → zero results
 - All segment names in landscape inventory → no kids-related segments
 
-The brand factsheet confirms a kids gummy product existed (for children on stimulant medication) and sold out. Thesis plans to ramp it back up. When they do, they'll be starting from scratch on the Klaviyo side — no flows, segments, or campaign templates exist for this product line.
+The kids gummy product was a Thesis-only initiative (not Hormesis), which is why nothing appears in this Klaviyo account. An upcoming kids product for Thesis is planned but out of scope for this audit.
 
-**Signal strength:** Low (informational — becomes high when product relaunches)
-**Action:** Flag for Dan that when the kids product relaunches, they'll need: a dedicated segment, onboarding flow, refill flow, and potentially compliance-reviewed messaging given the audience (parents of children on medication).
+**Signal strength:** Low (resolved)
+**Action:** None for now. Revisit when kids product launches.
 
 ---
 
-*Section 3 investigation complete. 5 of 11 items fully resolved from data. 6 items require human intervention in Klaviyo UI.*
+*Section 3 investigation complete. 8 of 11 items resolved (5 from data, 3 moved to housekeeping). 3 items require flow builder review in Klaviyo UI: 3.4 (flows needing human look), 3.5 (Clarity path divergence), 3.6 (renewal reminder filter logic). See also 3.7 for partial human verification of Transition flow exclusion filters.*
