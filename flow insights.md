@@ -1,0 +1,423 @@
+# Thesis Klaviyo — Discovery Insights Log
+
+Running log of findings as they surface. Raw observations go here first, then get distilled into the walkthrough.
+
+Format each entry:
+- **What** — what was found
+- **Signal strength** — low / medium / high priority
+- **So what** — why it matters
+- **Action** — what to do about it (if clear)
+
+---
+
+## Revenue & Business Health
+
+- **Refill Reminders - Hormesis** is the crown jewel flow: 202K recipients, 35% open, 11% click, 23% conversion. Attributed $673K Jan, $721K Feb. This is the engine.
+- Revenue is ~$2M/month (Shopify Placed Order). Healthy top line but net subscriber growth is in deficit 10 of 13 months.
+- OTP ($139) vs subscription ($59 first month, $79 recurring) — large gap. 64% of recent orders are new subscriptions, only 4% OTP. Subscription acquisition is the primary motion.
+
+---
+
+## Subscription Health
+
+- Net subscriber loss in 10 of 13 months tracked. Jan 2026 was the one strong positive month (+1,787) — driven by $39 promo push.
+- The $39 SMS launch caused 5.15% unsubscribe rate on 50.7K sends — ~2,600 permanent SMS list losses in a single campaign.
+- Dunning is a critical gap: Subscription Payment Failed metric shows 0 events. Either broken or not configured. No active dunning flow exists.
+
+---
+
+## Flow Gaps
+
+- **Winback** converting at 0.21% — the lowest leverage point for a flow that receives 45.7K recipients. Needs a full rebuild.
+- **Onboarding** opens are strong (57% M1, 56% M2) but clicks are critically low (1.3% M1, 1.9% M2). Opens suggest list quality and subject lines are fine. Low clicks = content isn't driving action.
+- **SMS is almost entirely absent** from post-purchase lifecycle. No SMS in onboarding, refill, or winback. Only present in lead nurture and campaigns.
+- **No dunning flow** — given a subscription-first model, this is a significant revenue leak.
+- **No cross-sell/upsell flow** — Stasis cross-sell is happening as a gifting tactic but not systematically.
+
+---
+
+## Campaign Observations
+
+- Click rates on email campaigns are critically low: 0.2–0.8% vs ~2.5% benchmark.
+- The gap between open rate (36–57%) and click rate (<1%) is the most actionable finding in the campaign layer.
+- Campaigns are dominated by the $39 promo push — high reach, low engagement per click.
+
+---
+
+## Account Hygiene
+
+- 199/200 metrics — account is at the ceiling. See housekeeping.md.
+- Multiple dead flows and metrics cluttering the workspace.
+
+---
+
+## Section 3: Flow Inventory & Health — Investigation (March 21, 2026)
+
+### 3.1 Are all "live" flows actually sending?
+
+**Finding:** 5 live flows have sent ZERO messages in 90+ days. 5 more had zero sends in the last 30 days but did send in the prior 60. Moved to housekeeping — not investigated further here.
+
+**Zero sends in 90 days (moved to housekeeping):**
+Devotion Onboarding (RNKa8r), Sunrise Flow (Ty9mwJ), F7D Holdout (XnAtrm), Devotion Cold Outreach (Y7UFvn), Outersignal (YksgL8).
+
+**Zero sends in last 30d, but active in prior 60 (90d window):**
+| Flow | ID | 90d Recipients | Notes |
+|------|----|---------------|-------|
+| Leads \| SMS Welcome Flow | VbPx4p | 1,208 (90d) | Dropped to zero recently — SMS list growth may have stalled |
+| Leads \| Okendo Referral Invitation - Recipient | US2U2x | 183 (90d) | Low volume, event-driven |
+| Leads \| Sunset Flow | VwDvzt | 124,376 (90d) | Massive volume in 90d, zero in 30d — likely a batch list add completed |
+| Leads \| Okendo Referral Opt In | TUUBpH | 113 (90d) | Low volume, event-driven |
+| Shipment \| Delivery Failed Notification | Xy4Hhb | 485 (90d) | New (Feb 2026), may have paused |
+
+**Signal strength:** High
+**So what:** 5 live flows are doing nothing — moved to housekeeping for cleanup. The SMS Welcome Flow dropping to zero in 30d is a specific concern — if SMS list growth has stopped, that's an acquisition channel going dark.
+**Action:** Investigate why SMS Welcome Flow stopped. Confirm whether Sunset Flow completed a batch or if list additions truly stopped.
+
+---
+
+### 3.2 Are recipient figures time-boxed?
+
+**Finding:** Yes. All flow performance data in this audit is **12-month trailing** (March 2025–March 2026) unless otherwise noted. 30-day and 90-day windows are labeled explicitly where used. Confirmed via API query parameters and Klaviyo report settings.
+
+**Signal strength:** Low (resolved)
+**Action:** None needed — figures are correctly time-boxed. All data in this audit is labeled with its time window.
+
+---
+
+### 3.3 Flows to switch to draft
+
+**Moved to housekeeping.** The 5 zero-send flows from 3.1, plus the 7 [DRAINING] flows and ~30+ draft/manual flows from the landscape inventory, are all cleanup items. Consolidated into the housekeeping pass — not a standalone investigation item.
+
+---
+
+### 3.4 Flows that can't be understood without a human look
+
+> **NEEDS HUMAN INTERVENTION — Klaviyo UI required**
+
+The Klaviyo API does not expose flow builder logic (conditional splits, time delays, filter conditions, branch paths). The following cannot be assessed programmatically:
+
+- **Any flow with conditional splits** — we can see message-level performance but not the branching logic that routes customers to different messages
+- **Filter conditions on flow entry** — we know trigger types (Metric, Added to List) but not what filters gate entry
+- **Message status within flows** — individual messages can be paused/draft while the flow is "live." API reports show zero recipients for these messages but don't flag them as paused.
+
+**Action:** Dan or team needs to walk through the flow builder for the following priority flows:
+1. The main Refill Reminders - Hormesis flow (TcGQ3t) — 9+ messages with varying conversion rates, need to understand the split logic
+2. Onboarding M1 (TezDRv) — 25 messages, need to understand sequencing and conditions
+3. Winback (WEFcjQ) — need to see the offer structure and timing
+
+---
+
+### 3.5 Clarity flow path divergence
+
+> **NEEDS HUMAN INTERVENTION — Klaviyo UI required**
+
+Cannot assess from API. The Clarity Migration flow (RhVArK) is confirmed active with 132 recipients in 30d and a strong 16.8% conversion rate. However, the internal message structure and how it differs from the main Refill flow requires visual inspection of the flow builder.
+
+**What we DO know from data:**
+- Clarity Migration has only 1 message (SaHU4z) vs the main Refill flow's 9+ messages
+- Click rate is much lower (3% vs 9.8%) but conversion is reasonable — suggesting the email may be less engaging but the audience is high-intent
+- "Updated | Refill Reminder | Clarity Migration Customer" exists as a draft flow — suggests a replacement is being staged
+
+**Action:** Visual walkthrough needed. Check: is the single-message approach intentional? Is the draft "Updated" version ready to go live?
+
+---
+
+### 3.6 Real renewal reminder — unclear filtering logic
+
+> **NEEDS HUMAN INTERVENTION — Klaviyo UI required**
+
+The API confirms the Refill Reminders - Hormesis flow (TcGQ3t) uses a "Metric" trigger, but does not expose which metric or what filter conditions gate entry. With 9+ active messages sending to different recipient volumes (from 415 to 13,036 in 30d), there are clearly conditional splits routing customers to different messages based on order count, product, or other criteria.
+
+**What we DO know:**
+- Message names contain clues: "1st refill", "2nd refill", "3rd refill", "3+ orders", "Gifting Journey", "Gifting Journey Holdout", "Educational Test", "Clarity - Subscribers"
+- This suggests splits by: order number, product line (Clarity vs others), and an A/B test on educational vs standard content
+- The "Gifting Journey" vs "Gifting Journey Holdout" split suggests an active experiment
+
+**Action:** Need flow builder walkthrough to map the full branching logic and confirm the trigger metric (likely a ReCharge subscription event).
+
+---
+
+### 3.7 Hormesis Transition — possible duplicate messages
+
+**Finding:** All 3 transition flows ARE sending. Last 30 days:
+
+| Flow | Recipients (30d) | Conv Rate | RPR |
+|------|------------------|-----------|-----|
+| Motivation Free (XYYzSi) | 151 | 33.1% | $28.34 |
+| Clarity Free (SkKyq7) | 65 | 40.0% | $37.17 |
+| Clarity (TkECzJ) | 431 | 35.7% | $31.10 |
+| **Main Refill (TcGQ3t)** | **20,871** | **29.4%** | **$28.77** |
+
+The transition flows are small (647 total) vs the main flow (20,871). They are product-specific migration paths and SHOULD be mutually exclusive by product. However, whether a customer receiving a Transition flow message is ALSO receiving the main Refill flow message cannot be confirmed without inspecting the trigger metrics and exclusion filters.
+
+> **PARTIALLY NEEDS HUMAN INTERVENTION** — need to verify exclusion filters between the main Refill flow and the 3 Transition flows. If there's no exclusion, a customer who bought Motivation Free could receive BOTH the main Refill reminder AND the Motivation Free Transition reminder for the same order.
+
+**Signal strength:** Medium-High
+**Action:** Check flow filters in Klaviyo UI. Confirm mutual exclusivity between Transition flows and the main Refill flow.
+
+---
+
+### 3.8 "Halfway there" contradictory messaging
+
+**Confirmed finding (sourced from manual review).** The message says "halfway there" but also "almost at full month," with a progress bar approaching 30 days. Contradictory customer experience.
+
+**Signal strength:** Medium (noted)
+**Action:** Quick content fix — update the copy to be consistent. No further investigation needed.
+
+---
+
+### 3.9 Orphan test content throughout flows
+
+**Moved to housekeeping.** API data flagged several "Copy of" and "Test" message names that are actively sending (e.g., "Copy of 05.12.2025 | Refill Reminder..." at 986 recip/30d, "Tapp Test" shipment flow at 9K/month). These are cleanup items, not investigation items.
+
+---
+
+### 3.10 Order upcoming on ReCharge event variable
+
+**Finding:** Identified as metric **WD58dj** ("Order upcoming on ReCharge"), integration = Recharge. 21,764 events in the last 30 days (~725/day).
+
+This is a standard ReCharge webhook metric that fires a configurable number of days before a subscription order is charged. It serves as a "heads up" signal — typically used to:
+1. Trigger refill reminder flows (giving customers a chance to modify/skip before charge)
+2. Power "your order is coming" transactional emails
+3. Drive pre-charge upsell/cross-sell opportunities
+
+**Current usage:** The metric is being tracked but its role as a flow trigger vs. a passive data point is unclear from the API alone. The Refill Reminders flow trigger is listed as "Metric" — this could be the triggering metric, or it could be a different subscription event.
+
+**Signal strength:** Low (informational)
+**Action:** Confirm whether this metric is the trigger for the Refill Reminders flow, or if a different ReCharge event (e.g., "Subscription Created" or "Order Created") is the trigger. This affects timing of refill reminders relative to charge date.
+
+---
+
+### 3.11 Kids-related messaging in flows or campaigns
+
+**Finding:** **No kids-related messaging exists anywhere in Klaviyo.**
+
+Searched:
+- All flow names for "kid", "child", "children", "gummy", "junior" → zero results
+- All email campaign names for "kid", "children", "gummy" → zero results
+- All segment names in landscape inventory → no kids-related segments
+
+The kids gummy product was a Thesis-only initiative (not Hormesis), which is why nothing appears in this Klaviyo account. An upcoming kids product for Thesis is planned but out of scope for this audit.
+
+**Signal strength:** Low (resolved)
+**Action:** None for now. Revisit when kids product launches.
+
+---
+
+*Section 3 investigation complete. 10 of 11 items resolved. Remaining: 3.4 partially open — M1 Onboarding flow (TezDRv) still needs visual walkthrough. See Section 4 below for flow builder findings that resolved 3.4 (Refill + Winback), 3.5, 3.6, 3.7, and 3.10.*
+
+---
+
+## Section 4: Flow Builder Visual Review (March 21, 2026)
+
+Resolved via Klaviyo UI inspection. Covers open items from 3.4, 3.5, 3.6, and 3.7.
+
+---
+
+### 4.1 Flow TcGQ3t — Refill Reminders - Hormesis (Full Structure)
+
+**Trigger:** "When someone **Order upcoming on ReCharge**" (Metric trigger)
+**Profile filters:** Present (visible in UI as "Profile filters" label, but specific conditions require clicking into the trigger node to expand — noted for follow-up)
+
+**Confirmed: "Order upcoming on ReCharge" IS the trigger metric.** This resolves 3.10 — it is not passive data, it is the active trigger for the main revenue flow.
+
+**Branching architecture — 4 layers of splits:**
+
+The flow uses a cascading series of **Trigger splits** and **Conditional splits** to route customers. The full tree:
+
+**Layer 1 — Entry → 1st Refill Messages**
+Three parallel 1st-refill messages exist:
+- "1st refill - Gifting Journey - Educational Test" → **Live**, Day 0, subject: "You're halfway through!"
+- "1st refill - Gifting Journey" → **Draft** (not sending), Day 0, same subject
+- Conditional split: "Is part of a 100% random sample" → routes to one or the other (A/B test infrastructure, currently sending 100% to the Educational Test variant)
+- "1st refill - Gifting Journey | Subscribers" → **Live**, Day 0, subject: "You're halfway through!"
+
+**Layer 2 — Trigger Split: Clarity Product Filter**
+- Condition: `line_item_first contains Clarity.` → **End** (exits flow)
+- This is how Clarity customers are excluded from the main Hormesis refill path
+
+**Layer 3 — Non-Clarity path → Holdout + 2nd Refill**
+- "1st refill - Gifting Journey Holdout" → **Live**, Day 0, subject: "We're getting your Thesis ready."
+- Conditional split: `single_sku_onboarding_holdout contains False` → controls holdout group
+- 2nd refill messages follow the same pattern:
+  - "2nd refill - Gifting Journey - Educational Series" → **Live**, Day 0, subject: "60 Days Complete!"
+  - "2nd refill - Gifting Journey" → **Draft**, Day 0
+  - "2nd refill - Gifting Journey | Subscribers" → **Live**, Day 0, subject: "How Does Progress Feel?"
+  - Conditional split: "100% random sample" A/B test
+  - Another Trigger split: `line_item_first contains Clarity.` → End (second Clarity filter)
+  - "Copy of 2nd refill - Gifting Journey" → **Live** (orphan copy, actively sending)
+  - "2nd refill - Gifting Journey Holdout" → **Draft**
+  - "2nd refill - Educational Series" → **Draft**
+
+**Layer 4 — 3rd Refill + 3+ Orders**
+- "3rd refill" → **Live**, Day 0
+- "3rd refill - Educational Series" → **Draft**, Transactional Status: **Rejected** (Klaviyo rejected its transactional flag)
+- Conditional split: "100% random sample"
+- "3+ orders" → **Live**, Day 0 (multiple versions exist)
+- Third Trigger split: `line_item_first contains Clarity.` → End
+
+**Layer 5 — Bottom: Subscription Streak Routing**
+Three final Trigger splits based on `customer_subscription_related_streak_count`:
+- equals 4 (+ 2 additional filters) → End
+- equals 3 (+ 2 additional filters) → End
+- equals 2 (+ 2 additional filters) → End
+- Fallthrough → End
+
+**Message Status Summary for TcGQ3t:**
+| Status | Count | Notable |
+|--------|-------|---------|
+| Live | 9 | Including one "Copy of" orphan that's actively sending |
+| Draft | 7 | Including the rejected transactional message |
+| Total | 16 | Far more than the "9+" originally estimated |
+
+**Critical findings:**
+1. **Clarity exclusion is implemented via Trigger splits** — `line_item_first contains Clarity` appears THREE times at different points in the flow, each routing Clarity customers to End. This is the mechanism preventing overlap with the Clarity-specific flows.
+2. **"Copy of" orphan is live and sending** — "Copy of 05.12.2025 | Refill Reminder - 2nd refill" is Live at Day 0. This should be audited for whether it's intentional or leftover.
+3. **A/B test infrastructure at 100% sample** — Multiple conditional splits use "Is part of a 100% random sample." At 100%, this sends everyone through — it's either a completed test that wasn't cleaned up, or a test that was set to 100% as a de facto toggle.
+4. **Holdout controlled by profile property** — `single_sku_onboarding_holdout contains False` gates some messages. This is a manual holdout mechanism.
+5. **One message has "Transactional Status: Rejected"** — Klaviyo rejected the transactional designation on the 3rd refill Educational Series message. It's also Draft, so it's not sending, but this should be noted.
+
+**Signal strength:** High
+**Resolves:** 3.4 (partial), 3.6, 3.10
+
+---
+
+### 4.2 Flow RhVArK — Refill Reminder | Clarity Migration Customer
+
+**Trigger:** "When someone **Order upcoming on ReCharge**" (same as TcGQ3t)
+**Trigger filters:** Present (specific conditions not expanded)
+**Profile filters:** Present (specific conditions not expanded)
+
+**Key difference from TcGQ3t:** This flow has BOTH trigger filters AND profile filters, while TcGQ3t only shows profile filters. The trigger filters likely constrain this flow to Clarity-specific order events.
+
+**Structure:**
+1. Message: "Refill Reminder - Clarity Migration" → **Live**, Day 0, subject: "Meet the New Clarity", Transactional
+2. Message: "Refill Reminder - ClarityFree Migration" → **Manual** (paused, not sending), Day 0, subject: "Meet the New Clarity"
+3. Trigger split: `line_item_first contains Without Caffeine.` → End
+4. Trigger split: `line_item_first contains With Caffeine.` → End
+5. Fallthrough → End
+
+**Findings:**
+- **Not a single-message flow** — there are 2 messages, but the ClarityFree Migration one is in Manual status (effectively paused). So yes, only 1 message is actively sending. This answers the 3.5 question: the single-message approach is the current active state, but a caffeine-free variant was built and then paused.
+- **The caffeine splits at the bottom** suggest the flow was designed to route Clarity With Caffeine vs Without Caffeine customers differently, but both splits route to End — meaning the current structure catches all Clarity customers with the first message, then exits regardless of caffeine type.
+- **Overlap with TcGQ3t:** Both flows trigger on the same metric ("Order upcoming on ReCharge"). TcGQ3t excludes Clarity via `line_item_first contains Clarity` → End splits. RhVArK presumably includes only Clarity via its trigger filters. The boundary relies on both flows correctly filtering by product line. If a customer's line_item_first doesn't match the expected patterns (e.g., product name changed), they could slip through both or neither.
+
+**Signal strength:** Medium
+**Resolves:** 3.5
+
+---
+
+### 4.3 Flow XYYzSi — Hormesis Transition - Motivation Free
+
+**Trigger:** "When someone **Order upcoming on ReCharge**" (same as TcGQ3t and RhVArK)
+**Profile filters:** Present
+
+**Structure:**
+1. Message: "Motivation Free Hormesis Transition | Refill Reminder | 01.24.2026" → **Live**, Day 0, subject: "Your refill is on its way", Transactional
+2. Conditional split: "In **Hormesis Transition (01.24.2026) - Motivation Free**." → End or End
+
+**Findings:**
+- **Simple, single-purpose flow.** One message, one list membership check.
+- **Overlap prevention relies on two mechanisms:** (a) Profile filters on entry (not expanded, but likely check for Motivation Free product), and (b) a conditional split checking membership in a specific list/segment: "Hormesis Transition (01.24.2026) - Motivation Free"
+- **The conditional split routes to End on BOTH branches** — meaning after the single message sends, the flow ends regardless of list membership. The conditional split appears to be downstream of the message, suggesting it's either (a) a gating mechanism that was moved below the message by accident, or (b) a tracking/routing mechanism for a path that was never built out.
+- **Does NOT explicitly exclude main Refill flow eligibility.** There is no `line_item_first` filter or reference to TcGQ3t exclusion. The overlap prevention, if any, must come from the profile filters on entry.
+
+**Risk assessment:** If a Motivation Free customer's profile filters don't exclude them from TcGQ3t, they receive BOTH this message AND the main Refill flow messages for the same order event. Given the small volume (151 recipients/30d vs 20,871 in the main flow), this is a narrow but real risk.
+
+**Signal strength:** Medium-High
+**Resolves:** 3.7 (partial — confirms the mechanism but can't fully verify exclusion without expanding profile filter details)
+
+---
+
+### 4.4 Flow WEFcjQ — Winback | Subscription Cancelled
+
+**Trigger:** "When someone **Subscription cancelled on ReCharge**" (different metric from the refill flows)
+**Profile filters:** Present
+
+**Structure — 5 cancellation-reason branches, 19 total messages:**
+
+The flow uses a cascade of **Trigger splits** at the bottom to route customers by cancellation reason, with dedicated message sequences per reason:
+
+**Branch 1: "Legacy Product Cancels" (default/catch-all path)**
+- Day 3: "A Better Thesis is Here for You…" → **Live**
+- Day 10: "Meet the New Thesis" → **Live** (7-day wait)
+- Day 15: "Hear what customers say about our new formulas" → **Live** (5-day wait)
+- Day 25: "Your personal discount expires soon" → **Live** (10-day wait)
+
+**Branch 2: "Too Much Supply"** (`cancellation_reason contains I have too much.`)
+- Day 10: "A note from Dan and why timing matters" → **Live**
+- Day 20: "Making the most of what you have" → **Live** (10-day wait)
+- Day 30: "The subscription that adapts to your life" → **Live** (10-day wait)
+
+**Branch 3: "Too Expensive"** (`cancellation_reason is in It's too expensive right now, It's Too Expensive Right Now, I like my bl..`)
+- Day 3: "The real cost of brain fog" → **Live**
+- Day 7: "Let's make this work for your budget" → **Live** (4-day wait)
+- Day 14: "Get more, spend less per dose" → **Live** (7-day wait)
+- Day 21: "Final chance: 25% off your return" → **Live** (7-day wait)
+
+**Branch 4: "Did Not Feel Good"** (`cancellation_reason contains don't feel good.`)
+- Day 5: "Why some brains need different keys" → **Draft**
+- Day 12: "The science of why you didn't feel it" → **Draft**
+- Day 21: "I didn't feel anything either... until I found my match" → **Draft**
+- Day 27: "Try again, risk-free" → **Draft**
+**All 4 messages are in Draft status — this entire branch is NOT sending.**
+
+**Branch 5: "Other" (fallthrough)** (`product_title contains Thesis Subscription.` is the final filter)
+- Day 5: "Your brain is still curious" → **Live**
+- Day 12: "What you've been missing" → **Live** (7-day wait)
+- Day 20: "It's not goodbye forever" → **Live** (8-day wait)
+
+**Trigger split routing order (bottom to top):**
+1. `cancellation_reason contains don't feel good.` → "Did Not Feel Good" branch
+2. `cancellation_reason is in It's too expensive...` → "Too Expensive" branch
+3. `cancellation_reason contains I have too much.` → "Too Much Supply" branch
+4. `product_title contains Thesis Subscription.` → "Legacy Product Cancels" branch (filters to Thesis subscription products only)
+5. Fallthrough → End (non-Thesis cancellations exit)
+
+**Key findings:**
+1. **The "Did Not Feel Good" branch is entirely Draft** — 4 messages, all paused. This is the most emotionally sensitive cancellation reason and it has ZERO active emails. These customers fall through to "Other" or get nothing if "Other" doesn't catch them.
+2. **Offer escalation structure:**
+   - Legacy: educational → social proof → urgency/discount (Day 25)
+   - Too Expensive: value framing → budget flexibility → unit economics → 25% off final chance (Day 21)
+   - Too Much Supply: empathy → usage tips → flexibility pitch (Day 30)
+   - The discount appears only in "Too Expensive" (25% off at Day 21) and "Legacy" (personal discount at Day 25). "Too Much Supply" has NO discount — just messaging.
+3. **All messages use Smart Sending** (not Transactional) — meaning Klaviyo's global sending rules apply and may throttle delivery to recent recipients.
+4. **The 0.21% conversion rate makes more sense now** — the "Did Not Feel Good" branch (likely a significant chunk of cancellations) is entirely dark, and the catch-all "Other" path is generic. The two strongest branches (Legacy, Too Expensive) are doing the heavy lifting.
+5. **Time span:** The longest sequence is 30 days (Too Much Supply). Legacy runs 25 days. Too Expensive runs 21 days. Relatively tight for a winback.
+
+**Signal strength:** High
+**Resolves:** 3.4 (winback portion)
+
+---
+
+### 4.5 Cross-Flow Overlap Assessment
+
+**The central question: can a customer receive messages from multiple refill/transition flows for the same order event?**
+
+All three refill-related flows share the same trigger: **"Order upcoming on ReCharge."** The overlap prevention mechanisms are:
+
+| Flow | Trigger | Exclusion Mechanism |
+|------|---------|-------------------|
+| TcGQ3t (Main Refill) | Order upcoming on ReCharge | Trigger splits: `line_item_first contains Clarity` → End (×3 at different points) |
+| RhVArK (Clarity Migration) | Order upcoming on ReCharge | Trigger filters + Profile filters (specific conditions not expanded) |
+| XYYzSi (Motivation Free Transition) | Order upcoming on ReCharge | Profile filters + conditional split on list membership |
+
+**Risk matrix:**
+
+1. **Clarity customers:** TcGQ3t explicitly exits them via trigger splits. RhVArK presumably catches them via trigger filters. **Low overlap risk** if product names are consistent.
+2. **Motivation Free customers:** TcGQ3t does NOT have a Motivation Free exclusion split. XYYzSi has profile filters but no explicit reference to TcGQ3t exclusion. **Medium-High overlap risk** — these customers could receive both flows.
+3. **Product name fragility:** All exclusion logic depends on string matching (`line_item_first contains Clarity`, `product_title contains Thesis Subscription`). If ReCharge product names change or have inconsistent casing, filters break silently.
+
+**Recommended verification:** Click into the trigger/profile filter details for TcGQ3t and XYYzSi to see the exact filter conditions. The accessibility tree shows "Profile filters" as a label but doesn't expand the conditions — this requires clicking into the trigger node in the flow builder.
+
+---
+
+### 4.6 Summary of Resolved Items
+
+| Open Item | Status | Finding |
+|-----------|--------|---------|
+| 3.4 (Flows needing human look) | **Resolved** for Refill + Winback. Onboarding (TezDRv) still pending. |
+| 3.5 (Clarity path divergence) | **Resolved.** Single active message is intentional — ClarityFree variant exists but is paused (Manual). |
+| 3.6 (Renewal reminder filter logic) | **Resolved.** Trigger is "Order upcoming on ReCharge." Splits route by product line, order count, and subscription streak. |
+| 3.7 (Transition flow overlap) | **Partially resolved.** Clarity exclusion confirmed in TcGQ3t. Motivation Free exclusion NOT confirmed — profile filters need expansion. |
+| 3.10 (Order upcoming metric) | **Resolved.** Confirmed as the active trigger for all refill flows. |
