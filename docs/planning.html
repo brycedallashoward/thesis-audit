@@ -1210,6 +1210,274 @@
 
   </div>
 
+  <hr style="margin: 3rem 0; border-color: var(--border);">
+
+  <div style="max-width: 900px; margin: 0 auto 2rem; padding: 0 1.5rem;">
+    <h1 style="font-size: 1.6rem; margin-bottom: 0.25rem;">Stasis Account Audit</h1>
+    <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 2rem;">Separate Klaviyo account (YsCgQB). Same parent company, ADHD-focused supplement line. Data pulled March 21, 2026. See <code>stasis-landscape.md</code> for full inventory.</p>
+
+    <!-- ============================== -->
+    <!-- STASIS THEME 1: Account Overview -->
+    <!-- ============================== -->
+    <div class="theme" id="s1">
+      <div class="theme-header" onclick="toggle('s1')">
+        <h2><span class="theme-num">S1</span> Account Overview &amp; Inventory <span class="chevron">&#9654;</span></h2>
+        <span class="progress">Done &mdash; baseline captured</span>
+      </div>
+      <div class="theme-body">
+        <div class="callout success">
+          <strong>Stasis is structurally cleaner than Thesis.</strong> Well-named segments ([COHORT], [EXCLUDE], [SUBSCRIPTION]), tiered suppression, and a strong lead flow. Agency work by Antidote is visible and generally good.
+        </div>
+
+        <div class="subtheme">
+          <h3>Account Scale</h3>
+          <table>
+            <thead><tr><th>Metric</th><th>Stasis</th><th>Thesis (for comparison)</th></tr></thead>
+            <tbody>
+              <tr><td>Live flows</td><td>~27</td><td>~15</td></tr>
+              <tr><td>Total flows (incl draft)</td><td>~100</td><td>~40</td></tr>
+              <tr><td>Email campaigns (365d)</td><td>157</td><td>~100</td></tr>
+              <tr><td>SMS campaigns (365d)</td><td>37</td><td>20</td></tr>
+              <tr><td>Flow revenue (365d)</td><td>$284K</td><td>TBD (different metric IDs)</td></tr>
+              <tr><td>Campaign revenue (365d)</td><td>$325K</td><td>~$260K</td></tr>
+              <tr><td>Campaign RPR</td><td><strong>$0.058</strong></td><td>$0.02</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subtheme">
+          <h3>Tech Stack</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Shopify + ReCharge + Okendo (full suite) + Zaymo + Superfiliate + Hightouch + Gorgias + Meta Ads + Fairing + Delighted</strong>
+              <span class="context">Same stack as Thesis minus a few Thesis-specific integrations. Okendo includes reviews, referrals, AND loyalty (more modules than Thesis). Superfiliate for ambassadors. Hightouch for audience sync.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Segment Architecture</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Well-organized with [COHORT], [EXCLUDE], [SUBSCRIPTION] naming conventions</strong>
+              <span class="context">8 cohort segments (Leads, Customers, Returning, VIP OTPs, Lapsed, Churned, Recent Purchasers, 90d Unengaged). 6 exclusion segments with tiered suppression (Standard &rarr; Tight &rarr; Never Engaged &rarr; Suppressed &amp; Invalid). 2 product-level subscription segments (Day Set, Night Set). SMS-specific equivalents. Flow-overlap prevention segment.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- STASIS THEME 2: Flow Performance -->
+    <!-- ============================== -->
+    <div class="theme" id="s2">
+      <div class="theme-header" onclick="toggle('s2')">
+        <h2><span class="theme-num">S2</span> Flow Performance <span class="chevron">&#9654;</span></h2>
+        <span class="progress">Done &mdash; baseline captured</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Revenue Rankings (365d)</h3>
+          <table>
+            <thead><tr><th>Flow</th><th>Revenue</th><th>Recipients</th><th>RPR</th><th>Conv Rate</th></tr></thead>
+            <tbody>
+              <tr><td>[25] Lead Flow</td><td><strong>$107K</strong></td><td>16K (msg 1)</td><td>$6.74</td><td>6.4%</td></tr>
+              <tr><td>[26] Quiz Leads - Welcome Offer</td><td>$19K</td><td>4.2K (msg 1)</td><td>$4.64</td><td>4.2%</td></tr>
+              <tr><td>SMS Welcome Flow</td><td>$18K</td><td>11.5K</td><td>$2.58</td><td>2.6%</td></tr>
+              <tr><td>Subscription Post-Purchase (all)</td><td>$16K</td><td>14.6K (top)</td><td>$0.89</td><td>1.1%</td></tr>
+              <tr><td>Browse Abandonment</td><td>$15K</td><td>20K</td><td>$1.06</td><td>1.0%</td></tr>
+              <tr><td>Subscription Winback</td><td>$14K</td><td>94K+</td><td>$0.23</td><td>0.25%</td></tr>
+              <tr><td>Abandoned Checkout</td><td>$12K</td><td>10.5K</td><td>$2.16</td><td>1.9%</td></tr>
+              <tr><td>Sub Reminder - Bundle Refills</td><td>$11K</td><td>~5K</td><td>High</td><td>Auto-renewal</td></tr>
+              <tr><td>Shipping</td><td>$10.6K</td><td>142K</td><td>$0.07</td><td>0.17%</td></tr>
+            </tbody>
+          </table>
+          <span class="context">Total flow revenue: $284K. Lead Flow alone is 38% of all flow revenue.</span>
+        </div>
+
+        <div class="subtheme">
+          <h3>Key Findings</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Lead Flow is the revenue engine &mdash; $107K, 6.4% conversion</strong>
+              <span class="context">Dramatically better than any Thesis flow except Refill Reminders. First message alone drives most of the revenue. Later messages in the sequence show declining RPR ($0.09&ndash;$0.22), typical of welcome series decay.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>SMS Welcome has 3.6% unsub rate</strong>
+              <span class="context">$18K revenue but losing 3.6% of SMS list per message. List is small (~7K) so each unsub is proportionally expensive. Needs monitoring.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Multiple draft flows should probably be live</strong>
+              <span class="context">SMS Cart Abandonment, SMS Browse Abandonment, Surprise &amp; Delight, Day + Night Subscription Upgrades &mdash; all built by Antidote but not launched. Quick wins if content is ready.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Hightouch AID Flow has low ROI</strong>
+              <span class="context">70K+ recipients across messages, only $800 total revenue. If Hightouch is a paid integration, this flow isn&rsquo;t justifying the cost.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Still Open</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Visual review of Lead Flow structure</strong>
+              <span class="context">The Lead Flow is the #1 revenue driver. Need to understand its branching, timing, and content strategy to identify optimization opportunities and replicate patterns.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Subscription reminder flow consolidation</strong>
+              <span class="context">Multiple versions/iterations of sub reminders: Legacy, Bundle Refills, VIP Upgrades, Stasis Kids, Non-Bundle 90d Gifting, Daytime &amp; Nighttime Pouches, CE_ versions, [UPDATED DEC.2025] versions. Need to map which are active vs superseded.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Winback flow deep dive</strong>
+              <span class="context">$14K from 94K+ recipients ($0.23 RPR) &mdash; similar to Thesis. Could product-specific winback campaigns (Day vs Night) improve this?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- STASIS THEME 3: Campaign Performance -->
+    <!-- ============================== -->
+    <div class="theme" id="s3">
+      <div class="theme-header" onclick="toggle('s3')">
+        <h2><span class="theme-num">S3</span> Campaign Performance <span class="chevron">&#9654;</span></h2>
+        <span class="progress">Done &mdash; baseline captured</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Overview (365d)</h3>
+          <table>
+            <thead><tr><th>Channel</th><th>Campaigns</th><th>Sends</th><th>Revenue</th><th>RPR</th></tr></thead>
+            <tbody>
+              <tr><td>Email</td><td>157</td><td>5.6M</td><td>$325K</td><td><strong>$0.058</strong></td></tr>
+              <tr><td>SMS</td><td>37</td><td>152K</td><td>$10K</td><td>$0.065</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="subtheme">
+          <h3>Key Findings</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Campaign RPR is 3x better than Thesis ($0.058 vs $0.02)</strong>
+              <span class="context">Likely driven by smaller, more targeted audiences (25&ndash;75K vs 280&ndash;490K). The same open-to-click gap exists (&lt;1% click rates) but conversion rates are higher.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Campaign calendar is active through March 2026</strong>
+              <span class="context">Unlike Thesis which went dark after Jan 31, Stasis has campaigns in Feb and March 2026. Stasis Kids announcement (Mar 5), Daylight Saving Reset Guide (Mar 7), 3PM Wall (Mar 19). Consistent cadence maintained.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>ADHD-specific content performs well</strong>
+              <span class="context">Top campaigns use ADHD-resonant themes: &ldquo;Freedom from Side Effects&rdquo; ($16K), &ldquo;Stop Cancelling Your Plans&rdquo; ($12.5K), &ldquo;Beat the Heat&rdquo; ($11.8K), &ldquo;3PM Wall&rdquo; (Mar 2026). Content is differentiated and speaks to the audience&rsquo;s lived experience.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Stasis Kids launch campaign is a strong signal</strong>
+              <span class="context">$15.5K from 53K sends ($0.29 RPR) on March 5, 2026. New product launch to existing audience. Dedicated kids flows, lists, and quiz already in place.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>SMS list is small but healthy-ish</strong>
+              <span class="context">1&ndash;7K recipients per SMS send. Unsub rates 1&ndash;2.5% (elevated but not catastrophic). $10K total SMS revenue. Not the same volume problem as Thesis.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Still Open</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Creative audit &mdash; same open-to-click gap as Thesis</strong>
+              <span class="context">Click rates are 0.2&ndash;0.6% despite 40&ndash;55% opens. This is the same structural problem as Thesis. Need visual review of email templates.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Campaign audience overlap with flows</strong>
+              <span class="context">The [EXCLUDE] Profiles in Lead and Quiz Flows segment prevents overlap for 13 days. Is this enough? Are campaign sends stepping on active flow sequences?</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- STASIS THEME 4: Stasis Kids     -->
+    <!-- ============================== -->
+    <div class="theme" id="s4">
+      <div class="theme-header" onclick="toggle('s4')">
+        <h2><span class="theme-num">S4</span> Stasis Kids (New Product Line) <span class="chevron">&#9654;</span></h2>
+        <span class="progress">Identified &mdash; needs investigation</span>
+      </div>
+      <div class="theme-body">
+        <div class="subtheme">
+          <h3>What Exists</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Dedicated infrastructure in place</strong>
+              <span class="context">Lists: stasis kids email + SMS. Flows: kids lead flow (live), kids post-purchase (live), kids backorder (live), kids waitlist confirmation (live), kid capsule backorder (live, Mar 2026), Kids Quiz &rarr; Quiz Leads (live). Campaign: Kids Announcement ($15.5K, Mar 5). Quiz: Stasis Kids Quiz list (Feb 2026).</span>
+            </div>
+          </div>
+        </div>
+        <div class="subtheme">
+          <h3>Still Open</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Kids flow performance deep dive</strong>
+              <span class="context">Kids flows are new (late 2025 &ndash; Mar 2026). Early signals: kids lead flow has $1K revenue from ~1.5K recipients. Kids post-purchase has $536 from 1.4K. Need to evaluate as the product matures.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Cross-sell between adult Stasis and Stasis Kids</strong>
+              <span class="context">No cross-sell flows or campaigns identified targeting adult Stasis customers for Kids product (parents on ADHD meds whose kids may also benefit). Potential opportunity.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
   <script>
     function toggle(id) {
       document.getElementById(id).classList.toggle('open');
