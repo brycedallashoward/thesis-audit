@@ -874,77 +874,117 @@
     <div class="theme" id="t7">
       <div class="theme-header" onclick="toggle('t7')">
         <h2><span class="theme-num">7</span> Campaign Analysis <span class="chevron">&#9654;</span></h2>
-        <span class="progress">Not started</span>
+        <span class="progress">Done &mdash; 9 findings</span>
       </div>
       <div class="theme-body">
-        <div class="callout success">
-          <strong>Campaign strategy is directionally correct.</strong> Thesis sends campaigns when they have something to say rather than blasting on a constant cadence. That said, there's probably room for more sends in 2026, particularly to active subscribers who currently live entirely in flows.
+        <div class="callout">
+          <strong>Section 7 complete.</strong> Full performance data pulled via Klaviyo Reporting API for 100 email + 20 SMS campaigns (Jan 2025 &ndash; Jan 2026). See <code>flow insights.md</code> Section 7 and <code>data/campaign-performance.md</code> for full analysis. Revenue from active subscriber campaigns is excluded &mdash; it&rsquo;s auto-renewal attribution, not campaign-driven.
         </div>
 
         <div class="subtheme">
-          <h3>Quiz &amp; Conversion CTAs</h3>
+          <h3>Q1 YoY Comparison (Non-Active Campaigns Only)</h3>
+          <table>
+            <thead><tr><th>Metric</th><th>Q1 2025</th><th>Q1 2026</th><th>Delta</th></tr></thead>
+            <tbody>
+              <tr><td>Email campaigns</td><td>~30</td><td>15</td><td>-50%</td></tr>
+              <tr><td>Total sends</td><td>~2.7M</td><td>~5.2M</td><td>+93%</td></tr>
+              <tr><td>Campaign revenue</td><td>~$36K</td><td>~$51.5K</td><td>+43%</td></tr>
+              <tr><td>RPR</td><td>$0.01</td><td>$0.01</td><td>Flat</td></tr>
+              <tr><td>Avg click rate</td><td>0.3&ndash;1.4%</td><td>0.2&ndash;0.5%</td><td>Declining</td></tr>
+              <tr><td>Feb&ndash;Mar campaigns</td><td>13 education sends</td><td><strong>Zero</strong></td><td>Dark</td></tr>
+            </tbody>
+          </table>
+          <span class="context">Jan 2026 alone outperforms all of Q1 2025 on revenue because volume doubled. Feb&ndash;Mar 2025 education campaigns contributed only ~$2.4K &mdash; not a material revenue driver. Q1 2026 is stronger on campaign revenue despite going dark after Jan 31, but click rates are declining and the campaign calendar collapsed without a dedicated retention person.</span>
+        </div>
+
+        <div class="subtheme">
+          <h3>Key Findings</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Do we have any CTAs in campaigns or flows that lead straight to the quiz?</strong>
-              <span class="context">The quiz is the primary conversion mechanism for leads. Need to check if campaigns are driving people to the quiz or to product pages directly.</span>
+              <strong>Campaign calendar went dark after Jan 31 &mdash; zero sends Feb&ndash;Mar 2026</strong>
+              <span class="context">No retention person to drive the calendar. In 2025, there were 13 education/content campaigns across Feb&ndash;Mar. In 2026, complete silence.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Quiz abandonment logic &mdash; is it working?</strong>
-              <span class="context">"Leads | Quiz Abandon Research Request" flow exists. Need to evaluate its performance and whether the abandonment trigger is firing correctly.</span>
+              <strong>Click rates sub-1% and worsening with audience scale</strong>
+              <span class="context">Jan 2026 blasts to 280&ndash;490K recipients hit 0.2&ndash;0.3% click rates. Open-to-click gap (36&ndash;57% open, &lt;1% click) is the most actionable finding.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Audience sizes ballooned 10x (37K &rarr; 490K) with no engagement improvement</strong>
+              <span class="context">Feb&ndash;Apr 2025 education to ~30K Hightouch Engaged. Jan 2026 stacked segments to 490K. Volume-over-quality strategy degrading channel effectiveness.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>SMS burning list equity &mdash; 18% list attrition in Jan 2026</strong>
+              <span class="context">5.15% unsub on Jan 6 launch (~2,600 permanent losses). List shrank 50.7K &rarr; 41.4K over 25 days. BFCM mid-sale SMS had literally 0 conversions from 13.8K sends.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Product-specific churned winbacks are the best campaign type</strong>
+              <span class="context">Jun 2025 Hormesis winback series: ~70K sends, $17.7K revenue, $0.25 RPR. Stress Reset hit $0.54 RPR. Targeted audience + product-specific messaging + reasonable list size = results.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>$39 promo fatigue &mdash; 15 emails + 8 SMS in 25 days, RPR never moved from $0.01</strong>
+              <span class="context">No creative, subject line, or urgency tactic moved the needle. Cumulative email list damage ~3&ndash;4%. SMS list attrition 18%.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Missing campaign types: cross-sell, referral, loyalty, re-engagement, sunset, subscription upgrade</strong>
+              <span class="context">Campaign calendar has two modes: promo blasts to leads/churned, and influencer/Devotion. No middle layer for customer retention or lifecycle.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Exclusion logic uses different segments across periods</strong>
+              <span class="context">BFCM uses X4vtnR, Labor Day uses Tb44U7, Jan 2026 uses Yb4N4p &mdash; all meant to suppress active subscribers but different segment IDs. Risk of coverage gaps. Need to confirm $39 campaign didn&rsquo;t reach $79/mo subscribers.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Active subscriber campaigns are rare but high-engagement</strong>
+              <span class="context">Only 7 campaigns to active customers in 14 months. Open rates 50&ndash;78%, click rates 1.4&ndash;16%. Revenue not cited &mdash; it&rsquo;s auto-renewal attribution. Value is engagement and retention, not direct conversion.</span>
             </div>
           </div>
         </div>
 
         <div class="subtheme">
-          <h3>Creative Performance</h3>
+          <h3>Still Open</h3>
           <div class="check-item">
             <div class="status"><span class="status-tag investigate">Investigate</span></div>
             <div class="detail">
-              <strong>Audit creative performance across flows and campaigns</strong>
-              <span class="context">Open-to-click gap is extreme (36-57% open, &lt;1% click). Subject lines and timing are working but the content inside isn't compelling action. Need to evaluate: email design, CTA placement/copy, content strategy, template consistency, mobile rendering. This is likely the single biggest lever for improving engagement across the board.</span>
-            </div>
-          </div>
-          <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
-            <div class="detail">
-              <strong>Compare creative approach across high-performing vs. low-performing flows</strong>
-              <span class="context">Refill Reminders (11% click, 23% conv) vs M1 Onboarding (1.3% click) vs Winback (0.9% click). What's different about the creative in the flows that work?</span>
+              <strong>Do campaign CTAs lead to the quiz or to product pages?</strong>
+              <span class="context">The quiz is the primary conversion mechanism. Need to check if campaigns are driving quiz starts or bypassing to product pages directly. Requires creative review.</span>
             </div>
           </div>
           <div class="check-item">
             <div class="status"><span class="status-tag investigate">Investigate</span></div>
             <div class="detail">
-              <strong>SMS creative &mdash; is the copy driving action or just notifying?</strong>
-              <span class="context">SMS Welcome has strong RPR ($6.23) but promo SMS caused 5.15% unsub. Different creative approaches with very different results.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="subtheme">
-          <h3>What We Know So Far</h3>
-          <div class="check-item">
-            <div class="status"><span class="status-tag noted">Noted</span></div>
-            <div class="detail">
-              <strong>Campaign calendar is promo-driven</strong>
-              <span class="context">Non-promo sends go almost exclusively to leads. No campaigns to active subscribers. Customers live entirely in flows.</span>
+              <strong>Creative audit &mdash; what&rsquo;s causing the open-to-click gap?</strong>
+              <span class="context">Subject lines work (35&ndash;57% opens) but content isn&rsquo;t driving clicks (&lt;1%). Requires visual review of email templates, CTA placement, mobile rendering. This is the biggest campaign lever.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
             <div class="detail">
-              <strong>Click rates critically low: 0.2&ndash;0.8% vs ~2.5% benchmark</strong>
-              <span class="context">Open-to-click gap (36-57% open, &lt;1% click) is the most actionable campaign finding.</span>
-            </div>
-          </div>
-          <div class="check-item">
-            <div class="status"><span class="status-tag noted">Noted</span></div>
-            <div class="detail">
-              <strong>SMS campaigns are 100% promo blast</strong>
-              <span class="context">Jan $39 SMS blast had 5.15% unsub rate &mdash; significant list damage.</span>
+              <strong>Confirm active subscriber exclusion from discount campaigns</strong>
+              <span class="context">Different exclusion segment IDs across periods. Need to verify no $79/mo subscriber received the $39 offer.</span>
             </div>
           </div>
         </div>
@@ -952,24 +992,26 @@
         <details style="margin-top: 1rem;">
           <summary style="cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--accent);">View Campaign Pattern Tables</summary>
           <div style="margin-top: 0.75rem;">
-            <h4>Email Campaigns</h4>
+            <h4>Email Campaigns by Period</h4>
             <table>
-              <thead><tr><th>Period</th><th>Theme</th><th>Volume</th><th>Audience</th></tr></thead>
+              <thead><tr><th>Period</th><th>Theme</th><th>Volume</th><th>Audience</th><th>RPR</th></tr></thead>
               <tbody>
-                <tr><td>Jan 6&ndash;31, 2026</td><td><strong>$39 First Month</strong> (70% off)</td><td>~8&ndash;10 emails</td><td>Leads (380&ndash;490K)</td></tr>
-                <tr><td>Nov&ndash;Dec 2025</td><td><strong>BFCM</strong> (65% off)</td><td>~8&ndash;10 emails</td><td>Leads + Churned</td></tr>
-                <tr><td>Aug&ndash;Sep 2025</td><td><strong>Labor Day</strong> (65% off)</td><td>~5 emails</td><td>Leads</td></tr>
-                <tr><td>May 2025</td><td><strong>Hormesis Relaunch</strong></td><td>~5 emails</td><td>Leads + Churned</td></tr>
-                <tr><td>Mar&ndash;Apr 2025</td><td>Education + brand</td><td>1&ndash;2/week</td><td>Leads</td></tr>
+                <tr><td>Jan 2026</td><td><strong>$39 First Month</strong> (70% off)</td><td>15 emails</td><td>Leads + OTP (280&ndash;490K)</td><td>$0.01</td></tr>
+                <tr><td>Nov&ndash;Dec 2025</td><td><strong>BFCM</strong> (65% off)</td><td>~19 emails</td><td>All engaged leads (92&ndash;212K)</td><td>$0.03</td></tr>
+                <tr><td>Aug&ndash;Sep 2025</td><td><strong>Labor Day</strong> (65% off)</td><td>5 emails</td><td>Leads + Churned (53&ndash;113K)</td><td>$0.06</td></tr>
+                <tr><td>Jun 2025</td><td><strong>Hormesis Churned Winback</strong></td><td>5 emails</td><td>Churned by product (5&ndash;31K)</td><td><strong>$0.25</strong></td></tr>
+                <tr><td>May 2025</td><td><strong>Hormesis Relaunch</strong></td><td>3 emails</td><td>Leads (43&ndash;65K)</td><td>$0.03</td></tr>
+                <tr><td>Feb&ndash;Apr 2025</td><td>Education + brand</td><td>~16 emails</td><td>Leads (25&ndash;37K)</td><td>$0.01</td></tr>
+                <tr><td>Jan 2025</td><td>NYNM + Raffle + GWP</td><td>~20 emails</td><td>Leads + OTP/Churn (32&ndash;390K)</td><td>$0.01</td></tr>
               </tbody>
             </table>
             <h4>SMS Campaigns</h4>
             <table>
-              <thead><tr><th>Period</th><th>Theme</th><th>Audience</th></tr></thead>
+              <thead><tr><th>Period</th><th>Sends</th><th>Revenue</th><th>RPR</th><th>List Attrition</th></tr></thead>
               <tbody>
-                <tr><td>Jan 2026</td><td>$39 promo (8 sends)</td><td>SMS subscribers</td></tr>
-                <tr><td>Nov&ndash;Dec 2025</td><td>BFCM (5+ sends)</td><td>Various</td></tr>
-                <tr><td>Aug&ndash;Sep 2025</td><td>Labor Day (4 sends)</td><td>Various</td></tr>
+                <tr><td>Jan 2026 ($39)</td><td>358K</td><td>$9.3K</td><td>$0.03</td><td>18% (critical)</td></tr>
+                <tr><td>Nov&ndash;Dec 2025 (BFCM)</td><td>149K</td><td>$4.7K</td><td>$0.03</td><td>Moderate</td></tr>
+                <tr><td>Aug&ndash;Sep 2025 (Labor Day)</td><td>55K</td><td>$10.7K</td><td>$0.20</td><td>High</td></tr>
               </tbody>
             </table>
           </div>
