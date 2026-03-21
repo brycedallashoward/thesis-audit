@@ -193,24 +193,24 @@
     <div class="theme open" id="t1">
       <div class="theme-header" onclick="toggle('t1')">
         <h2><span class="theme-num">1</span> Customer Composition &amp; Segmentation <span class="chevron">&#9654;</span></h2>
-        <span class="progress">1 of 6 investigated</span>
+        <span class="progress">4 of 6 investigated</span>
       </div>
       <div class="theme-body">
 
         <div class="subtheme">
           <h3>List Composition Breakdown</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>What % of the Klaviyo list is: active subscribers, churned subscribers, OTP buyers (no purchase in 90d), and leads?</strong>
-              <span class="context">Need segment-level profile counts. This is the foundational audience picture.</span>
+              <strong>What % of the Klaviyo list is: active subscribers, churned subscribers, OTP buyers, and leads?</strong>
+              <span class="context">Live segment counts (Mar 21, 2026): Active Subscribers: 28,416 (6.5%) &bull; Churned Subscribers (Recent): 11,252 (2.6%) &bull; Churned Subscribers (Engaged 90d): 59,319 (13.6%) &bull; OTP (all stages): 1,080 (0.25%) &bull; Leads D30+ Engaged: 15,509 (3.6%) &bull; Leads 180d Engaged: 178,416 (40.9%) &bull; Leads At Risk: 20,311 (4.7%) &bull; Leads Disengaged: 109,279 (25.1%). The list is ~75% leads. For every active subscriber, there are 2+ churned ones still opening emails. 109K disengaged leads are a deliverability risk.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>OTP vs. subscription purchase split</strong>
-              <span class="context">Believed to be ~3-4% OTP. Fact sheet says 64% new subs, 4% OTP from recent data. Need to confirm current ratio and whether OTP has its own nurture.</span>
+              <span class="context">OTP (defined as purchasers of the OTP SKU) is negligible: 1,080 profiles across all three lifecycle stages (427 Recent, 653 At Risk, 9,289 Churned &mdash; note Churned includes historical OTP buyers going back years). The "One Time Purchasers" segment (389K) uses a different, broader definition (any Shopify order + not active subscriber) and is inactive (not recalculating). No dedicated OTP nurture exists. OTP has its own segment structure but no flow targeting it.</span>
             </div>
           </div>
         </div>
@@ -218,17 +218,17 @@
         <div class="subtheme">
           <h3>Lead &amp; Churn Aging</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag parked">Parked</span></div>
             <div class="detail">
               <strong>How old are leads on the list?</strong>
-              <span class="context">Distribution of lead tenure. Are we sitting on leads from 2019 who will never buy? Impacts deliverability and list quality.</span>
+              <span class="context">Cannot determine from API without CSV export (not available with current audit permissions). Proxy evidence: stale lists from 2019 (DojoMojo, Get Fit Don't Quit, etc.) and the 109K disengaged lead segment suggest significant ancient lead weight. The Disengaged segment requires 91-180d since last engagement and no activity in 30-90d &mdash; many of these profiles are likely much older. Recommend sunset flow review as the actionable next step rather than aging analysis.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag parked">Parked</span></div>
             <div class="detail">
               <strong>How long have canceled subscribers been on the list?</strong>
-              <span class="context">Time from cancel to present. Helps understand winback window viability.</span>
+              <span class="context">Cannot determine from API without CSV export. Proxy: the "Churned Subscribers | Recent" segment (11,252) requires a cancellation event in the last 90 days. The broader "Engaged 90d" segment (59,319) includes all-time cancellers who are still engaging. The gap (48K) represents churned subscribers who cancelled &gt;90d ago but are still opening emails &mdash; a large, warm winback pool.</span>
             </div>
           </div>
         </div>
@@ -236,10 +236,10 @@
         <div class="subtheme">
           <h3>Pre-Cancellation Behavior</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag parked">Parked</span></div>
             <div class="detail">
               <strong>What actions do customers take before canceling?</strong>
-              <span class="context">Can we extrapolate patterns? Do they stop opening emails? Skip a charge? Reduce engagement? This would inform proactive churn intervention.</span>
+              <span class="context">Requires profile-level event sequence analysis (joining engagement data to cancellation events) &mdash; a data warehouse query beyond Klaviyo API scope. Would need Hightouch or ReCharge reporting. Parked as out of scope for this audit.</span>
             </div>
           </div>
         </div>
@@ -250,7 +250,7 @@
             <div class="status"><span class="status-tag noted">Noted</span></div>
             <div class="detail">
               <strong>No subscription tenure segmentation</strong>
-              <span class="context">No segments for new sub vs 3mo+ vs 6mo+. Everyone treated the same.</span>
+              <span class="context">No segments for new sub vs 3mo+ vs 6mo+. However, flows can handle tenure natively via time delays off the Subscription Created trigger, and campaigns are not currently targeting active subscribers by tenure. Lower priority than initially assessed &mdash; becomes relevant only if campaign strategy expands to active subscriber lifecycle sends.</span>
             </div>
           </div>
           <div class="check-item">
@@ -263,7 +263,7 @@
         </div>
 
         <div class="data-note">
-          <strong>Existing segments found:</strong> All Subscribers (Active), Churned Subscribers (Recent + Engaged 90d), Leads (D30+ Engaged, 180d Engaged, At Risk, Disengaged), OTP (Recent / At Risk / Churned), One Time Purchasers (Jan 2026), Stasis Purchases L30 (Mar 5, 2026).
+          <strong>Segment counts (live, Mar 21 2026):</strong> Active Subscribers: 28,416 &bull; Churned Recent: 11,252 &bull; Churned Engaged 90d: 59,319 &bull; OTP Recent: 427 &bull; OTP At Risk: 653 &bull; OTP Churned: 9,289 &bull; Leads D30+ Engaged: 15,509 &bull; Leads 180d Engaged: 178,416 &bull; Leads At Risk: 20,311 &bull; Leads Disengaged: 109,279 &bull; High Engagement Non-Purchasers: 237 &bull; Stasis L30: 2,136 &bull; One Time Purchasers: 389,276 (INACTIVE &mdash; not recalculating).
         </div>
       </div>
     </div>
@@ -274,24 +274,31 @@
     <div class="theme" id="t2">
       <div class="theme-header" onclick="toggle('t2')">
         <h2><span class="theme-num">2</span> Customer Journey &amp; Funnel <span class="chevron">&#9654;</span></h2>
-        <span class="progress">0 of 5 investigated</span>
+        <span class="progress">5 of 5 investigated</span>
       </div>
       <div class="theme-body">
 
         <div class="subtheme">
           <h3>Journey Waterfall</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Build a full-funnel waterfall: Active on Site &rarr; View Product &rarr; Quiz &rarr; Checkout &rarr; Order</strong>
-              <span class="context">30-day data shows: Active on Site (14,815) &rarr; Viewed Product (13,679) &rarr; Quiz (???) &rarr; Checkout Started (8,090) &rarr; Placed Order (22,592). The quiz step is invisible in metrics. Also, Placed Order > Checkout Started suggests Recharge renewals bypass checkout.</span>
+              <strong>Full-funnel waterfall (Jan 2026, unique profiles)</strong>
+              <span class="context">Active on Site: 14,353 &rarr; Viewed Product: 8,968 &rarr; Quiz Completed: 16,632 &rarr; Started Checkout (Shopify): 9,688 &rarr; New Subscriptions Started: 7,644. Key insight: Quiz Completed uniques (16,632) exceed Viewed Product uniques (8,968) &mdash; most quiz completers come from ads/landing pages directly, not product browsing. The quiz IS the primary conversion path. Total Placed Order (24,184) includes ~16K ReCharge renewals; new-customer orders are ~7,600-8,000. Added to Cart metric (Shopify, created Feb 2026) is confirmed dead &mdash; 1 event total in 4 months.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Quiz completion data is missing from Klaviyo metrics</strong>
-              <span class="context">No "Quiz Completed" metric firing in last 30 days despite the Planning data showing ~6K-18K quiz completions per month historically. The metric may be dead or renamed. This is a critical tracking gap.</span>
+              <strong>Quiz Completed metric IS firing &mdash; initial assessment was incorrect</strong>
+              <span class="context">Quiz Completed (XZc4BY) is active: Dec 9,654 / Jan 18,276 / Feb 15,285 / Mar 6,313. Metric only started firing Nov 2024 (54,508 events &mdash; likely backfill), so pre-Nov 2024 quiz data is not in Klaviyo. Two related quiz metrics ARE dead: Pre-Purchase Quiz Completed (Yb4ryp, 0 events) and Post-Purchase Quiz Started (RmcqKC, 0 events) &mdash; cleanup candidates at 200/200 ceiling.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Pre-Purchase Quiz Started metric is dead &mdash; opportunity gap</strong>
+              <span class="context">"Pre-Purchase Quiz Started" (Utja25) shows 0 events. Without a quiz-started event, we cannot measure the quiz start-to-complete drop-off or retarget quiz abandoners in Klaviyo. This is both a tracking gap and a conversion opportunity &mdash; quiz abandoners are high-intent prospects with no recovery path.</span>
             </div>
           </div>
         </div>
@@ -299,17 +306,10 @@
         <div class="subtheme">
           <h3>Value-Add Content Tracking</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag noted">Noted</span></div>
             <div class="detail">
-              <strong>Are we tracking engagement with the 45-day breathwork program (Open App) and Mind Shift content?</strong>
-              <span class="context">Every order ships with these digital bonuses. Do we know adoption rate, completion rate, or even if customers are aware they have access? This content is a differentiation pillar but may be invisible in the data.</span>
-            </div>
-          </div>
-          <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
-            <div class="detail">
-              <strong>30-Day Habit Reset &mdash; is it tracked?</strong>
-              <span class="context">Another bundled value-add. If customers who engage with this retain better, it should be a central part of M1 onboarding messaging.</span>
+              <strong>Value-add content (breathwork, Mind Shift, Habit Reset) is not tracked in Klaviyo</strong>
+              <span class="context">No engagement data for the 45-day breathwork program, Mind Shift content, or 30-Day Habit Reset exists in Klaviyo. Zero visibility into adoption, completion, or correlation with retention. If content engagement drives retention, this is a data gap worth closing &mdash; but instrumenting it is a housekeeping/infrastructure project, not a flow optimization.</span>
             </div>
           </div>
         </div>
@@ -317,16 +317,22 @@
         <div class="subtheme">
           <h3>Performance: Before vs. After Hormesis</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>How do pre-Hormesis metrics compare to post?</strong>
-              <span class="context">Current data starts at May 2025 (Hormesis launch). Need to understand if churn floor, AOV, quiz volume, etc. changed with the rebrand or were pre-existing.</span>
+              <strong>Pre-Hormesis vs. post comparison &mdash; rebrand stabilized a declining business</strong>
+              <span class="context">Klaviyo data goes back to Jun 2024. Pre-Hormesis: revenue fell from $3.05M (Jun 2024) to $2.01M (Feb 2025), a 34% decline over 8 months. Cancellations were 6&ndash;8K/month pre-Hormesis vs. 5&ndash;5.8K/month post. Sub starts declined from ~6K to ~4K/month pre-Hormesis, then recovered to ~5K post. The "5K cancellation floor" is actually an improvement. Feb 2025 anomaly: 33,617 cancellations (5x normal) &mdash; likely a bulk cleanup or product migration event, needs clarification from Thesis team. Quiz Completed metric only started firing Nov 2024, so pre-Hormesis quiz comparison is not possible in Klaviyo.</span>
             </div>
           </div>
         </div>
 
         <div class="data-note">
-          <strong>Quiz data from planning inventory (historical):</strong> May 2025: 11,110 &rarr; Aug 2025: 21,693 (Labor Day spike) &rarr; Jan 2026: 18,276 ($39 promo spike) &rarr; Mar 2026: 6,313 (partial). Quiz volume tracks with promo spend, not organic interest.
+          <strong>Funnel data (Jan 2026, uniques):</strong> Active on Site: 14,353 &rarr; Viewed Product: 8,968 &rarr; Quiz Completed: 16,632 &rarr; Started Checkout: 9,688 &rarr; New Subs: 7,644. Quiz completers &gt; product viewers confirms quiz-first acquisition path via ads.
+        </div>
+        <div class="data-note">
+          <strong>Pre-Hormesis revenue trend (Shopify Placed Order):</strong> Jun 2024: $3.05M &rarr; Sep 2024: $2.53M &rarr; Dec 2024: $2.45M &rarr; Feb 2025: $2.01M &rarr; May 2025 (Hormesis): $2.10M &rarr; Jan 2026: $1.91M. Revenue was in free-fall before the rebrand; Hormesis stabilized the decline but didn't reverse it.
+        </div>
+        <div class="data-note">
+          <strong>Pre-Hormesis cancellations:</strong> Jun 2024: 7,741 &rarr; Jul 2024: 7,925 &rarr; Oct 2024: 6,403 &rarr; Feb 2025: 33,617 (anomaly) &rarr; Apr 2025: 5,322 &rarr; Post-Hormesis avg: ~5,300. The cancellation floor improved post-rebrand.
         </div>
       </div>
     </div>
