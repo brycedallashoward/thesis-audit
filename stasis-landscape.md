@@ -29,7 +29,7 @@ Stasis is a sub-brand under the Thesis umbrella. ADHD-focused supplement line wi
 
 | Flow ID | Name | Trigger | Notes |
 |---------|------|---------|-------|
-| V3TSGy | [25] Lead Flow | Added to List | **Crown jewel** — $107K revenue, 6.4% conv |
+| V3TSGy | [25] Lead Flow | Added to List | Top acquisition flow — $107K revenue, 6.4% conv |
 | VUD7gW | [26] Quiz Leads - Welcome Offer | Added to List | $19K revenue, 4.2% conv |
 | X7M4U4 | SMS Welcome Flow [antidote] | Metric | $15.8K revenue, 3.6% unsub |
 | URGzF3 | Abandoned Checkout [antidote] | Metric | $11.6K combined revenue |
@@ -86,12 +86,12 @@ Stasis is a sub-brand under the Thesis umbrella. ADHD-focused supplement line wi
 | 7 | Shipping [antidote] | 142,036 | 26.7% | 11.0% | 0.17% | $10.6K | $0.07 |
 | 8 | Subscription Winback | 33,532 + 31K + 29K + 25K | 48–57% | 0.6–2.1% | 0.05–0.25% | **$14K** | $0.23 |
 | 9 | Okendo Review Request | 41,467 + 44K | 29–33% | 1.5–11% | 0.06–0.17% | $3.2K | $0.07 |
-| 10 | Sub Reminder - Bundle Refills | ~5K across msgs | 47–82% | 5–22% | 0–32% | $11K+ | Very high (auto-renewal) |
+| 10 | Sub Reminder - Bundle Refills | ~5K across msgs | 47–82% | 5–22% | — | — | Auto-renewal (not flow-driven) |
 
 **Total flow revenue (365d):** $284K from 1.06M recipients
 **Total flow conversions:** 2,952
 
-**Key observation:** The Lead Flow is the revenue engine here — $107K from a welcome series. The first message alone converts at 6.4% with a $6.74 RPR. This is dramatically better than any Thesis flow except Refill Reminders.
+**Key observation:** The Lead Flow is the top acquisition flow — $107K from a welcome series to new leads. First message converts at 6.4%. This is valid acquisition revenue (leads who haven't purchased yet). Subscription reminder / refill flows show high attributed revenue but this is auto-renewal — subscriptions charge on schedule regardless of the email.
 
 ---
 

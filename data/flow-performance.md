@@ -57,7 +57,7 @@
 | Avg Order Value | $92.42 |
 | Unsubscribe Rate | ~0.3% |
 
-**Notes:** Crown jewel of the account. Over $6M attributed in 12 months with conversion rates in the 29–46% range per message. The main blast email (Sj4dyY) alone — 102K recipients — drives the bulk of volume at 13.8% conv. Personalized messages targeting smaller, segmented cohorts convert 29–46%. This flow is a template machine. The click-to-open rate of 31.5% indicates highly engaged, intent-signaled audience.
+**Notes:** Highest-volume flow in the account. $6M attributed revenue is auto-renewal — subscriptions charge on schedule via ReCharge regardless of the email. Do not cite this as flow-driven revenue. Evaluate on engagement: 11% click rate and 31.5% click-to-open rate indicate strong engagement with an intent-signaled audience. Personalized messages targeting smaller cohorts show 29–46% conversion rates (again, auto-renewal happening in the attribution window). The flow's value is in customer experience and churn prevention, not revenue generation.
 
 ---
 

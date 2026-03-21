@@ -12,7 +12,7 @@ Format each entry:
 
 ## Revenue & Business Health
 
-- **Refill Reminders - Hormesis** is the crown jewel flow: 202K recipients, 35% open, 11% click, 23% conversion. Attributed $673K Jan, $721K Feb. This is the engine.
+- **Refill Reminders - Hormesis** is the highest-volume flow: 202K recipients, 35% open, 11% click, 23% conversion. Attributed revenue ($673K Jan, $721K Feb) is auto-renewal — subscriptions charge on schedule regardless of the email. Evaluate on engagement (11% click is strong) not revenue.
 - Revenue is ~$2M/month (Shopify Placed Order). Healthy top line but net subscriber growth is in deficit 10 of 13 months.
 - OTP ($139) vs subscription ($59 first month, $79 recurring) — large gap. 64% of recent orders are new subscriptions, only 4% OTP. Subscription acquisition is the primary motion.
 
