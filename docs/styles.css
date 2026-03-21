@@ -1,17 +1,17 @@
 :root {
-  --bg: #0d1117;
-  --bg-card: #161b22;
-  --bg-card-hover: #1c2129;
-  --border: #30363d;
-  --text: #e6edf3;
-  --text-muted: #8b949e;
-  --text-dim: #6e7681;
-  --accent: #58a6ff;
-  --accent-dim: #1f6feb33;
-  --green: #3fb950;
-  --red: #f85149;
-  --orange: #d29922;
-  --purple: #bc8cff;
+  --bg: #ffffff;
+  --bg-card: #f6f8fa;
+  --bg-card-hover: #eef1f5;
+  --border: #d1d9e0;
+  --text: #1f2328;
+  --text-muted: #656d76;
+  --text-dim: #8b949e;
+  --accent: #0969da;
+  --accent-dim: #0969da14;
+  --green: #1a7f37;
+  --red: #cf222e;
+  --orange: #9a6700;
+  --purple: #8250df;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   --mono: "SF Mono", "Fira Code", "Fira Mono", Menlo, monospace;
 }
@@ -41,7 +41,7 @@ nav {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(12px);
-  background: rgba(22, 27, 34, 0.85);
+  background: rgba(255, 255, 255, 0.9);
 }
 
 nav .nav-inner {
