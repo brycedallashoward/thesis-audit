@@ -378,7 +378,10 @@
             <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Identify flows that don't make sense or can't be understood without a human look</strong>
-              <span class="context"><strong>Resolved for Refill + Winback via flow builder review.</strong> Refill (TcGQ3t): 16 total messages (9 live, 7 draft), 5-layer branching by product line, order count, subscription streak, and A/B tests. Winback (WEFcjQ): 19 messages across 5 cancellation-reason branches &mdash; "Did Not Feel Good" branch is entirely Draft (4 messages, zero active). M1 Onboarding (TezDRv) still pending walkthrough.</span>
+              <span class="context"><strong>Fully resolved.</strong> All 3 priority flows inspected via flow builder:
+                <br><br><em>Refill (TcGQ3t):</em> 16 messages (9 live, 7 draft), 5-layer branching by product line, order count, subscription streak, and A/B tests. Clarity excluded via 3 trigger splits. Orphan "Copy of" message actively sending. A/B tests at 100% sample = stale toggles.
+                <br><br><em>Winback (WEFcjQ):</em> 19 messages across 5 cancellation-reason branches. "Did Not Feel Good" branch entirely Draft (4 messages, zero active) &mdash; these customers get nothing or fall through to generic "Other." Discount only in "Too Expensive" (25% off) and "Legacy" branches.
+                <br><br><em>M1 Onboarding (TezDRv):</em> 29 messages (all Live), triggered by LS-Delivered (shipment delivery). Splits by product (Clarity/Motivation/Stress Reset/Neuroprotection) and subscription status (subscriber vs OTP). Subscribers get a 6-email educational sequence over 10 days per product. OTP buyers get only a delivery confirmation &mdash; zero education, zero subscription conversion pitch. Key issues: (1) 1.28% click rate is structural &mdash; sequence is pure education with no CTAs driving action, (2) Motivation delivery confirmation missing Transactional flag, (3) "Reasons to Believe" email identical across all 4 products, (4) OTP customers ($139 AOV) get the least onboarding attention, (5) Neuroprotection D2 says "Thesis" not "Neuroprotection" &mdash; templating error from old brand.</span>
             </div>
           </div>
           <div class="check-item">
