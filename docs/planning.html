@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planning Center · Thesis Audit</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Thesis · Klaviyo Audit</a>
+  <ul class="nav-links">
+    <li><a href="factsheet.html">Fact Sheet</a></li>
+    <li><a href="planning.html" class="active">Planning</a></li>
+    <li><a href="audit.html">Audit</a></li>
+  </ul>
+</nav>
+
+<div class="page-wide">
+
+  <div class="page-header">
+    <p class="page-eyebrow">Working Data · March 21, 2026</p>
+    <h1 class="page-title">Planning Center</h1>
+    <p class="page-sub">Live data pulled from Klaviyo API. Account inventory, flow performance, segment landscape, and housekeeping log.</p>
+  </div>
+
+  <!-- FLOW PERFORMANCE SUMMARY -->
+  <div class="section">
+    <p class="section-label">Flow Performance · Last 12 Months</p>
+    <h2 class="section-title">Revenue by flow</h2>
+    <p class="section-body">Conversion = Placed Order. RPR = revenue per recipient.</p>
+
+    <div class="table-wrap mt-16">
+      <table>
+        <thead>
+          <tr>
+            <th>Flow</th>
+            <th>Channel</th>
+            <th>Recipients</th>
+            <th>Open %</th>
+            <th>Click %</th>
+            <th>Conv %</th>
+            <th>Revenue</th>
+            <th>RPR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Retention -->
+          <tr><td colspan="8" style="background:var(--surface-2); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); padding: 8px 12px;">Retention / Refill</td></tr>
+          <tr>
+            <td><strong>Refill Reminders – Hormesis</strong></td>
+            <td>Email</td>
+            <td class="num">202,048</td>
+            <td class="num">35.2%</td>
+            <td class="num">11.1%</td>
+            <td class="gold num"><strong>23.1%</strong></td>
+            <td class="gold num"><strong>$6,387,828</strong></td>
+            <td class="gold num">$31.72</td>
+          </tr>
+          <tr>
+            <td>Refill Reminder – Clarity Migration</td>
+            <td>Email</td>
+            <td class="num">6,289</td>
+            <td class="num">51.6%</td>
+            <td class="num">5.4%</td>
+            <td class="good num">38.2%</td>
+            <td class="num">$226,642</td>
+            <td class="good num">$36.12</td>
+          </tr>
+          <tr>
+            <td>Hormesis Transition – Motivation Free</td>
+            <td>Email</td>
+            <td class="num">241</td>
+            <td class="num">50.6%</td>
+            <td class="num">14.5%</td>
+            <td class="num">29.5%</td>
+            <td class="num">$7,443</td>
+            <td class="num">$30.88</td>
+          </tr>
+          <!-- Onboarding -->
+          <tr><td colspan="8" style="background:var(--surface-2); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); padding: 8px 12px;">Active Customer / Onboarding</td></tr>
+          <tr>
+            <td>Order Confirmation</td>
+            <td>Email</td>
+            <td class="num">96,862</td>
+            <td class="num">44.3%</td>
+            <td class="num">10.6%</td>
+            <td class="num">0.67%</td>
+            <td class="num">$41,541</td>
+            <td class="num">$0.43</td>
+          </tr>
+          <tr>
+            <td>M1 Onboarding</td>
+            <td>Email</td>
+            <td class="num">80,930</td>
+            <td class="num">57.5%</td>
+            <td class="alert num">1.28%</td>
+            <td class="num">0.48%</td>
+            <td class="num">$19,707</td>
+            <td class="num">$0.24</td>
+          </tr>
+          <tr>
+            <td>NYNM Mindshift Series</td>
+            <td>Email</td>
+            <td class="num">36,722</td>
+            <td class="good num">60.3%</td>
+            <td class="good num">6.81%</td>
+            <td class="num">0.62%</td>
+            <td class="num">$17,710</td>
+            <td class="num">$0.48</td>
+          </tr>
+          <tr>
+            <td>M2 Onboarding</td>
+            <td>Email</td>
+            <td class="num">19,392</td>
+            <td class="num">58.0%</td>
+            <td class="num">2.26%</td>
+            <td class="num">0.52%</td>
+            <td class="num">$4,060</td>
+            <td class="num">$0.21</td>
+          </tr>
+          <tr>
+            <td>Shipment Notifications (Tapp)</td>
+            <td>Email</td>
+            <td class="num">67,466</td>
+            <td class="num">62.6%</td>
+            <td class="num">12.6%</td>
+            <td class="num">0.29%</td>
+            <td class="num">$6,774</td>
+            <td class="num">$0.10</td>
+          </tr>
+          <tr>
+            <td>Shipment Notifications (Legacy)</td>
+            <td>Email</td>
+            <td class="num">24,552</td>
+            <td class="num">64.4%</td>
+            <td class="num">10.4%</td>
+            <td class="num">0.23%</td>
+            <td class="num">$2,552</td>
+            <td class="num">$0.10</td>
+          </tr>
+          <!-- Leads -->
+          <tr><td colspan="8" style="background:var(--surface-2); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); padding: 8px 12px;">Lead Acquisition</td></tr>
+          <tr>
+            <td>Quiz Complete Lead Flow</td>
+            <td>Email</td>
+            <td class="num">472,101</td>
+            <td class="num">43.5%</td>
+            <td class="num">1.5%</td>
+            <td class="num">0.55%</td>
+            <td class="num">$249,454</td>
+            <td class="num">$0.53</td>
+          </tr>
+          <tr>
+            <td>D30+ Engaged</td>
+            <td>Email</td>
+            <td class="num">120,877</td>
+            <td class="good num">64.3%</td>
+            <td class="num">1.1%</td>
+            <td class="num">0.28%</td>
+            <td class="num">$29,577</td>
+            <td class="num">$0.25</td>
+          </tr>
+          <tr>
+            <td>SMS Welcome Flow</td>
+            <td>SMS</td>
+            <td class="num">11,896</td>
+            <td class="text-faint num">—</td>
+            <td class="num">19.8%</td>
+            <td class="good num">5.69%</td>
+            <td class="num">$73,945</td>
+            <td class="good num">$6.23</td>
+          </tr>
+          <tr>
+            <td>Hightouch AID</td>
+            <td>Email</td>
+            <td class="num">5,240,264</td>
+            <td class="num">34.3%</td>
+            <td class="num">0.4%</td>
+            <td class="alert num">0.02%</td>
+            <td class="num">$100,724</td>
+            <td class="alert num">$0.02</td>
+          </tr>
+          <tr>
+            <td>Hightouch SMS AID</td>
+            <td>SMS</td>
+            <td class="num">111,371</td>
+            <td class="text-faint num">—</td>
+            <td class="num">15.9%</td>
+            <td class="alert num">0.02%</td>
+            <td class="num">$2,272</td>
+            <td class="alert num">$0.02</td>
+          </tr>
+          <tr>
+            <td>Sunset Flow</td>
+            <td>Email</td>
+            <td class="num">479,676</td>
+            <td class="num">31.7%</td>
+            <td class="num">0.30%</td>
+            <td class="alert num">0.01%</td>
+            <td class="num">$2,407</td>
+            <td class="alert num">$0.005</td>
+          </tr>
+          <tr>
+            <td>50% Off [antidote]</td>
+            <td>Email</td>
+            <td class="num">456</td>
+            <td class="num">39.9%</td>
+            <td class="num">4.5%</td>
+            <td class="num">1.34%</td>
+            <td class="num">$414</td>
+            <td class="num">$0.92</td>
+          </tr>
+          <!-- Reviews -->
+          <tr><td colspan="8" style="background:var(--surface-2); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); padding: 8px 12px;">Reviews / Advocacy / Referral</td></tr>
+          <tr>
+            <td>Okendo Review Request (M2)</td>
+            <td>Email</td>
+            <td class="num">378,522</td>
+            <td class="num">25.3%</td>
+            <td class="num">1.0%</td>
+            <td class="num">0.38%</td>
+            <td class="num">$126,162</td>
+            <td class="num">$0.33</td>
+          </tr>
+          <tr>
+            <td>Okendo Review Incentive – Promoter</td>
+            <td>Email</td>
+            <td class="num">2,748</td>
+            <td class="good num">77.1%</td>
+            <td class="num">8.1%</td>
+            <td class="good num">5.70%</td>
+            <td class="num">$13,109</td>
+            <td class="good num">$4.79</td>
+          </tr>
+          <tr>
+            <td>Okendo Referral Opt In (verify)</td>
+            <td>Email</td>
+            <td class="num">632</td>
+            <td class="good num">84.1%</td>
+            <td class="good num">56.2%</td>
+            <td class="good num">24.3%</td>
+            <td class="num">$12,498</td>
+            <td class="good num">$20.13</td>
+          </tr>
+          <tr>
+            <td>Okendo Referral – Recipient</td>
+            <td>Email</td>
+            <td class="num">1,238</td>
+            <td class="num">60.2%</td>
+            <td class="num">18.7%</td>
+            <td class="num">4.56%</td>
+            <td class="num">$4,273</td>
+            <td class="num">$3.61</td>
+          </tr>
+          <tr>
+            <td>Super User Flow</td>
+            <td>Email</td>
+            <td class="num">1,437</td>
+            <td class="good num">74.1%</td>
+            <td class="num">11.6%</td>
+            <td class="good num">5.09%</td>
+            <td class="num">$5,913</td>
+            <td class="good num">$4.12</td>
+          </tr>
+          <tr>
+            <td>Ambassador Flow (Outersignal)</td>
+            <td>Email</td>
+            <td class="num">2,712</td>
+            <td class="num">55.5%</td>
+            <td class="num">3.3%</td>
+            <td class="num">2.49%</td>
+            <td class="num">$5,710</td>
+            <td class="num">$2.12</td>
+          </tr>
+          <tr>
+            <td>Okendo Review Incentive</td>
+            <td>Email</td>
+            <td class="num">662</td>
+            <td class="num">75.6%</td>
+            <td class="num">33.4%</td>
+            <td class="num">8.62%</td>
+            <td class="num">$3,061</td>
+            <td class="num">$4.63</td>
+          </tr>
+          <!-- Devotion -->
+          <tr><td colspan="8" style="background:var(--surface-2); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); padding: 8px 12px;">Devotion Program</td></tr>
+          <tr>
+            <td>Devotion – Cold Outreach</td>
+            <td>Email</td>
+            <td class="num">15,753</td>
+            <td class="num">54.3%</td>
+            <td class="num">3.6%</td>
+            <td class="alert num">0.05%</td>
+            <td class="num">$87</td>
+            <td class="alert num">$0.006</td>
+          </tr>
+          <tr>
+            <td>Devotion – Onboarding &amp; Gifting</td>
+            <td>Email</td>
+            <td class="num">1,848</td>
+            <td class="num">69.7%</td>
+            <td class="num">7.4%</td>
+            <td class="num">2.47%</td>
+            <td class="num">$216</td>
+            <td class="num">$0.12</td>
+          </tr>
+          <!-- Winback -->
+          <tr><td colspan="8" style="background:var(--surface-2); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); padding: 8px 12px;">Winback</td></tr>
+          <tr>
+            <td>Winback – Subscription Cancelled</td>
+            <td>Email</td>
+            <td class="num">45,668</td>
+            <td class="num">48.4%</td>
+            <td class="num">0.9%</td>
+            <td class="alert num">0.21%</td>
+            <td class="num">$6,499</td>
+            <td class="alert num">$0.14</td>
+          </tr>
+          <!-- Other -->
+          <tr><td colspan="8" style="background:var(--surface-2); font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-3); padding: 8px 12px;">Other</td></tr>
+          <tr>
+            <td>Consumer Survey Flow</td>
+            <td>Email</td>
+            <td class="num">19,488</td>
+            <td class="num">53.0%</td>
+            <td class="num">2.4%</td>
+            <td class="num">0.63%</td>
+            <td class="num">$9,235</td>
+            <td class="num">$0.48</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout alert mt-16">
+      <strong>Flows with no data yet (new or operational):</strong> Browse Abandonment, Abandoned Checkout (both created Mar 12, 2026), Sunrise Flow, Quiz Abandon, Hormesis Transition Clarity, OTP Login.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ACCOUNT INVENTORY -->
+  <div class="section">
+    <p class="section-label">Account Inventory</p>
+    <h2 class="section-title">What's in the account</h2>
+
+    <div class="cards cards-4" style="margin-bottom: 24px;">
+      <div class="card">
+        <div class="card-label">Total Flows</div>
+        <div class="card-value">86</div>
+        <div class="card-sub">~38 live, ~40 draft/manual, 7 draining</div>
+      </div>
+      <div class="card alert-border">
+        <div class="card-label">Metrics</div>
+        <div class="card-value" style="color:var(--red);">199/200</div>
+        <div class="card-sub">At the account ceiling</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Segments</div>
+        <div class="card-value">25+</div>
+        <div class="card-sub">Active segments</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Lists</div>
+        <div class="card-value">50+</div>
+        <div class="card-sub">Most stale — dates to 2019</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Live Flows</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Lead Acquisition</td><td>14</td><td>AID, quiz, SMS welcome, sunset, browse/cart (new)</td></tr>
+          <tr><td>Active / Onboarding</td><td>7</td><td>M1, M2, NYNM, order confirm, shipment notifications</td></tr>
+          <tr><td>Retention / Refill</td><td>5</td><td>Hormesis main + 3 transition variants + Clarity migration</td></tr>
+          <tr><td>Reviews / Advocacy</td><td>7</td><td>Okendo reviews, referral, super user, Outersignal</td></tr>
+          <tr><td>Devotion</td><td>2</td><td>Cold outreach + onboarding</td></tr>
+          <tr><td>Winback</td><td>1</td><td>Single cancelled-subscriber flow</td></tr>
+          <tr><td>Operations</td><td>5</td><td>Survey, OTP login, attribute creation, auto-suppression</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- CAMPAIGN PATTERNS -->
+  <div class="section">
+    <p class="section-label">Campaign Patterns</p>
+    <h2 class="section-title">Campaign calendar (12 months)</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Period</th><th>Theme</th><th>Offer</th><th>Audience</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jan 2026</td>
+            <td><strong>$39 First Month</strong></td>
+            <td>70% off first month</td>
+            <td>Leads (380–490K)</td>
+          </tr>
+          <tr>
+            <td>Nov–Dec 2025</td>
+            <td><strong>BFCM</strong></td>
+            <td>65% off, 3 months $136</td>
+            <td>Leads + Churned</td>
+          </tr>
+          <tr>
+            <td>Aug–Sep 2025</td>
+            <td><strong>Labor Day Sale</strong></td>
+            <td>65% off</td>
+            <td>Leads</td>
+          </tr>
+          <tr>
+            <td>May 2025</td>
+            <td><strong>Hormesis Relaunch</strong></td>
+            <td>New formulas, new packaging</td>
+            <td>Leads + Churned</td>
+          </tr>
+          <tr>
+            <td>Mar–Apr 2025</td>
+            <td>Education content</td>
+            <td>Willpower, dopamine, ingredients</td>
+            <td>Leads only</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout alert mt-16">
+      <strong>Pattern:</strong> Campaign calendar is 100% promo-driven. Non-promo sends go almost exclusively to leads — not customers. No campaigns visible to active subscribers. SMS campaigns are 100% promotional blast with zero lifecycle sends. Jan 6 SMS launch: <strong>5.15% unsub rate on 50.7K sends</strong> — ~2,600 permanent SMS list losses in a single campaign.
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- SEGMENT GAPS -->
+  <div class="section">
+    <p class="section-label">Segment Gaps</p>
+    <h2 class="section-title">What's missing from the segment layer</h2>
+
+    <div class="cards cards-2">
+      <div class="card">
+        <div class="card-label">Active segments (key)</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:12px;">
+          <li style="font-size:13px; color:var(--text-2);">All Subscribers (Active)</li>
+          <li style="font-size:13px; color:var(--text-2);">Churned Subscribers — Recent</li>
+          <li style="font-size:13px; color:var(--text-2);">Churned Subscribers — Engaged 90d</li>
+          <li style="font-size:13px; color:var(--text-2);">Leads — D30+ Engaged</li>
+          <li style="font-size:13px; color:var(--text-2);">OTP — Recent / At Risk / Churned</li>
+          <li style="font-size:13px; color:var(--text-2);">Clarity Migration</li>
+          <li style="font-size:13px; color:var(--text-2);">Stasis Purchases L30 (brand new)</li>
+          <li style="font-size:13px; color:var(--text-2);">SMS Subscribers</li>
+        </ul>
+      </div>
+      <div class="card alert-border">
+        <div class="card-label">Notable gaps</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:12px;">
+          <li style="font-size:13px; color:var(--red);">No segment by active formula (Clarity, Motivation, etc.)</li>
+          <li style="font-size:13px; color:var(--red);">No subscription tenure segment (new vs. 3mo+ vs. 6mo+)</li>
+          <li style="font-size:13px; color:var(--red);">No LTV / spend-tier segmentation</li>
+          <li style="font-size:13px; color:var(--red);">No dedicated Stasis subscriber segment</li>
+          <li style="font-size:13px; color:var(--text-2);">"antidote" in segment names — unclear meaning</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- HOUSEKEEPING -->
+  <div class="section">
+    <p class="section-label">Housekeeping</p>
+    <h2 class="section-title">Account hygiene issues</h2>
+
+    <div class="callout alert">
+      <strong>Metrics at ceiling: 199/200.</strong> Cannot add new tracking without deleting existing metrics first. Blocks any new event-based flows or reporting.
+    </div>
+
+    <div class="table-wrap mt-16">
+      <table>
+        <thead>
+          <tr><th>#</th><th>Issue</th><th>Metric ID</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Dead API Placed Order — 0 events ever</td>
+            <td class="mono">MHnLLf</td>
+            <td class="alert">Delete</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Dead Checkout Order Placed — 0 events</td>
+            <td class="mono">R6Tcmn</td>
+            <td class="alert">Delete</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Thesis First Subscription Order — stopped May 2025</td>
+            <td class="mono">X29XjE</td>
+            <td class="alert">Archive/delete</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Thesis Recurring Subscription Order — stopped Jun 2025</td>
+            <td class="mono">WhdHbk</td>
+            <td class="alert">Archive/delete</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Thesis One-Time Order — stopped May 2025</td>
+            <td class="mono">VDuBqr</td>
+            <td class="alert">Archive/delete</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Formula First Subscription Order — never fired</td>
+            <td class="mono">SyE7cM</td>
+            <td class="alert">Delete</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Formula Recurring Subscription Order — never fired</td>
+            <td class="mono">UhzfaS</td>
+            <td class="alert">Delete</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td><strong>Subscription Payment Failed shows 0 events</strong> — likely misconfigured, no dunning possible</td>
+            <td class="mono">TFwpvU</td>
+            <td class="alert">Investigate + fix</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Subscription Cancelled (custom) shows 0 — duplicate of ReCharge metric</td>
+            <td class="mono">UwyqUs</td>
+            <td>Investigate + remove if redundant</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Two "Active on Site" metrics — only one maintained</td>
+            <td class="text-faint">TBD</td>
+            <td>Identify + remove duplicate</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="table-wrap mt-24">
+      <table>
+        <thead>
+          <tr><th>Category</th><th>Issue</th><th>Action</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Flows</td>
+            <td>15+ dead/draining/draft flows cluttering account</td>
+            <td>Audit + archive after confirming empty</td>
+          </tr>
+          <tr>
+            <td>Flows</td>
+            <td>3 simultaneous Hormesis Transition refill variants live</td>
+            <td>Consolidate once migration complete</td>
+          </tr>
+          <tr>
+            <td>Lists</td>
+            <td>Lists dating to 2019: DojoMojo Blast, Get Fit Don't Quit, etc.</td>
+            <td>Confirm inactive, suppress/delete</td>
+          </tr>
+          <tr>
+            <td>Deliverability</td>
+            <td><strong>Devotion Cold Outreach: 5.6% bounce rate</strong></td>
+            <td class="alert">Clean immediately — domain risk</td>
+          </tr>
+          <tr>
+            <td>Naming</td>
+            <td>"antidote" appears in campaign segment names — unclear meaning</td>
+            <td>Clarify + rename if needed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

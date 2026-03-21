@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Audit · Thesis Klaviyo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-brand">Thesis · Klaviyo Audit</a>
+  <ul class="nav-links">
+    <li><a href="factsheet.html">Fact Sheet</a></li>
+    <li><a href="planning.html">Planning</a></li>
+    <li><a href="audit.html" class="active">Audit</a></li>
+  </ul>
+</nav>
+
+<div class="page">
+
+  <div class="page-header">
+    <p class="page-eyebrow">Bryce Radick · March 2026</p>
+    <h1 class="page-title">Klaviyo Audit</h1>
+    <p class="page-sub">State of the account, what's working, what's broken, and what to prioritize.</p>
+  </div>
+
+  <!-- ── 1. STATE OF THE ACCOUNT ── -->
+  <div class="section">
+    <p class="section-label">01</p>
+    <h2 class="section-title">State of the Account</h2>
+
+    <div class="cards cards-4">
+      <div class="card">
+        <div class="card-label">Monthly Revenue</div>
+        <div class="card-value">~$2M</div>
+        <div class="card-sub">Shopify Placed Order</div>
+      </div>
+      <div class="card gold-border">
+        <div class="card-label">Top Flow Revenue (12mo)</div>
+        <div class="card-value" style="font-size:22px; color:var(--gold);">$6.4M</div>
+        <div class="card-sub">Refill Reminders – one flow</div>
+      </div>
+      <div class="card alert-border">
+        <div class="card-label">Net Sub Growth</div>
+        <div class="card-value" style="font-size:22px; color:var(--red);">–10/13</div>
+        <div class="card-sub">Months in deficit since Hormesis</div>
+      </div>
+      <div class="card alert-border">
+        <div class="card-label">Metrics</div>
+        <div class="card-value" style="font-size:22px; color:var(--red);">199/200</div>
+        <div class="card-sub">At account ceiling</div>
+      </div>
+    </div>
+
+    <div class="callout mt-24">
+      The account generates ~$2M/month and runs ~86 flows. On the surface it looks active and healthy. The real story is more concentrated: <strong>one retention flow accounts for the majority of attributed email revenue.</strong> The account's financial health depends almost entirely on that flow staying healthy and the subscriber base not shrinking further.
+    </div>
+
+    <div class="section-body mt-24">
+      <p>Since the Hormesis relaunch in May 2025, the business added new subscribers every month — but cancellations have outpaced new starts 10 out of 13 months. January 2026 was the one strong positive month (+1,787 net), driven by the $39 first-month promo. The churn floor appears structural: cancellations are running 5,000–5,800/month regardless of acquisition volume.</p>
+      <p>The Hormesis relaunch touched every part of the product experience (new formulas, packaging, names). The email account reflects that transition — 38 live flows plus a layer of legacy, draining, and draft flows that haven't been cleaned up. Three simultaneous refill transition variants are still running in parallel.</p>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── 2. WHAT'S WORKING ── -->
+  <div class="section">
+    <p class="section-label">02</p>
+    <h2 class="section-title">What's Working</h2>
+
+    <ul class="findings">
+      <li>
+        <span class="finding-num">01</span>
+        <div class="finding-body">
+          <div class="finding-title">The Refill flow is a machine</div>
+          <div class="finding-desc">202K recipients, 35% open, 11% click, <strong>23% conversion, $6.4M attributed</strong>. $31.72 revenue per recipient. The individual messages targeting smaller cohorts convert at 29–46%. This flow is a template for what high-intent lifecycle email looks like — audience already signaled intent, content delivers exactly the right prompt.</div>
+          <div class="finding-meta">Flow: Active | Refill Reminders – Hormesis · TcGQ3t</div>
+          <span class="finding-tag tag-high">Crown jewel</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">02</span>
+        <div class="finding-body">
+          <div class="finding-title">Clarity Migration flow outperforms the main Refill</div>
+          <div class="finding-desc">Small audience (6.3K) but the highest conversion rate in the account: <strong>38.2%</strong>, $36.12 RPR. Former Clarity customers being migrated post-Hormesis. The lesson: highly targeted, product-specific refill messaging converts at a rate that dwarfs general flows.</div>
+          <div class="finding-meta">Flow: Active | Refill Reminder | Clarity Migration Customer · RhVArK</div>
+          <span class="finding-tag tag-high">High conversion model</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">03</span>
+        <div class="finding-body">
+          <div class="finding-title">NYNM Mindshift is the standout onboarding flow</div>
+          <div class="finding-desc">60.3% open rate, <strong>6.81% click rate</strong> — the highest click rate of any onboarding or nurture flow by a wide margin. The mindset content is resonating in a way the standard M1 sequence isn't. This is a proof-of-concept for what the onboarding layer could do.</div>
+          <div class="finding-meta">Flow: Active | M1 | NYNM Mindshift Series · Y6nDb2</div>
+          <span class="finding-tag tag-high">Content benchmark</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">04</span>
+        <div class="finding-body">
+          <div class="finding-title">SMS Welcome Flow is the most efficient lead channel</div>
+          <div class="finding-desc">$6.23 RPR and <strong>5.69% conversion</strong> — multiples better than any email lead flow. SMS opt-in is the highest-intent signal in the acquisition funnel and the economics show it. The SMS subscriber base through this flow is only 11.9K over 12 months, which raises a question about how aggressively SMS list growth is being prioritized.</div>
+          <div class="finding-meta">Flow: Leads | SMS Welcome Flow · VbPx4p</div>
+          <span class="finding-tag tag-high">Best acquisition RPR</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">05</span>
+        <div class="finding-body">
+          <div class="finding-title">Referral and review incentive flows punch well above their weight</div>
+          <div class="finding-desc">The Okendo Referral Opt In email converts at <strong>24.3% with $20.13 RPR</strong>. The Review Incentive Promoter flow drives 77% open, 5.7% conversion, $4.79 RPR. These are tiny audience flows but they demonstrate the efficiency of high-intent, contextually appropriate email. The bottleneck is getting more customers into the top of these funnels.</div>
+          <span class="finding-tag tag-medium">Scale opportunity</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">06</span>
+        <div class="finding-body">
+          <div class="finding-title">The order confirmation flow is doing real work</div>
+          <div class="finding-desc">96.9K recipients, 10.5% click rate, $41.5K attributed. For a transactional flow, this is solid. The recently updated version (March 12) signals active optimization here.</div>
+          <div class="finding-meta">Flow: Active | Order Confirmation · RkWf7n</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── 3. BIGGEST GAPS ── -->
+  <div class="section">
+    <p class="section-label">03</p>
+    <h2 class="section-title">Biggest Gaps</h2>
+
+    <ul class="findings">
+      <li>
+        <span class="finding-num">01</span>
+        <div class="finding-body">
+          <div class="finding-title">Winback is essentially not functioning</div>
+          <div class="finding-desc">45,668 churned subscribers received winback emails in the last 12 months. The conversion rate is <strong>0.21% — roughly 96 recoveries</strong>. At $79/month subscription value, each winback is worth $900+ in annualized revenue. The <strong>48% open rate proves the churned audience is still reachable</strong> — the content and offer are failing to convert them. A single percentage point of improvement on 45K recipients would add ~450 re-subscribers annually.</div>
+          <span class="finding-tag tag-urgent">Urgent</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">02</span>
+        <div class="finding-body">
+          <div class="finding-title">No dunning flow — subscription payment failures are not being captured</div>
+          <div class="finding-desc">The Subscription Payment Failed metric shows <strong>zero events in the account</strong>. For a subscription-first business doing ~20K recurring orders per month, some percentage of those fail — credit card expirations, declines, bank blocks are universal. Either the metric is misconfigured (possible) or there is genuinely no recovery sequence for failed payments. This is a direct revenue leak.</div>
+          <span class="finding-tag tag-urgent">Urgent</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">03</span>
+        <div class="finding-body">
+          <div class="finding-title">Onboarding clicks are critically low</div>
+          <div class="finding-desc">M1 Onboarding has a <strong>57.5% open rate but only 1.28% click rate</strong> across 80.9K recipients and 25 messages. The NYNM Mindshift flow, running in parallel, achieves 6.81% click on similar content. The opens are healthy — the audience is engaged. The M1 content is either not driving clear action, has weak CTAs, or isn't differentiated enough from the noise. There's a meaningful gap between what customers are reading and what they're doing.</div>
+          <span class="finding-tag tag-high">High impact</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">04</span>
+        <div class="finding-body">
+          <div class="finding-title">D30+ Engaged lead audience is unconverted</div>
+          <div class="finding-desc">120.9K leads with a <strong>64.3% open rate</strong> — the highest open rate of any lead flow. These are 30-day engaged non-purchasers who are still actively opening emails. Conversion rate: <strong>0.28%</strong>. The audience wants to engage. The content isn't closing. This is one of the highest-leverage optimization targets in the account.</div>
+          <span class="finding-tag tag-high">High leverage</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">05</span>
+        <div class="finding-body">
+          <div class="finding-title">SMS is absent from post-purchase lifecycle</div>
+          <div class="finding-desc">SMS is 100% promotional blast in this account — it has never been used in a lifecycle capacity for customers. No SMS in onboarding, refill reminders, or winback. Given that the SMS Welcome Flow converts at 5.7% and the refill reminder email converts at 23%, an SMS refill reminder — even at half the email rate — would be a meaningful revenue add. The infrastructure exists. The channel just isn't being used where it matters most.</div>
+          <span class="finding-tag tag-high">Channel gap</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">06</span>
+        <div class="finding-body">
+          <div class="finding-title">Campaign click rates are far below benchmark</div>
+          <div class="finding-desc">Email campaign click rates are running <strong>0.2–0.8%</strong> against a 2–3% industry benchmark. The open rates are healthy (36–57%) — the audience is seeing the campaigns. Something in the content or offer architecture isn't compelling enough action. The $39 promo campaigns generated high volume but very low engagement per click.</div>
+          <span class="finding-tag tag-high">Revenue left on table</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">07</span>
+        <div class="finding-body">
+          <div class="finding-title">Sunset flow is likely a negative ROI send</div>
+          <div class="finding-desc">479,676 emails sent to disengaged leads, <strong>$0.005 RPR, 25 conversions, $2.4K revenue</strong>. Even at the lowest Klaviyo send cost, the math almost certainly doesn't work. A 31.7% open rate on this audience means significant subscriber activity — this list isn't as dead as a sunset flow implies. It should either be re-engaged with a real offer or suppressed more aggressively to protect deliverability.</div>
+          <span class="finding-tag tag-medium">List hygiene risk</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">08</span>
+        <div class="finding-body">
+          <div class="finding-title">Devotion Cold Outreach has a 5.6% hard bounce rate</div>
+          <div class="finding-desc">Hard bounce rates above 2% are considered high-risk territory for email deliverability. At 5.6%, the Devotion Cold Outreach list is a material threat to the domain reputation that all other flows — including the $6.4M Refill flow — depend on. This needs to be cleaned immediately regardless of the program's other outcomes.</div>
+          <span class="finding-tag tag-urgent">Domain risk</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">09</span>
+        <div class="finding-body">
+          <div class="finding-title">No OTP → subscription conversion path</div>
+          <div class="finding-desc">There are active OTP segments (Recent, At Risk, Churned) and meaningful OTP volume, but no dedicated flow converting one-time purchasers to subscribers. OTP customers have already paid full price ($129) and proven intent — they're the highest-qualified audience for subscription conversion. There's no systematic mechanism to close the gap.</div>
+          <span class="finding-tag tag-high">Revenue gap</span>
+        </div>
+      </li>
+      <li>
+        <span class="finding-num">10</span>
+        <div class="finding-body">
+          <div class="finding-title">No systematic Stasis cross-sell</div>
+          <div class="finding-desc">Stasis is being cross-sold as a gifting tactic (Stasis Night included with new Thesis orders) but there's no dedicated cross-sell flow for existing Thesis subscribers. Stasis has a higher AOV ($95) and a specific audience (stimulant users) that likely has meaningful overlap with the Thesis subscriber base. The Stasis Purchases L30 segment was just created March 5 — a signal that this is being thought about, but it's not in the flow layer yet.</div>
+          <span class="finding-tag tag-medium">Revenue opportunity</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── 4. STRATEGIC OPPORTUNITIES ── -->
+  <div class="section">
+    <p class="section-label">04</p>
+    <h2 class="section-title">Strategic Opportunities</h2>
+
+    <div class="section-body">
+      <p>These are the moves with the clearest upside given what the data shows.</p>
+    </div>
+
+    <div class="cards cards-2 mt-24">
+      <div class="card gold-border">
+        <div class="card-label">Winback rebuild</div>
+        <p style="font-size:13px; color:var(--text-2); margin-top:10px; line-height:1.6;">The 48% open rate proves churned customers are reachable. The current offer isn't working. A rebuild should test a real reactivation offer (formula swap, 60-day trial, price bridge), a shorter sequence with higher urgency, and an SMS component. Even tripling the 0.21% conversion rate adds ~300 re-subscribers per month.</p>
+      </div>
+      <div class="card gold-border">
+        <div class="card-label">Dunning sequence</div>
+        <p style="font-size:13px; color:var(--text-2); margin-top:10px; line-height:1.6;">Subscription payment failures are entirely unrecovered. The first step is confirming whether the Payment Failed metric is misconfigured or genuinely zero. If misconfigured, fix it. Then build a 3-touch sequence: immediate payment failure notification → retry reminder → last-chance with card update link. Standard dunning recovery rates are 5–15% of failures.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">D30+ Engaged conversion</div>
+        <p style="font-size:13px; color:var(--text-2); margin-top:10px; line-height:1.6;">120K leads with 64% open rate and only 0.28% conversion. This audience is signaling interest every time they open. The existing content isn't converting them. Test a time-limited offer, a sharper product comparison, or a direct social proof message targeting this specific audience. The conversion opportunity per percentage point is significant.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">SMS in lifecycle</div>
+        <p style="font-size:13px; color:var(--text-2); margin-top:10px; line-height:1.6;">SMS Welcome Flow converts at 5.7%. The refill reminder email converts at 23%. An SMS refill reminder — even at a fraction of that rate — would add direct revenue with minimal production cost. Start with a single SMS touchpoint at day 20 (before the refill window) for subscribed customers who have SMS consent.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">OTP → subscription conversion</div>
+        <p style="font-size:13px; color:var(--text-2); margin-top:10px; line-height:1.6;">OTP customers at $129 already paid more than the first-month sub price ($59). Build a post-purchase flow targeting OTP purchasers at day 20–22 with a clear subscription offer: "You've been taking it for 3 weeks. Subscribe to make sure you don't run out." The existing OTP segments exist — there's no flow using them.</p>
+      </div>
+      <div class="card">
+        <div class="card-label">Referral program at scale</div>
+        <p style="font-size:13px; color:var(--text-2); margin-top:10px; line-height:1.6;">The Okendo Referral Opt In converts at 24.3% with $20.13 RPR — the highest RPR in the account. Only 632 people went through it in 12 months. The bottleneck is awareness. Promoting the referral program to active, satisfied subscribers (Super User cohort, Promoter reviewers) is a high-leverage activation with minimal cost.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── 5. 30/60/90 ── -->
+  <div class="section">
+    <p class="section-label">05</p>
+    <h2 class="section-title">30 / 60 / 90 Day View</h2>
+
+    <div class="timeline">
+      <div class="timeline-block">
+        <div class="timeline-label">Days 1–30</div>
+        <div class="timeline-items">
+          <div class="timeline-item"><strong>Account hygiene.</strong> Free up the metric ceiling — delete 7–10 dead/stale metrics. Archive draining and draft flows. Consolidate the 3 simultaneous Hormesis Transition refill variants.</div>
+          <div class="timeline-item"><strong>Devotion list.</strong> Clean or suppress the Cold Outreach list immediately. 5.6% hard bounce is a deliverability risk to the entire domain.</div>
+          <div class="timeline-item"><strong>Diagnose dunning.</strong> Confirm whether Subscription Payment Failed metric is misconfigured or genuinely zero. If misconfigured, fix the ReCharge ↔ Klaviyo event connection. If zero, build the trigger and a 3-touch dunning sequence.</div>
+          <div class="timeline-item"><strong>Winback audit.</strong> Pull message-level performance on the existing winback flow. Understand what offer exists, what the sequence looks like, and what's failing. Build the brief for a rebuild.</div>
+        </div>
+      </div>
+      <div class="timeline-block">
+        <div class="timeline-label">Days 31–60</div>
+        <div class="timeline-items">
+          <div class="timeline-item"><strong>M1 Onboarding click rate.</strong> Audit all 25 messages in the M1 flow against the NYNM Mindshift benchmark. Identify messages with sub-1% click. Rewrite or replace with content that drives a single clear action.</div>
+          <div class="timeline-item"><strong>D30+ Engaged offer.</strong> Test a direct, time-sensitive offer to the 120K engaged non-purchasers. This is the highest-leverage lead conversion opportunity in the account.</div>
+          <div class="timeline-item"><strong>Winback rebuild live.</strong> New sequence with a real offer, a formula swap option, and an SMS arm for those who have consent.</div>
+          <div class="timeline-item"><strong>OTP → subscription flow.</strong> Build and launch the day-20 post-OTP subscription conversion sequence using the existing OTP segments.</div>
+        </div>
+      </div>
+      <div class="timeline-block">
+        <div class="timeline-label">Days 61–90</div>
+        <div class="timeline-items">
+          <div class="timeline-item"><strong>SMS in lifecycle.</strong> Launch a single SMS refill reminder for subscribed customers who have SMS consent. Measure conversion lift vs. email-only cohort.</div>
+          <div class="timeline-item"><strong>Referral program activation.</strong> Build a dedicated referral promotion sequence targeting the Super User list, Promoter reviewers, and tenured subscribers (6mo+).</div>
+          <div class="timeline-item"><strong>Stasis cross-sell.</strong> Build a systematic cross-sell flow for Thesis subscribers using the new Stasis Purchases L30 segment as a model. Target: active Thesis subscribers at month 2+.</div>
+          <div class="timeline-item"><strong>Campaign content test.</strong> Test a non-promotional campaign send to active subscribers — education or community content — to establish a baseline for what customer campaigns can do.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <!-- ── CLOSING ── -->
+  <div class="section">
+    <div class="callout">
+      The account is performing well on the flows that are already working. The Refill flow alone is generating $6.4M attributed revenue on 23% conversion — that's not luck, that's a well-built retention mechanism. The opportunity is in the areas that are clearly not working: a winback with 0.21% conversion, a missing dunning sequence, an onboarding flow that isn't driving clicks, and a lead audience that's opening but not buying. These aren't complex problems. They're execution gaps with known solutions.
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
