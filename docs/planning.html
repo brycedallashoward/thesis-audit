@@ -583,7 +583,7 @@
             <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Avg rating drifting: 4.59 &rarr; 4.45 over 12 months</strong>
-              <span class="context">5-star % dropped 82% &rarr; 72%. 1-2 star at 7%. Not alarming but consistent downward trend.</span>
+              <span class="context">5-star % dropped 82% &rarr; 72%. 1-2 star at 7%. Not alarming but consistent downward trend. <strong>Note:</strong> All 4 current SKUs display 4.6&starf; &mdash; no per-SKU time-series breakdown exists in the data, so we cannot attribute the drift specifically to reformulated products vs. other factors (e.g., audience mix shift from promo acquisition).</span>
             </div>
           </div>
           <div class="check-item">
@@ -602,6 +602,13 @@
             <div class="detail">
               <strong>Product overhaul timeline visible in review data</strong>
               <span class="context">Mar-May 2025: old blends dominant. Jun-Aug 2025: Stress Reset appears. Jan-Mar 2026: Clarity Refill is #1 reviewed product (74 reviews), meaning subscriber refill base is the primary review source. Neuroprotection appearing (5 reviews). Legacy blends at trace levels.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Does the quiz disproportionately recommend Clarity? (~47% of product events)</strong>
+              <span class="context">Clarity has 3,080 reviews (nearly 2&times; Motivation at 1,899). Is this because the quiz algorithm weights toward "focus" as the most common goal, because customers self-select Clarity regardless of recommendation, or because it inherited the largest cohort from Logic pre-Hormesis? No quiz recommendation distribution data exists in Klaviyo &mdash; need to ask Dan whether the quiz output skews toward Clarity or if this is organic demand.</span>
             </div>
           </div>
         </div>
@@ -626,7 +633,7 @@
             <div class="status"><span class="status-tag noted">Noted</span></div>
             <div class="detail">
               <strong>"Thesis" generic reviews: 27 per sample reviewing the brand, not a product</strong>
-              <span class="context">Some customers don't know which product they're reviewing.</span>
+              <span class="context">Likely an Okendo product-mapping configuration issue &mdash; if the review request email doesn't pass the specific SKU/order line item to the review form, the submission defaults to the parent brand. Most customers buy a single product, so this is a routing gap in the review request flow, not genuine customer confusion.</span>
             </div>
           </div>
           <div class="check-item">
@@ -660,7 +667,7 @@
             <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Stack-ranked metric audit complete</strong>
-              <span class="context">Top 10: Received Email (675K), Opened Email (547K), Viewed Form (107K), Closed Form (52K), Ordered Product (48K), Clicked Email (23K), Placed Order (22.6K), LS-Delivered (22.5K), Fulfilled Order (22.2K), LS-Shipped (22K).</span>
+              <span class="context">Top 10: Received Email (675K), Opened Email (547K), Viewed Form (107K), Closed Form (52K), Ordered Product (48K), Clicked Email (23K), Placed Order (22.6K), LS-Delivered (22.5K), Fulfilled Order (22.2K), LS-Shipped (22K). <strong>Note:</strong> These are total event counts (not unique), so 547K/675K does not represent an 81% unique open rate &mdash; a single person opening multiple times inflates the count. Actual unique open rates per-flow range 25&ndash;64%.</span>
             </div>
           </div>
         </div>
