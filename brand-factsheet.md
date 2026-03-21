@@ -8,58 +8,63 @@
 | | |
 |---|---|
 | **Parent brand** | Thesis (operating entity behind both sub-brands) |
-| **Sub-brands** | Thesis (nootropics) & Stasis (ADHD stimulant support) |
+| **Sub-brands** | Thesis (nootropics) & Stasis (ADHD stimulant support, launched June 2022) |
 | **Founded** | 2017 by Dan Freed, NYC |
 | **HQ** | 30 W 24th St, New York, NY 10010 |
 | **Funding** | $13.5M total (Series A) — Unilever Ventures, REDO Ventures, ALIVE VC, Kevin Love |
-| **Revenue** | ~$3.4M/month combined (Thesis ~$2M + Stasis ~$1.4M) |
-| **Platform stack** | Shopify + ReCharge + Klaviyo (separate accounts per brand) + Okendo + Zaymo + Gorgias |
-| **Retention status** | No dedicated retention person. Thesis campaigns dark since Jan 31, 2026. Stasis managed by Antidote agency. |
+| **Combined revenue** | ~$3.4M/month |
+| **Platform stack** | Shopify + ReCharge + Klaviyo (separate accounts per brand) + Okendo + Zaymo + Gorgias + Hightouch |
+| **Retention status** | No dedicated retention person. Thesis campaign calendar dark since Jan 31, 2026. |
 
 ---
 
-## Revenue & Subscription Health
+## Revenue by Brand
 
-### Monthly Revenue by Brand (Shopify Placed Order)
+Monthly revenue from Shopify Placed Order. Each brand has its own Shopify store and Klaviyo account.
 
 | Month | Thesis | Stasis | Combined | Stasis Share |
 |-------|--------|--------|----------|-------------|
 | May 2025 | $2.1M | $1.5M | $3.6M | 41% |
 | Jun 2025 | $2.1M | $1.4M | $3.5M | 41% |
 | Jul 2025 | $2.1M | $1.5M | $3.6M | 42% |
-| Aug 2025 | $2.3M | $1.4M | $3.7M | 38% |
+| Aug 2025 | $2.3M | $1.4M | $3.8M | 38% |
 | Sep 2025 | $2.1M | $1.3M | $3.4M | 37% |
 | Oct 2025 | $2.1M | $1.2M | $3.3M | 37% |
 | Nov 2025 | $2.3M | $1.3M | $3.6M | 35% |
 | Dec 2025 | $1.9M | $1.3M | $3.2M | 40% |
 | Jan 2026 | $1.9M | $1.7M | $3.6M | 47% |
 | Feb 2026 | $2.0M | $1.9M | $3.9M | 49% |
-| Mar 2026* | $1.2M | $1.4M | $2.6M | 55% |
+| Mar 2026* | $1.2M | $1.4M | $2.7M | 53% |
 
-*March partial (through ~Mar 20)*
+*March partial (through ~Mar 20). Stasis share has grown from 35% to nearly 50% over 11 months.*
 
-Stasis is not "~10% of orders" as previously documented. It's 35–49% of company revenue and growing. Feb 2026 was nearly 50/50.
+---
 
-### Subscription Health (ReCharge, net new subs)
+## Subscription Health
 
-| Month | Thesis | Stasis |
-|-------|--------|--------|
-| May 2025 | **-377** | **+1,469** |
-| Jun 2025 | **-188** | **+285** |
-| Jul 2025 | **-653** | **+379** |
-| Aug 2025 | **+1,584** | **-522** |
-| Sep 2025 | **-460** | **-863** |
-| Oct 2025 | **-1,524** | **-1,076** |
-| Nov 2025 | **+389** | **+752** |
-| Dec 2025 | **-1,849** | **+167** |
-| Jan 2026 | **+1,834** | **+3,180** |
-| Feb 2026 | **-1,480** | **+3,844** |
-| Mar 2026* | **-927** | **+1,681** |
+Net new subscribers per month (ReCharge starts minus cancels).
 
-- **Thesis:** Net negative 8 of 11 months. Cumulative: -3,651 subscribers.
-- **Stasis:** Net positive 8 of 11 months. Cumulative: +9,296 subscribers.
+| Month | Thesis Net | Stasis Net |
+|-------|-----------|-----------|
+| May 2025 | -377 | +1,461 |
+| Jun 2025 | -188 | +265 |
+| Jul 2025 | -653 | +364 |
+| Aug 2025 | +1,584 | -568 |
+| Sep 2025 | -460 | -882 |
+| Oct 2025 | -1,524 | -1,106 |
+| Nov 2025 | +389 | +749 |
+| Dec 2025 | -1,849 | +143 |
+| Jan 2026 | +1,834 | +3,208 |
+| Feb 2026 | -1,480 | +3,899 |
+| Mar 2026* | -927 | +1,720 |
 
-Stasis is the growth engine; Thesis is the retention problem.
+| Metric | Thesis | Stasis |
+|--------|--------|--------|
+| **Cumulative net (11mo)** | **-3,651** | **+9,253** |
+| **Months net positive** | 3 of 11 | 8 of 11 |
+| **Active subscribers (est.)** | ~28,400 | ~23,300 |
+
+Stasis active sub count estimated from cumulative starts minus cancels since launch (June 2022). Confirm via Klaviyo segment [COHORT] Active Subscribers.
 
 ---
 
@@ -85,19 +90,6 @@ Stasis is the growth engine; Thesis is the retention problem.
 - Refill cadence: ~25 days
 - Includes: glass jar + day-tracking lid, Open app access, Mindshift 30-Day Habit Reset
 
-### Key Numbers
-
-| Metric | Value |
-|--------|-------|
-| Monthly revenue | ~$2M |
-| Monthly orders | ~23,000 |
-| Active subscribers | ~28,400 |
-| Net sub change (11mo) | -3,651 |
-| Months net negative | 8 of 11 |
-| Top product | Clarity (~47% of orders) |
-| AOV | ~$89 |
-| SMS list | ~41K (eroding) |
-
 ### Customer Journey
 
 1. 3-minute quiz on takethesis.com
@@ -114,6 +106,7 @@ Stasis is the growth engine; Thesis is the retention problem.
 
 **Site:** takestasis.com
 **Tagline:** "Your brain, balanced"
+**Launched:** June 2022
 **Positioning:** Supplement for people on stimulants (Adderall, Ritalin, other ADHD meds). Offsets downsides: crash, sleep disruption, mood instability, oxidative stress.
 
 ### Products
@@ -131,19 +124,6 @@ Stasis is the growth engine; Thesis is the retention problem.
 - Refill cadence: ~30 days
 - "Stasis Night Retention Gift" — cross-sold/gifted with new Thesis subscription orders
 
-### Key Numbers
-
-| Metric | Value |
-|--------|-------|
-| Monthly revenue | ~$1.4M |
-| Monthly orders | ~15,700 |
-| New subs (11mo total) | 40,498 |
-| Cancels (11mo total) | 31,202 |
-| Net sub change (11mo) | +9,296 |
-| Months net positive | 8 of 11 |
-| AOV | ~$91 |
-| SMS list | ~7K |
-
 ---
 
 ## Klaviyo Accounts
@@ -153,6 +133,10 @@ Stasis is the growth engine; Thesis is the retention problem.
 | Account ID | QhJaGL | YsCgQB |
 | Sender | hello@takethesis.com | hello@takestasis.com |
 | Live flows | ~15 | 27 |
+| Campaign sends (365d) | ~10.5M | ~5.8M |
+| Flow sends (365d) | TBD | ~1.1M |
+| Total sends (365d) | TBD | ~6.9M |
 | SMS list | ~41K (eroding) | ~7K |
-| Segment naming | Ad hoc | Clean ([COHORT], [EXCLUDE], [SUBSCRIPTION]) |
-| Agency | — | Antidote |
+| Segment naming | Ad hoc | Structured ([COHORT], [EXCLUDE], [SUBSCRIPTION]) |
+
+Both accounts use Hightouch (reverse ETL) for audience sync. Cross-account data sharing via Hightouch has not been validated — open investigation item.
