@@ -1,78 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thesis Klaviyo Audit</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Thesis <span>Klaviyo Audit</span></a>
+      <a href="factsheet.html">Fact Sheet</a>
+      <a href="planning.html">Planning</a>
+      <a href="audit.html">Audit</a>
+    </div>
+  </nav>
 
-<nav>
-  <a href="index.html" class="nav-brand">Thesis · Klaviyo Audit</a>
-  <ul class="nav-links">
-    <li><a href="factsheet.html">Fact Sheet</a></li>
-    <li><a href="planning.html">Planning</a></li>
-    <li><a href="audit.html">Audit</a></li>
-  </ul>
-</nav>
+  <div class="container">
+    <div class="hero">
+      <h1>Thesis Klaviyo Audit</h1>
+      <p class="subtitle">Retention & lifecycle deep-dive for Dan Freed</p>
+      <p class="meta">Prepared by Bryce Radick &middot; March 2026</p>
+    </div>
 
-<div class="page">
-  <div class="page-header">
-    <p class="page-eyebrow">Bryce Radick · March 2026</p>
-    <h1 class="page-title">Thesis<br>Klaviyo Audit</h1>
-    <p class="page-sub">A live investigation of Thesis's retention program — flows, campaigns, acquisition, and what to do next.</p>
-  </div>
+    <div class="page-cards">
+      <a href="factsheet.html" class="page-card">
+        <h3>Brand Fact Sheet</h3>
+        <p>Company overview, both brands (Thesis + Stasis), product line, pricing, the Hormesis rebrand, and the core retention problem.</p>
+      </a>
 
-  <div class="cards cards-3" style="margin-bottom: 40px;">
-    <a href="factsheet.html" class="card" style="text-decoration:none; display:block;">
-      <div class="card-label">01</div>
-      <div class="section-title" style="font-size:18px; margin-bottom:8px;">Brand Fact Sheet</div>
-      <div class="card-sub">Thesis + Stasis: products, pricing, the quiz journey, and what Hormesis means.</div>
-    </a>
-    <a href="planning.html" class="card" style="text-decoration:none; display:block;">
-      <div class="card-label">02</div>
-      <div class="section-title" style="font-size:18px; margin-bottom:8px;">Planning Center</div>
-      <div class="card-sub">Live account inventory, flow performance data, segment landscape, housekeeping log.</div>
-    </a>
-    <a href="audit.html" class="card gold-border" style="text-decoration:none; display:block;">
-      <div class="card-label" style="color: var(--gold);">03</div>
-      <div class="section-title" style="font-size:18px; margin-bottom:8px;">The Audit</div>
-      <div class="card-sub">State of the account, what's working, biggest gaps, and the 90-day view.</div>
-    </a>
-  </div>
+      <a href="planning.html" class="page-card">
+        <h3>Planning Center</h3>
+        <p>Full account inventory, performance data, housekeeping log, and running discovery insights. The working docs behind the audit.</p>
+      </a>
 
-  <hr class="divider" />
-
-  <div class="section">
-    <p class="section-label">Context</p>
-    <h2 class="section-title">Why this exists</h2>
-    <div class="section-body">
-      <p>This is a working discovery and walkthrough tool built for a live audit session with Dan Freed, CEO of Thesis. It's not a deck. It pulls from live Klaviyo data and gets updated as investigation continues.</p>
-      <p>The goal: demonstrate a full understanding of every part of the lifecycle program — what's performing, what's broken, and where the clearest revenue opportunities are.</p>
+      <a href="audit.html" class="page-card">
+        <h3>The Audit</h3>
+        <p>State of the account, what's working, biggest gaps, strategic opportunities, and the 30/60/90 day view.</p>
+      </a>
     </div>
   </div>
-
-  <div class="stat-row">
-    <div class="stat">
-      <span class="stat-val">~$2M</span>
-      <span class="stat-lbl">Monthly revenue</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val">86</span>
-      <span class="stat-lbl">Total flows</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val">$6.4M</span>
-      <span class="stat-lbl">Refill flow attributed (12mo)</span>
-    </div>
-    <div class="stat">
-      <span class="stat-val">0.21%</span>
-      <span class="stat-lbl">Winback conversion rate</span>
-    </div>
-  </div>
-
-</div>
-
 </body>
 </html>
