@@ -5,6 +5,170 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Planning Center &mdash; Thesis Audit</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Checklist theme sections */
+    .theme {
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .theme-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.15s;
+    }
+
+    .theme-header:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .theme.open .theme-header {
+      border-bottom-color: var(--border);
+    }
+
+    .theme-header h2 {
+      font-size: 1.1rem;
+      margin: 0;
+      padding: 0;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .theme-header .chevron {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+    }
+
+    .theme.open .theme-header .chevron {
+      transform: rotate(90deg);
+    }
+
+    .theme-header .progress {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .theme-body {
+      display: none;
+      padding: 1.25rem;
+    }
+
+    .theme.open .theme-body {
+      display: block;
+    }
+
+    /* Sub-themes */
+    .subtheme {
+      margin-bottom: 1.5rem;
+    }
+
+    .subtheme:last-child {
+      margin-bottom: 0;
+    }
+
+    .subtheme h3 {
+      font-size: 0.95rem;
+      margin: 0 0 0.6rem;
+      color: var(--text);
+    }
+
+    /* Checklist items */
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .check-item:last-child {
+      border-bottom: none;
+    }
+
+    .check-item .status {
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .status-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 0.1rem 0.45rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .status-tag.investigate { background: rgba(248, 81, 73, 0.12); color: var(--red); }
+    .status-tag.in-progress { background: rgba(210, 153, 34, 0.12); color: var(--orange); }
+    .status-tag.done { background: rgba(63, 185, 80, 0.12); color: var(--green); }
+    .status-tag.noted { background: rgba(130, 80, 223, 0.12); color: var(--purple); }
+    .status-tag.parked { background: rgba(139, 148, 158, 0.15); color: var(--text-muted); }
+
+    .check-item .detail {
+      flex: 1;
+    }
+
+    .check-item .detail strong {
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .check-item .detail .context {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+    }
+
+    /* Data tables inside themes */
+    .theme-body table {
+      margin: 0.5rem 0 1rem;
+    }
+
+    /* Inline data callout */
+    .data-note {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      margin: 0.75rem 0;
+      font-size: 0.85rem;
+    }
+
+    .data-note strong {
+      color: var(--text);
+    }
+
+    /* Theme number badge */
+    .theme-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -19,356 +183,961 @@
   <div class="container">
     <div class="page-header">
       <h1>Planning Center</h1>
-      <p class="subtitle">Full account inventory, performance data, and working notes</p>
-      <p class="meta">Live Klaviyo data &middot; March 21, 2026</p>
+      <p class="subtitle">Investigation threads, data, and working notes &mdash; items promote to Audit when ready</p>
+      <p class="meta">Live working doc &middot; March 21, 2026</p>
     </div>
 
-    <!-- ===== PERFORMANCE DATA ===== -->
-    <section>
-      <h2>Performance Since Hormesis (May 2025&ndash;Mar 2026)</h2>
-
-      <h3>Subscription Flow (ReCharge)</h3>
-      <table>
-        <thead>
-          <tr><th>Month</th><th>Sub Starts</th><th>Sub Cancels</th><th>Net</th><th>Cumul. Net</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>May 2025</td><td>4,927</td><td>5,304</td><td class="red" style="color:var(--red)"><strong>-377</strong></td><td>-377</td></tr>
-          <tr><td>Jun 2025</td><td>4,671</td><td>4,859</td><td style="color:var(--red)"><strong>-188</strong></td><td>-565</td></tr>
-          <tr><td>Jul 2025</td><td>4,288</td><td>4,941</td><td style="color:var(--red)"><strong>-653</strong></td><td>-1,218</td></tr>
-          <tr><td>Aug 2025</td><td>6,596</td><td>5,012</td><td style="color:var(--green)"><strong>+1,584</strong></td><td>+366</td></tr>
-          <tr><td>Sep 2025</td><td>4,897</td><td>5,357</td><td style="color:var(--red)"><strong>-460</strong></td><td>-94</td></tr>
-          <tr><td>Oct 2025</td><td>3,908</td><td>5,432</td><td style="color:var(--red)"><strong>-1,524</strong></td><td>-1,618</td></tr>
-          <tr><td>Nov 2025</td><td>5,702</td><td>5,313</td><td style="color:var(--green)"><strong>+389</strong></td><td>-1,229</td></tr>
-          <tr><td>Dec 2025</td><td>3,322</td><td>5,171</td><td style="color:var(--red)"><strong>-1,849</strong></td><td>-3,078</td></tr>
-          <tr><td>Jan 2026</td><td>7,644</td><td>5,810</td><td style="color:var(--green)"><strong>+1,834</strong></td><td>-1,244</td></tr>
-          <tr><td>Feb 2026</td><td>4,188</td><td>5,668</td><td style="color:var(--red)"><strong>-1,480</strong></td><td>-2,724</td></tr>
-          <tr><td>Mar 2026*</td><td>2,762</td><td>3,689</td><td style="color:var(--red)"><strong>-927</strong></td><td>-3,651</td></tr>
-        </tbody>
-      </table>
-      <p class="muted">*March is partial (through ~Mar 20)</p>
-
-      <div class="callout critical">
-        <strong>Cancellations are a flat floor.</strong> Cancels have held between 4,859 and 5,810 every month for 11 months &mdash; regardless of how many new subscribers came in. This is structural churn, not reactive churn.
+    <!-- ============================== -->
+    <!-- THEME 1: Customer Composition  -->
+    <!-- ============================== -->
+    <div class="theme open" id="t1">
+      <div class="theme-header" onclick="toggle('t1')">
+        <h2><span class="theme-num">1</span> Customer Composition &amp; Segmentation <span class="chevron">&#9654;</span></h2>
+        <span class="progress">1 of 6 investigated</span>
       </div>
+      <div class="theme-body">
 
-      <h3>Revenue &amp; Order Volume (Shopify Placed Order)</h3>
-      <table>
-        <thead>
-          <tr><th>Month</th><th>Orders</th><th>Unique Buyers</th><th>Revenue</th><th>AOV</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>May 2025</td><td>24,162</td><td>20,869</td><td>$2,106,774</td><td>$87</td></tr>
-          <tr><td>Jun 2025</td><td>23,586</td><td>20,665</td><td>$2,088,541</td><td>$89</td></tr>
-          <tr><td>Jul 2025</td><td>23,623</td><td>20,338</td><td>$2,088,413</td><td>$88</td></tr>
-          <tr><td>Aug 2025</td><td>25,488</td><td>21,884</td><td>$2,331,240</td><td>$91</td></tr>
-          <tr><td>Sep 2025</td><td>23,930</td><td>20,738</td><td>$2,133,347</td><td>$89</td></tr>
-          <tr><td>Oct 2025</td><td>23,268</td><td>19,899</td><td>$2,109,893</td><td>$91</td></tr>
-          <tr><td>Nov 2025</td><td>24,368</td><td>20,958</td><td>$2,345,233</td><td>$96</td></tr>
-          <tr><td>Dec 2025</td><td>20,878</td><td>17,547</td><td>$1,898,598</td><td>$91</td></tr>
-          <tr><td>Jan 2026</td><td>24,184</td><td>20,247</td><td>$1,911,647</td><td>$79</td></tr>
-          <tr><td>Feb 2026</td><td>21,168</td><td>18,987</td><td>$1,959,190</td><td>$93</td></tr>
-          <tr><td>Mar 2026*</td><td>14,208</td><td>13,487</td><td>$1,235,922</td><td>$87</td></tr>
-        </tbody>
-      </table>
+        <div class="subtheme">
+          <h3>List Composition Breakdown</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>What % of the Klaviyo list is: active subscribers, churned subscribers, OTP buyers (no purchase in 90d), and leads?</strong>
+              <span class="context">Need segment-level profile counts. This is the foundational audience picture.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>OTP vs. subscription purchase split</strong>
+              <span class="context">Believed to be ~3-4% OTP. Fact sheet says 64% new subs, 4% OTP from recent data. Need to confirm current ratio and whether OTP has its own nurture.</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="callout warning">
-        <strong>Revenue is stable ($1.9&ndash;2.3M band) despite net subscriber loss every month.</strong> The recurring sub base ($79/mo refills) is propping up revenue even as headcount shrinks. This will not hold indefinitely &mdash; it's a lagging indicator. January AOV drop to $79 = $39 promo dilution.
+        <div class="subtheme">
+          <h3>Lead &amp; Churn Aging</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>How old are leads on the list?</strong>
+              <span class="context">Distribution of lead tenure. Are we sitting on leads from 2019 who will never buy? Impacts deliverability and list quality.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>How long have canceled subscribers been on the list?</strong>
+              <span class="context">Time from cancel to present. Helps understand winback window viability.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Pre-Cancellation Behavior</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>What actions do customers take before canceling?</strong>
+              <span class="context">Can we extrapolate patterns? Do they stop opening emails? Skip a charge? Reduce engagement? This would inform proactive churn intervention.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Segment Gaps (from inventory)</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>No subscription tenure segmentation</strong>
+              <span class="context">No segments for new sub vs 3mo+ vs 6mo+. Everyone treated the same.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>No product-specific subscriber segments</strong>
+              <span class="context">Clarity vs Motivation vs Stress Reset vs Neuroprotection. No LTV/spend-tier segmentation either.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-note">
+          <strong>Existing segments found:</strong> All Subscribers (Active), Churned Subscribers (Recent + Engaged 90d), Leads (D30+ Engaged, 180d Engaged, At Risk, Disengaged), OTP (Recent / At Risk / Churned), One Time Purchasers (Jan 2026), Stasis Purchases L30 (Mar 5, 2026).
+        </div>
       </div>
+    </div>
 
-      <h3>Recurring Subscription Orders (ReCharge)</h3>
-      <table>
-        <thead>
-          <tr><th>Month</th><th>ReCharge Orders</th><th>Unique Subscribers</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>May 2025</td><td>12,537</td><td>11,349</td></tr>
-          <tr><td>Jun 2025</td><td>15,336</td><td>13,472</td></tr>
-          <tr><td>Jul 2025</td><td>17,174</td><td>14,939</td></tr>
-          <tr><td>Aug 2025</td><td>18,383</td><td>15,964</td></tr>
-          <tr><td>Sep 2025</td><td>17,830</td><td>15,610</td></tr>
-          <tr><td>Oct 2025</td><td>17,739</td><td>15,280</td></tr>
-          <tr><td>Nov 2025</td><td>19,731</td><td>17,161</td></tr>
-          <tr><td>Dec 2025</td><td>16,612</td><td>14,094</td></tr>
-          <tr><td>Jan 2026</td><td>20,182</td><td>17,265</td></tr>
-          <tr><td>Feb 2026</td><td>18,015</td><td>16,321</td></tr>
-          <tr><td>Mar 2026*</td><td>12,265</td><td>11,895</td></tr>
-        </tbody>
-      </table>
-      <p>Implied active subscriber count: <strong>~14,000&ndash;17,000</strong>. Implied monthly churn rate: <strong>~30&ndash;38%</strong>.</p>
-
-      <h3>Quiz Completions (Top of Funnel)</h3>
-      <table>
-        <thead>
-          <tr><th>Month</th><th>Completions</th><th>Unique</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>May 2025</td><td>11,110</td><td>9,583</td></tr>
-          <tr><td>Jun 2025</td><td>10,969</td><td>9,883</td></tr>
-          <tr><td>Jul 2025</td><td>13,508</td><td>12,186</td></tr>
-          <tr><td>Aug 2025</td><td>21,693</td><td>19,731</td></tr>
-          <tr><td>Sep 2025</td><td>10,056</td><td>9,026</td></tr>
-          <tr><td>Oct 2025</td><td>10,586</td><td>9,557</td></tr>
-          <tr><td>Nov 2025</td><td>15,830</td><td>14,232</td></tr>
-          <tr><td>Dec 2025</td><td>9,654</td><td>8,627</td></tr>
-          <tr><td>Jan 2026</td><td>18,276</td><td>16,632</td></tr>
-          <tr><td>Feb 2026</td><td>15,285</td><td>13,907</td></tr>
-          <tr><td>Mar 2026*</td><td>6,313</td><td>5,780</td></tr>
-        </tbody>
-      </table>
-      <p class="muted">Quiz completions spike alongside promotions (Aug = Labor Day, Nov = BFCM, Jan = $39). The quiz is driven by paid acquisition, not organic curiosity.</p>
-    </section>
-
-    <!-- ===== ACCOUNT INVENTORY ===== -->
-    <section>
-      <h2>Account Inventory</h2>
-      <p><strong>~86 total flows:</strong> ~38 live, ~40 draft/manual, 7 explicitly [DRAINING]</p>
-
-      <h3>Live Flows by Category</h3>
-
-      <h4>Lead Acquisition</h4>
-      <table>
-        <thead><tr><th>Flow</th><th>Trigger</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Leads | Hightouch - AID</td><td>Metric</td><td>5.2M recip/12mo, 34% open, 0.4% click</td></tr>
-          <tr><td>Leads | Hightouch | SMS - AID</td><td>Metric</td><td>SMS counterpart</td></tr>
-          <tr><td>Leads | Hormesis Lead Flow | Quiz Complete</td><td>Metric</td><td>6.7K recip, 48% open, 3.7% click</td></tr>
-          <tr><td>Leads | Hormesis Lead Flow | 50% Off [antidote]</td><td>Added to List</td><td>Created Feb 27, 2026</td></tr>
-          <tr><td>Leads | D30+ Engaged</td><td>Added to List</td><td>120.9K recip, 64% open, 1.1% click</td></tr>
-          <tr><td>Leads | Sunrise Flow</td><td>Added to List</td><td>&mdash;</td></tr>
-          <tr><td>Leads | Sunset Flow</td><td>Added to List</td><td>&mdash;</td></tr>
-          <tr><td>Leads | SMS Welcome Flow</td><td>Metric</td><td>&mdash;</td></tr>
-          <tr><td>Leads | Quiz Abandon Research Request</td><td>Added to List</td><td>&mdash;</td></tr>
-          <tr><td>50% Off_Leads | Browse Abandonment</td><td>Metric</td><td><span class="tag live">NEW</span> March 12, 2026</td></tr>
-          <tr><td>50% OFF_Leads | Abandoned Checkout</td><td>Metric</td><td><span class="tag live">NEW</span> March 12, 2026</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Active Customer / Onboarding</h4>
-      <table>
-        <thead><tr><th>Flow</th><th>Trigger</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Active | M1 | Onboarding Flow</td><td>Metric</td><td>80.9K recip, 57% open, 1.3% click</td></tr>
-          <tr><td>Active | M2 | Onboarding Flow</td><td>Metric</td><td>33.3K recip, 56% open, 1.9% click</td></tr>
-          <tr><td>Active | M1 | NYNM Mindshift Series</td><td>Metric</td><td>36.7K recip, 60% open, 6.8% click</td></tr>
-          <tr><td>Active | Order Confirmation</td><td>Metric</td><td>96.9K recip, 44% open, 10.5% click</td></tr>
-          <tr><td>Active | Shipment Notifications | Tapp Test</td><td>Metric</td><td>67.5K recip</td></tr>
-          <tr><td>Shipment | Delivery Failed Notification</td><td>Metric</td><td>Created Feb 12, 2026</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Retention / Refill</h4>
-      <table>
-        <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Active | Refill Reminders - Hormesis</strong></td><td>202K recip, 35% open, 11% click, <strong>23% conv, $6.39M attributed.</strong> Crown jewel.</td></tr>
-          <tr><td>Active | Refill Reminders - Clarity Migration</td><td>6.3K recip, 52% open, 38.2% conv</td></tr>
-          <tr><td>Hormesis Transition - Motivation Free</td><td>Live &mdash; product migration variant</td></tr>
-          <tr><td>Hormesis Transition - Clarity Free</td><td>Live &mdash; product migration variant</td></tr>
-          <tr><td>Hormesis Transition - Clarity</td><td>Live &mdash; product migration variant</td></tr>
-        </tbody>
-      </table>
-      <div class="callout">3 simultaneous "Hormesis Transition" refill variants still running. Product migration in progress or unfinished.</div>
-
-      <h4>Reviews / Advocacy</h4>
-      <table>
-        <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Active | M2 | Okendo Review Request</td><td>378.5K recip, 25% open, 1% click</td></tr>
-          <tr><td>Active | M2 | Okendo Review - Incentive Distribution</td><td>Live</td></tr>
-          <tr><td>Active | Okendo Referral Complete - Referrer</td><td>Live</td></tr>
-          <tr><td>Active | M2 | Super User Flow</td><td>Manual trigger &mdash; 1.4K recip, 74% open</td></tr>
-          <tr><td>Devotion - Onboarding &amp; Gifting Reminder</td><td>1.8K recip, 70% open</td></tr>
-          <tr><td>Devotion - Cold Outreach</td><td>15.8K recip, 54% open, 1.2% unsub (HIGH)</td></tr>
-        </tbody>
-      </table>
-
-      <h4>Winback / Churn</h4>
-      <table>
-        <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Churned | Winback | Subscription Cancelled | Email</td><td>45.7K recip, 48% open, 0.9% click, <strong>0.21% conv</strong></td></tr>
-        </tbody>
-      </table>
-
-      <h4>Operations</h4>
-      <table>
-        <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
-        <tbody>
-          <tr><td>Operations | Attribute Creation | First Order Product</td><td>Live</td></tr>
-          <tr><td>Operations | Attribute Creation | Quiz Completes</td><td>Live</td></tr>
-          <tr><td>Auto-Suppression of TikTok Profiles [antidote]</td><td>Live &mdash; created Feb 17, 2026</td></tr>
-          <tr><td>OTP Login</td><td>Live</td></tr>
-          <tr><td>Consumer Survey Flow</td><td>Live</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- WHAT'S MISSING -->
-    <section>
-      <h2>What's Notably Missing</h2>
-      <table>
-        <thead><tr><th>Missing Flow</th><th>Why It Matters</th></tr></thead>
-        <tbody>
-          <tr><td><span class="tag gap">GAP</span> Dunning / Payment Failed</td><td>Subscription-first business. No active recovery for failed charges.</td></tr>
-          <tr><td><span class="tag gap">GAP</span> SMS in any active customer flow</td><td>Zero lifecycle SMS post-purchase</td></tr>
-          <tr><td><span class="tag gap">GAP</span> Cross-sell / Upsell flow</td><td>Stasis cross-sell exists as gifting only, not systematic</td></tr>
-          <tr><td><span class="tag gap">GAP</span> Subscription anniversary</td><td>No milestone moment for long-term subscribers</td></tr>
-          <tr><td><span class="tag gap">GAP</span> Product-specific onboarding variants</td><td>M1/M2 flows exist but not segmented by product</td></tr>
-          <tr><td><span class="tag gap">GAP</span> OTP &rarr; Subscription conversion</td><td>OTPs are tracked but no conversion push</td></tr>
-          <tr><td><span class="tag gap">GAP</span> Loyalty tier upgrade notification</td><td>Okendo metric exists, no flow</td></tr>
-          <tr><td><span class="tag gap">GAP</span> Post-winback nurture</td><td>Reactivated customers enter standard flows &mdash; no reactivation-specific path</td></tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- CAMPAIGNS -->
-    <section>
-      <h2>Campaign Patterns</h2>
-      <h3>Email</h3>
-      <table>
-        <thead><tr><th>Period</th><th>Theme</th><th>Volume</th><th>Audience</th></tr></thead>
-        <tbody>
-          <tr><td>Jan 6&ndash;31, 2026</td><td><strong>$39 First Month</strong> (historic low, 70% off)</td><td>~8&ndash;10 emails</td><td>Leads (380&ndash;490K)</td></tr>
-          <tr><td>Nov&ndash;Dec 2025</td><td><strong>BFCM</strong> (65% off, 3mo $136)</td><td>~8&ndash;10 emails</td><td>Leads + Churned</td></tr>
-          <tr><td>Aug&ndash;Sep 2025</td><td><strong>Labor Day</strong> (65% off)</td><td>~5 emails</td><td>Leads</td></tr>
-          <tr><td>May 2025</td><td><strong>Hormesis Relaunch</strong></td><td>~5 emails</td><td>Leads + Churned</td></tr>
-          <tr><td>Mar&ndash;Apr 2025</td><td>Education + brand content</td><td>1&ndash;2/week</td><td>Leads</td></tr>
-        </tbody>
-      </table>
-      <div class="callout warning">Campaign calendar is <strong>promo-driven.</strong> Non-promo sends go almost exclusively to leads, not customers. No campaigns to active subscribers visible. Customers live entirely in flows.</div>
-
-      <h3>SMS</h3>
-      <table>
-        <thead><tr><th>Period</th><th>Theme</th><th>Audience</th></tr></thead>
-        <tbody>
-          <tr><td>Jan 2026</td><td>$39 promo (8 sends)</td><td>SMS subscribers</td></tr>
-          <tr><td>Nov&ndash;Dec 2025</td><td>BFCM (5+ sends)</td><td>Various</td></tr>
-          <tr><td>Aug&ndash;Sep 2025</td><td>Labor Day (4 sends)</td><td>Various</td></tr>
-        </tbody>
-      </table>
-      <p class="muted">SMS is 100% promotional blast. Zero lifecycle SMS flows for customers. Jan 6 SMS launch had 5.15% unsub rate on 50.7K sends &mdash; significant list damage.</p>
-    </section>
-
-    <!-- SEGMENTS -->
-    <section>
-      <h2>Segments</h2>
-      <table>
-        <thead><tr><th>Segment</th><th>Purpose</th><th>Created</th></tr></thead>
-        <tbody>
-          <tr><td>All Subscribers (Active)</td><td>Core sub base</td><td>Sep 2024</td></tr>
-          <tr><td>Churned Subscribers | Recent</td><td>Winback target</td><td>Mar 2024</td></tr>
-          <tr><td>Churned Subscribers | Engaged 90d</td><td>Winback target</td><td>Mar 2024</td></tr>
-          <tr><td>Leads | D30+ Engaged</td><td>Lead nurture</td><td>Apr 2025</td></tr>
-          <tr><td>Leads | 180 Day Engaged</td><td>Lead nurture</td><td>Dec 2023</td></tr>
-          <tr><td>Leads | At Risk</td><td>Suppression/sunset</td><td>Mar 2024</td></tr>
-          <tr><td>Leads | Disengaged</td><td>Suppression/sunset</td><td>Mar 2024</td></tr>
-          <tr><td>OTP | Recent / At Risk / Churned</td><td>OTP retention</td><td>Mar 2024</td></tr>
-          <tr><td>One Time Purchasers</td><td>OTP targeting</td><td>Jan 2026</td></tr>
-          <tr><td>Stasis Purchases L30</td><td>Stasis targeting</td><td><span class="tag live">NEW</span> Mar 5, 2026</td></tr>
-        </tbody>
-      </table>
-      <div class="callout warning">
-        <strong>Notable segment gaps:</strong> No segment for active subs by product. No subscription tenure segmentation (new vs 3mo+ vs 6mo+). No Stasis-specific subscriber segment. No LTV / spend-tier segmentation.
+    <!-- ============================== -->
+    <!-- THEME 2: Customer Journey      -->
+    <!-- ============================== -->
+    <div class="theme" id="t2">
+      <div class="theme-header" onclick="toggle('t2')">
+        <h2><span class="theme-num">2</span> Customer Journey &amp; Funnel <span class="chevron">&#9654;</span></h2>
+        <span class="progress">0 of 5 investigated</span>
       </div>
-    </section>
+      <div class="theme-body">
 
-    <!-- METRICS -->
-    <section>
-      <h2>Metrics &amp; Integrations</h2>
-      <p><strong>200/200 metrics &mdash; at the ceiling.</strong></p>
-      <div class="callout critical">Account is at the metric limit. Dead metrics must be cleaned before any new ones can be added.</div>
+        <div class="subtheme">
+          <h3>Journey Waterfall</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Build a full-funnel waterfall: Active on Site &rarr; View Product &rarr; Quiz &rarr; Checkout &rarr; Order</strong>
+              <span class="context">30-day data shows: Active on Site (14,815) &rarr; Viewed Product (13,679) &rarr; Quiz (???) &rarr; Checkout Started (8,090) &rarr; Placed Order (22,592). The quiz step is invisible in metrics. Also, Placed Order > Checkout Started suggests Recharge renewals bypass checkout.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Quiz completion data is missing from Klaviyo metrics</strong>
+              <span class="context">No "Quiz Completed" metric firing in last 30 days despite the Planning data showing ~6K-18K quiz completions per month historically. The metric may be dead or renamed. This is a critical tracking gap.</span>
+            </div>
+          </div>
+        </div>
 
-      <h3>Active Integrations</h3>
-      <p class="muted">Shopify, ReCharge, Custom API (Quiz, coaching, surveys), Zaymo, LateShipment.com, Social Snowball, Okendo, Tapp, Hightouch, Gorgias, Zendesk (older), Friendbuy (older), Eventbrite, Meta Ads, Typeform, Zapier</p>
+        <div class="subtheme">
+          <h3>Value-Add Content Tracking</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Are we tracking engagement with the 45-day breathwork program (Open App) and Mind Shift content?</strong>
+              <span class="context">Every order ships with these digital bonuses. Do we know adoption rate, completion rate, or even if customers are aware they have access? This content is a differentiation pillar but may be invisible in the data.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>30-Day Habit Reset &mdash; is it tracked?</strong>
+              <span class="context">Another bundled value-add. If customers who engage with this retain better, it should be a central part of M1 onboarding messaging.</span>
+            </div>
+          </div>
+        </div>
 
-      <h3>Dead/Junk Metrics (cleanup candidates)</h3>
-      <table>
-        <thead><tr><th>Metric</th><th>Issue</th></tr></thead>
-        <tbody>
-          <tr><td>Placed Order (API)</td><td>Dead &mdash; 0 events ever</td></tr>
-          <tr><td>Checkout Order Placed (API)</td><td>Dead &mdash; 0 events</td></tr>
-          <tr><td>Thesis First Subscription Order</td><td>Stopped May 2025</td></tr>
-          <tr><td>Thesis Recurring Subscription Order</td><td>Stopped Jun 2025</td></tr>
-          <tr><td>Thesis One-Time Order</td><td>Stopped May 2025</td></tr>
-          <tr><td>Formula First/Recurring/One-Time</td><td>Never fired</td></tr>
-          <tr><td>Subscription Payment Failed</td><td>Shows 0 &mdash; broken or misconfigured</td></tr>
-          <tr><td>Subscription Canceled (custom)</td><td>Shows 0 &mdash; duplicate</td></tr>
-          <tr><td>"a"</td><td>Test metric</td></tr>
-        </tbody>
-      </table>
-    </section>
+        <div class="subtheme">
+          <h3>Performance: Before vs. After Hormesis</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>How do pre-Hormesis metrics compare to post?</strong>
+              <span class="context">Current data starts at May 2025 (Hormesis launch). Need to understand if churn floor, AOV, quiz volume, etc. changed with the rebrand or were pre-existing.</span>
+            </div>
+          </div>
+        </div>
 
-    <!-- HOUSEKEEPING -->
-    <section>
-      <h2>Housekeeping Log</h2>
-
-      <h3>Metric Bloat</h3>
-      <p>Account at 199/200 metrics. Priority: clean dead metrics before adding new ones.</p>
-
-      <h3>Flow Hygiene</h3>
-      <ul>
-        <li>15+ dead/draining/draft flows cluttering account &mdash; audit + archive after confirming empty</li>
-        <li>Multiple product migration refill variants still live simultaneously &mdash; consolidate once migration complete</li>
-        <li>Legacy product flows (Logic, Energy, Creativity, Confidence) still referenced &mdash; flag for cleanup</li>
-      </ul>
-
-      <h3>List Hygiene</h3>
-      <ul>
-        <li>Lists dating to 2019: "DojoMojo Blast", "Get Fit Don't Quit Giveaway", "Talon Uploaded by Edison" &mdash; confirm inactive, suppress/delete</li>
-        <li>"antidote" appears in segment names &mdash; unclear if legacy brand name or internal code &mdash; clarify meaning</li>
-      </ul>
-    </section>
-
-    <!-- DISCOVERY INSIGHTS -->
-    <section>
-      <h2>Discovery Insights</h2>
-      <p class="muted">Running log. Raw observations &rarr; get distilled into the audit.</p>
-
-      <h3>Revenue &amp; Business Health</h3>
-      <ul>
-        <li><strong>Refill Reminders - Hormesis</strong> is the crown jewel flow: 202K recipients, 35% open, 11% click, 23% conversion, $6.39M attributed. This is the engine.</li>
-        <li>Revenue is ~$2M/month. Healthy top line but net subscriber growth is in deficit 10 of 13 months.</li>
-        <li>OTP ($129) vs subscription ($59 first month, $79 recurring) &mdash; large gap. 64% of recent orders are new subscriptions, only 4% OTP. Subscription acquisition is the primary motion.</li>
-      </ul>
-
-      <h3>Subscription Health</h3>
-      <ul>
-        <li>Net subscriber loss in 10 of 13 months tracked. Jan 2026 was the one strong positive month (+1,787) &mdash; driven by $39 promo.</li>
-        <li>The $39 SMS launch caused 5.15% unsub rate on 50.7K sends &mdash; ~2,600 permanent SMS list losses.</li>
-        <li><strong>Dunning is a critical gap:</strong> Subscription Payment Failed shows 0 events. No active dunning flow exists.</li>
-      </ul>
-
-      <h3>Flow Gaps</h3>
-      <ul>
-        <li><strong>Winback</strong> converting at 0.21% &mdash; needs a full rebuild.</li>
-        <li><strong>Onboarding</strong> opens strong (57% M1) but clicks critically low (1.3%). Content isn't driving action.</li>
-        <li><strong>SMS absent</strong> from post-purchase lifecycle entirely.</li>
-        <li><strong>No dunning, cross-sell, OTP&rarr;sub conversion, or anniversary flows.</strong></li>
-      </ul>
-
-      <h3>Campaign Layer</h3>
-      <ul>
-        <li>Click rates critically low: 0.2&ndash;0.8% vs ~2.5% benchmark.</li>
-        <li>Open-to-click gap (36&ndash;57% open, &lt;1% click) is the most actionable finding.</li>
-        <li>Campaigns are promo-dominated, no active customer education campaigns.</li>
-      </ul>
-    </section>
-
-    <!-- COHORT LIMITATIONS -->
-    <section>
-      <h2>Data Limitations</h2>
-      <div class="callout">
-        <strong>True cohort retention is not available via Klaviyo API.</strong> "Of the people who subscribed in May 2025, what % are still subscribed today?" requires joining subscription start events to cancel events at the profile level &mdash; a data warehouse query (Hightouch or ReCharge reporting). What we have are aggregate monthly flows, not cohort survival curves.
+        <div class="data-note">
+          <strong>Quiz data from planning inventory (historical):</strong> May 2025: 11,110 &rarr; Aug 2025: 21,693 (Labor Day spike) &rarr; Jan 2026: 18,276 ($39 promo spike) &rarr; Mar 2026: 6,313 (partial). Quiz volume tracks with promo spend, not organic interest.
+        </div>
       </div>
-      <p>Estimated retention curve (based on ~30&ndash;38% monthly churn):</p>
-      <div class="stat-row">
-        <div class="stat"><span class="value green">~65&ndash;70%</span><span class="label">After Month 1</span></div>
-        <div class="stat"><span class="value orange">~45&ndash;50%</span><span class="label">After Month 2</span></div>
-        <div class="stat"><span class="value red">~30&ndash;35%</span><span class="label">After Month 3</span></div>
-        <div class="stat"><span class="value red">~20&ndash;25%</span><span class="label">After Month 4</span></div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- THEME 3: Flow Inventory        -->
+    <!-- ============================== -->
+    <div class="theme" id="t3">
+      <div class="theme-header" onclick="toggle('t3')">
+        <h2><span class="theme-num">3</span> Flow Inventory &amp; Health <span class="chevron">&#9654;</span></h2>
+        <span class="progress">0 of 11 investigated</span>
       </div>
-    </section>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Sending Status &amp; Activity</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Are all "live" flows actually sending messages?</strong>
+              <span class="context">A flow can be live but have all messages paused or have filters that block everyone. Need to verify actual send activity for every listed flow.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Are the recipient figures in the inventory time-boxed?</strong>
+              <span class="context">Unclear if "202K recipients" on Refill Reminders is lifetime, 12-month, or some other window. Need to clarify for all flows.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Identify flows that should be switched to draft (no activity)</strong>
+              <span class="context">~40 draft/manual flows plus 7 draining. Are any "live" flows effectively dead? Candidates for archival.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Flows Needing Human Review</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Identify flows that don't make sense or can't be understood without a human look</strong>
+              <span class="context">Need to flag any flows where trigger logic, filter conditions, or content don't add up from the data alone.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Clarity flow path is significantly different from other product flows</strong>
+              <span class="context">Reason for divergence unknown. Needs visual walkthrough.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Real renewal reminder &mdash; unclear filtering logic</strong>
+              <span class="context">Need to understand what conditions gate entry and whether they're working as intended.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Messaging &amp; Content Issues</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Refill reminder flows still running for Hormesis transition &mdash; possible duplicate messages</strong>
+              <span class="context">3 simultaneous "Hormesis Transition" refill variants (Motivation Free, Clarity Free, Clarity). Need to check if customers are receiving messages from multiple variants.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>"Halfway there" messaging is contradictory</strong>
+              <span class="context">Says "halfway there" but also "almost at full month." Progress bar shows approaching 30 days. Confusing customer experience.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Orphan test content throughout flows</strong>
+              <span class="context">Needs cleanup pass across all flows.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Order upcoming on Recharge event variable &mdash; what's driving this?</strong>
+              <span class="context">21,764 events in 30 days. Need to understand the trigger and how it's used in flow logic.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Kids Product Messaging</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Is there any kids-related messaging in flows or campaigns?</strong>
+              <span class="context">Thesis had a limited run of a kids product that sold out. They're planning to ramp it back up. Need to check if any flows, segments, or campaigns reference it.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Positive Signals</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>60-day celebration callout working well</strong>
+              <span class="context">Good example of milestone-based engagement.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>General onboarding flow quality is good</strong>
+              <span class="context">M1 opens at 57%, NYNM Mindshift at 60% open / 6.8% click. Engagement signal is there.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="data-note">
+          <strong>Inventory snapshot:</strong> ~86 total flows &mdash; ~38 live, ~40 draft/manual, 7 draining. See full inventory tables below.
+        </div>
+
+        <!-- Full flow inventory tables (collapsed reference) -->
+        <details style="margin-top: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--accent);">View Full Flow Inventory Tables</summary>
+          <div style="margin-top: 0.75rem;">
+            <h4>Lead Acquisition</h4>
+            <table>
+              <thead><tr><th>Flow</th><th>Trigger</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Leads | Hightouch - AID</td><td>Metric</td><td>5.2M recip/12mo, 34% open, 0.4% click</td></tr>
+                <tr><td>Leads | Hightouch | SMS - AID</td><td>Metric</td><td>SMS counterpart</td></tr>
+                <tr><td>Leads | Hormesis Lead Flow | Quiz Complete</td><td>Metric</td><td>6.7K recip, 48% open, 3.7% click</td></tr>
+                <tr><td>Leads | Hormesis Lead Flow | 50% Off [antidote]</td><td>Added to List</td><td>Created Feb 27, 2026</td></tr>
+                <tr><td>Leads | D30+ Engaged</td><td>Added to List</td><td>120.9K recip, 64% open, 1.1% click</td></tr>
+                <tr><td>Leads | Sunrise Flow</td><td>Added to List</td><td>&mdash;</td></tr>
+                <tr><td>Leads | Sunset Flow</td><td>Added to List</td><td>&mdash;</td></tr>
+                <tr><td>Leads | SMS Welcome Flow</td><td>Metric</td><td>&mdash;</td></tr>
+                <tr><td>Leads | Quiz Abandon Research Request</td><td>Added to List</td><td>&mdash;</td></tr>
+                <tr><td>50% Off_Leads | Browse Abandonment</td><td>Metric</td><td><span class="tag live">NEW</span> March 12, 2026</td></tr>
+                <tr><td>50% OFF_Leads | Abandoned Checkout</td><td>Metric</td><td><span class="tag live">NEW</span> March 12, 2026</td></tr>
+              </tbody>
+            </table>
+
+            <h4>Active Customer / Onboarding</h4>
+            <table>
+              <thead><tr><th>Flow</th><th>Trigger</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Active | M1 | Onboarding Flow</td><td>Metric</td><td>80.9K recip, 57% open, 1.3% click</td></tr>
+                <tr><td>Active | M2 | Onboarding Flow</td><td>Metric</td><td>33.3K recip, 56% open, 1.9% click</td></tr>
+                <tr><td>Active | M1 | NYNM Mindshift Series</td><td>Metric</td><td>36.7K recip, 60% open, 6.8% click</td></tr>
+                <tr><td>Active | Order Confirmation</td><td>Metric</td><td>96.9K recip, 44% open, 10.5% click</td></tr>
+                <tr><td>Active | Shipment Notifications | Tapp Test</td><td>Metric</td><td>67.5K recip</td></tr>
+                <tr><td>Shipment | Delivery Failed Notification</td><td>Metric</td><td>Created Feb 12, 2026</td></tr>
+              </tbody>
+            </table>
+
+            <h4>Retention / Refill</h4>
+            <table>
+              <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Active | Refill Reminders - Hormesis</strong></td><td>202K recip, 35% open, 11% click, 23% conv, $6.39M attributed. Crown jewel.</td></tr>
+                <tr><td>Active | Refill Reminders - Clarity Migration</td><td>6.3K recip, 52% open, 38.2% conv</td></tr>
+                <tr><td>Hormesis Transition - Motivation Free</td><td>Live &mdash; product migration variant</td></tr>
+                <tr><td>Hormesis Transition - Clarity Free</td><td>Live &mdash; product migration variant</td></tr>
+                <tr><td>Hormesis Transition - Clarity</td><td>Live &mdash; product migration variant</td></tr>
+              </tbody>
+            </table>
+
+            <h4>Reviews / Advocacy</h4>
+            <table>
+              <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Active | M2 | Okendo Review Request</td><td>378.5K recip, 25% open, 1% click</td></tr>
+                <tr><td>Active | M2 | Okendo Review - Incentive Distribution</td><td>Live</td></tr>
+                <tr><td>Active | Okendo Referral Complete - Referrer</td><td>Live</td></tr>
+                <tr><td>Active | M2 | Super User Flow</td><td>Manual trigger &mdash; 1.4K recip, 74% open</td></tr>
+                <tr><td>Devotion - Onboarding &amp; Gifting Reminder</td><td>1.8K recip, 70% open</td></tr>
+                <tr><td>Devotion - Cold Outreach</td><td>15.8K recip, 54% open, 1.2% unsub (HIGH)</td></tr>
+              </tbody>
+            </table>
+
+            <h4>Winback / Churn</h4>
+            <table>
+              <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Churned | Winback | Subscription Cancelled | Email</td><td>45.7K recip, 48% open, 0.9% click, 0.21% conv</td></tr>
+              </tbody>
+            </table>
+
+            <h4>Operations</h4>
+            <table>
+              <thead><tr><th>Flow</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr><td>Operations | Attribute Creation | First Order Product</td><td>Live</td></tr>
+                <tr><td>Operations | Attribute Creation | Quiz Completes</td><td>Live</td></tr>
+                <tr><td>Auto-Suppression of TikTok Profiles [antidote]</td><td>Live &mdash; created Feb 17, 2026</td></tr>
+                <tr><td>OTP Login</td><td>Live</td></tr>
+                <tr><td>Consumer Survey Flow</td><td>Live</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- THEME 4: Okendo & Reviews      -->
+    <!-- ============================== -->
+    <div class="theme" id="t4">
+      <div class="theme-header" onclick="toggle('t4')">
+        <h2><span class="theme-num">4</span> Okendo &amp; Review Program <span class="chevron">&#9654;</span></h2>
+        <span class="progress">3 of 7 investigated</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Review Volume &amp; Funnel</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Review completion rate: 0.88% and declining</strong>
+              <span class="context">~230K eligible over 12mo, only 2,018 reviews. Trending from ~1.1-1.4% (early 2025) down to 0.6-0.7% (early 2026). Benchmark is 1.5-3%.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>M2 Okendo Review Request flow: 378K recip, 25% open, 1% click</strong>
+              <span class="context">People see the ask but don't follow through. ~20K eligible requests/month producing only ~130-155 reviews.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Ratings &amp; Quality</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Avg rating drifting: 4.59 &rarr; 4.45 over 12 months</strong>
+              <span class="context">5-star % dropped 82% &rarr; 72%. 1-2 star at 7%. Not alarming but consistent downward trend.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Negative review themes cluster</strong>
+              <span class="context">"Doesn't work / expected Adderall-like effects," GI/stomach issues (2+ reviews), subscription/shipping confusion (triple shipments, jar won't open), price complaints, caffeine side effects on Motivation specifically (heart palpitations, agitation).</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Product Transition in Reviews</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Product overhaul timeline visible in review data</strong>
+              <span class="context">Mar-May 2025: old blends dominant. Jun-Aug 2025: Stress Reset appears. Jan-Mar 2026: Clarity Refill is #1 reviewed product (74 reviews), meaning subscriber refill base is the primary review source. Neuroprotection appearing (5 reviews). Legacy blends at trace levels.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Structural Issues</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>100% of reviews come from "review-request-email" &mdash; zero organic/on-site submission</strong>
+              <span class="context">No customers are leaving reviews voluntarily on the site. Need to investigate on-site review widget configuration.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Nearly zero photo reviews (1 out of 200)</strong>
+              <span class="context">UGC is completely untapped. Review incentive structure isn't driving photos. Need to review what incentive is offered and whether photo prompts exist.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>"Thesis" generic reviews: 27 per sample reviewing the brand, not a product</strong>
+              <span class="context">Some customers don't know which product they're reviewing.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Zaymo integration not visible in review flows</strong>
+              <span class="context">Zaymo is actively firing events (3.8K Shown Swap Offer, 2.4K Interactions, 2.2K Delay Subscription in 30 days) but isn't connected to the review experience.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout warning">
+          <strong>Opportunity:</strong> Review request flow needs optimization (better timing, incentive, CTA). New products need dedicated review generation campaigns. Photo/UGC component is completely untapped.
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- THEME 5: Metrics & Integrations -->
+    <!-- ============================== -->
+    <div class="theme" id="t5">
+      <div class="theme-header" onclick="toggle('t5')">
+        <h2><span class="theme-num">5</span> Metrics &amp; Integrations <span class="chevron">&#9654;</span></h2>
+        <span class="progress">2 of 4 investigated</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Metric Volumes (Last 30 Days)</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Stack-ranked metric audit complete</strong>
+              <span class="context">Top 10: Received Email (675K), Opened Email (547K), Viewed Form (107K), Closed Form (52K), Ordered Product (48K), Clicked Email (23K), Placed Order (22.6K), LS-Delivered (22.5K), Fulfilled Order (22.2K), LS-Shipped (22K).</span>
+            </div>
+          </div>
+        </div>
+
+        <details style="margin-top: 0.5rem; margin-bottom: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--accent);">View Full 30-Day Metric Volumes</summary>
+          <table style="margin-top: 0.75rem;">
+            <thead><tr><th>#</th><th>Metric</th><th>Source</th><th>30-Day Count</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Received Email</td><td>Klaviyo</td><td>675,148</td></tr>
+              <tr><td>2</td><td>Opened Email</td><td>Klaviyo</td><td>547,357</td></tr>
+              <tr><td>3</td><td>Viewed Form</td><td>Klaviyo</td><td>106,651</td></tr>
+              <tr><td>4</td><td>Closed Form</td><td>Klaviyo</td><td>52,104</td></tr>
+              <tr><td>5</td><td>Ordered Product</td><td>Shopify</td><td>48,023</td></tr>
+              <tr><td>6</td><td>Clicked Email</td><td>Klaviyo</td><td>23,004</td></tr>
+              <tr><td>7</td><td>Placed Order</td><td>Shopify</td><td>22,592</td></tr>
+              <tr><td>8</td><td>LS-Delivered</td><td>LateShipment</td><td>22,479</td></tr>
+              <tr><td>9</td><td>Fulfilled Order</td><td>Shopify</td><td>22,242</td></tr>
+              <tr><td>10</td><td>LS-Shipped</td><td>LateShipment</td><td>22,032</td></tr>
+              <tr><td>11</td><td>Order upcoming on ReCharge</td><td>Recharge</td><td>21,764</td></tr>
+              <tr><td>12</td><td>Eligible for Okendo Review</td><td>API</td><td>20,965</td></tr>
+              <tr><td>13</td><td>Order placed on Recharge</td><td>Recharge</td><td>19,522</td></tr>
+              <tr><td>14</td><td>Active on Site</td><td>API</td><td>14,815</td></tr>
+              <tr><td>15</td><td>Subscribed to List</td><td>Klaviyo</td><td>14,765</td></tr>
+              <tr><td>16</td><td>Subscribed to Email Marketing</td><td>Klaviyo</td><td>14,654</td></tr>
+              <tr><td>17</td><td>Viewed Product</td><td>API</td><td>13,679</td></tr>
+              <tr><td>18</td><td>Charge processing failed (ReCharge)</td><td>Recharge</td><td>11,899</td></tr>
+              <tr><td>19</td><td>Checkout Started</td><td>Shopify</td><td>8,090</td></tr>
+              <tr><td>20</td><td>Fulfilled Partial Order</td><td>Shopify</td><td>7,798</td></tr>
+              <tr><td>21</td><td>Delivered Shipment</td><td>Shopify</td><td>6,430</td></tr>
+              <tr><td>22</td><td>Marked Out for Delivery</td><td>Shopify</td><td>6,118</td></tr>
+              <tr><td>23</td><td>Engaged with Form</td><td>Klaviyo</td><td>5,905</td></tr>
+              <tr><td>24</td><td>Subscription cancelled (ReCharge)</td><td>Recharge</td><td>5,695</td></tr>
+              <tr><td>25</td><td>Manually Suppressed from Email</td><td>Klaviyo</td><td>4,764</td></tr>
+              <tr><td>26</td><td>Unsubscribed from Email Marketing</td><td>Klaviyo</td><td>4,730</td></tr>
+              <tr><td>27</td><td>Subscription started (ReCharge)</td><td>Recharge</td><td>4,484</td></tr>
+              <tr><td>28</td><td>Clicked email to unsubscribe</td><td>Klaviyo</td><td>4,543</td></tr>
+              <tr><td>29</td><td>Bounced Email</td><td>Klaviyo</td><td>4,355</td></tr>
+              <tr><td>30</td><td>Zaymo Shown Swap Offer</td><td>Zaymo</td><td>3,856</td></tr>
+              <tr><td>31</td><td>Relayed SMS</td><td>Klaviyo</td><td>3,645</td></tr>
+              <tr><td>32</td><td>Added to List</td><td>Klaviyo</td><td>3,050</td></tr>
+              <tr><td>33</td><td>Zaymo Interaction</td><td>Zaymo</td><td>2,423</td></tr>
+              <tr><td>34</td><td>Zaymo Delay Subscription</td><td>Zaymo</td><td>2,233</td></tr>
+              <tr><td>35</td><td>Received SMS</td><td>Klaviyo</td><td>2,145</td></tr>
+              <tr><td>36</td><td>Clicked SMS</td><td>Klaviyo</td><td>737</td></tr>
+              <tr><td>37</td><td>Confirmed Shipment</td><td>Shopify</td><td>503</td></tr>
+              <tr><td>38</td><td>Sent SMS</td><td>Klaviyo</td><td>470</td></tr>
+              <tr><td>39</td><td>Refunded Order</td><td>Shopify</td><td>462</td></tr>
+              <tr><td>40</td><td>Subscribed to SMS Marketing</td><td>Klaviyo</td><td>386</td></tr>
+              <tr><td>41</td><td>Unsubscribed from SMS Marketing</td><td>Klaviyo</td><td>383</td></tr>
+              <tr><td>42</td><td>Bounce suppression added</td><td>Klaviyo</td><td>340</td></tr>
+              <tr><td>43</td><td>Created Okendo Review</td><td>API</td><td>171</td></tr>
+              <tr><td>44</td><td>Cancelled Order</td><td>Shopify</td><td>167</td></tr>
+              <tr><td>45</td><td>Unsubscribed from List</td><td>Klaviyo</td><td>135</td></tr>
+              <tr><td>46</td><td>Merged Profile</td><td>Klaviyo</td><td>96</td></tr>
+              <tr><td>47</td><td>Marked Email as Spam</td><td>Klaviyo</td><td>75</td></tr>
+              <tr><td>48</td><td>Dropped Email</td><td>Klaviyo</td><td>60</td></tr>
+              <tr><td>49</td><td>Zaymo Review Exported</td><td>Zaymo</td><td>48</td></tr>
+              <tr><td>50</td><td>Failed to Deliver SMS</td><td>Klaviyo</td><td>48</td></tr>
+              <tr><td>51</td><td>Zaymo Swap Item</td><td>Zaymo</td><td>36</td></tr>
+            </tbody>
+          </table>
+        </details>
+
+        <div class="subtheme">
+          <h3>Key Metric Flags</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Charge processing failed on ReCharge: 11,899 events (30d)</strong>
+              <span class="context">That's ~60% of the volume of successful Recharge orders (19.5K). Even if dunning is handled in Recharge, this volume is alarming and needs investigation.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Zaymo IS actively firing events</strong>
+              <span class="context">Shown Swap Offer: 3,856 (all March &mdash; recently activated). Interaction: 2,423. Delay Subscription: 2,233. Swap Item: 36. Review Exported: 48. Five other Zaymo metrics at zero.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Metric Ceiling &amp; Cleanup</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Account at 200/200 metrics &mdash; at the ceiling</strong>
+              <span class="context">Cannot add new metrics until dead ones are cleaned.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Dead/junk metrics identified for cleanup</strong>
+              <span class="context">Placed Order (API) &mdash; 0 events. Checkout Order Placed (API) &mdash; 0 events. Thesis First/Recurring/One-Time Sub Order &mdash; stopped mid-2025. Formula variants &mdash; never fired. Subscription Payment Failed &mdash; 0 (broken). Subscription Canceled (custom) &mdash; 0 (dupe). "a" &mdash; test metric. Total: ~10 candidates minimum.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- THEME 6: Gaps & Opportunities  -->
+    <!-- ============================== -->
+    <div class="theme" id="t6">
+      <div class="theme-header" onclick="toggle('t6')">
+        <h2><span class="theme-num">6</span> Gaps &amp; Opportunities <span class="chevron">&#9654;</span></h2>
+        <span class="progress">1 of 9 investigated</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Critical Gaps</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag parked">Parked</span></div>
+            <div class="detail">
+              <strong>Dunning / Payment Failed</strong>
+              <span class="context">Confirmed: dunning is handled in Recharge, not Klaviyo. Subscription Payment Failed metric showing 0 in Klaviyo is expected. Not a Klaviyo gap. However, Charge processing failed events (11.9K/mo) suggest the dunning volume is significant.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>SMS absent from all post-purchase lifecycle</strong>
+              <span class="context">Zero lifecycle SMS after purchase. SMS Welcome Flow proves the channel works ($6.23 RPR, 5.7% conv) but it's only used there + promo blasts. Jan $39 SMS launch caused 5.15% unsub rate on 50.7K sends &mdash; ~2,600 permanent SMS losses.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Active customer flow gap</strong>
+              <span class="context">No ongoing engagement for active subscribers beyond onboarding and refill reminders. No education, no check-ins, no milestone moments past M2.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Conversion &amp; Expansion Gaps</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>OTP &rarr; Subscription conversion: no flow exists</strong>
+              <span class="context">OTP customers ($129) have no conversion path to subscription ($59/mo). Need OTP vs sub breakdown first to size this opportunity.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>No systematic cross-sell flow</strong>
+              <span class="context">Stasis Night is gifted as retention tactic but no cross-sell flow. No Thesis-to-Stasis or single-product-to-multi-product path.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>No subscription anniversary / milestone flow</strong>
+              <span class="context">No recognition for long-term subscribers. 60-day callout exists but nothing at 6mo, 1yr, etc.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>No loyalty tier upgrade notification</strong>
+              <span class="context">Okendo Loyalty Tier Changed metric exists but no flow connected to it.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Winback &amp; Churn</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Winback converting at 0.21% &mdash; needs full rebuild</strong>
+              <span class="context">45.7K recip, 48% open, 0.9% click. People read it but don't act. With ~5,500 cancels/month, every 1% improvement = ~55 recovered subs/month = ~$52K ARR.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>No post-winback nurture</strong>
+              <span class="context">Reactivated customers re-enter standard flows. No reactivation-specific path.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Proposed: Month 1 Rebuild</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Create comprehensive Month 1 flow with intelligent feedback collection</strong>
+              <span class="context">Include smart SMS check-ins, strategic customer engagement, habit formation triggers. Onboarding clicks are low (1.3%) despite high opens (57%) &mdash; content isn't driving action. This is where churn starts.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- THEME 7: Campaign Analysis     -->
+    <!-- ============================== -->
+    <div class="theme" id="t7">
+      <div class="theme-header" onclick="toggle('t7')">
+        <h2><span class="theme-num">7</span> Campaign Analysis <span class="chevron">&#9654;</span></h2>
+        <span class="progress">Not started</span>
+      </div>
+      <div class="theme-body">
+        <div class="callout">
+          <strong>Parked for now.</strong> Campaign deep-dive will follow once flow and segmentation investigation is further along.
+        </div>
+
+        <div class="subtheme">
+          <h3>Creative Performance</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Audit creative performance across flows and campaigns</strong>
+              <span class="context">Open-to-click gap is extreme (36-57% open, &lt;1% click). Subject lines and timing are working but the content inside isn't compelling action. Need to evaluate: email design, CTA placement/copy, content strategy, template consistency, mobile rendering. This is likely the single biggest lever for improving engagement across the board.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Compare creative approach across high-performing vs. low-performing flows</strong>
+              <span class="context">Refill Reminders (11% click, 23% conv) vs M1 Onboarding (1.3% click) vs Winback (0.9% click). What's different about the creative in the flows that work?</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>SMS creative &mdash; is the copy driving action or just notifying?</strong>
+              <span class="context">SMS Welcome has strong RPR ($6.23) but promo SMS caused 5.15% unsub. Different creative approaches with very different results.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>What We Know So Far</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Campaign calendar is promo-driven</strong>
+              <span class="context">Non-promo sends go almost exclusively to leads. No campaigns to active subscribers. Customers live entirely in flows.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Click rates critically low: 0.2&ndash;0.8% vs ~2.5% benchmark</strong>
+              <span class="context">Open-to-click gap (36-57% open, &lt;1% click) is the most actionable campaign finding.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>SMS campaigns are 100% promo blast</strong>
+              <span class="context">Jan $39 SMS blast had 5.15% unsub rate &mdash; significant list damage.</span>
+            </div>
+          </div>
+        </div>
+
+        <details style="margin-top: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--accent);">View Campaign Pattern Tables</summary>
+          <div style="margin-top: 0.75rem;">
+            <h4>Email Campaigns</h4>
+            <table>
+              <thead><tr><th>Period</th><th>Theme</th><th>Volume</th><th>Audience</th></tr></thead>
+              <tbody>
+                <tr><td>Jan 6&ndash;31, 2026</td><td><strong>$39 First Month</strong> (70% off)</td><td>~8&ndash;10 emails</td><td>Leads (380&ndash;490K)</td></tr>
+                <tr><td>Nov&ndash;Dec 2025</td><td><strong>BFCM</strong> (65% off)</td><td>~8&ndash;10 emails</td><td>Leads + Churned</td></tr>
+                <tr><td>Aug&ndash;Sep 2025</td><td><strong>Labor Day</strong> (65% off)</td><td>~5 emails</td><td>Leads</td></tr>
+                <tr><td>May 2025</td><td><strong>Hormesis Relaunch</strong></td><td>~5 emails</td><td>Leads + Churned</td></tr>
+                <tr><td>Mar&ndash;Apr 2025</td><td>Education + brand</td><td>1&ndash;2/week</td><td>Leads</td></tr>
+              </tbody>
+            </table>
+            <h4>SMS Campaigns</h4>
+            <table>
+              <thead><tr><th>Period</th><th>Theme</th><th>Audience</th></tr></thead>
+              <tbody>
+                <tr><td>Jan 2026</td><td>$39 promo (8 sends)</td><td>SMS subscribers</td></tr>
+                <tr><td>Nov&ndash;Dec 2025</td><td>BFCM (5+ sends)</td><td>Various</td></tr>
+                <tr><td>Aug&ndash;Sep 2025</td><td>Labor Day (4 sends)</td><td>Various</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- THEME 8: Performance Data      -->
+    <!-- ============================== -->
+    <div class="theme" id="t8">
+      <div class="theme-header" onclick="toggle('t8')">
+        <h2><span class="theme-num">8</span> Performance Data <span class="chevron">&#9654;</span></h2>
+        <span class="progress">Reference data</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Subscription Flow (ReCharge) &mdash; May 2025&ndash;Mar 2026</h3>
+          <table>
+            <thead>
+              <tr><th>Month</th><th>Sub Starts</th><th>Sub Cancels</th><th>Net</th><th>Cumul. Net</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>May 2025</td><td>4,927</td><td>5,304</td><td style="color:var(--red)"><strong>-377</strong></td><td>-377</td></tr>
+              <tr><td>Jun 2025</td><td>4,671</td><td>4,859</td><td style="color:var(--red)"><strong>-188</strong></td><td>-565</td></tr>
+              <tr><td>Jul 2025</td><td>4,288</td><td>4,941</td><td style="color:var(--red)"><strong>-653</strong></td><td>-1,218</td></tr>
+              <tr><td>Aug 2025</td><td>6,596</td><td>5,012</td><td style="color:var(--green)"><strong>+1,584</strong></td><td>+366</td></tr>
+              <tr><td>Sep 2025</td><td>4,897</td><td>5,357</td><td style="color:var(--red)"><strong>-460</strong></td><td>-94</td></tr>
+              <tr><td>Oct 2025</td><td>3,908</td><td>5,432</td><td style="color:var(--red)"><strong>-1,524</strong></td><td>-1,618</td></tr>
+              <tr><td>Nov 2025</td><td>5,702</td><td>5,313</td><td style="color:var(--green)"><strong>+389</strong></td><td>-1,229</td></tr>
+              <tr><td>Dec 2025</td><td>3,322</td><td>5,171</td><td style="color:var(--red)"><strong>-1,849</strong></td><td>-3,078</td></tr>
+              <tr><td>Jan 2026</td><td>7,644</td><td>5,810</td><td style="color:var(--green)"><strong>+1,834</strong></td><td>-1,244</td></tr>
+              <tr><td>Feb 2026</td><td>4,188</td><td>5,668</td><td style="color:var(--red)"><strong>-1,480</strong></td><td>-2,724</td></tr>
+              <tr><td>Mar 2026*</td><td>2,762</td><td>3,689</td><td style="color:var(--red)"><strong>-927</strong></td><td>-3,651</td></tr>
+            </tbody>
+          </table>
+          <p class="muted">*March is partial (through ~Mar 20)</p>
+          <div class="callout critical">
+            <strong>Cancellations are a flat floor.</strong> Cancels held between 4,859 and 5,810 every month for 11 months regardless of acquisition volume. This is structural churn.
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Revenue &amp; Order Volume (Shopify)</h3>
+          <table>
+            <thead>
+              <tr><th>Month</th><th>Orders</th><th>Unique Buyers</th><th>Revenue</th><th>AOV</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>May 2025</td><td>24,162</td><td>20,869</td><td>$2,106,774</td><td>$87</td></tr>
+              <tr><td>Jun 2025</td><td>23,586</td><td>20,665</td><td>$2,088,541</td><td>$89</td></tr>
+              <tr><td>Jul 2025</td><td>23,623</td><td>20,338</td><td>$2,088,413</td><td>$88</td></tr>
+              <tr><td>Aug 2025</td><td>25,488</td><td>21,884</td><td>$2,331,240</td><td>$91</td></tr>
+              <tr><td>Sep 2025</td><td>23,930</td><td>20,738</td><td>$2,133,347</td><td>$89</td></tr>
+              <tr><td>Oct 2025</td><td>23,268</td><td>19,899</td><td>$2,109,893</td><td>$91</td></tr>
+              <tr><td>Nov 2025</td><td>24,368</td><td>20,958</td><td>$2,345,233</td><td>$96</td></tr>
+              <tr><td>Dec 2025</td><td>20,878</td><td>17,547</td><td>$1,898,598</td><td>$91</td></tr>
+              <tr><td>Jan 2026</td><td>24,184</td><td>20,247</td><td>$1,911,647</td><td>$79</td></tr>
+              <tr><td>Feb 2026</td><td>21,168</td><td>18,987</td><td>$1,959,190</td><td>$93</td></tr>
+              <tr><td>Mar 2026*</td><td>14,208</td><td>13,487</td><td>$1,235,922</td><td>$87</td></tr>
+            </tbody>
+          </table>
+          <div class="callout warning">
+            <strong>Revenue stable ($1.9&ndash;2.3M band) despite net subscriber loss.</strong> The recurring base ($79/mo refills) is propping up revenue. January AOV drop to $79 = $39 promo dilution.
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Quiz Completions (Top of Funnel)</h3>
+          <table>
+            <thead>
+              <tr><th>Month</th><th>Completions</th><th>Unique</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>May 2025</td><td>11,110</td><td>9,583</td></tr>
+              <tr><td>Jun 2025</td><td>10,969</td><td>9,883</td></tr>
+              <tr><td>Jul 2025</td><td>13,508</td><td>12,186</td></tr>
+              <tr><td>Aug 2025</td><td>21,693</td><td>19,731</td></tr>
+              <tr><td>Sep 2025</td><td>10,056</td><td>9,026</td></tr>
+              <tr><td>Oct 2025</td><td>10,586</td><td>9,557</td></tr>
+              <tr><td>Nov 2025</td><td>15,830</td><td>14,232</td></tr>
+              <tr><td>Dec 2025</td><td>9,654</td><td>8,627</td></tr>
+              <tr><td>Jan 2026</td><td>18,276</td><td>16,632</td></tr>
+              <tr><td>Feb 2026</td><td>15,285</td><td>13,907</td></tr>
+              <tr><td>Mar 2026*</td><td>6,313</td><td>5,780</td></tr>
+            </tbody>
+          </table>
+          <p class="muted">Spikes track with promo spend (Aug = Labor Day, Nov = BFCM, Jan = $39). Quiz driven by paid acquisition.</p>
+        </div>
+
+        <div class="subtheme">
+          <h3>Recurring Subscription Orders (ReCharge)</h3>
+          <table>
+            <thead>
+              <tr><th>Month</th><th>ReCharge Orders</th><th>Unique Subscribers</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>May 2025</td><td>12,537</td><td>11,349</td></tr>
+              <tr><td>Jun 2025</td><td>15,336</td><td>13,472</td></tr>
+              <tr><td>Jul 2025</td><td>17,174</td><td>14,939</td></tr>
+              <tr><td>Aug 2025</td><td>18,383</td><td>15,964</td></tr>
+              <tr><td>Sep 2025</td><td>17,830</td><td>15,610</td></tr>
+              <tr><td>Oct 2025</td><td>17,739</td><td>15,280</td></tr>
+              <tr><td>Nov 2025</td><td>19,731</td><td>17,161</td></tr>
+              <tr><td>Dec 2025</td><td>16,612</td><td>14,094</td></tr>
+              <tr><td>Jan 2026</td><td>20,182</td><td>17,265</td></tr>
+              <tr><td>Feb 2026</td><td>18,015</td><td>16,321</td></tr>
+              <tr><td>Mar 2026*</td><td>12,265</td><td>11,895</td></tr>
+            </tbody>
+          </table>
+          <p>Implied active subscriber count: <strong>~14,000&ndash;17,000</strong>. Implied monthly churn rate: <strong>~30&ndash;38%</strong>.</p>
+        </div>
+
+        <div class="subtheme">
+          <h3>Data Limitations</h3>
+          <div class="callout">
+            <strong>True cohort retention is not available via Klaviyo API.</strong> Cohort survival curves require joining subscription start to cancel events at the profile level &mdash; a data warehouse query (Hightouch or ReCharge reporting).
+          </div>
+          <p>Estimated retention curve (based on ~30&ndash;38% monthly churn):</p>
+          <div class="stat-row">
+            <div class="stat"><span class="value green">~65&ndash;70%</span><span class="label">After Month 1</span></div>
+            <div class="stat"><span class="value orange">~45&ndash;50%</span><span class="label">After Month 2</span></div>
+            <div class="stat"><span class="value red">~30&ndash;35%</span><span class="label">After Month 3</span></div>
+            <div class="stat"><span class="value red">~20&ndash;25%</span><span class="label">After Month 4</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================== -->
+    <!-- THEME 9: Housekeeping          -->
+    <!-- ============================== -->
+    <div class="theme" id="t9">
+      <div class="theme-header" onclick="toggle('t9')">
+        <h2><span class="theme-num">9</span> Housekeeping <span class="chevron">&#9654;</span></h2>
+        <span class="progress">0 of 5 investigated</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Metric Bloat</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>199-200/200 metrics &mdash; clean dead metrics before adding new ones</strong>
+              <span class="context">At least 10 cleanup candidates identified (see Theme 5). Priority task.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>Flow Hygiene</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>15+ dead/draining/draft flows &mdash; audit + archive after confirming empty</strong>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Multiple product migration refill variants still live &mdash; consolidate once migration complete</strong>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="detail">
+              <strong>Legacy product flows (Logic, Energy, Creativity, Confidence) still referenced</strong>
+              <span class="context">Flag for cleanup.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="subtheme">
+          <h3>List Hygiene</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>Lists dating to 2019: "DojoMojo Blast", "Get Fit Don't Quit Giveaway", "Talon Uploaded by Edison"</strong>
+              <span class="context">Confirm inactive, suppress/delete.</span>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="detail">
+              <strong>"antidote" appears in segment/flow names</strong>
+              <span class="context">Unclear if legacy brand name or internal code. Need to clarify meaning with team.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div>
+
+  <script>
+    function toggle(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+
+    // Open first theme by default (handled via class in HTML)
+  </script>
 </body>
 </html>
