@@ -618,19 +618,28 @@ Full performance data pulled via Klaviyo Reporting API. See `data/campaign-perfo
 
 ### 7.1 The Headline Numbers
 
-| Channel | Campaigns | Total Sends | Total Revenue | Avg RPR |
-|---------|-----------|------------|---------------|---------|
-| Email (promo) | ~85 | ~10M+ | ~$260K | $0.02 |
-| Email (active customer) | ~5 | ~50K | ~$170K | $3.30 |
-| SMS (all) | 20 | ~562K | ~$25K | $0.04 |
+**Note on active customer revenue:** Revenue attributed to campaigns sent to active subscribers is excluded from this analysis. Active customers have recurring subscriptions — any Placed Order attribution is overwhelmingly auto-renewal revenue that would have occurred without the campaign. Campaigns to active subscribers (Ambassador Program, VIP Invites, etc.) serve engagement and retention purposes and should be evaluated on engagement metrics, not revenue.
 
-The single most important finding: **campaigns to active customers generated more revenue from 50K sends than all promo campaigns generated from 10M+ sends combined.**
+| Channel | Campaigns (non-active) | Total Sends | Total Revenue | Avg RPR |
+|---------|----------------------|------------|---------------|---------|
+| Email (leads/OTP/churned) | ~90 | ~10M+ | ~$260K | $0.02 |
+| SMS (all — no active subs) | 20 | ~562K | ~$25K | $0.04 |
 
-- Ambassador Program (Nov 2025): 25K sends → $91K revenue → **$3.67 RPR**
-- VIP Community Invite (Jan 2025): 9K sends → $28K revenue → **$3.15 RPR**
-- VIP Reminder (Jan 2025): 8K sends → $28K revenue → **$3.38 RPR**
+**Q1 2025 vs Q1 2026 — Acquisition/Winback Campaign Revenue (excl. active customer sends):**
 
-Meanwhile, the entire $39 promo campaign (Jan 2026): 5.2M sends → $51K revenue → **$0.01 RPR**
+| Metric | Q1 2025 (Jan–Mar) | Q1 2026 (Jan–Mar) | Delta |
+|--------|-------------------|-------------------|-------|
+| Email campaigns sent | ~30 | 15 | -50% |
+| Total email sends | ~2.7M | ~5.2M | +93% |
+| Campaign revenue (non-active) | ~$36K | ~$51.5K | +43% |
+| RPR | ~$0.01 | ~$0.01 | Flat |
+| Avg click rate | 0.3–1.4% | 0.2–0.5% | Declining |
+| Avg conversion rate | 0.01–0.06% | 0.02% | Flat |
+| Feb–Mar campaigns | ~16 education sends | **Zero** | Dark |
+
+**The story:** Q1 2026 generated more top-line campaign revenue (+43%), but only because send volume nearly doubled (+93%). Per-recipient efficiency (RPR) stayed flat at $0.01 — twice the effort for the same unit economics. Click rates actually declined, meaning the larger audiences diluted engagement.
+
+More critically: **Q1 2026 went completely dark after January 31.** No email campaigns in February or March 2026. In Q1 2025, there were ~16 education/content campaigns through Feb and March. The absence of a dedicated retention person means the campaign calendar collapsed after the $39 promo ended — zero sustained lead nurture, zero winback, zero brand content for nearly two months.
 
 ---
 
@@ -677,19 +686,19 @@ Meanwhile, the entire $39 promo campaign (Jan 2026): 5.2M sends → $51K revenue
 **What:** Almost zero campaigns target active subscribers. Customers live entirely in flows after purchase.
 
 Active customer campaigns found in 14 months of data:
-1. Community Invite (Jan 2, 2025) — 7,109 recipients, $18,978 revenue
-2. OTP Community Invite (Jan 9, 2025) — 1,225 recipients, $1,059 revenue
-3. VIP Invite (Jan 14, 2025) — 9,025 recipients, $28,347 revenue
-4. VIP Invite Reminder (Jan 15, 2025) — 8,329 recipients, $28,093 revenue
-5. Ambassador Program (Nov 12, 2025) — 24,998 recipients, $91,184 revenue
-6. Stasis Reformulation (Apr 24, 2025) — 459 recipients, $1,612 revenue
-7. Clean Market Partnership (Jun 10, 2025) — 712 active recipients, $1,911 revenue
+1. Community Invite (Jan 2, 2025) — 7,109 recipients
+2. OTP Community Invite (Jan 9, 2025) — 1,225 recipients
+3. VIP Invite (Jan 14, 2025) — 9,025 recipients
+4. VIP Invite Reminder (Jan 15, 2025) — 8,329 recipients
+5. Ambassador Program (Nov 12, 2025) — 24,998 recipients
+6. Stasis Reformulation (Apr 24, 2025) — 459 recipients
+7. Clean Market Partnership (Jun 10, 2025) — 712 recipients
 
-**That's 7 campaigns to active customers in 14 months.** Everything else goes to leads, OTP, or churned subscribers.
+**That's 7 campaigns to active customers in 14 months.** Everything else goes to leads, OTP, or churned subscribers. (Revenue is excluded here because active customer "revenue" in Klaviyo is overwhelmingly auto-renewal attribution, not campaign-driven purchases.)
 
-**Signal strength:** High
-**So what:** Active customers are the highest-RPR audience by a factor of 100x ($3.00+ RPR vs $0.01–0.04 for leads/churned). Yet they receive almost no campaign attention. The Ambassador Program alone ($91K from 25K sends) generated more revenue than the entire 5.2M-send $39 promo campaign ($51K). The implication is clear: a single well-targeted email to active subscribers is worth more than 100 mass blasts to leads.
-**Action:** Build a monthly active subscriber campaign calendar. Content ideas: product education, cross-sell, referral programs, loyalty milestones, new product announcements, usage tips. Even one campaign per month to active subscribers could add $30K+/month in attributed revenue.
+**Signal strength:** Medium-High
+**So what:** Active subscribers are the most engaged audience — open rates on these sends are 50–78%, and click rates are 1.4–16% (vs <1% for lead campaigns). The community/ambassador sends show strong engagement. The gap is that there's no regular cadence — these are one-off sends, not a campaign program. Active customers could benefit from product education, cross-sell awareness, and referral asks.
+**Action:** Build a lightweight monthly active subscriber campaign calendar focused on engagement goals (not revenue targets). Content ideas: product education, cross-sell awareness, referral programs, loyalty milestones, new product announcements, usage tips.
 
 ---
 
@@ -751,8 +760,8 @@ Active customer campaigns found in 14 months of data:
 | Subscription upgrade campaigns | **No** | No campaigns encouraging plan upgrades (1mo → 3mo) |
 
 **Signal strength:** High
-**So what:** The campaign calendar is structurally incomplete. It has exactly two modes: (1) blast promos to leads/churned, and (2) influencer/devotion. There's no middle layer — no campaigns that nurture active customers, encourage loyalty, drive referrals, or promote cross-sell. This is a missed revenue stream worth more than all the promo blasts combined (based on the RPR evidence from the 5 active customer campaigns that do exist).
-**Action:** Build a campaign roadmap that addresses the missing types. Priority order: (1) Active customer monthly sends, (2) Cross-sell campaigns, (3) Referral ask campaign, (4) Sunset sequence for disengaged leads.
+**So what:** The campaign calendar is structurally incomplete. It has exactly two modes: (1) blast promos to leads/churned, and (2) influencer/devotion. There's no middle layer — no campaigns that nurture active customers, encourage loyalty, drive referrals, or promote cross-sell. And as of Feb 2026, even the lead nurture cadence has stopped — the account has gone completely dark on campaigns without a dedicated retention person driving the calendar.
+**Action:** Build a campaign roadmap that addresses the missing types. Priority order: (1) Restart regular lead nurture cadence, (2) Cross-sell campaigns, (3) Referral ask campaign, (4) Sunset sequence for disengaged leads.
 
 ---
 
@@ -799,11 +808,12 @@ Meanwhile, the SMS list shrank 18% over the same period. Email unsubs accumulate
 
 | # | Finding | Signal | Priority |
 |---|---------|--------|----------|
-| 1 | Active customer campaigns generate 100x the RPR of lead/churned blasts — yet they're almost never sent | High | Immediate |
-| 2 | Click rates are sub-1% and worsen as audience size increases — Jan 2026 at 0.2-0.3% | High | Immediate |
-| 3 | Campaign audiences have ballooned 10x (37K → 490K) with no engagement improvement | High | Strategic |
-| 4 | SMS is burning list equity — 18% list attrition in Jan 2026, 5.15% unsub on launch day | High | Immediate |
-| 5 | Product-specific churned winbacks work ($0.25 RPR) — repeat this pattern | Med-High | Strategic |
-| 6 | Missing campaign types: cross-sell, referral, loyalty, re-engagement, subscription upgrade | High | Strategic |
-| 7 | $39 promo ran 15 emails + 8 SMS in 25 days — severe promo fatigue, RPR never moved from $0.01 | High | Process |
-| 8 | Exclusion logic uses different segments across periods — risk of active subscribers seeing discounts | Medium | Audit |
+| 1 | Campaign calendar went completely dark after Jan 31 — zero sends in Feb–Mar 2026 without a retention person | High | Immediate |
+| 2 | Q1 2026 doubled send volume vs Q1 2025 (+93%) but RPR stayed flat at $0.01 — diminishing returns at scale | High | Strategic |
+| 3 | Click rates are sub-1% and worsen as audience size increases — Jan 2026 at 0.2–0.3% | High | Immediate |
+| 4 | Campaign audiences ballooned 10x (37K → 490K) with no engagement improvement | High | Strategic |
+| 5 | SMS is burning list equity — 18% list attrition in Jan 2026, 5.15% unsub on launch day | High | Immediate |
+| 6 | Product-specific churned winbacks work ($0.25 RPR) — best-performing campaign type | Med-High | Strategic |
+| 7 | Missing campaign types: cross-sell, referral, loyalty, re-engagement, subscription upgrade | High | Strategic |
+| 8 | $39 promo ran 15 emails + 8 SMS in 25 days — severe promo fatigue, RPR never moved from $0.01 | High | Process |
+| 9 | Exclusion logic uses different segments across periods — risk of active subscribers seeing discounts | Medium | Audit |

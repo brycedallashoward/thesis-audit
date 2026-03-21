@@ -2,6 +2,8 @@
 
 Pulled via Klaviyo Reporting API on March 21, 2026. Conversion metric: Placed Order (Shopify).
 
+**Important caveat on active customer campaigns:** Revenue figures for campaigns sent to active subscribers (Community Invite, VIP Invite, Ambassador Program, etc.) reflect Klaviyo's attribution window capturing auto-renewal subscription revenue, NOT campaign-driven purchases. These figures should not be cited as campaign performance or compared to lead/winback campaign RPR. Active customer campaigns serve engagement/retention goals and should be evaluated on engagement metrics (open rate, click rate, unsub rate).
+
 ---
 
 ## Email Campaign Performance — By Promotional Period
@@ -141,7 +143,7 @@ Pulled via Klaviyo Reporting API on March 21, 2026. Conversion metric: Placed Or
 | FINAL CALL (Evening) | 2025-12-07 | 138,629 | 47.8% | 0.73% | 0.014% | $2,474 | $0.02 | 0.73% |
 
 **BFCM total (excl Ambassador):** ~1.7M sends, ~$50K revenue, $0.03 avg RPR
-**Ambassador Program alone:** 25K sends, $91K revenue, $3.67 RPR — **more revenue than all other BFCM campaigns combined**
+**Ambassador Program:** 25K sends to active subscribers — revenue figure ($91K) is auto-renewal attribution, not campaign-driven. Evaluate on engagement: 52% open, 1.4% click, 0.44% unsub.
 
 ---
 
