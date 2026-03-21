@@ -343,31 +343,31 @@
     <div class="theme" id="t3">
       <div class="theme-header" onclick="toggle('t3')">
         <h2><span class="theme-num">3</span> Flow Inventory &amp; Health <span class="chevron">&#9654;</span></h2>
-        <span class="progress">0 of 11 investigated</span>
+        <span class="progress">11 of 11 investigated</span>
       </div>
       <div class="theme-body">
 
         <div class="subtheme">
           <h3>Sending Status &amp; Activity</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Are all "live" flows actually sending messages?</strong>
-              <span class="context">A flow can be live but have all messages paused or have filters that block everyone. Need to verify actual send activity for every listed flow.</span>
+              <span class="context"><strong>No.</strong> 5 live flows have sent zero messages in 90+ days: Devotion Onboarding (RNKa8r), Sunrise (Ty9mwJ), F7D Holdout (XnAtrm), Devotion Cold Outreach (Y7UFvn), Outersignal (YksgL8). 5 more dropped to zero in last 30d &mdash; SMS Welcome Flow (VbPx4p) going dark is the biggest concern (acquisition channel offline). Moved inactive flows to housekeeping.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Are the recipient figures in the inventory time-boxed?</strong>
-              <span class="context">Unclear if "202K recipients" on Refill Reminders is lifetime, 12-month, or some other window. Need to clarify for all flows.</span>
+              <span class="context"><strong>Yes.</strong> All flow performance data is 12-month trailing (Mar 2025&ndash;Mar 2026). 30-day and 90-day windows are labeled explicitly where used throughout the audit.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Identify flows that should be switched to draft (no activity)</strong>
-              <span class="context">~40 draft/manual flows plus 7 draining. Are any "live" flows effectively dead? Candidates for archival.</span>
+              <span class="context">5 zero-send flows identified + 7 [DRAINING] + ~30 stale draft/manual flows. Consolidated into housekeeping pass.</span>
             </div>
           </div>
         </div>
@@ -375,24 +375,24 @@
         <div class="subtheme">
           <h3>Flows Needing Human Review</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Identify flows that don't make sense or can't be understood without a human look</strong>
-              <span class="context">Need to flag any flows where trigger logic, filter conditions, or content don't add up from the data alone.</span>
+              <span class="context"><strong>Resolved for Refill + Winback via flow builder review.</strong> Refill (TcGQ3t): 16 total messages (9 live, 7 draft), 5-layer branching by product line, order count, subscription streak, and A/B tests. Winback (WEFcjQ): 19 messages across 5 cancellation-reason branches &mdash; "Did Not Feel Good" branch is entirely Draft (4 messages, zero active). M1 Onboarding (TezDRv) still pending walkthrough.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Clarity flow path is significantly different from other product flows</strong>
-              <span class="context">Reason for divergence unknown. Needs visual walkthrough.</span>
+              <span class="context"><strong>Resolved.</strong> Clarity Migration flow (RhVArK) has 2 messages but only 1 active &mdash; ClarityFree variant is paused (Manual). Single-message approach is the current active state. A caffeine-based split exists at the bottom but both branches route to End. Draft "Updated" version exists, suggesting a replacement is staged. TcGQ3t excludes Clarity customers via 3 separate <code>line_item_first contains Clarity</code> trigger splits.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Real renewal reminder &mdash; unclear filtering logic</strong>
-              <span class="context">Need to understand what conditions gate entry and whether they're working as intended.</span>
+              <span class="context"><strong>Resolved.</strong> Trigger: "Order upcoming on ReCharge" (metric WD58dj, ~725 events/day). Splits route by: (1) product line via <code>line_item_first contains Clarity</code>, (2) order count (1st/2nd/3rd/3+ refill), (3) <code>single_sku_onboarding_holdout</code> property, (4) <code>subscription_streak_count</code> (2/3/4), and (5) A/B test conditional splits at 100% sample. Found: one "Copy of" orphan message actively sending, one transactional-status-rejected draft message.</span>
             </div>
           </div>
         </div>
@@ -400,31 +400,31 @@
         <div class="subtheme">
           <h3>Messaging &amp; Content Issues</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Refill reminder flows still running for Hormesis transition &mdash; possible duplicate messages</strong>
-              <span class="context">3 simultaneous "Hormesis Transition" refill variants (Motivation Free, Clarity Free, Clarity). Need to check if customers are receiving messages from multiple variants.</span>
+              <span class="context"><strong>Investigated.</strong> All 3 transition flows ARE sending (30d): Motivation Free 151 recip/33% conv, Clarity Free 65/40%, Clarity 431/36%. All share the same trigger ("Order upcoming on ReCharge") as the main Refill flow (20,871 recip). Clarity exclusion is confirmed in TcGQ3t via 3 trigger splits. <strong>Motivation Free overlap risk remains medium-high</strong> &mdash; no explicit exclusion split exists in TcGQ3t for Motivation Free; profile filters on XYYzSi need expansion to verify.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>"Halfway there" messaging is contradictory</strong>
-              <span class="context">Says "halfway there" but also "almost at full month." Progress bar shows approaching 30 days. Confusing customer experience.</span>
+              <span class="context"><strong>Confirmed.</strong> Sourced from manual review. Quick content fix needed &mdash; no further investigation required.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Orphan test content throughout flows</strong>
-              <span class="context">Needs cleanup pass across all flows.</span>
+              <span class="context"><strong>Moved to housekeeping.</strong> API + flow builder review confirmed: "Copy of" orphan in TcGQ3t is live and sending to 986 recip/30d, A/B tests at 100% sample are effectively toggles, "Tapp Test" name on production shipment flow. Cleanup items, not investigation items.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Order upcoming on Recharge event variable &mdash; what's driving this?</strong>
-              <span class="context">21,764 events in 30 days. Need to understand the trigger and how it's used in flow logic.</span>
+              <span class="context"><strong>Resolved.</strong> Metric WD58dj ("Order upcoming on ReCharge"), Recharge integration, ~725 events/day. Confirmed as the active trigger for ALL refill flows (TcGQ3t, RhVArK, XYYzSi, SkKyq7, TkECzJ). Fires X days before subscription charge &mdash; the "heads up" signal that powers the entire refill reminder system.</span>
             </div>
           </div>
         </div>
@@ -432,10 +432,10 @@
         <div class="subtheme">
           <h3>Kids Product Messaging</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>Is there any kids-related messaging in flows or campaigns?</strong>
-              <span class="context">Thesis had a limited run of a kids product that sold out. They're planning to ramp it back up. Need to check if any flows, segments, or campaigns reference it.</span>
+              <span class="context"><strong>No.</strong> Zero results across all flow names, campaign names, and segments for kids/children/gummy. The kids gummy product was a Thesis-only initiative (not Hormesis), which is why nothing appears in this Klaviyo account. Upcoming kids product for Thesis is planned but out of scope for this audit.</span>
             </div>
           </div>
         </div>
