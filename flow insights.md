@@ -421,3 +421,389 @@ All three refill-related flows share the same trigger: **"Order upcoming on ReCh
 | 3.6 (Renewal reminder filter logic) | **Resolved.** Trigger is "Order upcoming on ReCharge." Splits route by product line, order count, and subscription streak. |
 | 3.7 (Transition flow overlap) | **Partially resolved.** Clarity exclusion confirmed in TcGQ3t. Motivation Free exclusion NOT confirmed — profile filters need expansion. |
 | 3.10 (Order upcoming metric) | **Resolved.** Confirmed as the active trigger for all refill flows. |
+
+---
+
+### 4.7 Flow TezDRv — M1 Onboarding Flow (Full Structure)
+
+**Trigger:** "When someone **LS-Delivered**" (shipment delivery event — likely Loop Returns, ShipStation, or similar logistics integration)
+**Profile filters:** Present (specific conditions not expanded)
+
+This is a product-routed onboarding flow that splits customers by product line AND subscription status, then sends a 6-email educational sequence per product for subscribers, and a single delivery confirmation for OTP buyers.
+
+---
+
+#### Entry Routing (bottom of flow canvas, evaluated first)
+
+The flow processes incoming delivery events through a cascade of filters:
+
+1. **Wait 10 minutes** after trigger (likely to allow order data to settle)
+2. **Trigger split:** `ItemNames contains Stasis.` → **End** (Stasis products exit immediately — no onboarding for Stasis)
+3. **Trigger split:** `ItemCollections equals Hormesis.` → if NOT Hormesis → **End** (non-Hormesis products exit)
+4. **Conditional split:** `rc_active_subscriber is true` → splits into **Subscriber path** vs **OTP path**
+
+So the entry funnel is: Delivery event → wait 10 min → exclude Stasis → require Hormesis collection → split by subscription status.
+
+---
+
+#### OTP Path (non-subscribers)
+
+OTP buyers get ONLY a delivery confirmation — no educational sequence. Routed by product via 4 trigger splits:
+
+| Trigger Split Condition | Message | Status | Day |
+|------------------------|---------|--------|-----|
+| `ItemNames contains Clarity.` | "It's here: Your Clarity" | **Live** | 0 |
+| `ItemNames contains Motivation.` | "It's here: Your Motivation." | **Live** | 0 |
+| `ItemNames equals Neuroprotection.` | "It's here: Your Neuroprotection" | **Live** | 0 |
+| `ItemNames contains Stress Reset.` | "It's here: Your Stress Reset" | **Live** | 0 |
+
+**Note:** Neuroprotection uses `equals` while the others use `contains` — minor inconsistency that could cause issues if the product name ever has a suffix or variant.
+
+None of these OTP messages are marked Transactional. No UTM tracking differences. No A/B tests. No educational follow-up.
+
+**OTP total: 4 messages, all Live, Day 0 only.**
+
+---
+
+#### Subscriber Path — Product Routing
+
+Subscribers are routed by product name through 4 trigger splits (same pattern as OTP but leading to full sequences):
+
+| Trigger Split | Condition |
+|--------------|-----------|
+| Split 1 | `ItemNames contains Clarity.` |
+| Split 2 | `ItemNames contains Motivation.` |
+| Split 3 | `ItemNames contains Neuroprotection.` |
+| Split 4 | `ItemNames contains Stress Reset.` |
+
+A **fallback** exists: if none of the 4 product names match but the item is in the Hormesis collection (`ItemCollections contains Hormesis.`), a generic "Thesis - Delivery Confirmation" fires. This catches any new products added to the Hormesis collection that haven't been given dedicated sequences yet.
+
+---
+
+#### Subscriber Sequences — Per Product (4 identical structures)
+
+Each product branch follows the **exact same template** with product-specific content:
+
+| Step | Delay | Message Type | Day | Send Type |
+|------|-------|-------------|-----|-----------|
+| 1 | — | Delivery Confirmation | D0 | **Transactional** |
+| 2 | 1 day | *Conditional split: `single_sku_onboarding_holdout is false`* | — | *Holdout gate* |
+| 3 | — | Blend Overview | D1 | Smart sending |
+| 4 | 1 day | Daily Habits | D2 | Smart sending |
+| 5 | 2 days | Reasons to Believe | D4 | Smart/none |
+| 6 | 2 days | Science Explainer | D6 | Smart sending |
+| 7 | 4 days | CX Check In | D10 | Smart sending |
+
+**Every single message across all 4 product branches is Live.** Zero Draft, zero Manual. The entire flow is fully active.
+
+**Holdout mechanism:** Each product branch has a conditional split on `single_sku_onboarding_holdout is false` after the Delivery Confirmation. If the profile property is true (i.e., in holdout), the customer gets the delivery confirmation but skips the educational sequence → End. Same mechanism used in the Refill flow (TcGQ3t).
+
+---
+
+#### Product-Specific Content Breakdown
+
+**Clarity Branch (6 messages, all Live):**
+
+| Day | Subject Line | Notes |
+|-----|-------------|-------|
+| D0 | "It's here: Your Clarity" | Transactional |
+| D1 | "What ingredients make Clarity 'life-changing'?" | Smart sending |
+| D2 | "Your brain after 60 days of Clarity" | **A/B test active** |
+| D4 | "The highest quality. Every. Single. Time." | **A/B test active** |
+| D6 | "Here's what is happening in your brain 🧠" | Smart sending |
+| D10 | "Need help? We're checking in!" | Smart sending |
+
+**Stress Reset Branch (6 messages, all Live):**
+
+| Day | Subject Line | Notes |
+|-----|-------------|-------|
+| D0 | "It's here: Your Stress Reset" | Transactional |
+| D1 | "A true stress reset starts with the ingredients" | **A/B test active** |
+| D2 | "Your brain after 60 days of Stress Reset" | — |
+| D4 | "The highest quality. Every. Single. Time." | — |
+| D6 | "What lower cortisol actually feels like" | Smart sending |
+| D10 | "Need help? We're checking in!" | Smart sending |
+
+**Motivation Branch (6 messages, all Live):**
+
+| Day | Subject Line | Notes |
+|-----|-------------|-------|
+| D0 | "It's here: Your Motivation" | — (not marked Transactional — see note below) |
+| D1 | "What gets you going? The ingredients in Motivation." | Smart sending |
+| D2 | "60 days, Motivation, and you" | Smart sending |
+| D4 | "The highest quality. Every. Single. Time." | — |
+| D6 | "Why you shouldn't wait to be inspired" | — |
+| D10 | "Need help? We're checking in!" | Smart sending |
+
+**Neuroprotection Branch (6 messages, all Live):**
+
+| Day | Subject Line | Notes |
+|-----|-------------|-------|
+| D0 | "It's here: Your Neuroprotection" | Transactional |
+| D1 | "What are top ingredients for 🧠 protection?" | Smart sending |
+| D2 | "Your brain after 60 days of Thesis" | Smart sending (note: says "Thesis" not "Neuroprotection") |
+| D4 | "The highest quality. Every. Single. Time." | — |
+| D6 | "How Neuroprotection powers your brain" | Smart sending |
+| D10 | "Need help? We're checking in!" | Smart sending |
+
+---
+
+#### Message Status Summary
+
+| Status | Count |
+|--------|-------|
+| Live | **29** |
+| Draft | 0 |
+| Manual | 0 |
+| **Total** | **29** |
+
+All 29 messages are Live. This is higher than the "25 messages" figure from the API report — the difference is likely the 4 OTP delivery confirmations which may have been excluded from the original count, or the generic Thesis fallback.
+
+---
+
+#### Critical Findings
+
+**1. The click rate problem is structural, not content.**
+The 1.28% click rate across 57% opens isn't surprising when you look at the content sequence: Delivery Confirmation → Blend Overview → Daily Habits → Reasons to Believe → Science Explainer → CX Check In. This is pure *education* — there are no CTAs driving action. No "shop now," no cross-sell, no referral ask, no review request. The sequence tells customers about their product but never asks them to DO anything. The CX Check In at Day 10 is the only message with an implicit action (reach out for help), and it's the last touchpoint.
+
+**2. "Reasons to Believe" is identical across all 4 products.**
+The subject line "The highest quality. Every. Single. Time." is used verbatim in Clarity, Stress Reset, Motivation, and Neuroprotection branches. If a customer orders multiple products (or switches), they'll see the exact same email. This is the one non-personalized message in an otherwise product-specific sequence.
+
+**3. Motivation Delivery Confirmation is NOT marked Transactional.**
+Clarity, Stress Reset, and Neuroprotection subscriber delivery confirmations are all flagged as Transactional. Motivation's is not. This means Motivation subscribers' delivery confirmation is subject to Smart Sending throttling and consent rules that the other products' are not. This is likely a configuration oversight.
+
+**4. Naming inconsistency: "D15" in message names vs actual Day 10.**
+The CX Check In messages are named "D15" (e.g., "Clarity - CX Check In | D15") but actually fire on Day 10 (D0 + 1 + 1 + 2 + 2 + 4 = 10 days). The naming convention is misleading — either the delays were shortened after the messages were named, or D15 refers to a different calendar logic.
+
+**5. Neuroprotection Daily Habits says "Thesis" not "Neuroprotection."**
+Subject line is "Your brain after 60 days of Thesis" — every other product branch uses the product name ("60 days of Clarity," "60 days of Stress Reset," "60 days, Motivation, and you"). This is likely a templating error from the old Thesis brand.
+
+**6. OTP buyers get zero educational content.**
+OTP customers receive only a delivery confirmation and nothing else. Given OTP is $139 vs subscription at $59/$79, these are high-value customers receiving the least onboarding attention. No blend education, no usage guidance, no subscription conversion pitch.
+
+**7. Three A/B tests are running.**
+- Clarity Daily Habits (D2) — A/B
+- Clarity Reasons to Believe (D4) — A/B
+- Stress Reset Blend Overview (D1) — A/B
+
+Only 3 of 24 subscriber messages have active A/B tests. The tests appear to be on Clarity and Stress Reset only — Motivation and Neuroprotection have no A/B testing.
+
+**8. Smart Sending is inconsistent.**
+Some messages have Smart Sending enabled, others don't, with no apparent pattern. Within the same product branch, D1 might have Smart Sending while D4 doesn't. This could cause some messages to be suppressed by Klaviyo's global rules while adjacent messages in the same sequence are not.
+
+**Signal strength:** High
+**Resolves:** 3.4 (onboarding portion — now fully resolved)
+
+---
+
+### 4.8 Updated Resolution Summary
+
+| Open Item | Status | Finding |
+|-----------|--------|---------|
+| 3.4 (Flows needing human look) | **Fully resolved.** Refill (4.1), Winback (4.4), and Onboarding (4.7) all inspected. |
+| 3.5 (Clarity path divergence) | **Resolved.** Single active message is intentional. |
+| 3.6 (Renewal reminder filter logic) | **Resolved.** Trigger + splits fully mapped. |
+| 3.7 (Transition flow overlap) | **Partially resolved.** Profile filters still need expansion. |
+| 3.10 (Order upcoming metric) | **Resolved.** Confirmed as active trigger for refill flows. |
+
+---
+
+## Section 7: Campaign Analysis (March 21, 2026)
+
+Full performance data pulled via Klaviyo Reporting API. See `data/campaign-performance.md` for raw tables.
+
+**Scope:** 100 email campaigns + 20 SMS campaigns, January 2025 – January 2026.
+
+---
+
+### 7.1 The Headline Numbers
+
+| Channel | Campaigns | Total Sends | Total Revenue | Avg RPR |
+|---------|-----------|------------|---------------|---------|
+| Email (promo) | ~85 | ~10M+ | ~$260K | $0.02 |
+| Email (active customer) | ~5 | ~50K | ~$170K | $3.30 |
+| SMS (all) | 20 | ~562K | ~$25K | $0.04 |
+
+The single most important finding: **campaigns to active customers generated more revenue from 50K sends than all promo campaigns generated from 10M+ sends combined.**
+
+- Ambassador Program (Nov 2025): 25K sends → $91K revenue → **$3.67 RPR**
+- VIP Community Invite (Jan 2025): 9K sends → $28K revenue → **$3.15 RPR**
+- VIP Reminder (Jan 2025): 8K sends → $28K revenue → **$3.38 RPR**
+
+Meanwhile, the entire $39 promo campaign (Jan 2026): 5.2M sends → $51K revenue → **$0.01 RPR**
+
+---
+
+### 7.2 Click Rate Crisis
+
+**What:** Email campaign click rates are critically low across every period and audience segment.
+
+| Period | Audience | Avg Click Rate | Benchmark |
+|--------|----------|---------------|-----------|
+| Feb–Apr 2025 (Education) | Leads (Hightouch Engaged, ~30K) | 0.3–1.1% | 2.5% |
+| May 2025 (Hormesis Launch) | Leads (45–65K) | 0.7–1.0% | 2.5% |
+| Jun 2025 (Churned Winback) | Churned (~6–31K) | 1.0–2.5% | 2.5% |
+| Aug–Sep 2025 (Labor Day) | Leads + Churned (90–113K) | 0.8–1.0% | 2.5% |
+| Nov–Dec 2025 (BFCM) | All engaged leads (92–212K) | 0.4–0.9% | 2.5% |
+| Jan 2026 ($39 promo) | Mass blast (280–490K) | **0.2–0.5%** | 2.5% |
+
+**Signal strength:** High
+**So what:** The click rate problem worsens as audience size increases. The Jan 2026 $39 campaigns blasted to 280–490K recipients — 3–10x the audience of prior campaigns — and click rates collapsed to 0.2–0.3%. This is a classic deliverability/engagement trap: blasting too wide dilutes engagement, which tanks deliverability scores, which further reduces engagement.
+**Action:** Tighten campaign audiences. The Feb–Apr 2025 education series to 25–37K "Hightouch Engaged" was already the right idea — it just wasn't clicking because CTAs are weak. Never send to 490K again.
+
+---
+
+### 7.3 Audience Escalation Problem
+
+**What:** Campaign audiences have expanded 10x over 12 months without proportional engagement improvement.
+
+| Period | Typical Send Size | Audience Composition |
+|--------|------------------|---------------------|
+| Jan 2025 | 90–160K (Leads), 35–50K (OTP/Churn) | Segmented by lifecycle stage |
+| Feb–Apr 2025 | 25–37K | Tightly segmented (Hightouch Engaged) |
+| May–Jun 2025 | 6–65K | Product-specific segments |
+| Aug–Sep 2025 | 53–113K | Leads + Churned mixed |
+| Nov–Dec 2025 | 92–212K | "All engaged leads 365d" — massive |
+| Jan 2026 | **280–490K** | Multiple segments stacked, minimal exclusions |
+
+**Signal strength:** High
+**So what:** The Jan 2026 $39 campaign audiences (`RQHdYz`, `VY2xNs`, `XfAn5r`, `Y3sVU9`, `TBQbsb`, `X6Bkvy`) stack multiple segments to reach 380–490K. These are the biggest campaign sends in Thesis history. But the bigger the audience, the lower the engagement, and the more the sender reputation gets hammered. This is a volume-over-quality strategy that degrades the channel's long-term effectiveness.
+**Action:** Cap campaign audiences. Consider a maximum send threshold (e.g., 150K) and segment more aggressively rather than blasting wider.
+
+---
+
+### 7.4 Active Customer Campaign Void
+
+**What:** Almost zero campaigns target active subscribers. Customers live entirely in flows after purchase.
+
+Active customer campaigns found in 14 months of data:
+1. Community Invite (Jan 2, 2025) — 7,109 recipients, $18,978 revenue
+2. OTP Community Invite (Jan 9, 2025) — 1,225 recipients, $1,059 revenue
+3. VIP Invite (Jan 14, 2025) — 9,025 recipients, $28,347 revenue
+4. VIP Invite Reminder (Jan 15, 2025) — 8,329 recipients, $28,093 revenue
+5. Ambassador Program (Nov 12, 2025) — 24,998 recipients, $91,184 revenue
+6. Stasis Reformulation (Apr 24, 2025) — 459 recipients, $1,612 revenue
+7. Clean Market Partnership (Jun 10, 2025) — 712 active recipients, $1,911 revenue
+
+**That's 7 campaigns to active customers in 14 months.** Everything else goes to leads, OTP, or churned subscribers.
+
+**Signal strength:** High
+**So what:** Active customers are the highest-RPR audience by a factor of 100x ($3.00+ RPR vs $0.01–0.04 for leads/churned). Yet they receive almost no campaign attention. The Ambassador Program alone ($91K from 25K sends) generated more revenue than the entire 5.2M-send $39 promo campaign ($51K). The implication is clear: a single well-targeted email to active subscribers is worth more than 100 mass blasts to leads.
+**Action:** Build a monthly active subscriber campaign calendar. Content ideas: product education, cross-sell, referral programs, loyalty milestones, new product announcements, usage tips. Even one campaign per month to active subscribers could add $30K+/month in attributed revenue.
+
+---
+
+### 7.5 SMS Channel Assessment
+
+**What:** SMS is used exclusively for promotional blasts. No lifecycle SMS exists.
+
+| Period | Sends | Revenue | RPR | List Attrition |
+|--------|-------|---------|-----|----------------|
+| Labor Day (Aug–Sep 2025) | 55K | $10,701 | $0.20 | High (1.3–3.9% unsub/send) |
+| BFCM (Nov–Dec 2025) | 149K | $4,732 | $0.03 | Moderate (0.8–2.1% unsub/send) |
+| $39 Promo (Jan 2026) | 358K | $9,310 | $0.03 | **Critical (5.15% launch day)** |
+
+**Signal strength:** High
+**So what:**
+- The Jan 6 SMS launch unsub rate (5.15%) means ~2,600 permanent SMS list losses in a single campaign. List shrank 18% (50.7K → 41.4K) over the Jan promo period from cumulative unsubs.
+- SMS click rates are high (15–18%) but conversion rates are near zero (0.03–0.07%). People tap the link but don't buy. Either the landing page isn't converting or the offer framing in SMS doesn't match the intent state of SMS subscribers.
+- Labor Day SMS was the highest-performing period ($0.20 RPR) — smaller, more targeted audiences to Leads/Churned/OTP segments. Jan 2026 sent to the full "SMS subscribers" segment with far worse results.
+- BFCM SMS mid-sale reminder had literally 0 conversions from 13.8K sends.
+**Action:** Stop using SMS as a volume blast channel. Consider SMS for high-intent moments only (cart abandonment, shipping, time-sensitive one-day offers). The list erosion from weekly promo SMS makes the channel unsustainable long-term.
+
+---
+
+### 7.6 Hormesis Churned Winback — The Bright Spot
+
+**What:** The June 2025 product-specific churned winback campaigns were the best-performing non-active campaign series.
+
+| Campaign | Recipients | Click Rate | Conv Rate | RPR |
+|----------|-----------|-----------|-----------|-----|
+| Stress Reset (Churned) | 5,499 | 2.41% | 0.621% | **$0.54** |
+| Clarity Follow-up (Churned) | 2,005 | 2.50% | 0.549% | $0.33 |
+| Clarity (Churned #2) | 31,483 | 1.51% | 0.429% | $0.29 |
+| Clarity (Churned #1) | 6,220 | 1.28% | 0.292% | $0.21 |
+| Motivation (Churned) | 25,119 | 0.99% | 0.257% | $0.16 |
+
+**Total:** ~70K sends, $17,671 revenue, $0.25 avg RPR
+
+**Signal strength:** Medium-High
+**So what:** These campaigns prove that product-specific messaging to churned subscribers works. The $0.25–0.54 RPR is 25–54x better than the $0.01 RPR of the Jan 2026 mass blasts. The key ingredients: (1) targeted audience (churned subscribers who used a specific product), (2) product-specific messaging (not generic discount), (3) reasonable audience size (5–31K, not 400K). Stress Reset in particular outperformed everything — likely because "stress" is a compelling re-entry point.
+**Action:** Repeat this playbook. Run quarterly product-specific winback campaigns. Prioritize Stress Reset messaging for churned audiences.
+
+---
+
+### 7.7 Campaign Calendar Gaps
+
+**What:** Several standard campaign types are entirely absent.
+
+| Campaign Type | Present? | Notes |
+|---------------|----------|-------|
+| New product launches | Yes | Hormesis relaunch (May 2025) |
+| Seasonal promos (BFCM, Labor Day) | Yes | Well-executed cadence |
+| Lead nurture / education | Yes | Feb–Apr 2025 weekly series |
+| Active customer education | **No** | Zero educational campaigns to active subscribers |
+| Cross-sell / upsell campaigns | **No** | No campaigns promoting additional products to existing customers |
+| Referral campaigns | **No** | No referral ask campaigns found |
+| Loyalty / milestone campaigns | **No** | No "you've been with us X months" or loyalty tier campaigns |
+| Re-engagement / sunset | **No** | No structured sunset campaign to clean disengaged profiles |
+| Post-purchase NPS / feedback | **No** | No survey or feedback campaigns |
+| Subscription upgrade campaigns | **No** | No campaigns encouraging plan upgrades (1mo → 3mo) |
+
+**Signal strength:** High
+**So what:** The campaign calendar is structurally incomplete. It has exactly two modes: (1) blast promos to leads/churned, and (2) influencer/devotion. There's no middle layer — no campaigns that nurture active customers, encourage loyalty, drive referrals, or promote cross-sell. This is a missed revenue stream worth more than all the promo blasts combined (based on the RPR evidence from the 5 active customer campaigns that do exist).
+**Action:** Build a campaign roadmap that addresses the missing types. Priority order: (1) Active customer monthly sends, (2) Cross-sell campaigns, (3) Referral ask campaign, (4) Sunset sequence for disengaged leads.
+
+---
+
+### 7.8 Exclusion Logic Review
+
+**What:** Active subscriber exclusion from discount campaigns appears mostly intact but has gaps.
+
+The `Yb4N4p` segment ("current active subscribers") is excluded from most Jan 2026 campaigns. However:
+
+1. **Jan 6 Launch and Jan 8 emails** exclude `Yb4N4p` but the exclusion list is shorter (no `VrBx6t`, `Wtbmsd`, `Xpbbig` that appear in later sends). Early sends may have hit segments that were later suppressed.
+2. **BFCM campaigns** use `X4vtnR` and `X7JcBs` as exclusions but NOT `Yb4N4p` — different exclusion segment, unclear if equivalent.
+3. **Labor Day campaigns** exclude `Tb44U7` (All Subscribers Active), not `Yb4N4p`. Again, different segment — may have coverage gaps.
+4. **No campaign explicitly confirms** that active subscribers paying $79/mo are suppressed from the $39 offer. If any active subscriber received the $39 campaign, it would be a direct incentive to cancel and re-subscribe at a lower price.
+
+**Signal strength:** Medium
+**So what:** The exclusion logic uses different segment IDs across different campaign periods. This suggests segments were created ad hoc rather than using a single canonical "suppress active subscribers" segment. The risk is coverage gaps — if `Yb4N4p` was created in Jan 2026 but BFCM campaigns used `X4vtnR`, the BFCM exclusion may not have caught the same profiles.
+**Action:** Audit whether active subscribers received any discount campaign in the last 12 months. Create one canonical exclusion segment and use it consistently. Confirm $39 campaign did not reach $79/mo subscribers.
+
+---
+
+### 7.9 Promo Fatigue & Diminishing Returns
+
+**What:** The $39 January campaign shows clear fatigue signals across its 25-day run.
+
+| Metric | Launch (Jan 6-8) | Mid-Run (Jan 15-20) | Final Push (Jan 29-31) |
+|--------|-----------------|--------------------|-----------------------|
+| Recipients | 485–489K | 283–381K | 236–393K |
+| Open Rate | 38–39% | 36–43% | 37–50% |
+| Click Rate | 0.27–0.30% | 0.23–0.45% | 0.24–0.33% |
+| Conv Rate | 0.019–0.021% | 0.016–0.025% | 0.018–0.026% |
+| RPR | $0.01 | $0.01 | $0.01 |
+
+RPR stayed flat at $0.01 across the entire 25-day run. No creative, no subject line, and no urgency tactic ("48 hours left," "FINAL DAY," "4 hours left") moved the needle. The audience was saturated by the launch emails and every subsequent send was noise.
+
+Meanwhile, the SMS list shrank 18% over the same period. Email unsubs accumulated at 0.2–0.5% per send across 15 sends — cumulative email list damage of ~3–4% of the audience.
+
+**Signal strength:** High
+**So what:** 15 emails and 8 SMS messages in 25 days for the same offer is too many. Each additional send generated roughly the same $2.5–5K in revenue but cost permanent list attrition. The last 10 emails likely generated negative ROI when you factor in deliverability damage and list erosion.
+**Action:** Cap promo campaigns at 5–7 emails maximum per offer period. Use the remaining touchpoints for education/content that supports the offer without repeating the same CTA.
+
+---
+
+### 7.10 Section 7 Summary — Top Campaign Findings
+
+| # | Finding | Signal | Priority |
+|---|---------|--------|----------|
+| 1 | Active customer campaigns generate 100x the RPR of lead/churned blasts — yet they're almost never sent | High | Immediate |
+| 2 | Click rates are sub-1% and worsen as audience size increases — Jan 2026 at 0.2-0.3% | High | Immediate |
+| 3 | Campaign audiences have ballooned 10x (37K → 490K) with no engagement improvement | High | Strategic |
+| 4 | SMS is burning list equity — 18% list attrition in Jan 2026, 5.15% unsub on launch day | High | Immediate |
+| 5 | Product-specific churned winbacks work ($0.25 RPR) — repeat this pattern | Med-High | Strategic |
+| 6 | Missing campaign types: cross-sell, referral, loyalty, re-engagement, subscription upgrade | High | Strategic |
+| 7 | $39 promo ran 15 emails + 8 SMS in 25 days — severe promo fatigue, RPR never moved from $0.01 | High | Process |
+| 8 | Exclusion logic uses different segments across periods — risk of active subscribers seeing discounts | Medium | Audit |
