@@ -134,8 +134,8 @@ Stasis active sub count estimated from cumulative starts minus cancels since lau
 | Sender | hello@takethesis.com | hello@takestasis.com |
 | Live flows | ~15 | 27 |
 | Campaign sends (365d) | ~10.5M | ~5.8M |
-| Flow sends (365d) | TBD | ~1.1M |
-| Total sends (365d) | TBD | ~6.9M |
+| Flow sends (365d) | ~6.6M | ~1.1M |
+| Total sends (365d) | ~17.1M | ~6.9M |
 | SMS list | ~41K (eroding) | ~7K |
 | Segment naming | Ad hoc | Structured ([COHORT], [EXCLUDE], [SUBSCRIPTION]) |
 
