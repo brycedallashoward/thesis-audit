@@ -552,7 +552,7 @@
     <div class="theme" id="t4">
       <div class="theme-header" onclick="toggle('t4')">
         <h2><span class="theme-num">4</span> Okendo &amp; Review Program <span class="chevron">&#9654;</span></h2>
-        <span class="progress">3 of 7 investigated</span>
+        <span class="progress">7 of 7 investigated</span>
       </div>
       <div class="theme-body">
 
@@ -606,17 +606,17 @@
         <div class="subtheme">
           <h3>Structural Issues</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>100% of reviews come from "review-request-email" &mdash; zero organic/on-site submission</strong>
-              <span class="context">No customers are leaving reviews voluntarily on the site. Need to investigate on-site review widget configuration.</span>
+              <strong>100% of reviews come from "review-request-email" &mdash; by design</strong>
+              <span class="context">Confirmed via 133-event sample: every review has Source = "review-request-email". This is intentional &mdash; no on-site open review box wanted for this product category. Not a gap.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Nearly zero photo reviews (1 out of 200)</strong>
-              <span class="context">UGC is completely untapped. Review incentive structure isn't driving photos. Need to review what incentive is offered and whether photo prompts exist.</span>
+              <strong>Zero photo reviews &mdash; not applicable</strong>
+              <span class="context">Confirmed 0 of 133 sampled reviews include photos. Photo/UGC reviews are not relevant for nootropics &mdash; not a gap to address.</span>
             </div>
           </div>
           <div class="check-item">
@@ -627,16 +627,16 @@
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Zaymo integration not visible in review flows</strong>
-              <span class="context">Zaymo is actively firing events (3.8K Shown Swap Offer, 2.4K Interactions, 2.2K Delay Subscription in 30 days) but isn't connected to the review experience.</span>
+              <strong>Zaymo metrics are in-email action outcomes, not flow triggers</strong>
+              <span class="context">Zaymo is an interactive module embedded in emails. Its metrics (Swap Offer, Interaction, Delay) are results of in-email actions &mdash; not standalone events needing their own flows. No gap here.</span>
             </div>
           </div>
         </div>
 
         <div class="callout warning">
-          <strong>Opportunity:</strong> Review request flow needs optimization (better timing, incentive, CTA). New products need dedicated review generation campaigns. Photo/UGC component is completely untapped.
+          <strong>Opportunity:</strong> Review request flow needs optimization (better timing, incentive, CTA). 0.88% completion rate with 1% click &mdash; the flow itself is the bottleneck. New products need dedicated review generation campaigns.
         </div>
       </div>
     </div>
@@ -647,7 +647,7 @@
     <div class="theme" id="t5">
       <div class="theme-header" onclick="toggle('t5')">
         <h2><span class="theme-num">5</span> Metrics &amp; Integrations <span class="chevron">&#9654;</span></h2>
-        <span class="progress">2 of 4 investigated</span>
+        <span class="progress">4 of 4 investigated</span>
       </div>
       <div class="theme-body">
 
@@ -725,10 +725,10 @@
         <div class="subtheme">
           <h3>Key Metric Flags</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Charge processing failed on ReCharge: 11,899 events (30d)</strong>
-              <span class="context">That's ~60% of the volume of successful Recharge orders (19.5K). Even if dunning is handled in Recharge, this volume is alarming and needs investigation.</span>
+              <strong>Charge processing failed on ReCharge: 11,899 events (30d) &mdash; reporting artifact</strong>
+              <span class="context">High volume is inflated by retry events (each retry logs a separate failure). Dunning is handled in Recharge, not Klaviyo. Not a revenue leak or Klaviyo gap. Sample shows charge_attempts ranging 1-11 per charge, with error types: Insufficient Funds (45%), Payment Declined (29%), Purchase Type Not Supported (8%), Max Retries Reached (7%).</span>
             </div>
           </div>
           <div class="check-item">
@@ -750,10 +750,10 @@
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Dead/junk metrics identified for cleanup</strong>
-              <span class="context">Placed Order (API) &mdash; 0 events. Checkout Order Placed (API) &mdash; 0 events. Thesis First/Recurring/One-Time Sub Order &mdash; stopped mid-2025. Formula variants &mdash; never fired. Subscription Payment Failed &mdash; 0 (broken). Subscription Canceled (custom) &mdash; 0 (dupe). "a" &mdash; test metric. Total: ~10 candidates minimum.</span>
+              <strong>Dead/junk metrics: ~23 cleanup candidates identified (housekeeping)</strong>
+              <span class="context">Verified via 12-month aggregates. 15 completely dead (0 events): Placed Order/Started Checkout/Ordered Product (API dupes), Formula First/Recurring/One-Time Sub Order, Subscription Payment Failed, Subscription Canceled (custom), "a" (test), 5 Friendbuy metrics. 4 legacy Thesis metrics stopped mid-2025. 4 Tapp metrics spiked Sep 2025 then died. Deleting all 23 frees account from 200/200 to ~177/200. Cleanup to be done in Klaviyo UI.</span>
             </div>
           </div>
         </div>
@@ -766,7 +766,7 @@
     <div class="theme" id="t6">
       <div class="theme-header" onclick="toggle('t6')">
         <h2><span class="theme-num">6</span> Gaps &amp; Opportunities <span class="chevron">&#9654;</span></h2>
-        <span class="progress">1 of 9 investigated</span>
+        <span class="progress">2 of 9 investigated</span>
       </div>
       <div class="theme-body">
 
@@ -798,10 +798,10 @@
         <div class="subtheme">
           <h3>Conversion &amp; Expansion Gaps</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
               <strong>OTP &rarr; Subscription conversion: no flow exists</strong>
-              <span class="context">OTP customers ($129) have no conversion path to subscription ($59/mo). Need OTP vs sub breakdown first to size this opportunity.</span>
+              <span class="context">Confirmed no conversion flow. OTP is ~3% of orders (~$60K/mo, ~465 orders at $129). At 10% conversion to sub ($59/mo) = ~$44K incremental ARR; at 20% = ~$88K ARR. Meaningful but not top priority vs. winback/onboarding rebuilds. Opportunity sized and parked.</span>
             </div>
           </div>
           <div class="check-item">
@@ -1096,17 +1096,17 @@
     <div class="theme" id="t9">
       <div class="theme-header" onclick="toggle('t9')">
         <h2><span class="theme-num">9</span> Housekeeping <span class="chevron">&#9654;</span></h2>
-        <span class="progress">0 of 5 investigated</span>
+        <span class="progress">5 of 5 investigated</span>
       </div>
       <div class="theme-body">
 
         <div class="subtheme">
           <h3>Metric Bloat</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag noted">Noted</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>199-200/200 metrics &mdash; clean dead metrics before adding new ones</strong>
-              <span class="context">At least 10 cleanup candidates identified (see Theme 5). Priority task.</span>
+              <strong>199-200/200 metrics &mdash; 9 of 10 confirmed dead via API</strong>
+              <span class="context">Queried all flagged metrics Jun 2025&ndash;Mar 2026. Placed Order (API) MHnLLf: 0 events. Checkout Order Placed R6Tcmn: 156 in Jun then 0. Thesis First Sub X29XjE: 0. Thesis Recurring Sub WhdHbk: 573 in Jun then 0. Thesis OTP VDuBqr: 0. Formula First Sub SyE7cM: 0. Formula Recurring Sub UhzfaS: 0. Subscription Payment Failed TFwpvU: 0 (dunning in Recharge). Subscription Canceled UwyqUs: 0. All safe to delete. Remaining: duplicate &ldquo;Active on Site&rdquo; needs visual ID in Klaviyo UI. Deleting 9 frees slots to ~190/200.</span>
             </div>
           </div>
         </div>
@@ -1114,15 +1114,17 @@
         <div class="subtheme">
           <h3>Flow Hygiene</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>15+ dead/draining/draft flows &mdash; audit + archive after confirming empty</strong>
+              <strong>41 draft flows audited &mdash; full inventory pulled</strong>
+              <span class="context">7 [DRAINING] flows (draining 6&ndash;10 months, likely empty &mdash; verify then archive). 7 &ldquo;Updated |&rdquo; flows (staged replacements &mdash; confirm if these should go live or be deleted). 2 Rebrand orphans, 4 Social Snowball clones, 2 BFCM one-offs, 3 test/scratch flows, 3 legacy product flows, 13 other incomplete drafts.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Multiple product migration refill variants still live &mdash; consolidate once migration complete</strong>
+              <strong>3 product migration refill variants confirmed still live</strong>
+              <span class="context">Motivation Free (Jan 24), Clarity Free (Feb 18), Clarity (Mar 4) &mdash; all live, created Jan&ndash;Mar 2026. Plus 1 test variant from Nov 2025 (draft, safe to archive). Need Thesis team to confirm migration status before consolidating into main Refill Reminders flow.</span>
             </div>
           </div>
           <div class="check-item">
@@ -1137,17 +1139,17 @@
         <div class="subtheme">
           <h3>List Hygiene</h3>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>Lists dating to 2019: "DojoMojo Blast", "Get Fit Don't Quit Giveaway", "Talon Uploaded by Edison"</strong>
-              <span class="context">Confirm inactive, suppress/delete.</span>
+              <strong>Legacy lists audited with live profile counts</strong>
+              <span class="context">DojoMojo Blast: 0 profiles (delete). Get Fit Don&rsquo;t Quit: 2 (delete). Stay Strong Live Long: 4 (delete). Talon Uploaded by Edison: 563 profiles (needs confirmation before deleting). Also found: Accepts Marketing/LimeLight (155 profiles, pre-Shopify?), Insights - Current Customers (0), CSTN Test (1), [KL TEST] (1), plus several 2020 cancel-sample lists. Most safe to delete; Talon + Accepts Marketing need human check.</span>
             </div>
           </div>
           <div class="check-item">
-            <div class="status"><span class="status-tag investigate">Investigate</span></div>
+            <div class="status"><span class="status-tag done">Done</span></div>
             <div class="detail">
-              <strong>"antidote" appears in segment/flow names</strong>
-              <span class="context">Unclear if legacy brand name or internal code. Need to clarify meaning with team.</span>
+              <strong>&ldquo;antidote&rdquo; = Antidote agency investigating the account</strong>
+              <span class="context">3 flows with [antidote] tag: browse abandonment (draft, Nov 2025), Auto-Suppression of TikTok Profiles (live, Feb 2026), 50% Off Lead Flow (live, Feb 2026). All recent agency work, not legacy. No cleanup needed.</span>
             </div>
           </div>
         </div>
