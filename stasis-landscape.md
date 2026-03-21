@@ -202,7 +202,7 @@ Stasis segments are **well-organized** with clear naming conventions:
 
 ### What's Working
 
-1. **Lead Flow is exceptional.** $107K revenue, 6.4% first-message conversion rate, $6.74 RPR. This is the best-performing welcome flow across both Thesis and Stasis accounts.
+1. **Lead Flow is solid.** $107K acquisition revenue, 6.4% first-message conversion rate. Expected performance for a DTC subscription brand with a quiz funnel feeding warm leads — not exceptional, but healthy and working as intended.
 
 2. **Segment architecture is clean.** Well-named [COHORT], [EXCLUDE], [SUBSCRIPTION] conventions. Tiered suppression. SMS-specific segments. Flow-overlap prevention. This is a modern, well-maintained setup.
 
@@ -227,3 +227,11 @@ Stasis segments are **well-organized** with clear naming conventions:
 6. **Winback is decent but not great.** $7.5K from 33K sends ($0.23 RPR) is similar to Thesis winback performance. Room for product-specific winback campaigns.
 
 7. **Campaign click rates still low.** 0.2–0.6% click rates, same open-to-click gap as Thesis. Subject lines work but creative isn't driving action.
+
+8. **Abandoned Checkout flow is weak on fundamentals.** The first email doesn't say anything about why someone should try the product — it's a generic cart reminder. No value props, no social proof, no ADHD-specific messaging. Email two should also be moved up a day. This is a basics problem — the flow exists but the content isn't doing the job.
+
+9. **No naming consistency between Thesis and Stasis.** Thesis flows/campaigns use one naming convention, Stasis uses another (mix of date-prefixed, descriptive, [antidote] tags). When we bring these accounts together for a unified view, naming needs to be standardized.
+
+10. **Browse Abandonment doesn't split Kids vs Adults.** The browse abandonment flow (SBYanD) triggers off Viewed Product but doesn't filter or split by product line. A parent browsing Stasis Kids capsules gets the same browse abandon sequence as someone browsing adult Day/Night formulas. Kids should be treated as a hero product experience with its own messaging path.
+
+11. **Lead Flow cited as "exceptional" needs reframing.** $107K is valid acquisition revenue (leads converting to first purchase), but calling it "exceptional" overstates it — a strong welcome flow converting at 5–7% is expected for a DTC subscription brand with a quiz funnel feeding warm leads. The performance is good and healthy, not uniquely remarkable.

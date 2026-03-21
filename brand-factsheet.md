@@ -75,62 +75,63 @@ Two products meant to be stacked with stimulant use:
 | **Stasis Day** | Upon waking, with your stimulant | 23 naturally derived ingredients (nootropics, adaptogens, antioxidants). Protects against neurotoxicity, steadier focus. |
 | **Stasis Night** | Before bed | 19 naturally derived ingredients. Reduces crash, promotes sleep, supports mood recovery. |
 
-**Also sold:** Kids gummy product (for children on stimulant medication)
+### Stasis Kids (new product line, late 2025)
+
+- Kids capsule for children on stimulant medication
+- Launched ~late 2025, dedicated Klaviyo infrastructure (lists, flows, quiz) in place by early 2026
+- Separate kids lead flow, post-purchase flow, backorder flow, waitlist confirmation
+- Kids Announcement campaign (Mar 5, 2026): $15.5K from 53K sends ($0.29 RPR)
+- Kids Quiz live (Feb 2026)
 
 **Pricing:**
-- Subscription: $79/month
+- Subscription: $79/month (Day + Night Set)
 - One-time: $119
 - "Stasis Night Retention Gift" — being cross-sold/gifted with new Thesis subscription orders
 
+**Stasis Klaviyo Account (separate from Thesis):**
+- Account ID: YsCgQB, hello@takestasis.com
+- Own Shopify + ReCharge + Klaviyo stack
+- Okendo (full suite: reviews + referrals + loyalty), Zaymo, Superfiliate, Hightouch, Gorgias
+- 27 live flows, ~100 total (many draft iterations)
+- Well-organized segment architecture: [COHORT], [EXCLUDE], [SUBSCRIPTION] naming conventions
+- 157 email campaigns + 37 SMS campaigns (last 365 days)
+- Campaign RPR: $0.058 (3x Thesis)
+- Campaign calendar active through March 2026 (unlike Thesis which went dark after Jan 31)
+
 **Volume vs. Thesis:**
-- ~10% of total order volume
-- Higher AOV ($95 vs. $80 for Thesis)
-- Flows through the same Klaviyo/Shopify/ReCharge instance
-
----
-
-## What "Hormesis" Is
-
-**Biologically:** Hormesis is the phenomenon where a low dose of a stressor triggers a beneficial adaptive response — even though a high dose of the same stressor would be harmful. Exercise is the textbook example: small amounts of muscle stress → stronger muscle. Cold exposure, fasting, and certain plant compounds work the same way. It's a real, well-documented concept in biology.
-
-**In Klaviyo:** "Hormesis" was Thesis's internal codename for their **May 2025 product relaunch and rebrand.** This was a significant moment:
-- Formulas were reformulated (stronger dosages, refined over a year of testing and customer feedback)
-- Fewer pills per dose
-- New packaging: glass jars with day-tracking lids
-- Products renamed: Logic → Clarity, Energy → Motivation, Creativity/Confidence → Stress Reset/Neuroprotection (approximately)
-- Official launch date: May 13, 2025
-
-The name "Hormesis" for the project is conceptually intentional — the brand put itself through a stressor (major reformulation + rebrand) to come out stronger. Every flow in Klaviyo with "Hormesis" in the name was built for or during this relaunch. The "[DRAINING]" flows are the old pre-Hormesis flows being emptied out.
-
----
-
-## The Lifecycle Program — What It Actually Is
-
-Given what the brand is:
-
-**The core retention problem is habit formation.** Thesis works if you take it consistently. The quiz sets expectations but the product only proves itself over weeks of use. If someone takes it inconsistently or stops, they don't get results — and they churn. The job of lifecycle is to:
-
-1. Get the customer to actually use the product correctly
-2. Convince them it's working before the first refill decision (day 20-25)
-3. Remind them to refill at the right time
-4. Keep them from canceling when life gets busy or they don't feel an immediate effect
-5. Expand them into a second product (Stasis cross-sell, or a second Thesis formula)
-
-**Why the subscription model makes sense here:** Nootropics require consistent use to show results. A 30-day trial is necessary. OTP → no repeat purchase incentive. Subscription → forces the consistent use the product needs to prove itself. But this also means: churn = the customer gave up before the product had a chance to work.
-
-**Why churn is structural:** Most of the audience is first-time nootropics users. They're buying hope and a quiz recommendation, not a known outcome. If the first 30 days don't feel dramatically different, canceling is easy. This is a belief and habit problem more than a product problem.
+- Separate Klaviyo account (not shared)
+- Smaller audience (~75K engaged leads vs Thesis ~490K)
+- Higher campaign efficiency (smaller, more targeted sends)
+- SMS list is ~7K (vs Thesis ~41K)
 
 ---
 
 ## Key Numbers to Know
 
+### Thesis (Klaviyo account)
+
 | Metric | Value |
 |--------|-------|
-| Revenue/month | ~$2M (Shopify Placed Order) |
+| Revenue/month | ~$2M (Shopify Placed Order, company-wide) |
 | Refill cadence | Every 25 days |
 | New subscribers (Jan 2026) | 7,584 — best month in 13 months |
 | Net subscriber status | Negative 10 of 13 months tracked |
 | Subscription price | $59 first month, $79/month after |
 | OTP price | $129 |
 | Top product | Clarity (~47% of product events) |
-| Stasis share | ~10% of orders, $95 AOV |
+| Campaign RPR (non-active) | $0.01–0.02 |
+| Campaign calendar | Dark after Jan 31, 2026 — no retention person |
+| Q1 2026 campaign revenue | ~$51.5K (Jan only, 5.2M sends) |
+
+### Stasis (Klaviyo account)
+
+| Metric | Value |
+|--------|-------|
+| Flow revenue (365d) | $284K (lead flow is $107K of this) |
+| Campaign revenue (365d) | $325K from 5.6M sends |
+| Campaign RPR | $0.058 |
+| SMS revenue (365d) | $10K from 152K sends |
+| SMS list size | ~7K |
+| Active flows | 27 live |
+| Top acquisition flow | [25] Lead Flow — 6.4% conversion |
+| Kids product status | Live (flows, quiz, lists, first campaign) |
