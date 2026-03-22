@@ -636,6 +636,30 @@
     .channel.email { background: rgba(9, 105, 218, 0.12); color: var(--accent); }
     .channel.sms { background: rgba(63, 185, 80, 0.12); color: var(--green); }
     .channel.action { background: rgba(210, 153, 34, 0.12); color: var(--orange); }
+
+    /* Klaviyo deep links */
+    .kl {
+      display: inline-block;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 0.25rem;
+      opacity: 0.5;
+      transition: opacity 0.15s, color 0.15s;
+      vertical-align: middle;
+      position: relative;
+      top: -1px;
+    }
+
+    .kl:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    .kl::after {
+      content: '↗';
+      font-size: 0.72rem;
+    }
   </style>
 </head>
 <body>
@@ -881,7 +905,11 @@
       </div>
 
       <p class="narrative">
-        Kids sold out in the test run, so demand isn&rsquo;t the question. The question is what happens after they buy. Only 3 of 10 lifecycle touchpoints are Kids-specific. The other 7 send parents the same adult ADHD content, including post-purchase (no Kids flow live) and backorder (built but sitting in draft). The quiz asks &ldquo;shopping for you or a child?&rdquo; and that answer never reaches Klaviyo.
+        Kids sold out in the test run, so demand isn&rsquo;t the question. The question is what happens after they buy. Only 3 of 10 lifecycle touchpoints are Kids-specific. The other 7 send parents the same adult ADHD content, including post-purchase (no Kids flow live) and backorder (built but sitting in draft).
+      </p>
+
+      <p class="narrative">
+        There is one working parent identification path: a Kids-specific pop-up that only shows on the Kids URL feeds the <code>[Stasis Kids Email] [antidote]</code> segment, and that segment is growing daily. So parents who land directly on the Kids page are being captured. But anyone who enters through the main quiz and selects &ldquo;shopping for a child&rdquo; gets no parent segmentation &mdash; that quiz response doesn&rsquo;t sync to Klaviyo. The pop-up covers one entry point; the quiz gap misses everyone else.
       </p>
 
       <div class="kids-split">
@@ -947,8 +975,8 @@
           <li><strong>Kids browse abandonment:</strong> parent messaging with safety data, clinical backing, other parents' experiences</li>
           <li><strong>Kids checkout flow:</strong> parental concerns, not adult self-optimization</li>
           <li><strong>Kids post-purchase journey:</strong> what to look for in the first week, dosing, when to adjust</li>
-          <li><strong>Quiz data:</strong> the &ldquo;shopping for you or a child&rdquo; quiz response needs to sync into Klaviyo so it can drive segmentation across all flows</li>
-          <li><strong>Segment enforcement:</strong> parents should never receive adult ADHD creative</li>
+          <li><strong>Quiz data gap:</strong> the Kids pop-up on the Kids URL is working (segment growing daily), but the main quiz&rsquo;s &ldquo;shopping for you or a child&rdquo; response doesn&rsquo;t sync to Klaviyo. Parents who enter through the quiz instead of the Kids page get no segmentation. Fix the quiz &rarr; Klaviyo pipe to close the gap.</li>
+          <li><strong>Segment enforcement:</strong> parents should never receive adult ADHD creative, regardless of how they entered</li>
         </ul>
       </div>
     </div>
