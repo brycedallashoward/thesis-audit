@@ -859,8 +859,8 @@
             <div class="stage-label">Retention / Refill</div>
             <div class="stage-content">
               <div class="stage-item"><span class="ch">✉️</span> <span class="st live">live</span> Subscription reminders (Bundle, Day, Night, Kids, VIP) <a class="kl" href="https://www.klaviyo.com/flow/X9rNsj" target="_blank" title="Open in Klaviyo"></a></div>
-              <div class="stage-item"><span class="ch">✉️</span> <span class="st draft">draft</span> <a href="#rec-12">Surprise &amp; Delight flow, built by Antidote, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/Tk87BR" target="_blank" title="Open in Klaviyo"></a></div>
-              <div class="stage-item"><span class="ch">✉️</span> <span class="st draft">draft</span> <a href="#rec-12">Day+Night Subscription Upgrade, built Mar 17, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/RcYt6p" target="_blank" title="Open in Klaviyo"></a></div>
+              <div class="stage-item"><span class="ch">✉️</span> <span class="st draft">draft</span> <a href="#rec-13">Surprise &amp; Delight flow, built by Antidote, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/Tk87BR" target="_blank" title="Open in Klaviyo"></a></div>
+              <div class="stage-item"><span class="ch">✉️</span> <span class="st draft">draft</span> <a href="#rec-13">Day+Night Subscription Upgrade, built Mar 17, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/RcYt6p" target="_blank" title="Open in Klaviyo"></a></div>
               <div class="stage-item"><span class="ch">✉️</span> <span class="st gap">gap</span> No milestone/anniversary flow</div>
             </div>
           </div>
@@ -872,8 +872,8 @@
             <div class="stage-content">
               <div class="stage-item"><span class="ch">✉️</span> <span class="st opp">opp</span> <a href="#rec-5">Winback <a class="kl" href="https://www.klaviyo.com/flow/YgVEQB" target="_blank" title="Open in Klaviyo"></a>: 94K+ recip opening at 48&ndash;57% but converting at 0.25% &mdash; generic &ldquo;we miss you&rdquo; content, no reason-specific messaging</a></div>
               <div class="stage-item"><span class="ch">🔄</span> <span class="st gap">gap</span> <a href="#rec-4">ReCharge cancel events have empty properties, no reason data in Klaviyo</a></div>
-              <div class="stage-item"><span class="ch">💬</span> <span class="st draft">draft</span> <a href="#rec-12">SMS Cart Abandonment, built, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/Tt2hwZ" target="_blank" title="Open in Klaviyo"></a></div>
-              <div class="stage-item"><span class="ch">💬</span> <span class="st draft">draft</span> <a href="#rec-12">SMS Browse Abandonment, built, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/Y8JL35" target="_blank" title="Open in Klaviyo"></a></div>
+              <div class="stage-item"><span class="ch">💬</span> <span class="st draft">draft</span> <a href="#rec-13">SMS Cart Abandonment, built, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/Tt2hwZ" target="_blank" title="Open in Klaviyo"></a></div>
+              <div class="stage-item"><span class="ch">💬</span> <span class="st draft">draft</span> <a href="#rec-13">SMS Browse Abandonment, built, not live</a> <a class="kl" href="https://www.klaviyo.com/flow/Y8JL35" target="_blank" title="Open in Klaviyo"></a></div>
               <div class="stage-item"><span class="ch">✉️</span> <span class="st gap">gap</span> <a href="#rec-4">No feedback capture, no reason-specific messaging</a></div>
             </div>
             <div class="stage-funnel churn">
@@ -1432,6 +1432,7 @@
             <li>Switch both brands to smart opt-in and add SMS consent at checkout</li>
             <li>Launch Stasis SMS abandonment flows (already built, sitting in draft)</li>
             <li>Integrate SMS into onboarding, refill, and winback on both brands</li>
+            <li><strong>Once SMS capture is fixed:</strong> build channel-aware flows that react to signup status and preferred channel. If someone is email+SMS, the cadence and content should differ from email-only. Campaigns should respect channel preference rather than blasting both.</li>
           </ul>
         </div>
       </div>
@@ -1470,6 +1471,38 @@
         <div class="opp-header">
           <span class="opp-rank">12</span>
           <div class="opp-title">
+            <h3>Referral program exists on both brands but nobody is being asked to refer</h3>
+            <span class="opp-sub">Okendo Referrals is live on both accounts. Transactional flows fire when someone shares or redeems. But no lifecycle flow, campaign, or post-purchase email ever prompts a customer to refer.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag both">Both</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>Okendo Referrals is integrated on both brands with full event pipeline: Sent, Invitation, Opted In, Shareable Link Used, Received Coupon, Redeemed Coupon</li>
+            <li><strong>Thesis:</strong> 3 live referral flows (Referral Complete, Opt-In Verification, Invitation to Recipient). Legacy Friendbuy and Social Snowball metrics still in the account but inactive.</li>
+            <li><strong>Stasis:</strong> 1 live referral flow (Referral Complete). A Share Sent clone is in draft.</li>
+            <li>No referral CTA appears in any onboarding, post-purchase, milestone, or winback email on either brand</li>
+            <li>No referral-focused campaigns found on either brand</li>
+            <li>The only customers who encounter the program are those who find it on their own</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Add referral CTAs to natural high-satisfaction moments: post-purchase milestone (Month 3), positive feedback responses (#5), review completion</li>
+            <li>Winback completers who re-subscribe are strong referral candidates &mdash; they left, came back, and can speak to both experiences</li>
+            <li>Stasis Kids parents are a particularly strong referral audience: parents talk to other parents about what works for their kids</li>
+            <li>Clean up legacy Friendbuy and Social Snowball metrics from the Thesis account (housekeeping, not urgent)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #13 -->
+      <div class="opp-card tier-2" id="rec-13">
+        <div class="opp-header">
+          <span class="opp-rank">13</span>
+          <div class="opp-title">
             <h3>Four Stasis flows are built and sitting in draft</h3>
             <span class="opp-sub">SMS abandonment, Surprise &amp; Delight, Day+Night upgrades &mdash; all built by Antidote, none launched. Worth investigating why before flipping the switch.</span>
           </div>
@@ -1503,10 +1536,10 @@
 
     <div class="opp-list">
 
-      <!-- #13 -->
-      <div class="opp-card tier-3" id="t13">
-        <div class="opp-header clickable" onclick="toggle('t13')">
-          <span class="opp-rank">13</span>
+      <!-- #14 -->
+      <div class="opp-card tier-3" id="t14">
+        <div class="opp-header clickable" onclick="toggle('t14')">
+          <span class="opp-rank">14</span>
           <div class="opp-title">
             <h3>Stasis segment architecture should be the template for both accounts</h3>
             <span class="opp-sub">Stasis uses [COHORT], [EXCLUDE], [SUBSCRIPTION] naming with tiered suppression. Thesis has no consistent convention.</span>
@@ -1530,10 +1563,10 @@
         </div>
       </div>
 
-      <!-- #14 -->
-      <div class="opp-card tier-3" id="t14">
-        <div class="opp-header clickable" onclick="toggle('t14')">
-          <span class="opp-rank">14</span>
+      <!-- #15 -->
+      <div class="opp-card tier-3" id="t15">
+        <div class="opp-header clickable" onclick="toggle('t15')">
+          <span class="opp-rank">15</span>
           <div class="opp-title">
             <h3>D30+ Engaged Leads on Thesis: 64% opens, 0.28% conversion</h3>
             <span class="opp-sub">120K recipients, highest open rate in the account, lowest conversion relative to engagement.</span>
@@ -1558,10 +1591,10 @@
         </div>
       </div>
 
-      <!-- #15 -->
-      <div class="opp-card tier-3" id="t15">
-        <div class="opp-header clickable" onclick="toggle('t15')">
-          <span class="opp-rank">15</span>
+      <!-- #16 -->
+      <div class="opp-card tier-3" id="t16">
+        <div class="opp-header clickable" onclick="toggle('t16')">
+          <span class="opp-rank">16</span>
           <div class="opp-title">
             <h3>Both accounts have ~100 flows each, consolidation needed</h3>
             <span class="opp-sub">Thesis: Hormesis Transition variants, orphans, stale A/B tests. Stasis: multiple iterations of similar flows not archived.</span>
