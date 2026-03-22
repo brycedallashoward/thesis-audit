@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mindshift Concept | Thesis Klaviyo</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Mockup concept page styles */
+    .concept-intro {
+      margin-bottom: 2.5rem;
+    }
+
+    .concept-intro .before-after {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .concept-intro .before-after .side {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+
+    .concept-intro .before-after .side h4 {
+      margin-top: 0;
+    }
+
+    .concept-intro .before-after .side.after {
+      border-color: var(--accent);
+      background: rgba(9, 105, 218, 0.03);
+    }
+
+    /* Phone mockup frame */
+    .mockup-area {
+      display: flex;
+      gap: 2.5rem;
+      align-items: flex-start;
+      margin: 2rem 0 3rem;
+    }
+
+    .phone-frame {
+      width: 320px;
+      min-width: 320px;
+      border: 3px solid #1f2328;
+      border-radius: 28px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .phone-notch {
+      background: #1f2328;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phone-notch .pill {
+      width: 80px;
+      height: 6px;
+      background: #444;
+      border-radius: 3px;
+    }
+
+    .phone-screen {
+      min-height: 520px;
+      position: relative;
+    }
+
+    .phone-screen .screen-content {
+      display: none;
+      padding: 0;
+    }
+
+    .phone-screen .screen-content.active {
+      display: block;
+    }
+
+    /* Screen: Hub */
+    .hub-header {
+      background: linear-gradient(135deg, #4668e8 0%, #6b8cf7 100%);
+      color: #fff;
+      padding: 1.5rem 1.25rem 1.25rem;
+    }
+
+    .hub-header .hub-brand {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.8;
+      margin-bottom: 0.25rem;
+    }
+
+    .hub-header h3 {
+      color: #fff;
+      font-size: 1.15rem;
+      margin: 0 0 0.15rem;
+    }
+
+    .hub-header .hub-sub {
+      font-size: 0.75rem;
+      opacity: 0.85;
+    }
+
+    .hub-progress {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hub-progress .progress-bar-bg {
+      height: 6px;
+      background: #e8ecf0;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-bottom: 0.35rem;
+    }
+
+    .hub-progress .progress-bar-fill {
+      height: 100%;
+      background: #4668e8;
+      border-radius: 3px;
+      width: 25%;
+      transition: width 0.4s;
+    }
+
+    .hub-progress .progress-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .week-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .week-card:hover {
+      background: var(--bg-card);
+    }
+
+    .week-card .week-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    .week-card .week-icon.w1 { background: rgba(70, 104, 232, 0.12); color: #4668e8; }
+    .week-card .week-icon.w2 { background: rgba(232, 152, 70, 0.12); color: #c87a20; }
+    .week-card .week-icon.w3 { background: rgba(70, 180, 120, 0.12); color: #2a8f5a; }
+    .week-card .week-icon.w4 { background: rgba(160, 90, 220, 0.12); color: #8250df; }
+
+    .week-card .week-info h4 {
+      font-size: 0.82rem;
+      text-transform: none;
+      letter-spacing: 0;
+      margin: 0;
+      color: var(--text);
+    }
+
+    .week-card .week-info .week-desc {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .week-card .week-status {
+      margin-left: auto;
+      font-size: 0.65rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .week-card .week-status.current { color: #4668e8; }
+    .week-card .week-status.locked { color: var(--text-dim); }
+    .week-card .week-status.done { color: var(--green); }
+
+    /* Screen: Week detail */
+    .week-detail-header {
+      padding: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .week-detail-header .back-btn {
+      font-size: 0.72rem;
+      color: #4668e8;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .week-detail-header h3 {
+      font-size: 1rem;
+      margin: 0 0 0.15rem;
+    }
+
+    .week-detail-header .week-detail-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .lesson-list {
+      padding: 0.5rem 0;
+    }
+
+    .lesson-item {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.7rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.8rem;
+    }
+
+    .lesson-item .lesson-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.6rem;
+    }
+
+    .lesson-item .lesson-check.complete {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .lesson-item .lesson-type {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-dim);
+      padding: 0.1rem 0.35rem;
+      background: var(--bg-card);
+      border-radius: 3px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    /* Screen: Article view */
+    .article-view {
+      padding: 1.25rem;
+    }
+
+    .article-view .back-btn {
+      font-size: 0.72rem;
+      color: #4668e8;
+      cursor: pointer;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .article-view .article-cat {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #4668e8;
+      margin-bottom: 0.25rem;
+    }
+
+    .article-view h3 {
+      font-size: 1.05rem;
+      margin: 0 0 0.75rem;
+      line-height: 1.35;
+    }
+
+    .article-view p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 0.65rem;
+    }
+
+    .article-view .article-cta {
+      display: block;
+      background: #4668e8;
+      color: #fff;
+      text-align: center;
+      padding: 0.6rem;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    .article-view .inline-quiz {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem;
+      margin: 0.75rem 0;
+    }
+
+    .article-view .inline-quiz .quiz-q {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .article-view .inline-quiz .quiz-opt {
+      font-size: 0.72rem;
+      padding: 0.4rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin-bottom: 0.3rem;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .article-view .inline-quiz .quiz-opt:hover {
+      border-color: #4668e8;
+      background: rgba(70, 104, 232, 0.05);
+    }
+
+    /* Week nav tabs under phone */
+    .screen-nav {
+      display: flex;
+      border-top: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .screen-nav button {
+      flex: 1;
+      padding: 0.6rem 0.25rem;
+      background: none;
+      border: none;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-top: 2px solid transparent;
+      font-family: var(--font);
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .screen-nav button.active {
+      color: #4668e8;
+      border-top-color: #4668e8;
+    }
+
+    /* Annotations panel */
+    .annotations {
+      flex: 1;
+    }
+
+    .annotation {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 0.85rem;
+    }
+
+    .annotation h4 {
+      margin: 0 0 0.35rem;
+      font-size: 0.82rem;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--text);
+    }
+
+    .annotation p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .annotation .ann-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      padding: 0.12rem 0.4rem;
+      border-radius: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      margin-bottom: 0.35rem;
+    }
+
+    .annotation .ann-tag.klaviyo { background: rgba(70, 104, 232, 0.12); color: #4668e8; }
+    .annotation .ann-tag.content { background: rgba(70, 180, 120, 0.12); color: #2a8f5a; }
+    .annotation .ann-tag.engagement { background: rgba(232, 152, 70, 0.12); color: #c87a20; }
+    .annotation .ann-tag.retention { background: rgba(160, 90, 220, 0.12); color: #8250df; }
+
+    /* Data signals section */
+    .signal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin: 1rem 0;
+    }
+
+    .signal-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.85rem 1rem;
+    }
+
+    .signal-card .signal-event {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: #4668e8;
+      margin-bottom: 0.25rem;
+    }
+
+    .signal-card .signal-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .signal-card .signal-use {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      margin-top: 0.25rem;
+      font-style: italic;
+    }
+
+    /* Flow diagram */
+    .flow-diagram {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .flow-step {
+      text-align: center;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: #fff;
+      font-size: 0.75rem;
+      min-width: 110px;
+    }
+
+    .flow-step .step-label {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.15rem;
+    }
+
+    .flow-step .step-sub {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+
+    .flow-arrow {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+      padding: 0 0.35rem;
+    }
+
+    .flow-step.highlight {
+      border-color: #4668e8;
+      background: rgba(70, 104, 232, 0.04);
+    }
+
+    /* Effort estimate */
+    .effort-table td:first-child {
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .mockup-area {
+        flex-direction: column;
+        align-items: center;
+      }
+      .phone-frame {
+        min-width: unset;
+        width: 100%;
+        max-width: 320px;
+      }
+      .concept-intro .before-after {
+        grid-template-columns: 1fr;
+      }
+      .signal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Thesis <span>Klaviyo Audit</span></a>
+      <a href="factsheet.html">Fact Sheet</a>
+      <a href="planning.html">Planning</a>
+      <a href="planning2.html">Planning II</a>
+      <a href="audit.html">Audit</a>
+      <a href="mindshift.html" class="active">Mindshift</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Mindshift: From PDF to Product</h1>
+      <p class="subtitle">Turn a high-click dead-end into a 30-day interactive retention engine</p>
+      <p class="meta">Value-add concept for Thesis + Stasis</p>
+    </div>
+
+    <!-- The Problem -->
+    <section class="concept-intro">
+      <h2>The Opportunity</h2>
+      <p>The Mindshift flow already has strong engagement. Subscribers click through to download a 39-page "30-Day Habit Reset" PDF. But the experience ends there. No follow-up. No completion tracking. No behavioral data fed back to Klaviyo. It's a dead-end asset.</p>
+
+      <div class="before-after">
+        <div class="side">
+          <h4>Today</h4>
+          <ul>
+            <li>Email links to static PDF download</li>
+            <li>39 pages delivered all at once</li>
+            <li>Zero visibility into who reads what</li>
+            <li>No follow-up or re-engagement</li>
+            <li>No data captured for Klaviyo</li>
+          </ul>
+        </div>
+        <div class="side after">
+          <h4>Proposed</h4>
+          <ul>
+            <li>Email links to interactive web experience</li>
+            <li>Content dripped across 4 weekly volumes</li>
+            <li>Track which lessons are completed</li>
+            <li>Weekly nudge emails based on progress</li>
+            <li>Engagement data flows into Klaviyo profiles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout">
+        <strong>Why this matters for retention:</strong> Subscribers who engage with educational content beyond the product itself are stickier. This gives Thesis a reason to email customers every week for a month with something that isn't a promotion, building habit + brand association during the critical early-subscription window.
+      </div>
+    </section>
+
+    <!-- Interactive Mockup -->
+    <section>
+      <h2>Interactive Walkthrough</h2>
+      <p class="muted">Click through the screens below to see the proposed experience. Annotations on the right explain the retention mechanics.</p>
+
+      <div class="mockup-area">
+        <!-- Phone -->
+        <div class="phone-frame">
+          <div class="phone-notch"><div class="pill"></div></div>
+          <div class="phone-screen">
+
+            <!-- Screen 1: Hub -->
+            <div class="screen-content active" id="screen-hub">
+              <div class="hub-header">
+                <div class="hub-brand">Thesis x Stasis</div>
+                <h3>30-Day Habit Reset</h3>
+                <div class="hub-sub">Resolutions that stick start in the brain</div>
+              </div>
+              <div class="hub-progress">
+                <div class="progress-bar-bg"><div class="progress-bar-fill"></div></div>
+                <div class="progress-label">Week 1 of 4 &middot; 2 of 8 lessons complete</div>
+              </div>
+              <div class="week-card" onclick="showScreen('screen-week1')">
+                <div class="week-icon w1">W1</div>
+                <div class="week-info">
+                  <h4>Spark Transformation</h4>
+                  <div class="week-desc">Intention-setting, neuroscience 101</div>
+                </div>
+                <div class="week-status current">In Progress</div>
+              </div>
+              <div class="week-card" onclick="showScreen('screen-week2')">
+                <div class="week-icon w2">W2</div>
+                <div class="week-info">
+                  <h4>Find Focus, Fuel Progress</h4>
+                  <div class="week-desc">Procrastination, dopamine, micro-goals</div>
+                </div>
+                <div class="week-status locked">Locked</div>
+              </div>
+              <div class="week-card">
+                <div class="week-icon w3">W3</div>
+                <div class="week-info">
+                  <h4>Total-Body Well-Being</h4>
+                  <div class="week-desc">Gut-brain axis, exercise, nutrition</div>
+                </div>
+                <div class="week-status locked">Locked</div>
+              </div>
+              <div class="week-card">
+                <div class="week-icon w4">W4</div>
+                <div class="week-info">
+                  <h4>Mental Resilience</h4>
+                  <div class="week-desc">Stress management, dopamine menu</div>
+                </div>
+                <div class="week-status locked">Locked</div>
+              </div>
+            </div>
+
+            <!-- Screen 2: Week 1 detail -->
+            <div class="screen-content" id="screen-week1">
+              <div class="week-detail-header">
+                <div class="back-btn" onclick="showScreen('screen-hub')">&larr; Back to Hub</div>
+                <h3>Week 1: Spark Transformation</h3>
+                <div class="week-detail-sub">Set intentions that rewire your brain</div>
+              </div>
+              <div class="lesson-list">
+                <div class="lesson-item" onclick="showScreen('screen-article')">
+                  <div class="lesson-check complete">&#10003;</div>
+                  <div>Get to Know Your Brain</div>
+                  <div class="lesson-type">Read</div>
+                </div>
+                <div class="lesson-item" onclick="showScreen('screen-article')">
+                  <div class="lesson-check complete">&#10003;</div>
+                  <div>Meet the Neurotransmitters</div>
+                  <div class="lesson-type">Read</div>
+                </div>
+                <div class="lesson-item" onclick="showScreen('screen-article2')">
+                  <div class="lesson-check"></div>
+                  <div>Neuroplasticity, Explained</div>
+                  <div class="lesson-type">Read</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>The Power of Intention</div>
+                  <div class="lesson-type">Read</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>Intentions Shape the Brain</div>
+                  <div class="lesson-type">Read</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>Three Tips to Set Intentions</div>
+                  <div class="lesson-type">Action</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>Turn Goals into Intentions</div>
+                  <div class="lesson-type">Worksheet</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>Week 1 Reflection</div>
+                  <div class="lesson-type">Journal</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 3: Article view -->
+            <div class="screen-content" id="screen-article">
+              <div class="article-view">
+                <div class="back-btn" onclick="showScreen('screen-week1')">&larr; Week 1</div>
+                <div class="article-cat">Neuroscience 101</div>
+                <h3>Meet the Brain's Messengers: Neurotransmitters</h3>
+                <p><strong>Dopamine</strong> is often called the "motivation molecule." It sustains our focus and attention, driving our pursuit of goals. Your willingness to push through a workout or finish a crossword? That's dopamine.</p>
+                <p><strong>Norepinephrine</strong> plays a critical role in our body's response to stress, impacting motivation and alertness. An upcoming deadline triggering a burst of focus? That's norepinephrine at work.</p>
+
+                <div class="inline-quiz">
+                  <div class="quiz-q">Quick check: Which neurotransmitter drives your motivation to finish a challenging task?</div>
+                  <div class="quiz-opt">Serotonin</div>
+                  <div class="quiz-opt">Dopamine</div>
+                  <div class="quiz-opt">GABA</div>
+                </div>
+
+                <p>Understanding these chemical messengers helps you make smarter choices about habits, nutrition, and supplementation.</p>
+                <div class="article-cta">Mark Complete &amp; Continue</div>
+              </div>
+            </div>
+
+            <!-- Screen 4: Week 2 preview -->
+            <div class="screen-content" id="screen-week2">
+              <div class="week-detail-header">
+                <div class="back-btn" onclick="showScreen('screen-hub')">&larr; Back to Hub</div>
+                <h3>Week 2: Find Focus, Fuel Progress</h3>
+                <div class="week-detail-sub">Understand dopamine to defeat procrastination</div>
+              </div>
+              <div class="lesson-list">
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>The Science of Procrastination</div>
+                  <div class="lesson-type">Read</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>Dopamine: The Reward Seeker</div>
+                  <div class="lesson-type">Read</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>3 Ways to Leverage Dopamine</div>
+                  <div class="lesson-type">Action</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>Build Your Habit Tracker</div>
+                  <div class="lesson-type">Worksheet</div>
+                </div>
+                <div class="lesson-item">
+                  <div class="lesson-check"></div>
+                  <div>Week 2 Reflection</div>
+                  <div class="lesson-type">Journal</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Screen 5: Article with product tie-in -->
+            <div class="screen-content" id="screen-article2">
+              <div class="article-view">
+                <div class="back-btn" onclick="showScreen('screen-week1')">&larr; Week 1</div>
+                <div class="article-cat">Neuroscience 101</div>
+                <h3>Neuroplasticity, Explained</h3>
+                <p>Just like you can strengthen muscles by hitting the gym, you can strengthen the brain by forming new connections between brain cells.</p>
+                <p><em>Neuroplasticity</em> is the brain's ability to change over time, involving the strengthening of synapses through repeated behaviors and experiences.</p>
+                <p>One of the best ways to boost neurogenesis is to stimulate proteins like Brain-Derived Neurotrophic Factor (BDNF). Key BDNF-supporting nutrients include omega-3 fatty acids, polyphenols, and Lion's Mane.</p>
+
+                <div class="inline-quiz">
+                  <div class="quiz-q">Which Thesis blend supports neuroplasticity?</div>
+                  <div class="quiz-opt">Clarity (with Lion's Mane)</div>
+                  <div class="quiz-opt">Energy</div>
+                  <div class="quiz-opt">Creativity</div>
+                </div>
+
+                <div class="article-cta">Mark Complete &amp; Continue</div>
+              </div>
+            </div>
+
+          </div>
+          <div class="screen-nav">
+            <button class="active" onclick="showScreen('screen-hub')">Hub</button>
+            <button onclick="showScreen('screen-week1')">Lessons</button>
+            <button onclick="showScreen('screen-article')">Article</button>
+            <button onclick="showScreen('screen-article2')">Product Tie-in</button>
+          </div>
+        </div>
+
+        <!-- Annotations -->
+        <div class="annotations">
+          <div class="annotation" id="ann-hub">
+            <div class="ann-tag retention">Retention</div>
+            <h4>Progressive unlock keeps them coming back</h4>
+            <p>Weeks unlock on a schedule tied to subscription delivery. Week 2 opens when the second shipment arrives. Each return visit is a retention touchpoint that isn't a promo email.</p>
+          </div>
+          <div class="annotation">
+            <div class="ann-tag klaviyo">Klaviyo</div>
+            <h4>Progress syncs to profile properties</h4>
+            <p>Every lesson completion fires a Klaviyo event. Profile properties track <code>mindshift_week</code> and <code>mindshift_pct_complete</code>. Lets you segment by engagement depth.</p>
+          </div>
+          <div class="annotation">
+            <div class="ann-tag engagement">Engagement</div>
+            <h4>Interactive elements replace passive reading</h4>
+            <p>Inline quizzes and reflection prompts turn a static article into a two-way interaction. Quiz responses can flow to Klaviyo as custom properties for personalization.</p>
+          </div>
+          <div class="annotation">
+            <div class="ann-tag content">Content</div>
+            <h4>Product education woven into the science</h4>
+            <p>The neuroplasticity article naturally connects to Lion's Mane in Clarity blend. This is contextual product education, not a sales pitch. Subscribers learn why their supplement works while building brand trust.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Klaviyo Data Signals -->
+    <section>
+      <h2>Data Signals Back to Klaviyo</h2>
+      <p class="muted">Every interaction generates an event or profile property that Thesis can use for segmentation, flow triggers, and personalization.</p>
+
+      <div class="signal-grid">
+        <div class="signal-card">
+          <div class="signal-event">Mindshift Lesson Completed</div>
+          <div class="signal-desc">Fires when "Mark Complete" is clicked</div>
+          <div class="signal-use">Trigger weekly summary emails, nudge stragglers</div>
+        </div>
+        <div class="signal-card">
+          <div class="signal-event">Mindshift Quiz Answered</div>
+          <div class="signal-desc">Captures selected answer + lesson context</div>
+          <div class="signal-use">Personalize product recs based on knowledge gaps</div>
+        </div>
+        <div class="signal-card">
+          <div class="signal-event">Mindshift Week Unlocked</div>
+          <div class="signal-desc">Fires when a new volume becomes available</div>
+          <div class="signal-use">Trigger "Your next chapter is ready" emails</div>
+        </div>
+        <div class="signal-card">
+          <div class="signal-event">Mindshift Program Complete</div>
+          <div class="signal-desc">Fires when all 4 weeks are finished</div>
+          <div class="signal-use">Trigger congratulation + referral ask + review request</div>
+        </div>
+      </div>
+
+      <h4>Profile Properties</h4>
+      <table>
+        <tr><th>Property</th><th>Type</th><th>Use</th></tr>
+        <tr><td><code>mindshift_started</code></td><td>Boolean</td><td>Segment starters vs. non-starters</td></tr>
+        <tr><td><code>mindshift_current_week</code></td><td>Number</td><td>Personalize email content to their stage</td></tr>
+        <tr><td><code>mindshift_pct_complete</code></td><td>Number</td><td>Identify drop-off points, trigger re-engagement</td></tr>
+        <tr><td><code>mindshift_completed_at</code></td><td>Date</td><td>Time completers for review/referral asks</td></tr>
+      </table>
+    </section>
+
+    <!-- Flow Diagram -->
+    <section>
+      <h2>Proposed Email Flow</h2>
+      <p class="muted">Weekly automated nudges based on Mindshift engagement status.</p>
+
+      <div class="flow-diagram">
+        <div class="flow-steps">
+          <div class="flow-step highlight">
+            <div class="step-label">Mindshift CTA Click</div>
+            <div class="step-sub">Existing flow email</div>
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-step highlight">
+            <div class="step-label">Interactive Hub</div>
+            <div class="step-sub">Web experience</div>
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-step">
+            <div class="step-label">Weekly Nudge</div>
+            <div class="step-sub">If incomplete after 5d</div>
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-step">
+            <div class="step-label">New Week Email</div>
+            <div class="step-sub">Volume unlocked</div>
+          </div>
+          <div class="flow-arrow">&rarr;</div>
+          <div class="flow-step">
+            <div class="step-label">Completion</div>
+            <div class="step-sub">Review + referral ask</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout success">
+        <strong>Net new touchpoints:</strong> This converts a single PDF download into 8-12 email sends over 30 days, all educational and non-promotional. That's a major shift from the current pattern where Thesis has limited non-transactional reasons to email active subscribers.
+      </div>
+    </section>
+
+    <!-- Build Estimate -->
+    <section>
+      <h2>Build Estimate</h2>
+      <p class="muted">The content already exists. The work is reformatting and wiring up tracking.</p>
+
+      <table class="effort-table">
+        <tr><th>Component</th><th>Effort</th><th>Notes</th></tr>
+        <tr><td>Web experience (HTML/CSS/JS)</td><td>Medium</td><td>Single-page app, mobile-first. Could host on takethesis.com subdirectory or standalone.</td></tr>
+        <tr><td>Content migration</td><td>Low</td><td>All 39 pages of content already written. Just needs reformatting into lesson chunks.</td></tr>
+        <tr><td>Klaviyo JS tracking</td><td>Low</td><td>Standard Klaviyo JS API calls on lesson complete, quiz answer, and program milestones.</td></tr>
+        <tr><td>Nudge flow in Klaviyo</td><td>Low</td><td>4-week drip triggered by Mindshift events. Simple conditional splits.</td></tr>
+        <tr><td>Quiz logic</td><td>Low</td><td>Client-side only. No backend needed. Answers post to Klaviyo as event properties.</td></tr>
+      </table>
+
+      <div class="callout">
+        <strong>Scope note:</strong> This doesn't require a native app or significant backend work. It's a well-designed web page with Klaviyo's JavaScript tracking library. The PDF content maps directly to the lesson structure shown above.
+      </div>
+    </section>
+
+    <!-- Content Map -->
+    <section>
+      <h2>PDF-to-Experience Content Map</h2>
+      <p class="muted">How the existing 39-page PDF maps to the interactive experience.</p>
+
+      <table>
+        <tr><th>PDF Section</th><th>Pages</th><th>Experience</th><th>Lesson Type</th></tr>
+        <tr><td>Welcome letter (Dan Freed)</td><td>1-2</td><td>Hub intro text</td><td>Static</td></tr>
+        <tr><td>Neuroscience 101</td><td>3-10</td><td>Week 1, Lessons 1-3</td><td>Read</td></tr>
+        <tr><td>The Power of Intention</td><td>12-13</td><td>Week 1, Lessons 4-5</td><td>Read</td></tr>
+        <tr><td>Three Tips / Goals vs. Intentions</td><td>14-17</td><td>Week 1, Lessons 6-8</td><td>Action + Worksheet</td></tr>
+        <tr><td>Science of Procrastination</td><td>20-21</td><td>Week 2, Lessons 1-2</td><td>Read</td></tr>
+        <tr><td>Dopamine + 3 Leverage Strategies</td><td>22-23</td><td>Week 2, Lessons 3-4</td><td>Read + Action</td></tr>
+        <tr><td>Habit Tracker</td><td>24</td><td>Week 2, Lesson 5</td><td>Interactive Worksheet</td></tr>
+        <tr><td>Gut-Brain Connection</td><td>27-28</td><td>Week 3, Lessons 1-2</td><td>Read</td></tr>
+        <tr><td>Move Your Body</td><td>29-30</td><td>Week 3, Lessons 3-4</td><td>Read + Action</td></tr>
+        <tr><td>Brain-Boosting Grocery List</td><td>31</td><td>Week 3, Lesson 5</td><td>Interactive Checklist</td></tr>
+        <tr><td>Emotional Balance</td><td>34-35</td><td>Week 4, Lessons 1-2</td><td>Read</td></tr>
+        <tr><td>Dopamine Menu</td><td>36-38</td><td>Week 4, Lessons 3-5</td><td>Read + Interactive Builder</td></tr>
+      </table>
+    </section>
+
+  </div>
+
+  <script>
+    function showScreen(id) {
+      document.querySelectorAll('.screen-content').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+
+      // Update bottom nav active state
+      const navBtns = document.querySelectorAll('.screen-nav button');
+      navBtns.forEach(b => b.classList.remove('active'));
+      if (id === 'screen-hub') navBtns[0].classList.add('active');
+      else if (id === 'screen-week1' || id === 'screen-week2') navBtns[1].classList.add('active');
+      else if (id === 'screen-article') navBtns[2].classList.add('active');
+      else if (id === 'screen-article2') navBtns[3].classList.add('active');
+    }
+  </script>
+</body>
+</html>
