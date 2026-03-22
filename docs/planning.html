@@ -1499,6 +1499,77 @@
     </div>
 
     <!-- ============================== -->
+    <!-- CROSS-BRAND: Sign-Up Forms      -->
+    <!-- ============================== -->
+    <div class="theme" id="forms">
+      <div class="theme-header" onclick="toggle('forms')">
+        <h2><span class="theme-num">F</span> Sign-Up Forms &amp; List Capture <span class="chevron">&#9654;</span></h2>
+        <span class="progress">2 of 2 investigated</span>
+      </div>
+      <div class="theme-body">
+
+        <div class="subtheme">
+          <h3>Thesis &mdash; Quiz Popups (Live)</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Two live A/B tests launched 3/17/26 &mdash; both performing well</strong>
+              <span class="context">Only forms currently live. All others (BFCM, NYNM, older popup versions) are in draft. Both are quiz-routing popups managed by Antidote. Data pulled via Klaviyo Forms API on 3/21/26.</span>
+            </div>
+          </div>
+        </div>
+
+        <details style="margin-top: 0.5rem; margin-bottom: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--accent);">View Thesis Form Performance (~4 days of data)</summary>
+          <table style="margin-top: 0.75rem;">
+            <thead><tr><th>Form</th><th>Variant</th><th>Views</th><th>Submissions</th><th>Closed</th><th>Submit Rate</th></tr></thead>
+            <tbody>
+              <tr><td>Mobile Quiz Popup</td><td>Design 1</td><td>5,837</td><td>911</td><td>2,655</td><td>15.6%</td></tr>
+              <tr><td>Mobile Quiz Popup</td><td>Design 2</td><td>6,014</td><td>941</td><td>2,840</td><td>15.6%</td></tr>
+              <tr><td>Desktop Quiz Popup</td><td>Center</td><td>591</td><td>65</td><td>358</td><td>11.0%</td></tr>
+              <tr><td>Desktop Quiz Popup</td><td>Left Side</td><td>756</td><td>97</td><td>440</td><td>12.8%</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Mobile: 15.6% submit rate is above Klaviyo popup benchmark (4&ndash;8%). Desktop: 10x less traffic than mobile (expected for DTC). A/B tests inconclusive &mdash; mobile variants are dead even, desktop needs more volume. 12 total forms in account, 10 in draft.</p>
+        </details>
+
+        <div class="subtheme">
+          <h3>Stasis &mdash; 10% Off Full-Page Forms (Live)</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Two live forms since ~3/3/26 &mdash; multi-step, healthy engagement</strong>
+              <span class="context">Full-page format (not popup). &ldquo;Submitted form step&rdquo; counts exceed views because these are multi-step forms (email + SMS + quiz). Close rates are low (31&ndash;38%), meaning most visitors who see the form engage rather than dismiss. 20+ forms in account, most in draft &mdash; active iteration by Antidote.</span>
+            </div>
+          </div>
+        </div>
+
+        <details style="margin-top: 0.5rem; margin-bottom: 1rem;">
+          <summary style="cursor: pointer; font-weight: 600; font-size: 0.9rem; color: var(--accent);">View Stasis Form Performance (~18 days of data)</summary>
+          <table style="margin-top: 0.75rem;">
+            <thead><tr><th>Form</th><th>Views</th><th>Step Submissions</th><th>Closed</th><th>Close Rate</th></tr></thead>
+            <tbody>
+              <tr><td>10% Pop Up Mobile (w/ TAG)</td><td>2,410</td><td>4,410</td><td>916</td><td>38%</td></tr>
+              <tr><td>10% Pop Up Desktop (w/ TAG)</td><td>103</td><td>208</td><td>32</td><td>31%</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-muted);">Step submissions &gt; views = multi-step form (each step counted separately). Desktop volume is very low (103 views in 18 days). Stasis also has Kids-specific popup drafts (mobile + desktop) not yet live. Extensive A/B testing history: teaser-only variants, homepage-only variants, dynamic code variants.</p>
+        </details>
+
+        <div class="subtheme">
+          <h3>Assessment</h3>
+          <div class="check-item">
+            <div class="status"><span class="status-tag done">Done</span></div>
+            <div class="detail">
+              <strong>Not an audit finding &mdash; both brands' forms are healthy and actively managed</strong>
+              <span class="context">Both accounts show active Antidote management: A/B testing, device-specific forms, iterative versioning. Thesis mobile submit rate (15.6%) is well above benchmark. Stasis multi-step format is driving engagement. Neither brand has a form problem. One note: Thesis forms don't appear to include SMS capture, which could be a gap given how strong SMS Welcome converts ($6.23 RPR, 5.7% conversion).</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
     <!-- STASIS THEME 5: Housekeeping    -->
     <!-- ============================== -->
     <div class="theme" id="s5">
