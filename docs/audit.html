@@ -1083,32 +1083,58 @@
     <div class="audit-section" id="rec-3">
       <div class="section-heading">
         <span class="section-num">3</span>
-        <h2>Campaign click rates to leads are 0.3%, leaving revenue on the table</h2>
+        <h2>Lead campaigns on both brands click at 0.3% against a 2&ndash;3% benchmark</h2>
         <span class="brand-tag both">Both</span>
       </div>
 
       <p class="narrative">
-        In January 2026, Thesis sent 13 campaigns to lead and lapsed-customer segments (120-day engaged OTP, 180-day leads, cart abandoners, one-time purchasers). 4.5M recipients, 13.5K unique clicks. That&rsquo;s a 0.3% click rate against a 2&ndash;3% DTC benchmark.
+        Both brands send campaigns to non-customers and lapsed buyers: leads, one-time purchasers, cart abandoners. On Thesis alone in January 2026, that was 13 sends to 4.5M recipients with 13.5K unique clicks. 0.3%. Stasis lead campaigns show similar patterns. Every click that doesn&rsquo;t happen is someone who doesn&rsquo;t land on the quiz or checkout.
       </p>
 
-      <div class="stat-row">
-        <div class="stat">
-          <span class="value red">0.3%</span>
-          <span class="label">Avg campaign click rate (Jan)</span>
+      <!-- Revenue simulator -->
+      <div class="sim-container" style="background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin:1.5rem 0;">
+        <h3 style="margin:0 0 0.25rem; font-size:1rem;">Revenue simulator</h3>
+        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Drag the click rate slider to see how small improvements compound into first-order revenue. Preset to the realistic 0.3% &rarr; 1% scenario.</p>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.25rem;">
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.35rem;">Monthly recipients</label>
+            <input type="range" id="sim-recip" min="500000" max="8000000" step="100000" value="4500000" style="width:100%; accent-color:var(--accent);">
+            <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-dim);"><span>500K</span><span id="sim-recip-val" style="font-weight:600; color:var(--text);">4.5M</span><span>8M</span></div>
+          </div>
+          <div>
+            <label style="font-size:0.75rem; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.35rem;">Target click rate</label>
+            <input type="range" id="sim-ctr" min="0.3" max="3.0" step="0.1" value="1.0" style="width:100%; accent-color:var(--accent);">
+            <div style="display:flex; justify-content:space-between; font-size:0.72rem; color:var(--text-dim);"><span>0.3%</span><span id="sim-ctr-val" style="font-weight:600; color:var(--text);">1.0%</span><span>3.0%</span></div>
+          </div>
         </div>
-        <div class="stat">
-          <span class="value accent">2&ndash;3%</span>
-          <span class="label">DTC lead campaign benchmark</span>
+
+        <div style="display:grid; grid-template-columns:auto auto 1fr; gap:0.5rem; align-items:center; font-size:0.85rem; line-height:1.8;">
+          <span style="color:var(--text-muted);">Current clicks/mo</span>
+          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-current-clicks">13,500</span>
+          <span></span>
+
+          <span style="color:var(--text-muted);">New clicks/mo</span>
+          <span style="font-family:var(--mono); font-size:0.82rem; font-weight:600; color:var(--accent);" id="sim-new-clicks">45,000</span>
+          <span style="font-size:0.75rem; color:var(--green);" id="sim-delta-clicks">+31,500</span>
+
+          <span style="color:var(--text-muted);">Additional first orders</span>
+          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-orders">945</span>
+          <span style="font-size:0.72rem; color:var(--text-dim);">at 3% click-to-purchase</span>
+
+          <span style="color:var(--text-muted); font-weight:600;">New first-order revenue</span>
+          <span style="font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green);" id="sim-revenue">$55,755</span>
+          <span style="font-size:0.72rem; color:var(--text-dim);">at $59 first-month price</span>
+
+          <span style="color:var(--text-muted);">Recurring monthly value</span>
+          <span style="font-family:var(--mono); font-size:0.82rem; color:var(--purple);" id="sim-recurring">$74,655</span>
+          <span style="font-size:0.72rem; color:var(--text-dim);">if retained at $79/mo</span>
         </div>
-        <div class="stat">
-          <span class="value orange">4.5M</span>
-          <span class="label">Total Jan recipients (13 sends)</span>
+
+        <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid var(--border); font-size:0.78rem; color:var(--text-muted);">
+          <strong style="color:var(--text);">Assumptions:</strong> 3% click-to-purchase rate (conservative for quiz/checkout landing pages). $59 first month, $79 recurring. Retention rate not modeled; recurring line shows full cohort value if all convert to month 2.
         </div>
       </div>
-
-      <p class="narrative">
-        These are non-customers and lapsed buyers. Every click lands someone on the quiz or checkout. Bump that click rate from 0.3% to 1% and you add ~31K clicks/mo. At a conservative 3% click-to-purchase rate, that&rsquo;s ~940 first orders, or roughly $55K/mo at the $59 intro price, compounding as $79/mo recurring subscribers.
-      </p>
 
       <p class="narrative">
         Stasis campaigns already prove condition-specific angles work: &ldquo;3PM Wall,&rdquo; &ldquo;Stimulant crash,&rdquo; &ldquo;Social Battery.&rdquo; But none of that copy makes it into checkout or onboarding. The same team writes both; the angles just aren&rsquo;t carrying over.
@@ -1123,7 +1149,6 @@
         <ul>
           <li>Audit the highest-volume lead campaigns on both brands for CTA clarity and relevance to the audience</li>
           <li>Get the Stasis campaign angles (&ldquo;3PM Wall,&rdquo; &ldquo;Stimulant crash&rdquo;) into checkout and onboarding flows where they&rsquo;re currently absent</li>
-          <li>0.3% &rarr; 1% click rate on lead campaigns = ~$55K/mo new first-order revenue, compounding as recurring subscriptions</li>
           <li>For subscriber flows: add purposeful CTAs modeled on Mindshift where the click leads somewhere valuable</li>
         </ul>
       </div>
@@ -1619,6 +1644,36 @@
     function toggle(id) {
       document.getElementById(id).classList.toggle('open');
     }
+
+    // Revenue simulator
+    function fmt(n) {
+      if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+      if (n >= 1000) return Math.round(n).toLocaleString();
+      return n.toString();
+    }
+
+    function updateSim() {
+      var recip = parseInt(document.getElementById('sim-recip').value);
+      var ctr = parseFloat(document.getElementById('sim-ctr').value);
+      var currentClicks = Math.round(recip * 0.003);
+      var newClicks = Math.round(recip * ctr / 100);
+      var delta = newClicks - currentClicks;
+      var orders = Math.round(delta * 0.03);
+      var revenue = orders * 59;
+      var recurring = orders * 79;
+
+      document.getElementById('sim-recip-val').textContent = fmt(recip);
+      document.getElementById('sim-ctr-val').textContent = ctr.toFixed(1) + '%';
+      document.getElementById('sim-current-clicks').textContent = fmt(currentClicks);
+      document.getElementById('sim-new-clicks').textContent = fmt(newClicks);
+      document.getElementById('sim-delta-clicks').textContent = '+' + fmt(delta);
+      document.getElementById('sim-orders').textContent = fmt(orders);
+      document.getElementById('sim-revenue').textContent = '$' + revenue.toLocaleString();
+      document.getElementById('sim-recurring').textContent = '$' + recurring.toLocaleString();
+    }
+
+    document.getElementById('sim-recip').addEventListener('input', updateSim);
+    document.getElementById('sim-ctr').addEventListener('input', updateSim);
   </script>
 </body>
 </html>
