@@ -381,44 +381,19 @@
     .stage-item {
       font-size: 0.78rem;
       line-height: 1.5;
-      padding: 0.2rem 0 0.2rem 0.6rem;
-      position: relative;
+      padding: 0.2rem 0;
       color: var(--text);
     }
 
-    .stage-item::before {
-      content: '';
-      position: absolute;
-      left: -0.75rem;
-      top: 0.55rem;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      transform: translateX(-50%);
+    .stage-item a {
+      color: inherit;
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 2px;
     }
 
-    .stage-item.exists::before {
-      background: var(--green);
-    }
-
-    .stage-item.partial::before {
-      background: var(--orange);
-    }
-
-    .stage-item.gap::before {
-      background: var(--red);
-    }
-
-    .stage-item.draft::before {
-      background: var(--purple);
-    }
-
-    .stage-item.gap {
-      color: var(--red);
-    }
-
-    .stage-item.draft {
-      color: var(--purple);
+    .stage-item a:hover {
+      text-decoration-color: var(--accent);
     }
 
     .stage-funnel {
@@ -458,21 +433,6 @@
       flex-wrap: wrap;
     }
 
-    .journey-legend span::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      margin-right: 0.35rem;
-      position: relative;
-      top: -1px;
-    }
-
-    .journey-legend .leg-exists::before { background: var(--green); }
-    .journey-legend .leg-partial::before { background: var(--orange); }
-    .journey-legend .leg-gap::before { background: var(--red); }
-    .journey-legend .leg-draft::before { background: var(--purple); }
 
     /* Before / After comparison */
     .compare {
@@ -625,10 +585,10 @@
       <p class="muted" style="margin-bottom:0.75rem;">What each brand&rsquo;s customer actually experiences from first touch to churn. what exists, what&rsquo;s personalized, and where the gaps are.</p>
 
       <div class="journey-legend">
-        <span class="leg-exists">Live &amp; working</span>
-        <span class="leg-partial">Exists but underperforming or incomplete</span>
-        <span class="leg-gap">Missing</span>
-        <span class="leg-draft">Built but not launched</span>
+        <span>🟢 Live &amp; working</span>
+        <span>🟡 Underperforming or incomplete</span>
+        <span>🔴 Missing</span>
+        <span>⚪ Built but not live</span>
       </div>
 
       <div class="journey-grid">
@@ -640,9 +600,9 @@
           <div class="journey-stage">
             <div class="stage-label">Discovery</div>
             <div class="stage-content">
-              <div class="stage-item exists">Quiz popup on site (15.6% mobile submit rate)</div>
-              <div class="stage-item exists">Hightouch audience sync from ads (5.2M recip)</div>
-              <div class="stage-item gap">No SMS capture on sign-up forms</div>
+              <div class="stage-item">🟢 Quiz popup on site (15.6% mobile submit rate)</div>
+              <div class="stage-item">🟢 Hightouch audience sync from ads (5.2M recip)</div>
+              <div class="stage-item">🔴 <a href="#rec-10">No SMS capture on sign-up forms</a></div>
             </div>
           </div>
 
@@ -651,10 +611,10 @@
           <div class="journey-stage">
             <div class="stage-label">Quiz &rarr; Checkout</div>
             <div class="stage-content">
-              <div class="stage-item exists">Quiz recommends one formula (Clarity, Motivation, Stress Reset, Neuroprotection)</div>
-              <div class="stage-item exists">Quiz Complete metric firing (~15K/mo)</div>
-              <div class="stage-item exists">Browse abandonment flow (new, March 2026)</div>
-              <div class="stage-item exists">Abandoned checkout flow (new, March 2026)</div>
+              <div class="stage-item">🟢 Quiz recommends one formula (Clarity, Motivation, Stress Reset, Neuroprotection)</div>
+              <div class="stage-item">🟢 Quiz Complete metric firing (~15K/mo)</div>
+              <div class="stage-item">🟢 Browse abandonment flow (new, March 2026)</div>
+              <div class="stage-item">🟢 Abandoned checkout flow (new, March 2026)</div>
             </div>
             <div class="stage-funnel">
               <span>Jan 2026:</span> Site 14.4K &rarr; Quiz 16.6K &rarr; Checkout 9.7K &rarr; Sub 7.6K
@@ -666,10 +626,10 @@
           <div class="journey-stage">
             <div class="stage-label">First Purchase</div>
             <div class="stage-content">
-              <div class="stage-item exists">Order confirmation (96.9K recip, 10.5% click)</div>
-              <div class="stage-item exists">Shipment notification</div>
-              <div class="stage-item exists">SMS Welcome ($6.23 RPR, 5.7% conv), but list eroding, now silent</div>
-              <div class="stage-item partial">$59 first month, $79 recurring &bull; Ships with glass jar + Open app + Mindshift bonus</div>
+              <div class="stage-item">🟢 Order confirmation (96.9K recip, 10.5% click)</div>
+              <div class="stage-item">🟢 Shipment notification</div>
+              <div class="stage-item">🟡 SMS Welcome ($6.23 RPR, 5.7% conv) but list eroding, now silent</div>
+              <div class="stage-item">🟡 $59 first month, $79 recurring. Ships with glass jar + Open app + Mindshift bonus</div>
             </div>
           </div>
 
@@ -678,10 +638,10 @@
           <div class="journey-stage">
             <div class="stage-label">Onboarding (M1)</div>
             <div class="stage-content">
-              <div class="stage-item partial">25-message M1 series (80.9K recip, 57% open, <strong>1.3% click</strong>)</div>
-              <div class="stage-item exists">Mindshift 30-day habit reset (36.7K recip, 6.8% click. 5x better)</div>
-              <div class="stage-item gap">No SMS touchpoints during onboarding</div>
-              <div class="stage-item gap">No feedback collection; brand doesn&rsquo;t know if product is working</div>
+              <div class="stage-item">🟡 <a href="#rec-9">25-message M1 series (80.9K recip, 57% open, 1.3% click)</a></div>
+              <div class="stage-item">🟢 Mindshift 30-day habit reset (36.7K recip, 6.8% click)</div>
+              <div class="stage-item">🔴 <a href="#rec-2">No SMS touchpoints during onboarding</a></div>
+              <div class="stage-item">🔴 <a href="#rec-2">No feedback collection</a></div>
             </div>
           </div>
 
@@ -690,10 +650,10 @@
           <div class="journey-stage">
             <div class="stage-label">Onboarding (M2+)</div>
             <div class="stage-content">
-              <div class="stage-item exists">M2 onboarding with SKU-specific splits (Clarity, Motivation, Stress Reset, Neuroprotection)</div>
-              <div class="stage-item exists">60-day celebration</div>
-              <div class="stage-item exists">Okendo review request (378K recip, 25% open, 1% click)</div>
-              <div class="stage-item partial">Zaymo in-email interactions (swap offer, delay subscription)</div>
+              <div class="stage-item">🟢 M2 onboarding with SKU-specific splits (Clarity, Motivation, Stress Reset, Neuroprotection)</div>
+              <div class="stage-item">🟢 60-day celebration</div>
+              <div class="stage-item">🟢 Okendo review request (378K recip, 25% open, 1% click)</div>
+              <div class="stage-item">🟡 Zaymo in-email interactions (swap offer, delay subscription)</div>
             </div>
           </div>
 
@@ -702,11 +662,11 @@
           <div class="journey-stage">
             <div class="stage-label">Retention / Refill</div>
             <div class="stage-content">
-              <div class="stage-item exists">Refill reminder (202K recip, 25-day cadence)</div>
-              <div class="stage-item partial">3 Hormesis Transition variants still running simultaneously</div>
-              <div class="stage-item exists">Clarity migration flow (6.3K recip, 38.2% conv)</div>
-              <div class="stage-item gap">No OTP &rarr; subscription upgrade path</div>
-              <div class="stage-item gap">No milestone/anniversary flow</div>
+              <div class="stage-item">🟢 Refill reminder (202K recip, 25-day cadence)</div>
+              <div class="stage-item">🟡 3 Hormesis Transition variants still running simultaneously</div>
+              <div class="stage-item">🟢 Clarity migration flow (6.3K recip, 38.2% conv)</div>
+              <div class="stage-item">🔴 No OTP &rarr; subscription upgrade path</div>
+              <div class="stage-item">🔴 No milestone/anniversary flow</div>
             </div>
           </div>
 
@@ -715,11 +675,11 @@
           <div class="journey-stage">
             <div class="stage-label">Churn / Winback</div>
             <div class="stage-content">
-              <div class="stage-item partial">Winback flow: 45.7K recip, 48% open, <strong>0.21% conv</strong></div>
-              <div class="stage-item partial">5 cancel-reason branches but &ldquo;Did Not Feel Good&rdquo; is entirely draft (0 active messages)</div>
-              <div class="stage-item exists">59K churned subs still engaged in 90 days</div>
-              <div class="stage-item gap">No SMS winback</div>
-              <div class="stage-item gap">No feedback capture; nobody asks why they left</div>
+              <div class="stage-item">🟡 <a href="#rec-5">Winback: 45.7K recip, 48% open, 0.21% conv</a></div>
+              <div class="stage-item">🟡 5 cancel-reason branches but &ldquo;Did Not Feel Good&rdquo; branch has 0 active messages</div>
+              <div class="stage-item">🟢 59K churned subs still engaged in 90 days</div>
+              <div class="stage-item">🔴 <a href="#rec-5">No SMS winback</a></div>
+              <div class="stage-item">🔴 <a href="#rec-5">No feedback capture on why they left</a></div>
             </div>
             <div class="stage-funnel churn">
               Cancel floor: 4,859&ndash;5,810/mo &bull; Net negative 10 of 13 months
@@ -734,10 +694,10 @@
           <div class="journey-stage">
             <div class="stage-label">Discovery</div>
             <div class="stage-content">
-              <div class="stage-item exists">Multi-step full-page form (10% off, email + SMS + quiz)</div>
-              <div class="stage-item exists">Hightouch audience sync from ads (70K recip)</div>
-              <div class="stage-item exists">SMS capture included in form</div>
-              <div class="stage-item partial">Quiz gates on stimulant use from Q1, excludes non-stimulant ADHD</div>
+              <div class="stage-item">🟢 Multi-step full-page form (10% off, email + SMS + quiz)</div>
+              <div class="stage-item">🟢 Hightouch audience sync from ads (70K recip)</div>
+              <div class="stage-item">🟢 SMS capture included in form</div>
+              <div class="stage-item">🟡 Quiz requires stimulant use to proceed, filtering out non-stimulant ADHD visitors</div>
             </div>
           </div>
 
@@ -746,11 +706,11 @@
           <div class="journey-stage">
             <div class="stage-label">Lead &rarr; Checkout</div>
             <div class="stage-content">
-              <div class="stage-item exists">Lead Flow. #1 revenue driver ($107K, 16K recip, <strong>6.4% conv</strong>)</div>
-              <div class="stage-item exists">Quiz Leads Welcome Offer ($19K, 4.2% conv)</div>
-              <div class="stage-item partial">Browse abandonment: doesn&rsquo;t split Kids vs. adult</div>
-              <div class="stage-item partial">Abandoned checkout: generic, no ADHD value props (1.9% conv)</div>
-              <div class="stage-item gap">No Kids-specific checkout messaging</div>
+              <div class="stage-item">🟢 Lead Flow, #1 revenue driver ($107K, 16K recip, 6.4% conv)</div>
+              <div class="stage-item">🟢 Quiz Leads Welcome Offer ($19K, 4.2% conv)</div>
+              <div class="stage-item">🟡 <a href="#rec-1">Browse abandonment doesn&rsquo;t split Kids vs. adult</a></div>
+              <div class="stage-item">🟡 <a href="#rec-8">Abandoned checkout: generic, no ADHD value props (1.9% conv)</a></div>
+              <div class="stage-item">🔴 <a href="#rec-1">No Kids-specific checkout messaging</a></div>
             </div>
           </div>
 
@@ -759,10 +719,10 @@
           <div class="journey-stage">
             <div class="stage-label">First Purchase</div>
             <div class="stage-content">
-              <div class="stage-item exists">Subscription post-purchase flow (14.6K recip)</div>
-              <div class="stage-item exists">Shipping notifications (142K recip)</div>
-              <div class="stage-item exists">SMS Welcome ($2.58 RPR, 2.6% conv), list small (~7K) but active</div>
-              <div class="stage-item partial">$79/mo Day+Night bundle &bull; Night Retention Gift cross-sold with Thesis orders</div>
+              <div class="stage-item">🟢 Subscription post-purchase flow (14.6K recip)</div>
+              <div class="stage-item">🟢 Shipping notifications (142K recip)</div>
+              <div class="stage-item">🟢 SMS Welcome ($2.58 RPR, 2.6% conv), list small (~7K) but active</div>
+              <div class="stage-item">🟡 $79/mo Day+Night bundle. Night Retention Gift cross-sold with Thesis orders</div>
             </div>
           </div>
 
@@ -771,11 +731,11 @@
           <div class="journey-stage">
             <div class="stage-label">Onboarding</div>
             <div class="stage-content">
-              <div class="stage-item exists">Kids-specific flows: lead, post-purchase, backorder, waitlist, refill</div>
-              <div class="stage-item gap">No adult onboarding journey comparable to Thesis M1/M2</div>
-              <div class="stage-item gap">No SMS during onboarding</div>
-              <div class="stage-item gap">No feedback collection</div>
-              <div class="stage-item gap">&ldquo;What to expect&rdquo; content on PDP but not delivered post-purchase</div>
+              <div class="stage-item">🟢 Kids-specific flows: lead, post-purchase, backorder, waitlist, refill</div>
+              <div class="stage-item">🔴 <a href="#rec-2">No adult onboarding journey comparable to Thesis M1/M2</a></div>
+              <div class="stage-item">🔴 <a href="#rec-2">No SMS during onboarding</a></div>
+              <div class="stage-item">🔴 <a href="#rec-2">No feedback collection</a></div>
+              <div class="stage-item">🔴 <a href="#rec-2">&ldquo;What to expect&rdquo; content on PDP but not delivered post-purchase</a></div>
             </div>
           </div>
 
@@ -784,10 +744,10 @@
           <div class="journey-stage">
             <div class="stage-label">Retention / Refill</div>
             <div class="stage-content">
-              <div class="stage-item exists">Subscription reminders (Bundle, Day, Night, Kids, VIP)</div>
-              <div class="stage-item draft">Surprise &amp; Delight flow, built by Antidote, not launched</div>
-              <div class="stage-item draft">Day+Night Subscription Upgrade, built Mar 17, not launched</div>
-              <div class="stage-item gap">No milestone/anniversary flow</div>
+              <div class="stage-item">🟢 Subscription reminders (Bundle, Day, Night, Kids, VIP)</div>
+              <div class="stage-item">⚪ <a href="#rec-6">Surprise &amp; Delight flow, built by Antidote, not live</a></div>
+              <div class="stage-item">⚪ <a href="#rec-6">Day+Night Subscription Upgrade, built Mar 17, not live</a></div>
+              <div class="stage-item">🔴 No milestone/anniversary flow</div>
             </div>
           </div>
 
@@ -796,11 +756,11 @@
           <div class="journey-stage">
             <div class="stage-label">Churn / Winback</div>
             <div class="stage-content">
-              <div class="stage-item partial">Winback flow: 94K+ recip, 48&ndash;57% open, <strong>0.25% conv</strong></div>
-              <div class="stage-item gap">ReCharge cancel events have empty properties, no reason data in Klaviyo</div>
-              <div class="stage-item draft">SMS Cart Abandonment, built, not sending</div>
-              <div class="stage-item draft">SMS Browse Abandonment, built, not sending</div>
-              <div class="stage-item gap">No feedback capture, no reason-specific messaging</div>
+              <div class="stage-item">🟡 <a href="#rec-5">Winback: 94K+ recip, 48&ndash;57% open, 0.25% conv</a></div>
+              <div class="stage-item">🔴 <a href="#rec-4">ReCharge cancel events have empty properties, no reason data in Klaviyo</a></div>
+              <div class="stage-item">⚪ <a href="#rec-6">SMS Cart Abandonment, built, not live</a></div>
+              <div class="stage-item">⚪ <a href="#rec-6">SMS Browse Abandonment, built, not live</a></div>
+              <div class="stage-item">🔴 <a href="#rec-4">No feedback capture, no reason-specific messaging</a></div>
             </div>
             <div class="stage-funnel churn">
               Cancel floor: ~2,900&ndash;3,200/mo &bull; But net positive 8 of 11 months
@@ -823,7 +783,7 @@
     <!-- ======================== -->
     <!-- #1: STASIS KIDS           -->
     <!-- ======================== -->
-    <div class="audit-section">
+    <div class="audit-section" id="rec-1">
       <div class="section-heading">
         <span class="section-num">1</span>
         <h2>Stasis Kids is getting adult messaging</h2>
@@ -870,7 +830,7 @@
     <!-- ======================== -->
     <!-- #2: POST-PURCHASE SMS     -->
     <!-- ======================== -->
-    <div class="audit-section">
+    <div class="audit-section" id="rec-2">
       <div class="section-heading">
         <span class="section-num">2</span>
         <h2>Nobody hears from the customer after they buy</h2>
@@ -1005,7 +965,7 @@
     <!-- ======================== -->
     <!-- #3: OPEN-TO-CLICK GAP     -->
     <!-- ======================== -->
-    <div class="audit-section">
+    <div class="audit-section" id="rec-3">
       <div class="section-heading">
         <span class="section-num">3</span>
         <h2>People are opening everything and clicking nothing</h2>
@@ -1057,7 +1017,7 @@
     <!-- ======================== -->
     <!-- #4: CANCEL REASONS        -->
     <!-- ======================== -->
-    <div class="audit-section">
+    <div class="audit-section" id="rec-4">
       <div class="section-heading">
         <span class="section-num">4</span>
         <h2>We don&rsquo;t know why Stasis customers cancel</h2>
@@ -1110,7 +1070,7 @@
     <!-- ======================== -->
     <!-- #5: CONVERSATIONAL WINBACK -->
     <!-- ======================== -->
-    <div class="audit-section">
+    <div class="audit-section" id="rec-5">
       <div class="section-heading">
         <span class="section-num">5</span>
         <h2>165K churned subscribers are still reading, getting nothing useful</h2>
@@ -1158,7 +1118,7 @@
     <!-- ======================== -->
     <!-- #6: DRAFT FLOWS           -->
     <!-- ======================== -->
-    <div class="audit-section">
+    <div class="audit-section" id="rec-6">
       <div class="section-heading">
         <span class="section-num">6</span>
         <h2>Four Stasis flows are built and sitting in draft</h2>
@@ -1202,7 +1162,7 @@
     <div class="opp-list">
 
       <!-- #7 -->
-      <div class="opp-card tier-2">
+      <div class="opp-card tier-2" id="rec-7">
         <div class="opp-header">
           <span class="opp-rank">7</span>
           <div class="opp-title">
@@ -1227,7 +1187,7 @@
       </div>
 
       <!-- #8 -->
-      <div class="opp-card tier-2">
+      <div class="opp-card tier-2" id="rec-8">
         <div class="opp-header">
           <span class="opp-rank">8</span>
           <div class="opp-title">
@@ -1256,7 +1216,7 @@
       </div>
 
       <!-- #9 -->
-      <div class="opp-card tier-2">
+      <div class="opp-card tier-2" id="rec-9">
         <div class="opp-header">
           <span class="opp-rank">9</span>
           <div class="opp-title">
@@ -1283,7 +1243,7 @@
       </div>
 
       <!-- #10 -->
-      <div class="opp-card tier-2">
+      <div class="opp-card tier-2" id="rec-10">
         <div class="opp-header">
           <span class="opp-rank">10</span>
           <div class="opp-title">
@@ -1313,7 +1273,7 @@
       </div>
 
       <!-- #11 -->
-      <div class="opp-card tier-2">
+      <div class="opp-card tier-2" id="rec-11">
         <div class="opp-header">
           <span class="opp-rank">11</span>
           <div class="opp-title">
@@ -1342,7 +1302,7 @@
       </div>
 
       <!-- #12 -->
-      <div class="opp-card tier-2">
+      <div class="opp-card tier-2" id="rec-12">
         <div class="opp-header">
           <span class="opp-rank">12</span>
           <div class="opp-title">
