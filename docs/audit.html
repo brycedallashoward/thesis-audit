@@ -1114,21 +1114,21 @@
     <div class="audit-section" id="rec-3">
       <div class="section-heading">
         <span class="section-num">3</span>
-        <h2>Lead campaign click rates have room to grow heading into Q2/Q3</h2>
+        <h2>Lead campaigns across both brands click at 0.32% against a 2&ndash;3% benchmark</h2>
         <span class="brand-tag both">Both</span>
       </div>
 
       <p class="narrative">
-        Both brands send campaigns to leads, one-time purchasers, and cart abandoners. Across Q2+Q3 2025 (April&ndash;September), combined lead campaigns averaged 214K recipients/mo with a 0.9% click rate. That&rsquo;s 54 campaigns across both brands, stripping out the January 2026 outlier ($39 promo blast to 4.5M recipients at 0.3%). DTC benchmark for lead campaigns is 2&ndash;3%.
+        Both brands send campaigns to leads, one-time purchasers, and cart abandoners. Across Q1 2026 (January&ndash;March), the two accounts sent 55 campaigns to a combined 2.35M recipients/mo with a 0.32% click rate. That&rsquo;s 15 Thesis campaigns (paused after Jan 31) and 40 Stasis campaigns. DTC benchmark for lead campaigns is 2&ndash;3%.
       </p>
 
       <div class="stat-row">
         <div class="stat">
-          <span class="value orange">0.9%</span>
-          <span class="label">Q2+Q3 combined click rate</span>
+          <span class="value red">0.32%</span>
+          <span class="label">Q1 2026 combined click rate</span>
         </div>
         <div class="stat">
-          <span class="value accent">214K</span>
+          <span class="value accent">2.35M</span>
           <span class="label">Avg monthly recipients</span>
         </div>
         <div class="stat">
@@ -1139,47 +1139,47 @@
 
       <!-- Revenue simulator -->
       <div class="sim-container" style="background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin:1.5rem 0;">
-        <h3 style="margin:0 0 0.25rem; font-size:1rem;">What click rate improvement means for Q2/Q3 2026</h3>
-        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Baseline: Q2+Q3 2025 combined (Thesis + Stasis), 214K recipients/mo at 0.9% click rate.</p>
+        <h3 style="margin:0 0 0.25rem; font-size:1rem;">Revenue impact of improving lead campaign click rates</h3>
+        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Baseline: Q1 2026 combined (Thesis + Stasis), 55 campaigns, 2.35M recipients/mo at 0.32% click rate.</p>
 
         <div style="margin-bottom:1.25rem;">
           <label style="font-size:0.75rem; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.5rem;">Target click rate</label>
           <div style="display:flex; gap:0.5rem;" id="sim-buttons">
-            <button class="sim-btn" onclick="simUpdate(1.25)" style="flex:1; padding:0.5rem; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--text); cursor:pointer; font-size:0.82rem; font-weight:600;">1.25%</button>
-            <button class="sim-btn active" onclick="simUpdate(1.5)" style="flex:1; padding:0.5rem; border:1px solid var(--accent); border-radius:6px; background:rgba(9,105,218,0.1); color:var(--accent); cursor:pointer; font-size:0.82rem; font-weight:600;">1.5%</button>
+            <button class="sim-btn" onclick="simUpdate(0.5)" style="flex:1; padding:0.5rem; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--text); cursor:pointer; font-size:0.82rem; font-weight:600;">0.5%</button>
+            <button class="sim-btn active" onclick="simUpdate(1.0)" style="flex:1; padding:0.5rem; border:1px solid var(--accent); border-radius:6px; background:rgba(9,105,218,0.1); color:var(--accent); cursor:pointer; font-size:0.82rem; font-weight:600;">1.0%</button>
+            <button class="sim-btn" onclick="simUpdate(1.5)" style="flex:1; padding:0.5rem; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--text); cursor:pointer; font-size:0.82rem; font-weight:600;">1.5%</button>
             <button class="sim-btn" onclick="simUpdate(2.0)" style="flex:1; padding:0.5rem; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--text); cursor:pointer; font-size:0.82rem; font-weight:600;">2.0%</button>
-            <button class="sim-btn" onclick="simUpdate(2.5)" style="flex:1; padding:0.5rem; border:1px solid var(--border); border-radius:6px; background:var(--bg); color:var(--text); cursor:pointer; font-size:0.82rem; font-weight:600;">2.5%</button>
           </div>
         </div>
 
         <div style="display:grid; grid-template-columns:auto auto 1fr; gap:0.5rem; align-items:center; font-size:0.85rem; line-height:1.8;">
           <span style="color:var(--text-muted);">Current clicks/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-current-clicks">1,928</span>
+          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-current-clicks">7,631</span>
           <span></span>
 
           <span style="color:var(--text-muted);">New clicks/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem; font-weight:600; color:var(--accent);" id="sim-new-clicks">3,213</span>
-          <span style="font-size:0.75rem; color:var(--green);" id="sim-delta-clicks">+1,285</span>
+          <span style="font-family:var(--mono); font-size:0.82rem; font-weight:600; color:var(--accent);" id="sim-new-clicks">23,521</span>
+          <span style="font-size:0.75rem; color:var(--green);" id="sim-delta-clicks">+15,890</span>
 
           <span style="color:var(--text-muted);">Additional first orders/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-orders">38</span>
+          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-orders">476</span>
           <span style="font-size:0.72rem; color:var(--text-dim);">at 3% click-to-purchase</span>
 
           <span style="color:var(--text-muted); font-weight:600;">New first-order revenue/mo</span>
-          <span style="font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green);" id="sim-revenue">$2,273</span>
+          <span style="font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green);" id="sim-revenue">$28,125</span>
           <span style="font-size:0.72rem; color:var(--text-dim);">at $59 first month</span>
 
           <span style="color:var(--text-muted); font-weight:600;">Annualized first-order revenue</span>
-          <span style="font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green);" id="sim-annual">$27,279</span>
+          <span style="font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green);" id="sim-annual">$337,504</span>
           <span></span>
 
           <span style="color:var(--text-muted);">Recurring value/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem; color:var(--purple);" id="sim-recurring">$3,044</span>
+          <span style="font-family:var(--mono); font-size:0.82rem; color:var(--purple);" id="sim-recurring">$37,659</span>
           <span style="font-size:0.72rem; color:var(--text-dim);">if retained at $79/mo</span>
         </div>
 
         <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid var(--border); font-size:0.78rem; color:var(--text-muted);">
-          <strong style="color:var(--text);">Assumptions:</strong> Baseline from Q2+Q3 2025 (54 campaigns, both brands). 3% click-to-purchase. $59 first month, $79 recurring. Retention not modeled; recurring line shows full cohort value.
+          <strong style="color:var(--text);">Assumptions:</strong> Baseline: Q1 2026, 55 lead campaigns across both brands. 3% click-to-purchase. $59 first month, $79 recurring. Retention not modeled; recurring line shows full cohort value.
         </div>
       </div>
 
@@ -1724,9 +1724,9 @@
       document.getElementById(id).classList.toggle('open');
     }
 
-    // Revenue simulator — Q2+Q3 2025 baseline (both brands combined)
-    var SIM_RECIP = 214226;
-    var SIM_BASE_CTR = 0.009;
+    // Revenue simulator — Q1 2026 baseline (both brands combined)
+    var SIM_RECIP = 2352136;
+    var SIM_BASE_CTR = 0.0032;
 
     function fmt(n) {
       if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
