@@ -473,6 +473,126 @@
     .journey-legend .leg-partial::before { background: var(--orange); }
     .journey-legend .leg-gap::before { background: var(--red); }
     .journey-legend .leg-draft::before { background: var(--purple); }
+
+    /* Before / After comparison */
+    .compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    @media (max-width: 700px) {
+      .compare { grid-template-columns: 1fr; }
+    }
+
+    .compare-side {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .compare-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.6rem 1rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-label.before {
+      color: var(--red);
+    }
+
+    .compare-label.after {
+      color: var(--green);
+    }
+
+    .compare-body {
+      padding: 1rem 1.25rem;
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .compare-body img {
+      width: 100%;
+      max-width: 280px;
+      display: block;
+      margin: 0.5rem auto 1rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+
+    /* Flow waterfall for the "after" side */
+    .flow-waterfall {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .flow-milestone {
+      display: grid;
+      grid-template-columns: 60px 1fr;
+      gap: 0;
+      position: relative;
+    }
+
+    .flow-time {
+      text-align: right;
+      padding-right: 1rem;
+      padding-top: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .flow-time::after {
+      content: '';
+      position: absolute;
+      right: -4px;
+      top: 0.5rem;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+
+    .flow-actions {
+      border-left: 2px solid var(--border);
+      padding: 0.25rem 0 0.75rem 1rem;
+    }
+
+    .flow-milestone:last-child .flow-actions {
+      border-left-color: transparent;
+    }
+
+    .flow-action {
+      font-size: 0.78rem;
+      line-height: 1.4;
+      padding: 0.15rem 0;
+      color: var(--text);
+    }
+
+    .flow-action .channel {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      margin-right: 0.3rem;
+      position: relative;
+      top: -1px;
+    }
+
+    .channel.email { background: rgba(9, 105, 218, 0.12); color: var(--accent); }
+    .channel.sms { background: rgba(63, 185, 80, 0.12); color: var(--green); }
+    .channel.action { background: rgba(210, 153, 34, 0.12); color: var(--orange); }
   </style>
 </head>
 <body>
@@ -758,41 +878,128 @@
       </div>
 
       <p class="narrative">
-        Both brands have &ldquo;what to expect&rdquo; content on their product pages: hours, days, weeks, months timelines. Good content. But it&rsquo;s sitting on a page the customer will never revisit after purchasing. None of it gets delivered after the sale, and neither brand has any mechanism for the customer to tell you how it&rsquo;s going.
-      </p>
-
-      <p class="narrative">
-        Someone takes their first dose, doesn&rsquo;t feel anything dramatic on day one, and starts wondering if it works. By day 14, doubt sets in. By month two, they cancel. The content that could have addressed every one of those moments existed, it just never reached them.
+        Stasis already has this content. The &ldquo;Commit to Consistency&rdquo; timeline (Hours &rarr; Days &rarr; Weeks &rarr; Months) lives on the PDP and shows up once in the post-purchase flow. That&rsquo;s it. The entire post-purchase sequence is 20 days, and there&rsquo;s no SMS, no feedback capture, no follow-up after day 20. For a product that talks about benefits over months, the lifecycle ends before the customer has had a chance to feel the full effect.
       </p>
 
       <div class="stat-row">
         <div class="stat">
-          <span class="value red">1.3%</span>
-          <span class="label">M1 onboarding click rate</span>
+          <span class="value red">20 days</span>
+          <span class="label">Current post-purchase length</span>
         </div>
         <div class="stat">
-          <span class="value green">6.8%</span>
-          <span class="label">Mindshift series click rate</span>
+          <span class="value accent">0</span>
+          <span class="label">SMS touchpoints</span>
         </div>
         <div class="stat">
-          <span class="value accent">5x</span>
-          <span class="label">Improvement with right content</span>
+          <span class="value accent">0</span>
+          <span class="label">Feedback capture points</span>
         </div>
+      </div>
+
+      <div class="compare">
+
+        <!-- BEFORE -->
+        <div class="compare-side">
+          <div class="compare-label before">Today: one email, 20-day flow</div>
+          <div class="compare-body">
+            <img src="https://d3k81ch9hvuctc.cloudfront.net/company/YsCgQB/images/7697eb10-1012-4d97-a61a-d15485f29b9c.png" alt="Stasis Commit to Consistency timeline">
+            <p>This entire timeline is delivered in <strong>one email</strong> inside a 20-day post-purchase flow. The customer sees all four stages at once, then hears nothing after day 20.</p>
+            <ul>
+              <li>No SMS at any point</li>
+              <li>No feedback collection</li>
+              <li>No check-in after day 20</li>
+              <li>Product promises months-long benefits but the flow ends before that window opens</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- AFTER -->
+        <div class="compare-side">
+          <div class="compare-label after">Proposed: milestone-based, multi-channel, 90+ days</div>
+          <div class="compare-body">
+
+            <div class="flow-waterfall">
+
+              <div class="flow-milestone">
+                <div class="flow-time">Day 1</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel email">Email</span> Welcome + what to expect in the first few hours</div>
+                  <div class="flow-action"><span class="channel sms">SMS</span> &ldquo;Your Stasis just shipped. Here&rsquo;s what the first day feels like.&rdquo;</div>
+                </div>
+              </div>
+
+              <div class="flow-milestone">
+                <div class="flow-time">Day 3</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel sms">SMS</span> &ldquo;How are you feeling so far? Reply to this message.&rdquo;</div>
+                  <div class="flow-action"><span class="channel action">If negative</span> Route to support check-in</div>
+                </div>
+              </div>
+
+              <div class="flow-milestone">
+                <div class="flow-time">Week 1</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel email">Email</span> Deep dive: &ldquo;Days&rdquo; stage. Calmer mornings, better sleep, what to expect next.</div>
+                  <div class="flow-action"><span class="channel sms">SMS</span> Expectation-setting: &ldquo;Most people feel the sleep difference first.&rdquo;</div>
+                </div>
+              </div>
+
+              <div class="flow-milestone">
+                <div class="flow-time">Week 2</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel email">Email</span> Habit reinforcement. Consistency matters more than dose timing.</div>
+                  <div class="flow-action"><span class="channel sms">SMS</span> Quick check: &ldquo;Still going? Any questions?&rdquo;</div>
+                </div>
+              </div>
+
+              <div class="flow-milestone">
+                <div class="flow-time">Week 4</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel email">Email</span> Deep dive: &ldquo;Weeks&rdquo; stage. Serotonin support, mood clarity, mental sharpness.</div>
+                  <div class="flow-action"><span class="channel sms">SMS</span> &ldquo;One month in. How would you rate your experience so far?&rdquo;</div>
+                  <div class="flow-action"><span class="channel action">If positive</span> Trigger review request</div>
+                  <div class="flow-action"><span class="channel action">If negative</span> Trigger support conversation</div>
+                </div>
+              </div>
+
+              <div class="flow-milestone">
+                <div class="flow-time">Week 6</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel email">Email</span> Community + social proof from other customers at this stage</div>
+                </div>
+              </div>
+
+              <div class="flow-milestone">
+                <div class="flow-time">Month 2</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel email">Email</span> Deep dive: &ldquo;Months&rdquo; stage. Cellular protection, long-term brain health.</div>
+                  <div class="flow-action"><span class="channel sms">SMS</span> &ldquo;Two months in. Feeling the difference?&rdquo;</div>
+                </div>
+              </div>
+
+              <div class="flow-milestone">
+                <div class="flow-time">Month 3</div>
+                <div class="flow-actions">
+                  <div class="flow-action"><span class="channel email">Email</span> Full journey recap. Where you started vs. where you are.</div>
+                  <div class="flow-action"><span class="channel sms">SMS</span> Milestone celebration + referral ask</div>
+                  <div class="flow-action"><span class="channel action">Branch</span> Day+Night upgrade offer if on single product</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <p class="narrative">
-        Email alone isn&rsquo;t getting it done here. M1 onboarding gets 57% opens but 1.3% clicks. The Mindshift series (education content about habit formation) hits 6.8% click to the same audience. The difference is content approach, not channel. But SMS adds something email can&rsquo;t: it invites a reply. You actually hear back from the customer. That&rsquo;s the missing piece.
+        Each stage of the &ldquo;Commit to Consistency&rdquo; timeline becomes its own moment in the journey instead of a single image in one email. SMS creates the feedback loop. Email does the deep dive. The flow runs 90+ days instead of 20, matching the product&rsquo;s actual benefit timeline.
       </p>
 
-      <div class="rec-box">
-        <h4>Recommendation</h4>
-        <ul>
-          <li><strong>SMS milestone series:</strong> day 3 (&ldquo;how are you feeling?&rdquo;), week 1 (set expectations), week 2 (reinforce the habit), month 1 (check in)</li>
-          <li><strong>Capture feedback at each stage.</strong> Negative response at week 1 triggers a support check-in, not another marketing email.</li>
-          <li><strong>The PDP content is the raw material:</strong> it&rsquo;s already written, just not being delivered after the sale</li>
-          <li><strong>Close the loop:</strong> good feedback at month 1 &rarr; review request. Bad feedback &rarr; conversation. Either way, you learn something.</li>
-        </ul>
-      </div>
+      <p class="narrative">
+        This is shown here on Stasis but the same model applies to Thesis. The Mindshift series already proves education content works (6.8% click vs. 1.3% on standard onboarding). Layer SMS feedback on top and extend the timeline to match the product.
+      </p>
     </div>
 
     <!-- ======================== -->
