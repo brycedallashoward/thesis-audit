@@ -613,6 +613,43 @@
         </div>
       </div>
 
+      <!-- #12 -->
+      <div class="opp-card tier-2" id="o12">
+        <div class="opp-header" onclick="toggle('o12')">
+          <span class="opp-rank">12</span>
+          <div class="opp-title">
+            <h3>Stasis cancel reasons are invisible &mdash; retention messaging is flying blind</h3>
+            <span class="opp-sub">ReCharge cancellation events sync to Klaviyo with empty properties. Cancel reason data lives in ReCharge native reporting only. No reason-specific winback or save messaging exists.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag stasis">Stasis</span>
+            <span class="chevron">&#9654;</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>Stasis cancels ~2,900&ndash;3,200/mo against ~2,900&ndash;7,000 starts &mdash; 8 of 11 months net positive, but the cancel floor is persistent</li>
+            <li>ReCharge cancellation events coming into Klaviyo have empty event properties &mdash; no cancel reason, no product context</li>
+            <li>Cancel reason data lives exclusively in ReCharge&rsquo;s native reporting. We&rsquo;d need direct ReCharge access or a cancel reason export from Dan</li>
+            <li>Without reasons, any winback or cancellation-prevention messaging is generic &mdash; no ability to address price sensitivity differently from product dissatisfaction or shipping issues</li>
+          </ul>
+          <h4>The opportunity</h4>
+          <ul>
+            <li>Get cancel reason data from ReCharge (direct access or export)</li>
+            <li>Build reason-specific cancellation save flows: price objection gets a downgrade/pause offer, product-fit issues get SKU swap suggestions, "didn&rsquo;t work" gets timeline-setting content</li>
+            <li>Reason-specific winback sequences: a customer who cancelled for price needs a different message than one who had side effects</li>
+            <li>Feed cancel reason trends back into onboarding &mdash; if "didn&rsquo;t feel a difference" is top reason, front-load expectation-setting content</li>
+          </ul>
+          <h4>What to show</h4>
+          <ul>
+            <li>Monthly cancel volume vs. starts (the data we have)</li>
+            <li>Empty Klaviyo event properties (the data we don&rsquo;t have)</li>
+            <li>Mock-up of reason-specific messaging branches</li>
+          </ul>
+        </div>
+      </div>
+
     </div>
 
     <!-- ======================== -->
@@ -622,10 +659,10 @@
 
     <div class="opp-list">
 
-      <!-- #12 -->
-      <div class="opp-card tier-3" id="o12">
-        <div class="opp-header" onclick="toggle('o12')">
-          <span class="opp-rank">12</span>
+      <!-- #13 -->
+      <div class="opp-card tier-3" id="o13">
+        <div class="opp-header" onclick="toggle('o13')">
+          <span class="opp-rank">13</span>
           <div class="opp-title">
             <h3>Stasis segment architecture should be the template for both accounts</h3>
             <span class="opp-sub">Stasis uses [COHORT], [EXCLUDE], [SUBSCRIPTION] naming with tiered suppression. Thesis has no consistent convention.</span>
@@ -649,10 +686,10 @@
         </div>
       </div>
 
-      <!-- #13 -->
-      <div class="opp-card tier-3" id="o13">
-        <div class="opp-header" onclick="toggle('o13')">
-          <span class="opp-rank">13</span>
+      <!-- #14 -->
+      <div class="opp-card tier-3" id="o14">
+        <div class="opp-header" onclick="toggle('o14')">
+          <span class="opp-rank">14</span>
           <div class="opp-title">
             <h3>D30+ Engaged Leads on Thesis: 64% opens, 0.28% conversion</h3>
             <span class="opp-sub">120K recipients, highest open rate in the account, lowest conversion relative to engagement.</span>
@@ -677,10 +714,10 @@
         </div>
       </div>
 
-      <!-- #14 -->
-      <div class="opp-card tier-3" id="o14">
-        <div class="opp-header" onclick="toggle('o14')">
-          <span class="opp-rank">14</span>
+      <!-- #15 -->
+      <div class="opp-card tier-3" id="o15">
+        <div class="opp-header" onclick="toggle('o15')">
+          <span class="opp-rank">15</span>
           <div class="opp-title">
             <h3>Both accounts have ~100 flows each &mdash; consolidation needed</h3>
             <span class="opp-sub">Thesis: Hormesis Transition variants, orphans, stale A/B tests. Stasis: multiple iterations of similar flows not archived.</span>
