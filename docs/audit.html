@@ -5,6 +5,280 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Audit &mdash; Thesis Klaviyo</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Audit-specific styles */
+
+    /* Tier 1 full sections */
+    .audit-section {
+      margin-bottom: 3rem;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .audit-section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .audit-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .audit-rank.t1 { background: rgba(248, 81, 73, 0.15); color: var(--red); }
+    .audit-rank.t2 { background: rgba(210, 153, 34, 0.15); color: var(--orange); }
+    .audit-rank.t3 { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+
+    .audit-section-header h2 {
+      font-size: 1.1rem;
+      margin: 0;
+      padding: 0;
+      border: none;
+      flex: 1;
+    }
+
+    .audit-section-header .opp-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-top: 0.2rem;
+    }
+
+    .audit-section-body {
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .audit-section-body h3 {
+      font-size: 0.95rem;
+      margin: 1.5rem 0 0.6rem;
+    }
+
+    .audit-section-body h3:first-child {
+      margin-top: 0;
+    }
+
+    .audit-section-body h4 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin: 1.25rem 0 0.4rem;
+    }
+
+    .audit-section-body ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .audit-section-body li {
+      margin-bottom: 0.35rem;
+    }
+
+    /* Brand tags */
+    .brand-tag {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .brand-tag.thesis { background: rgba(9, 105, 218, 0.12); color: var(--accent); }
+    .brand-tag.stasis { background: rgba(130, 80, 223, 0.12); color: var(--purple); }
+    .brand-tag.both { background: rgba(139, 148, 158, 0.15); color: var(--text-muted); }
+
+    /* Tier labels */
+    .tier-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.75rem;
+      margin-top: 2.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid;
+    }
+
+    .tier-label.t1 { color: var(--red); border-color: rgba(248, 81, 73, 0.3); }
+    .tier-label.t2 { color: var(--orange); border-color: rgba(210, 153, 34, 0.3); }
+    .tier-label.t3 { color: var(--green); border-color: rgba(63, 185, 80, 0.3); }
+
+    /* Tier 2 open cards */
+    .opp-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .opp-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .opp-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .opp-header.clickable {
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.15s;
+      border-bottom: 1px solid transparent;
+    }
+
+    .opp-header.clickable:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .opp-card.open .opp-header.clickable {
+      border-bottom-color: var(--border);
+    }
+
+    .opp-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.75rem;
+      height: 1.75rem;
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .tier-2 .opp-rank { background: rgba(210, 153, 34, 0.15); color: var(--orange); }
+    .tier-3 .opp-rank { background: rgba(63, 185, 80, 0.15); color: var(--green); }
+
+    .opp-title {
+      flex: 1;
+    }
+
+    .opp-title h3 {
+      font-size: 0.95rem;
+      margin: 0 0 0.2rem;
+    }
+
+    .opp-title .opp-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .opp-meta {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    .opp-body {
+      padding: 1.25rem;
+      font-size: 0.88rem;
+      line-height: 1.6;
+    }
+
+    .opp-body.collapsible {
+      display: none;
+    }
+
+    .opp-card.open .opp-body.collapsible {
+      display: block;
+    }
+
+    .opp-body h4 {
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin: 1rem 0 0.4rem;
+    }
+
+    .opp-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .opp-body ul {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .opp-body li {
+      margin-bottom: 0.3rem;
+    }
+
+    .chevron {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      margin-top: 0.25rem;
+    }
+
+    .opp-card.open .chevron {
+      transform: rotate(90deg);
+    }
+
+    /* Big bets */
+    .big-bets {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .big-bets h2 {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid rgba(130, 80, 223, 0.3);
+      color: var(--purple);
+    }
+
+    .bet-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      background: var(--bg-card);
+    }
+
+    .bet-card h3 {
+      font-size: 0.92rem;
+      margin: 0 0 0.3rem;
+    }
+
+    .bet-card p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.5;
+    }
+  </style>
 </head>
 <body>
   <nav>
@@ -20,13 +294,568 @@
   <div class="container">
     <div class="page-header">
       <h1>The Audit</h1>
-      <p class="subtitle">Walkthrough for Dan Freed &mdash; live session</p>
-      <p class="meta">Building from Planning Center investigations</p>
+      <p class="subtitle">Walkthrough for Dan Freed</p>
+      <p class="meta">Thesis + Stasis Klaviyo &middot; March 2026</p>
     </div>
 
     <div class="callout">
-      <strong>This page is intentionally empty for now.</strong> Findings will be promoted here from the <a href="planning.html">Planning Center</a> as investigation threads are completed and conclusions are ready for presentation. The Planning Center is the active workspace.
+      <strong>Portfolio context:</strong> Stasis now represents 49&ndash;53% of combined revenue (up from 35% eleven months ago) and has posted net subscriber growth in 8 of 11 months. Thesis is in structural subscriber decline. The business is investing forward in Stasis &mdash; including the Kids launch &mdash; and both brands have been operating without a dedicated retention marketer. The recommendations below reflect where Stasis should be built out and where Thesis revenue should be protected.
     </div>
+
+    <!-- ======================== -->
+    <!-- TIER 1: Full Sections    -->
+    <!-- ======================== -->
+    <div class="tier-label t1">Tier 1 &mdash; Stasis Growth / Portfolio Foundation</div>
+
+    <!-- #1: STASIS KIDS LIFECYCLE -->
+    <div class="audit-section">
+      <div class="audit-section-header">
+        <span class="audit-rank t1">1</span>
+        <div>
+          <h2>Stasis Kids needs its own lifecycle &mdash; not a bolt-on to the adult journey</h2>
+          <div class="opp-sub">Kids launch has dedicated flows but browse abandonment, checkout, and campaigns don&rsquo;t differentiate. Parent psychology &ne; adult ADHD customer.</div>
+        </div>
+        <span class="brand-tag stasis">Stasis</span>
+      </div>
+      <div class="audit-section-body">
+        <h4>What we found</h4>
+        <ul>
+          <li>Kids launch infrastructure exists: dedicated lead flow, post-purchase, backorder, waitlist, refill reminders</li>
+          <li>But browse abandonment sends generic adult messaging to parents browsing Kids capsules</li>
+          <li>Abandoned checkout doesn&rsquo;t distinguish Kids vs. adult products</li>
+          <li>Parent buying psychology (safety, school performance, guilt about medicating) is fundamentally different from adult ADHD customer (productivity, focus, stimulant management)</li>
+        </ul>
+
+        <h4>Why this is #1</h4>
+        <p>This is the brand&rsquo;s active growth bet. Dan already knows the demand is there &mdash; it sold out in the test run. The gap is that the lifecycle messaging doesn&rsquo;t match the audience. A parent researching ADHD supplements for their child should not receive the same &ldquo;3PM Wall&rdquo; and &ldquo;stimulant crash&rdquo; messaging designed for adults.</p>
+
+        <h4>Recommendation</h4>
+        <ul>
+          <li>Dedicated Kids browse abandonment with parent-specific messaging (safety, clinical backing, other parents&rsquo; experience)</li>
+          <li>Separate checkout flow for Kids products</li>
+          <li>Kids-specific post-purchase journey with parent-oriented expectation-setting</li>
+          <li>Campaign segmentation: parents should never receive adult ADHD creative</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- #2: POST-PURCHASE SMS FEEDBACK -->
+    <div class="audit-section">
+      <div class="audit-section-header">
+        <span class="audit-rank t1">2</span>
+        <div>
+          <h2>Post-purchase series for both brands &mdash; SMS feedback loop and guided &ldquo;what to expect&rdquo; journey</h2>
+          <div class="opp-sub">PDPs already have hours/days/weeks/months content. Turn it into programmatic guidance via SMS with feedback collection at each milestone.</div>
+        </div>
+        <span class="brand-tag both">Both</span>
+      </div>
+      <div class="audit-section-body">
+        <h4>What we found</h4>
+        <ul>
+          <li>Both brands have &ldquo;what to expect&rdquo; content on PDPs (hours, days, weeks, months timelines)</li>
+          <li>This content exists but isn&rsquo;t being delivered programmatically post-purchase</li>
+          <li>No SMS feedback layer exists on either brand &mdash; no mechanism to hear from customers during the critical adoption window</li>
+          <li>Thesis M1 onboarding gets 57% opens but 1.3% clicks &mdash; email alone isn&rsquo;t creating engagement</li>
+          <li>Thesis Mindshift series (flow Y6nDb2) hits 6.81% click &mdash; 5x better &mdash; proving education content works when it&rsquo;s the right format</li>
+        </ul>
+
+        <h4>Why this is #2</h4>
+        <p>Post-purchase is where churn starts. Both brands are sending emails but not creating a conversation. SMS feedback at key milestones (day 3, week 1, week 2, month 1) gives the brand real signal on whether the product is working &mdash; and gives the customer a sense that someone&rsquo;s listening. The content already exists on the PDPs. This is about activating it in the right channel at the right time, then layering in feedback collection to create a closed loop.</p>
+
+        <h4>Recommendation</h4>
+        <ul>
+          <li>Build SMS milestone series: day 3 (&ldquo;how are you feeling?&rdquo;), week 1 (expectation-setting), week 2 (habit reinforcement), month 1 (assessment)</li>
+          <li>Capture feedback at each stage &mdash; this creates signal for retention intervention</li>
+          <li>Use the PDP &ldquo;what to expect&rdquo; content as the raw material for the series</li>
+          <li>Close the loop: negative feedback triggers support outreach, positive feedback triggers review request</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- #3: OPEN-TO-CLICK GAP -->
+    <div class="audit-section">
+      <div class="audit-section-header">
+        <span class="audit-rank t1">3</span>
+        <div>
+          <h2>Open-to-click gap is a portfolio-wide creative problem</h2>
+          <div class="opp-sub">Both brands: strong opens (36&ndash;57%), weak clicks (0.2&ndash;0.8%). Benchmark is 2&ndash;3%. Affects every send across both accounts.</div>
+        </div>
+        <span class="brand-tag both">Both</span>
+      </div>
+      <div class="audit-section-body">
+        <h4>What we found</h4>
+        <ul>
+          <li>Thesis campaigns: 36&ndash;57% opens, 0.2&ndash;0.8% clicks</li>
+          <li>Stasis campaigns: similar pattern &mdash; strong opens, low click-through</li>
+          <li>Thesis M1 onboarding: 57% opens, 1.28% clicks (but Mindshift series hits 6.81% &mdash; 5x)</li>
+          <li>Stasis abandoned checkout: generic cart reminder without ADHD-specific value props</li>
+          <li>Click rates are ~25% of DTC email benchmark across both brands</li>
+        </ul>
+
+        <h4>The proof case</h4>
+        <p>The Mindshift series (flow Y6nDb2) proves this is solvable. Same audience, same channel &mdash; but education-first content with a clear value proposition drives 5x the click rate. When the content is right, clicks follow. The gap isn&rsquo;t deliverability or list quality &mdash; it&rsquo;s creative and content strategy.</p>
+
+        <h4>Recommendation</h4>
+        <ul>
+          <li>Audit the highest-volume flows and campaigns on both brands for CTA clarity and value proposition</li>
+          <li>Apply the Mindshift content model: education-first, clear &ldquo;what you&rsquo;ll learn/get&rdquo; framing</li>
+          <li>On Stasis: bring the condition-specific campaign angles (&ldquo;3PM Wall,&rdquo; &ldquo;Stimulant crash,&rdquo; &ldquo;Social Battery&rdquo;) into flows where they&rsquo;re currently absent</li>
+          <li>Fixing click rates from 0.5% to 2% is a 4x improvement on every send across both brands</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- #4: CANCEL REASONS -->
+    <div class="audit-section">
+      <div class="audit-section-header">
+        <span class="audit-rank t1">4</span>
+        <div>
+          <h2>Stasis cancel reasons are invisible &mdash; retention messaging is flying blind</h2>
+          <div class="opp-sub">ReCharge cancellation events sync to Klaviyo with empty properties. Cancel reason data lives in ReCharge native reporting only. No reason-specific save or winback messaging exists.</div>
+        </div>
+        <span class="brand-tag stasis">Stasis</span>
+      </div>
+      <div class="audit-section-body">
+        <h4>What we found</h4>
+        <ul>
+          <li>Stasis cancels ~2,900&ndash;3,200/mo against ~2,900&ndash;7,000 starts &mdash; 8 of 11 months net positive, but the cancel floor is persistent</li>
+          <li>ReCharge cancellation events coming into Klaviyo have empty event properties &mdash; no cancel reason, no product context</li>
+          <li>Cancel reason data lives exclusively in ReCharge&rsquo;s native reporting &mdash; we need direct ReCharge access or a cancel reason export</li>
+          <li>Without reasons, any winback or cancellation-prevention messaging is generic &mdash; no ability to address price sensitivity differently from product dissatisfaction or shipping issues</li>
+        </ul>
+
+        <h4>The opportunity</h4>
+        <ul>
+          <li>Get cancel reason data from ReCharge (direct access or export)</li>
+          <li>Build reason-specific cancellation save flows: price objection gets a downgrade/pause offer, product-fit issues get SKU swap suggestions, &ldquo;didn&rsquo;t work&rdquo; gets timeline-setting content</li>
+          <li>Reason-specific winback sequences: a customer who cancelled for price needs a different message than one who had side effects</li>
+          <li>Feed cancel reason trends back into onboarding &mdash; if &ldquo;didn&rsquo;t feel a difference&rdquo; is top reason, front-load expectation-setting content</li>
+        </ul>
+
+        <h4>Stasis subscription trends</h4>
+        <table>
+          <thead>
+            <tr><th>Month</th><th>Starts</th><th>Cancels</th><th>Net</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Apr 2025</td><td>2,103</td><td>2,970</td><td style="color:var(--red)">-867</td></tr>
+            <tr><td>May 2025</td><td>4,202</td><td>2,733</td><td style="color:var(--green)">+1,469</td></tr>
+            <tr><td>Jun 2025</td><td>3,173</td><td>2,888</td><td style="color:var(--green)">+285</td></tr>
+            <tr><td>Jul 2025</td><td>3,451</td><td>3,072</td><td style="color:var(--green)">+379</td></tr>
+            <tr><td>Aug 2025</td><td>2,434</td><td>2,956</td><td style="color:var(--red)">-522</td></tr>
+            <tr><td>Sep 2025</td><td>1,896</td><td>2,759</td><td style="color:var(--red)">-863</td></tr>
+            <tr><td>Oct 2025</td><td>1,542</td><td>2,618</td><td style="color:var(--red)">-1,076</td></tr>
+            <tr><td>Nov 2025</td><td>3,180</td><td>2,428</td><td style="color:var(--green)">+752</td></tr>
+            <tr><td>Dec 2025</td><td>2,796</td><td>2,629</td><td style="color:var(--green)">+167</td></tr>
+            <tr><td>Jan 2026</td><td>6,132</td><td>2,952</td><td style="color:var(--green)"><strong>+3,180</strong></td></tr>
+            <tr><td>Feb 2026</td><td>7,061</td><td>3,217</td><td style="color:var(--green)"><strong>+3,844</strong></td></tr>
+            <tr><td>Mar 2026 (partial)</td><td>4,631</td><td>2,950</td><td style="color:var(--green)">+1,681</td></tr>
+          </tbody>
+        </table>
+        <p class="muted">8 of 11 months net positive. Cancel floor is persistent at ~2,900&ndash;3,200 regardless of acquisition volume. Jan&ndash;Feb 2026 acquisition spike is massive but cancels still track independently.</p>
+      </div>
+    </div>
+
+    <!-- #5: CONVERSATIONAL WINBACK -->
+    <div class="audit-section">
+      <div class="audit-section-header">
+        <span class="audit-rank t1">5</span>
+        <div>
+          <h2>Winback needs to be a conversation, not a broadcast</h2>
+          <div class="opp-sub">Thesis: 48% opens, 0.21% conversion on 46K. Stasis: 48&ndash;57% opens, 0.25% on 118K. Both audiences are reachable &mdash; nobody&rsquo;s asking them why they left.</div>
+        </div>
+        <span class="brand-tag both">Both</span>
+      </div>
+      <div class="audit-section-body">
+        <h4>What we found</h4>
+        <ul>
+          <li>Thesis: 59,319 churned subscribers still engaged in last 90 days. Current winback converts 0.21%.</li>
+          <li>Stasis: 118K+ recipients through winback, $14K total revenue, 0.25% conversion</li>
+          <li>Both flows have strong open rates (48&ndash;57%) &mdash; these people are reading</li>
+          <li>Combined: ~165K churned subscribers still paying attention, getting generic messaging</li>
+        </ul>
+
+        <h4>Recommendation</h4>
+        <ul>
+          <li>Add an SMS feedback layer at the 30-day cancel mark: &ldquo;We&rsquo;re all ears. Got questions, feedback, or concerns you want addressed? Reply to this message or click below.&rdquo;</li>
+          <li>Use interactive modules in email: &ldquo;How you felt on Stasis vs. without Stasis&rdquo; with CTAs to let the customer react</li>
+          <li>If they confirm they felt the benefit: warm winback candidate, different offer strategy</li>
+          <li>If they didn&rsquo;t: product wasn&rsquo;t for them, stop pushing &mdash; save the relationship for cross-sell</li>
+          <li>This creates signal, not just sends. Differentiate winback by what the customer tells you, not just by cancellation date.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- #6: DRAFT FLOWS -->
+    <div class="audit-section">
+      <div class="audit-section-header">
+        <span class="audit-rank t1">6</span>
+        <div>
+          <h2>Stasis has built flows sitting in draft &mdash; SMS cart/browse, Surprise &amp; Delight, subscription upgrades</h2>
+          <div class="opp-sub">Multiple high-value flows exist but aren&rsquo;t live. SMS abandonment, Surprise &amp; Delight, Day+Night upgrades &mdash; all built, none launched.</div>
+        </div>
+        <span class="brand-tag stasis">Stasis</span>
+      </div>
+      <div class="audit-section-body">
+        <h4>What we found</h4>
+        <ul>
+          <li>SMS Cart Abandonment [antidote] &mdash; draft, not sending</li>
+          <li>SMS Browse Abandonment [antidote] &mdash; draft, not sending</li>
+          <li>Surprise &amp; Delight Flow [antidote] &mdash; draft, not launched</li>
+          <li>Day + Night Subscription Upgrades &mdash; created Mar 17, 2026, not launched</li>
+        </ul>
+
+        <h4>Why this is #6</h4>
+        <p>Fastest path to impact. These flows already exist &mdash; review, QA, launch. SMS Welcome already proves SMS converts ($2.58 RPR). The subscription upgrade flow could directly grow Stasis subscriber value.</p>
+
+        <h4>Recommendation</h4>
+        <ul>
+          <li>Review and QA each draft flow</li>
+          <li>Priority launch: SMS abandonment flows (proven channel, already built)</li>
+          <li>Activate Day+Night subscription upgrade flow to increase subscriber LTV</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ======================== -->
+    <!-- TIER 2: Open Cards       -->
+    <!-- ======================== -->
+    <div class="tier-label t2">Tier 2 &mdash; Thesis Protection / Portfolio-Wide Fixes</div>
+
+    <div class="opp-list">
+
+      <!-- #7 -->
+      <div class="opp-card tier-2">
+        <div class="opp-header">
+          <span class="opp-rank">7</span>
+          <div class="opp-title">
+            <h3>Thesis structural churn frames the narrative &mdash; the business is already responding</h3>
+            <span class="opp-sub">30&ndash;38% monthly churn. Net subscriber loss 10 of 13 months. Revenue is a lagging indicator. Stasis is growing; Thesis is not.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag thesis">Thesis</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>Thesis cancellations: fixed floor of 4,859&ndash;5,810/mo regardless of acquisition volume</li>
+            <li>Revenue stable ($1.9M&ndash;$2.3M/mo) only because existing base hasn&rsquo;t fully decayed</li>
+            <li>Stasis: 8 of 11 months net positive, cumulative +9,253 subs. Revenue share 35% &rarr; 53%</li>
+            <li>Thesis campaign calendar paused after Jan 31 while the business focuses on scaling Stasis &mdash; intentional, not a gap</li>
+          </ul>
+          <h4>The frame</h4>
+          <p>Thesis churn is real but the business is already responding by investing in Stasis. There hasn&rsquo;t been a dedicated retention marketer on either brand &mdash; that&rsquo;s the gap this engagement fills. Retention work on Thesis protects existing revenue; retention work on Stasis accelerates growth.</p>
+        </div>
+      </div>
+
+      <!-- #8 -->
+      <div class="opp-card tier-2">
+        <div class="opp-header">
+          <span class="opp-rank">8</span>
+          <div class="opp-title">
+            <h3>Stasis abandoned checkout doesn&rsquo;t sell &mdash; it just reminds</h3>
+            <span class="opp-sub">1.9% conversion. First email is a generic cart reminder without ADHD value props, social proof, or condition-specific urgency.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag stasis">Stasis</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>First email is generic: no ADHD-specific messaging, no value props, no social proof</li>
+            <li>Campaign creative uses condition-specific angles that work (&ldquo;3PM Wall,&rdquo; &ldquo;Stimulant crash,&rdquo; &ldquo;Social Battery&rdquo;) &mdash; none appear in the checkout flow</li>
+            <li>Second email timing is too late</li>
+            <li>No Kids vs. adult product split</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Rewrite checkout flow with ADHD-specific value props and social proof from campaigns</li>
+            <li>Split Kids vs. adult checkout paths</li>
+            <li>Tighten second email timing</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #9 -->
+      <div class="opp-card tier-2">
+        <div class="opp-header">
+          <span class="opp-rank">9</span>
+          <div class="opp-title">
+            <h3>Thesis M1 onboarding has attention but no action</h3>
+            <span class="opp-sub">57% opens, 1.3% clicks across 25 messages. Mindshift series (Y6nDb2) proves education content works &mdash; 6.8% click, 5x better.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag thesis">Thesis</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>80,930 recipients through M1 onboarding in 12 months. Opens strong (57.5%), clicks critically low (1.28%)</li>
+            <li>NYNM Mindshift series (Y6nDb2 &mdash; the 30-day habit reset bonus): 60.3% open, 6.81% click to 36,722 recipients</li>
+            <li>Primary Mindshift message (VEVH3U) drives 34.9K recipients at 7.1% click &mdash; this is the content format that works</li>
+            <li>M2 onboarding already has product-specific trigger splits by SKU (Clarity, Stress Reset, Neuroprotection, Motivation). M1 content quality is the gap, not product routing.</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Restructure M1 around education/value content modeled on Mindshift</li>
+            <li>Message-by-message breakdown to identify and remove dead weight</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #10 -->
+      <div class="opp-card tier-2">
+        <div class="opp-header">
+          <span class="opp-rank">10</span>
+          <div class="opp-title">
+            <h3>SMS is a proven channel being misused or abandoned on both brands</h3>
+            <span class="opp-sub">Both brands prove SMS converts. Thesis destroyed its list via blast. Stasis has SMS flows in draft. Neither uses SMS in lifecycle.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag both">Both</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>Thesis SMS Welcome: best lead conversion channel ($6.23 RPR, 5.7% conv). But $39 blast caused 5.15% unsub, list shrank 50.7K &rarr; 41.4K, now silent</li>
+            <li>Stasis SMS Welcome: $2.58 RPR, solid. But list is small (~7K) and abandonment flows are draft, not live</li>
+            <li>Neither brand uses SMS in lifecycle (onboarding, refill, winback)</li>
+            <li><strong>Sign-up form gap:</strong> Thesis quiz popups (15.6% mobile submit rate) don&rsquo;t appear to include SMS capture. The form is generating email leads but missing the stronger channel.</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Rebuild Thesis SMS list with proper lifecycle usage, not blasts</li>
+            <li>Add SMS capture to Thesis sign-up forms</li>
+            <li>Launch Stasis SMS abandonment flows (already built, sitting in draft)</li>
+            <li>Integrate SMS into onboarding, refill, and winback on both brands</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #11 -->
+      <div class="opp-card tier-2">
+        <div class="opp-header">
+          <span class="opp-rank">11</span>
+          <div class="opp-title">
+            <h3>Review programs on both brands need attention</h3>
+            <span class="opp-sub">Thesis: completion rate halved (1.4% &rarr; 0.7%), sentiment data mirrors churn drivers. Stasis: newer SKUs explain low counts but collection needs acceleration.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag both">Both</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>Thesis completion rate nearly halved over 12 months. Rating drifting 4.59 &rarr; 4.45. 5-star share dropped 82% &rarr; 72%.</li>
+            <li>Thesis negative themes: &ldquo;doesn&rsquo;t work,&rdquo; GI issues, subscription friction, price, caffeine on Motivation &mdash; these map to churn reasons</li>
+            <li>Stasis: Day+Night Set has only 949 reviews. Day Welcome Kit: 2 reviews. Night: 1 review. Review dates indicate these are newer SKUs that replaced individual products &mdash; low counts reflect recency, not broken collection.</li>
+            <li>Both brands&rsquo; review programs are polished on the surface &mdash; the issue is volume, not infrastructure</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Thesis: mine negative review themes as churn-reason proxy (useful until ReCharge cancel reasons are available)</li>
+            <li>Stasis: accelerate review collection on newer SKUs to build social proof</li>
+            <li>Both: improve review request timing and incentive to lift completion rate</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #12 -->
+      <div class="opp-card tier-2">
+        <div class="opp-header">
+          <span class="opp-rank">12</span>
+          <div class="opp-title">
+            <h3>Cross-sell between Thesis and Stasis has no systematic path</h3>
+            <span class="opp-sub">Night Retention Gift exists as a gifting tactic. No lifecycle flow in either direction. Stasis lead flow converts at 6.4% &mdash; the product sells when introduced.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag both">Both</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>Night Retention Gift cross-sold/gifted with first Thesis subscription</li>
+            <li>No systematic flow in either direction</li>
+            <li>Separate Klaviyo instances means cross-sell needs coordination</li>
+            <li>Stasis lead flow converts at 6.4% &mdash; the product sells when it&rsquo;s introduced</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Build lifecycle cross-sell triggers: Thesis subscriber at 60+ days &rarr; introduce Stasis</li>
+            <li>Stasis subscribers with focus/productivity needs &rarr; introduce Thesis</li>
+            <li>Coordinate across Klaviyo instances</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================== -->
+    <!-- TIER 3: Collapsed Cards  -->
+    <!-- ======================== -->
+    <div class="tier-label t3">Tier 3 &mdash; Infrastructure / Cleanup</div>
+
+    <div class="opp-list">
+
+      <!-- #13 -->
+      <div class="opp-card tier-3" id="t13">
+        <div class="opp-header clickable" onclick="toggle('t13')">
+          <span class="opp-rank">13</span>
+          <div class="opp-title">
+            <h3>Stasis segment architecture should be the template for both accounts</h3>
+            <span class="opp-sub">Stasis uses [COHORT], [EXCLUDE], [SUBSCRIPTION] naming with tiered suppression. Thesis has no consistent convention.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag both">Both</span>
+            <span class="chevron">&#9654;</span>
+          </div>
+        </div>
+        <div class="opp-body collapsible">
+          <h4>What we found</h4>
+          <ul>
+            <li>Stasis: clear naming, tiered suppression (Standard &rarr; Tight &rarr; Never Engaged), product-level subscription segments, SMS exclusion, flow-overlap prevention</li>
+            <li>Thesis: ad hoc naming, stale lists from 2019&ndash;2024. [antidote] tags are Antidote agency convention.</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Adopt Stasis conventions as the standard for both accounts</li>
+            <li>Clean up Thesis segment naming to match</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #14 -->
+      <div class="opp-card tier-3" id="t14">
+        <div class="opp-header clickable" onclick="toggle('t14')">
+          <span class="opp-rank">14</span>
+          <div class="opp-title">
+            <h3>D30+ Engaged Leads on Thesis: 64% opens, 0.28% conversion</h3>
+            <span class="opp-sub">120K recipients, highest open rate in the account, lowest conversion relative to engagement.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag thesis">Thesis</span>
+            <span class="chevron">&#9654;</span>
+          </div>
+        </div>
+        <div class="opp-body collapsible">
+          <h4>What we found</h4>
+          <ul>
+            <li>120,877 recipients with 64% open rate</li>
+            <li>0.28% conversion &mdash; same pattern as campaigns and onboarding: attention without action</li>
+            <li>Education campaigns to this audience produce $0.01 RPR</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Rethink what these leads are receiving vs. what might close them</li>
+            <li>Test direct conversion offers vs. continued education drip</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #15 -->
+      <div class="opp-card tier-3" id="t15">
+        <div class="opp-header clickable" onclick="toggle('t15')">
+          <span class="opp-rank">15</span>
+          <div class="opp-title">
+            <h3>Both accounts have ~100 flows each &mdash; consolidation needed</h3>
+            <span class="opp-sub">Thesis: Hormesis Transition variants, orphans, stale A/B tests. Stasis: multiple iterations of similar flows not archived.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag both">Both</span>
+            <span class="chevron">&#9654;</span>
+          </div>
+        </div>
+        <div class="opp-body collapsible">
+          <h4>What we found</h4>
+          <ul>
+            <li>Thesis: 3 simultaneous Hormesis Transition refill variants, redundant Clarity filtering, &ldquo;Copy of&rdquo; orphan actively sending, 30+ &ldquo;Updated&rdquo; prefix flows, 7 draining flows</li>
+            <li>Stasis: ~100 flows total, 27 live, multiple iterations of welcome/sub reminder/review flows</li>
+          </ul>
+          <h4>Recommendation</h4>
+          <ul>
+            <li>Archive orphan and superseded flow versions on both accounts</li>
+            <li>Consolidate Thesis Hormesis Transition variants into a single flow</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Housekeeping checklist -->
+      <div class="opp-card tier-3" id="t-housekeeping">
+        <div class="opp-header clickable" onclick="toggle('t-housekeeping')">
+          <span class="opp-rank">&bull;</span>
+          <div class="opp-title">
+            <h3>Housekeeping checklist</h3>
+            <span class="opp-sub">Cleanup items that don&rsquo;t require strategic decisions &mdash; just execution.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag both">Both</span>
+            <span class="chevron">&#9654;</span>
+          </div>
+        </div>
+        <div class="opp-body collapsible">
+          <ul>
+            <li>Thesis: delete dead metrics (199/200 ceiling). At least 6 metrics with 0 events.</li>
+            <li>Thesis: archive 30+ &ldquo;Updated&rdquo; prefix orphan flows and 7 draining flows</li>
+            <li>Thesis: clean stale lists (2019&ndash;2024 remnants: DojoMojo, Get Fit Don&rsquo;t Quit, etc.)</li>
+            <li>Stasis: archive superseded flow versions (multiple iterations of welcome, sub reminder, review)</li>
+            <li>Both: [antidote] naming is Antidote agency convention &mdash; no action needed, just context</li>
+            <li>Both: evaluate Hightouch ROI (Thesis: 5.2M recipients, marginal revenue. Stasis: 70K recipients, $800 revenue)</li>
+            <li>Both: quiz take data missing from Klaviyo metrics &mdash; set up tracking</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ======================== -->
+    <!-- FUTURE BIG BETS          -->
+    <!-- ======================== -->
+    <div class="big-bets">
+      <h2>Future Big Bets</h2>
+
+      <div class="bet-card">
+        <h3>Stasis Family &mdash; profile-level family awareness and cross-sell</h3>
+        <p>Introduce the concept of a Stasis family. For customers who have kids on Stasis Kids, profiles should reflect family context. This opens cross-sell in both directions: a Stasis Kids parent might be a candidate for adult Stasis or Thesis (stimulant users). Messaging should feel like &ldquo;we&rsquo;re here for your whole family&rdquo; &mdash; not separate product silos.</p>
+      </div>
+
+      <div class="bet-card">
+        <h3>Combined portal &mdash; holistic digital experience across brands</h3>
+        <p>Long-term vision: a unified digital experience where a customer can manage their family&rsquo;s supplements, track their journey, and get personalized guidance. This is where the &ldquo;what to expect&rdquo; content, feedback loops, and product recommendations converge into one place.</p>
+      </div>
+
+      <div class="bet-card">
+        <h3>Open the TAM &mdash; Stasis beyond stimulant users</h3>
+        <p>The Stasis quiz immediately asks &ldquo;How satisfied are you with your stimulants?&rdquo; &mdash; gating on stimulant use from the first question. This excludes people overexposed to caffeine, managing ADHD without stimulants, or exploring non-pharmaceutical support. There&rsquo;s likely room to broaden the entry point and capture a wider audience.</p>
+      </div>
+
+      <div class="bet-card">
+        <h3>Post-purchase as a digital experience</h3>
+        <p>The SMS feedback journey (#2 above) could evolve into a richer digital experience &mdash; an interactive guided journey through hours, days, weeks, months of product use. Starts as SMS, could become its own surface. The &ldquo;what to expect&rdquo; content on PDPs is the seed; the feedback loop is the differentiator.</p>
+      </div>
+
+      <div class="bet-card">
+        <h3>Stimulant story discount &mdash; unstructured data collection through incentive</h3>
+        <p>Offer a special discount if a customer types or records their relationship with stimulants. This is intentionally unstructured &mdash; free-text or voice &mdash; to capture authentic stories and language. We can then parse the responses to build richer customer profiles, identify messaging themes that resonate, and customize content based on where someone actually is in their stimulant journey. The discount drives participation; the data drives personalization.</p>
+      </div>
+
+      <div class="bet-card">
+        <h3>Dynamic question series &mdash; progressive profiling embedded in email</h3>
+        <p>Include a small question toward the bottom of emails &mdash; a single, low-friction prompt with button-click responses. Once a customer answers one question, the next email includes the next question in the series. Over time this builds a rich profile without ever asking the customer to fill out a form. Each answer feeds segmentation and content personalization.</p>
+      </div>
+    </div>
+
   </div>
+
+  <script>
+    function toggle(id) {
+      document.getElementById(id).classList.toggle('open');
+    }
+  </script>
 </body>
 </html>
