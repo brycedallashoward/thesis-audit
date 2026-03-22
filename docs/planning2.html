@@ -360,6 +360,43 @@
         <div class="opp-header" onclick="toggle('o4')">
           <span class="opp-rank">4</span>
           <div class="opp-title">
+            <h3>Stasis cancel reasons are invisible &mdash; retention messaging is flying blind</h3>
+            <span class="opp-sub">ReCharge cancellation events sync to Klaviyo with empty properties. Cancel reason data lives in ReCharge native reporting only. No reason-specific save or winback messaging exists.</span>
+          </div>
+          <div class="opp-meta">
+            <span class="brand-tag stasis">Stasis</span>
+            <span class="chevron">&#9654;</span>
+          </div>
+        </div>
+        <div class="opp-body">
+          <h4>What we found</h4>
+          <ul>
+            <li>Stasis cancels ~2,900&ndash;3,200/mo against ~2,900&ndash;7,000 starts &mdash; 8 of 11 months net positive, but the cancel floor is persistent</li>
+            <li>ReCharge cancellation events coming into Klaviyo have empty event properties &mdash; no cancel reason, no product context</li>
+            <li>Cancel reason data lives exclusively in ReCharge&rsquo;s native reporting. We&rsquo;d need direct ReCharge access or a cancel reason export from Dan</li>
+            <li>Without reasons, any winback or cancellation-prevention messaging is generic &mdash; no ability to address price sensitivity differently from product dissatisfaction or shipping issues</li>
+          </ul>
+          <h4>The opportunity</h4>
+          <ul>
+            <li>Get cancel reason data from ReCharge (direct access or export)</li>
+            <li>Build reason-specific cancellation save flows: price objection gets a downgrade/pause offer, product-fit issues get SKU swap suggestions, &ldquo;didn&rsquo;t work&rdquo; gets timeline-setting content</li>
+            <li>Reason-specific winback sequences: a customer who cancelled for price needs a different message than one who had side effects</li>
+            <li>Feed cancel reason trends back into onboarding &mdash; if &ldquo;didn&rsquo;t feel a difference&rdquo; is top reason, front-load expectation-setting content</li>
+          </ul>
+          <h4>What to show</h4>
+          <ul>
+            <li>Monthly cancel volume vs. starts (the data we have)</li>
+            <li>Empty Klaviyo event properties (the data we don&rsquo;t have)</li>
+            <li>Mock-up of reason-specific messaging branches</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- #5 -->
+      <div class="opp-card tier-1" id="o5">
+        <div class="opp-header" onclick="toggle('o5')">
+          <span class="opp-rank">5</span>
+          <div class="opp-title">
             <h3>Winback needs to be a conversation, not a broadcast</h3>
             <span class="opp-sub">Thesis: 48% opens, 0.21% conversion on 46K. Stasis: 48&ndash;57% opens, 0.25% on 118K. Both audiences are reachable &mdash; nobody's asking them why they left.</span>
           </div>
@@ -393,10 +430,10 @@
         </div>
       </div>
 
-      <!-- #5 -->
-      <div class="opp-card tier-1" id="o5">
-        <div class="opp-header" onclick="toggle('o5')">
-          <span class="opp-rank">5</span>
+      <!-- #6 -->
+      <div class="opp-card tier-1" id="o6">
+        <div class="opp-header" onclick="toggle('o6')">
+          <span class="opp-rank">6</span>
           <div class="opp-title">
             <h3>Stasis has built flows sitting in draft &mdash; SMS cart/browse, Surprise &amp; Delight, subscription upgrades</h3>
             <span class="opp-sub">Multiple high-value flows exist but aren't live. SMS abandonment, Surprise &amp; Delight, Day+Night upgrades &mdash; all built, none launched.</span>
@@ -414,7 +451,7 @@
             <li>Surprise &amp; Delight Flow [antidote] &mdash; draft, not launched</li>
             <li>Day + Night Subscription Upgrades &mdash; created Mar 17, 2026, not launched</li>
           </ul>
-          <h4>Why this is #5</h4>
+          <h4>Why this is #6</h4>
           <p>Fastest path to impact. These flows already exist &mdash; review, QA, launch. SMS Welcome already proves SMS converts ($2.58 RPR). The subscription upgrade flow could directly grow Stasis subscriber value.</p>
           <h4>What to show</h4>
           <ul>
@@ -433,10 +470,10 @@
 
     <div class="opp-list">
 
-      <!-- #6 -->
-      <div class="opp-card tier-2" id="o6">
-        <div class="opp-header" onclick="toggle('o6')">
-          <span class="opp-rank">6</span>
+      <!-- #7 -->
+      <div class="opp-card tier-2" id="o7">
+        <div class="opp-header" onclick="toggle('o7')">
+          <span class="opp-rank">7</span>
           <div class="opp-title">
             <h3>Thesis structural churn frames the narrative &mdash; the business is already responding</h3>
             <span class="opp-sub">30&ndash;38% monthly churn. Net subscriber loss 10 of 13 months. Revenue is a lagging indicator. Stasis is growing; Thesis is not.</span>
@@ -454,7 +491,7 @@
             <li>Stasis: 8 of 11 months net positive, cumulative +9,253 subs. Revenue share 35% &rarr; 53%</li>
             <li>Thesis campaign calendar went dark after Jan 31. Stasis continued.</li>
           </ul>
-          <h4>Why this is #6</h4>
+          <h4>Why this is #7</h4>
           <p>This frames the audit narrative. Thesis churn is real but the business is already responding by investing in Stasis. Retention work on Thesis protects existing revenue; retention work on Stasis accelerates growth.</p>
           <h4>What to show</h4>
           <ul>
@@ -465,10 +502,10 @@
         </div>
       </div>
 
-      <!-- #7 -->
-      <div class="opp-card tier-2" id="o7">
-        <div class="opp-header" onclick="toggle('o7')">
-          <span class="opp-rank">7</span>
+      <!-- #8 -->
+      <div class="opp-card tier-2" id="o8">
+        <div class="opp-header" onclick="toggle('o8')">
+          <span class="opp-rank">8</span>
           <div class="opp-title">
             <h3>Stasis abandoned checkout doesn't sell &mdash; it just reminds</h3>
             <span class="opp-sub">1.9% conversion. First email is a generic cart reminder without ADHD value props, social proof, or condition-specific urgency.</span>
@@ -494,10 +531,10 @@
         </div>
       </div>
 
-      <!-- #8 -->
-      <div class="opp-card tier-2" id="o8">
-        <div class="opp-header" onclick="toggle('o8')">
-          <span class="opp-rank">8</span>
+      <!-- #9 -->
+      <div class="opp-card tier-2" id="o9">
+        <div class="opp-header" onclick="toggle('o9')">
+          <span class="opp-rank">9</span>
           <div class="opp-title">
             <h3>Thesis M1 onboarding has attention but no action</h3>
             <span class="opp-sub">57% opens, 1.3% clicks across 25 messages. Mindshift series (Y6nDb2) proves education content works &mdash; 6.8% click, 5x better.</span>
@@ -524,10 +561,10 @@
         </div>
       </div>
 
-      <!-- #9 -->
-      <div class="opp-card tier-2" id="o9">
-        <div class="opp-header" onclick="toggle('o9')">
-          <span class="opp-rank">9</span>
+      <!-- #10 -->
+      <div class="opp-card tier-2" id="o10">
+        <div class="opp-header" onclick="toggle('o10')">
+          <span class="opp-rank">10</span>
           <div class="opp-title">
             <h3>SMS is a proven channel being misused or abandoned on both brands</h3>
             <span class="opp-sub">Both brands prove SMS converts. Thesis destroyed its list via blast. Stasis has SMS flows in draft. Neither uses SMS in lifecycle.</span>
@@ -555,10 +592,10 @@
         </div>
       </div>
 
-      <!-- #10 -->
-      <div class="opp-card tier-2" id="o10">
-        <div class="opp-header" onclick="toggle('o10')">
-          <span class="opp-rank">10</span>
+      <!-- #11 -->
+      <div class="opp-card tier-2" id="o11">
+        <div class="opp-header" onclick="toggle('o11')">
+          <span class="opp-rank">11</span>
           <div class="opp-title">
             <h3>Review programs on both brands need attention</h3>
             <span class="opp-sub">Thesis: completion rate halved (1.4% &rarr; 0.7%), sentiment data mirrors churn drivers. Stasis: Day+Night Set has only 949 reviews &mdash; investigate SKU history.</span>
@@ -585,10 +622,10 @@
         </div>
       </div>
 
-      <!-- #11 -->
-      <div class="opp-card tier-2" id="o11">
-        <div class="opp-header" onclick="toggle('o11')">
-          <span class="opp-rank">11</span>
+      <!-- #12 -->
+      <div class="opp-card tier-2" id="o12">
+        <div class="opp-header" onclick="toggle('o12')">
+          <span class="opp-rank">12</span>
           <div class="opp-title">
             <h3>Cross-sell between Thesis and Stasis has no systematic path</h3>
             <span class="opp-sub">Night Retention Gift exists as a gifting tactic. No lifecycle flow in either direction. Stasis lead flow converts at 6.4% &mdash; the product sells when introduced.</span>
@@ -609,43 +646,6 @@
           <ul>
             <li>Current gifting tactic vs. missing lifecycle cross-sell</li>
             <li>Stasis lead flow as evidence the product converts on introduction</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- #12 -->
-      <div class="opp-card tier-2" id="o12">
-        <div class="opp-header" onclick="toggle('o12')">
-          <span class="opp-rank">12</span>
-          <div class="opp-title">
-            <h3>Stasis cancel reasons are invisible &mdash; retention messaging is flying blind</h3>
-            <span class="opp-sub">ReCharge cancellation events sync to Klaviyo with empty properties. Cancel reason data lives in ReCharge native reporting only. No reason-specific winback or save messaging exists.</span>
-          </div>
-          <div class="opp-meta">
-            <span class="brand-tag stasis">Stasis</span>
-            <span class="chevron">&#9654;</span>
-          </div>
-        </div>
-        <div class="opp-body">
-          <h4>What we found</h4>
-          <ul>
-            <li>Stasis cancels ~2,900&ndash;3,200/mo against ~2,900&ndash;7,000 starts &mdash; 8 of 11 months net positive, but the cancel floor is persistent</li>
-            <li>ReCharge cancellation events coming into Klaviyo have empty event properties &mdash; no cancel reason, no product context</li>
-            <li>Cancel reason data lives exclusively in ReCharge&rsquo;s native reporting. We&rsquo;d need direct ReCharge access or a cancel reason export from Dan</li>
-            <li>Without reasons, any winback or cancellation-prevention messaging is generic &mdash; no ability to address price sensitivity differently from product dissatisfaction or shipping issues</li>
-          </ul>
-          <h4>The opportunity</h4>
-          <ul>
-            <li>Get cancel reason data from ReCharge (direct access or export)</li>
-            <li>Build reason-specific cancellation save flows: price objection gets a downgrade/pause offer, product-fit issues get SKU swap suggestions, "didn&rsquo;t work" gets timeline-setting content</li>
-            <li>Reason-specific winback sequences: a customer who cancelled for price needs a different message than one who had side effects</li>
-            <li>Feed cancel reason trends back into onboarding &mdash; if "didn&rsquo;t feel a difference" is top reason, front-load expectation-setting content</li>
-          </ul>
-          <h4>What to show</h4>
-          <ul>
-            <li>Monthly cancel volume vs. starts (the data we have)</li>
-            <li>Empty Klaviyo event properties (the data we don&rsquo;t have)</li>
-            <li>Mock-up of reason-specific messaging branches</li>
           </ul>
         </div>
       </div>
@@ -766,7 +766,17 @@
 
       <div class="bet-card">
         <h3>Post-purchase as a digital experience</h3>
-        <p>The SMS feedback journey (#2 above) could evolve into a richer digital experience &mdash; an interactive guided journey through hours, days, weeks, months of product use. Starts as SMS, could become its own surface. The "what to expect" content on PDPs is the seed; the feedback loop is the differentiator.</p>
+        <p>The SMS feedback journey (#2 above) could evolve into a richer digital experience &mdash; an interactive guided journey through hours, days, weeks, months of product use. Starts as SMS, could become its own surface. The &ldquo;what to expect&rdquo; content on PDPs is the seed; the feedback loop is the differentiator.</p>
+      </div>
+
+      <div class="bet-card">
+        <h3>Stimulant story discount &mdash; unstructured data collection through incentive</h3>
+        <p>Offer a special discount if a customer types or records their relationship with stimulants. This is intentionally unstructured &mdash; free-text or voice &mdash; to capture authentic stories and language. We can then parse the responses to build richer customer profiles, identify messaging themes that resonate, and customize content based on where someone actually is in their stimulant journey. The discount drives participation; the data drives personalization.</p>
+      </div>
+
+      <div class="bet-card">
+        <h3>Dynamic question series &mdash; progressive profiling embedded in email</h3>
+        <p>Include a small question toward the bottom of emails &mdash; a single, low-friction prompt with button-click responses. Once a customer answers one question, the next email includes the next question in the series. Over time this builds a rich profile without ever asking the customer to fill out a form. Each answer feeds segmentation and content personalization. The questions can cover stimulant history, goals, lifestyle factors, product experience &mdash; whatever helps us tailor the journey.</p>
       </div>
     </div>
 
