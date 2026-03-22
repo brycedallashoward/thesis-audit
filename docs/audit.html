@@ -308,6 +308,171 @@
     .stat .value.orange { color: var(--orange); }
     .stat .value.accent { color: var(--accent); }
     .stat .value.purple { color: var(--purple); }
+
+    /* Journey maps */
+    .journey-section {
+      margin-bottom: 3rem;
+    }
+
+    .journey-section > h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 800px) {
+      .journey-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .journey-map {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      background: var(--bg);
+    }
+
+    .journey-brand {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .journey-brand.thesis {
+      background: rgba(9, 105, 218, 0.12);
+      color: var(--accent);
+    }
+
+    .journey-brand.stasis {
+      background: rgba(130, 80, 223, 0.12);
+      color: var(--purple);
+    }
+
+    .journey-stage {
+      position: relative;
+    }
+
+    .stage-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .stage-content {
+      padding-left: 0.75rem;
+      border-left: 2px solid var(--border);
+      margin-bottom: 0.25rem;
+    }
+
+    .stage-item {
+      font-size: 0.78rem;
+      line-height: 1.5;
+      padding: 0.2rem 0 0.2rem 0.6rem;
+      position: relative;
+      color: var(--text);
+    }
+
+    .stage-item::before {
+      content: '';
+      position: absolute;
+      left: -0.75rem;
+      top: 0.55rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      transform: translateX(-50%);
+    }
+
+    .stage-item.exists::before {
+      background: var(--green);
+    }
+
+    .stage-item.partial::before {
+      background: var(--orange);
+    }
+
+    .stage-item.gap::before {
+      background: var(--red);
+    }
+
+    .stage-item.draft::before {
+      background: var(--purple);
+    }
+
+    .stage-item.gap {
+      color: var(--red);
+    }
+
+    .stage-item.draft {
+      color: var(--purple);
+    }
+
+    .stage-funnel {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      padding: 0.4rem 0.75rem;
+      background: var(--bg-card);
+      border-radius: 4px;
+      margin-top: 0.35rem;
+      margin-bottom: 0.25rem;
+      line-height: 1.4;
+    }
+
+    .stage-funnel span {
+      font-weight: 600;
+    }
+
+    .stage-funnel.churn {
+      background: rgba(248, 81, 73, 0.06);
+      color: var(--red);
+    }
+
+    .journey-connector {
+      width: 2px;
+      height: 12px;
+      background: var(--border);
+      margin: 0.15rem 0 0.15rem 0;
+    }
+
+    /* Legend */
+    .journey-legend {
+      display: flex;
+      gap: 1.25rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .journey-legend span::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 0.35rem;
+      position: relative;
+      top: -1px;
+    }
+
+    .journey-legend .leg-exists::before { background: var(--green); }
+    .journey-legend .leg-partial::before { background: var(--orange); }
+    .journey-legend .leg-gap::before { background: var(--red); }
+    .journey-legend .leg-draft::before { background: var(--purple); }
   </style>
 </head>
 <body>
@@ -331,6 +496,204 @@
     <div class="callout">
       <strong>Portfolio context:</strong> Stasis now represents 49&ndash;53% of combined revenue (up from 35% eleven months ago) and has posted net subscriber growth in 8 of 11 months. Thesis is in structural subscriber decline &mdash; net loss in 10 of 13 months, with a fixed cancellation floor of ~5,000/mo that acquisition can&rsquo;t outrun. The business is already responding by investing forward in Stasis, including the Kids launch. Neither brand has had a dedicated retention marketer. That&rsquo;s the gap this engagement fills.
     </div>
+
+    <!-- ======================== -->
+    <!-- CUSTOMER JOURNEY MAPS    -->
+    <!-- ======================== -->
+    <section class="journey-section">
+      <h2>Customer Journey Maps</h2>
+      <p class="muted" style="margin-bottom:0.75rem;">What each brand&rsquo;s customer actually experiences from first touch to churn &mdash; what exists, what&rsquo;s personalized, and where the gaps are.</p>
+
+      <div class="journey-legend">
+        <span class="leg-exists">Live &amp; working</span>
+        <span class="leg-partial">Exists but underperforming or incomplete</span>
+        <span class="leg-gap">Missing</span>
+        <span class="leg-draft">Built but not launched</span>
+      </div>
+
+      <div class="journey-grid">
+
+        <!-- THESIS JOURNEY -->
+        <div class="journey-map">
+          <div class="journey-brand thesis">Thesis</div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Discovery</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Quiz popup on site (15.6% mobile submit rate)</div>
+              <div class="stage-item exists">Hightouch audience sync from ads (5.2M recip)</div>
+              <div class="stage-item gap">No SMS capture on sign-up forms</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Quiz &rarr; Checkout</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Quiz recommends one formula (Clarity, Motivation, Stress Reset, Neuroprotection)</div>
+              <div class="stage-item exists">Quiz Complete metric firing (~15K/mo)</div>
+              <div class="stage-item exists">Browse abandonment flow (new, March 2026)</div>
+              <div class="stage-item exists">Abandoned checkout flow (new, March 2026)</div>
+            </div>
+            <div class="stage-funnel">
+              <span>Jan 2026:</span> Site 14.4K &rarr; Quiz 16.6K &rarr; Checkout 9.7K &rarr; Sub 7.6K
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">First Purchase</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Order confirmation (96.9K recip, 10.5% click)</div>
+              <div class="stage-item exists">Shipment notification</div>
+              <div class="stage-item exists">SMS Welcome ($6.23 RPR, 5.7% conv) &mdash; but list eroding, now silent</div>
+              <div class="stage-item partial">$59 first month, $79 recurring &bull; Ships with glass jar + Open app + Mindshift bonus</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Onboarding (M1)</div>
+            <div class="stage-content">
+              <div class="stage-item partial">25-message M1 series (80.9K recip, 57% open, <strong>1.3% click</strong>)</div>
+              <div class="stage-item exists">Mindshift 30-day habit reset (36.7K recip, 6.8% click &mdash; 5x better)</div>
+              <div class="stage-item gap">No SMS touchpoints during onboarding</div>
+              <div class="stage-item gap">No feedback collection &mdash; brand doesn&rsquo;t know if product is working</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Onboarding (M2+)</div>
+            <div class="stage-content">
+              <div class="stage-item exists">M2 onboarding with SKU-specific splits (Clarity, Motivation, Stress Reset, Neuroprotection)</div>
+              <div class="stage-item exists">60-day celebration</div>
+              <div class="stage-item exists">Okendo review request (378K recip, 25% open, 1% click)</div>
+              <div class="stage-item partial">Zaymo in-email interactions (swap offer, delay subscription)</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Retention / Refill</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Refill reminder (202K recip, 25-day cadence)</div>
+              <div class="stage-item partial">3 Hormesis Transition variants still running simultaneously</div>
+              <div class="stage-item exists">Clarity migration flow (6.3K recip, 38.2% conv)</div>
+              <div class="stage-item gap">No OTP &rarr; subscription upgrade path</div>
+              <div class="stage-item gap">No milestone/anniversary flow</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Churn / Winback</div>
+            <div class="stage-content">
+              <div class="stage-item partial">Winback flow: 45.7K recip, 48% open, <strong>0.21% conv</strong></div>
+              <div class="stage-item partial">5 cancel-reason branches but &ldquo;Did Not Feel Good&rdquo; is entirely draft (0 active messages)</div>
+              <div class="stage-item exists">59K churned subs still engaged in 90 days</div>
+              <div class="stage-item gap">No SMS winback</div>
+              <div class="stage-item gap">No feedback capture &mdash; nobody asks why they left</div>
+            </div>
+            <div class="stage-funnel churn">
+              Cancel floor: 4,859&ndash;5,810/mo &bull; Net negative 10 of 13 months
+            </div>
+          </div>
+        </div>
+
+        <!-- STASIS JOURNEY -->
+        <div class="journey-map">
+          <div class="journey-brand stasis">Stasis</div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Discovery</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Multi-step full-page form (10% off, email + SMS + quiz)</div>
+              <div class="stage-item exists">Hightouch audience sync from ads (70K recip)</div>
+              <div class="stage-item exists">SMS capture included in form</div>
+              <div class="stage-item partial">Quiz gates on stimulant use from Q1 &mdash; excludes non-stimulant ADHD</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Lead &rarr; Checkout</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Lead Flow &mdash; #1 revenue driver ($107K, 16K recip, <strong>6.4% conv</strong>)</div>
+              <div class="stage-item exists">Quiz Leads Welcome Offer ($19K, 4.2% conv)</div>
+              <div class="stage-item partial">Browse abandonment &mdash; doesn&rsquo;t split Kids vs. adult</div>
+              <div class="stage-item partial">Abandoned checkout &mdash; generic, no ADHD value props (1.9% conv)</div>
+              <div class="stage-item gap">No Kids-specific checkout messaging</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">First Purchase</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Subscription post-purchase flow (14.6K recip)</div>
+              <div class="stage-item exists">Shipping notifications (142K recip)</div>
+              <div class="stage-item exists">SMS Welcome ($2.58 RPR, 2.6% conv) &mdash; list small (~7K) but active</div>
+              <div class="stage-item partial">$79/mo Day+Night bundle &bull; Night Retention Gift cross-sold with Thesis orders</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Onboarding</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Kids-specific flows: lead, post-purchase, backorder, waitlist, refill</div>
+              <div class="stage-item gap">No adult onboarding journey comparable to Thesis M1/M2</div>
+              <div class="stage-item gap">No SMS during onboarding</div>
+              <div class="stage-item gap">No feedback collection</div>
+              <div class="stage-item gap">&ldquo;What to expect&rdquo; content on PDP but not delivered post-purchase</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Retention / Refill</div>
+            <div class="stage-content">
+              <div class="stage-item exists">Subscription reminders (Bundle, Day, Night, Kids, VIP)</div>
+              <div class="stage-item draft">Surprise &amp; Delight flow &mdash; built by Antidote, not launched</div>
+              <div class="stage-item draft">Day+Night Subscription Upgrade &mdash; built Mar 17, not launched</div>
+              <div class="stage-item gap">No milestone/anniversary flow</div>
+            </div>
+          </div>
+
+          <div class="journey-connector"></div>
+
+          <div class="journey-stage">
+            <div class="stage-label">Churn / Winback</div>
+            <div class="stage-content">
+              <div class="stage-item partial">Winback flow: 94K+ recip, 48&ndash;57% open, <strong>0.25% conv</strong></div>
+              <div class="stage-item gap">ReCharge cancel events have empty properties &mdash; no reason data in Klaviyo</div>
+              <div class="stage-item draft">SMS Cart Abandonment &mdash; built, not sending</div>
+              <div class="stage-item draft">SMS Browse Abandonment &mdash; built, not sending</div>
+              <div class="stage-item gap">No feedback capture, no reason-specific messaging</div>
+            </div>
+            <div class="stage-funnel churn">
+              Cancel floor: ~2,900&ndash;3,200/mo &bull; But net positive 8 of 11 months
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="callout" style="margin-top:1.5rem;">
+        <strong>Key pattern:</strong> Both brands capture attention (strong opens, decent acquisition) but lose customers in the middle &mdash; between first purchase and the cancellation moment, there&rsquo;s almost no conversation happening. No feedback, no expectation-setting via SMS, no personalization by cancel reason. The recommendations below address these gaps in priority order.
+      </div>
+    </section>
 
     <!-- ======================== -->
     <!-- TIER 1: Full Sections    -->
