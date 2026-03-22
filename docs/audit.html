@@ -792,7 +792,7 @@
       </div>
 
       <p class="narrative">
-        Kids sold out in the test run. The demand is proven. Some infrastructure is built, but most of the lifecycle still sends the same content to parents that it sends to adults.
+        Kids sold out in the test run. The demand is proven. Some infrastructure is built, but most of the lifecycle still sends the same content to parents that it sends to adults. The quiz already asks whether someone is shopping for themselves or a child, but that response isn&rsquo;t flowing into Klaviyo for segmentation.
       </p>
 
       <table>
@@ -823,6 +823,7 @@
           <li><strong>Kids browse abandonment:</strong> parent messaging with safety data, clinical backing, other parents' experiences</li>
           <li><strong>Kids checkout flow:</strong> parental concerns, not adult self-optimization</li>
           <li><strong>Kids post-purchase journey:</strong> what to look for in the first week, dosing, when to adjust</li>
+          <li><strong>Quiz data:</strong> the &ldquo;shopping for you or a child&rdquo; quiz response needs to sync into Klaviyo so it can drive segmentation across all flows</li>
           <li><strong>Segment enforcement:</strong> parents should never receive adult ADHD creative</li>
         </ul>
       </div>
@@ -1258,11 +1259,13 @@
             <li>Stasis SMS Welcome: $2.58 RPR, solid. But list is small (~7K) and abandonment flows are draft, not live</li>
             <li>Neither brand uses SMS in lifecycle (onboarding, refill, winback)</li>
             <li><strong>Sign-up form gap:</strong> Thesis quiz popups (15.6% mobile submit rate) don&rsquo;t include SMS capture. The highest-converting lead channel has no acquisition path beyond Welcome.</li>
+            <li><strong>Opt-in friction:</strong> Both brands use rigorous double opt-in for SMS instead of smart opt-in. Neither collects SMS consent at checkout.</li>
           </ul>
           <h4>Recommendation</h4>
           <ul>
             <li>Rebuild Thesis SMS list with proper lifecycle usage, not blasts</li>
             <li>Add SMS capture to Thesis sign-up forms</li>
+            <li>Switch both brands to smart opt-in and add SMS consent at checkout</li>
             <li>Launch Stasis SMS abandonment flows (already built, sitting in draft)</li>
             <li>Integrate SMS into onboarding, refill, and winback on both brands</li>
           </ul>
@@ -1440,6 +1443,8 @@
             <li>Both: [antidote] naming is Antidote agency convention, no action needed, just context</li>
             <li>Both: evaluate Hightouch ROI (Thesis: 5.2M recipients, marginal revenue. Stasis: 70K recipients, $800 revenue)</li>
             <li>Both: quiz take data missing from Klaviyo metrics, set up tracking</li>
+            <li>Both: SMS uses rigorous double opt-in instead of smart opt-in, adding friction to list growth. Neither brand collects SMS consent at checkout.</li>
+            <li>Both: stale profile properties from past quiz and popup iterations need cleanup. Multiple deprecated variables still on profiles.</li>
           </ul>
         </div>
       </div>
