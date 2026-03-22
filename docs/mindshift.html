@@ -83,9 +83,29 @@
 
     /* Screen: Hub */
     .hub-header {
-      background: linear-gradient(135deg, #4668e8 0%, #6b8cf7 100%);
+      background: #3c3c3c url('https://d3k81ch9hvuctc.cloudfront.net/company/QhJaGL/images/da8d7aca-49b8-4434-a52a-5340d04b4c66.jpeg') center center / cover no-repeat;
       color: #fff;
-      padding: 1.5rem 1.25rem 1.25rem;
+      padding: 2rem 1.25rem 1.5rem;
+      position: relative;
+      min-height: 100px;
+    }
+
+    .hub-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(30, 30, 30, 0.25);
+    }
+
+    .hub-header > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hub-header .hub-logo {
+      height: 22px;
+      margin-bottom: 0.5rem;
+      filter: brightness(0) invert(1);
     }
 
     .hub-header .hub-brand {
@@ -100,11 +120,60 @@
       color: #fff;
       font-size: 1.15rem;
       margin: 0 0 0.15rem;
+      font-family: Georgia, 'Times New Roman', serif;
     }
 
     .hub-header .hub-sub {
       font-size: 0.75rem;
       opacity: 0.85;
+    }
+
+    /* Article hero images */
+    .article-hero {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Product callout in article */
+    .product-callout {
+      display: flex;
+      gap: 0.65rem;
+      align-items: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.65rem;
+      margin: 0.75rem 0;
+    }
+
+    .product-callout img {
+      width: 48px;
+      height: 48px;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+
+    .product-callout .pc-info {
+      font-size: 0.72rem;
+    }
+
+    .product-callout .pc-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .product-callout .pc-desc {
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    /* Benefits graphic in article */
+    .benefits-graphic {
+      width: 100%;
+      border-radius: 8px;
+      margin: 0.75rem 0;
     }
 
     .hub-progress {
@@ -577,7 +646,7 @@
             <!-- Screen 1: Hub -->
             <div class="screen-content active" id="screen-hub">
               <div class="hub-header">
-                <div class="hub-brand">Thesis x Stasis</div>
+                <img class="hub-logo" src="https://d3k81ch9hvuctc.cloudfront.net/company/QhJaGL/images/6fceb8b8-3f4d-42fe-8a86-55210d9aac5b.png" alt="Thesis">
                 <h3>30-Day Habit Reset</h3>
                 <div class="hub-sub">Resolutions that stick start in the brain</div>
               </div>
@@ -621,6 +690,9 @@
 
             <!-- Screen 2: Week 1 detail -->
             <div class="screen-content" id="screen-week1">
+              <div style="position:relative; overflow:hidden; height:90px;">
+                <img src="https://d3k81ch9hvuctc.cloudfront.net/company/YsCgQB/images/59a10b41-08bd-4bcf-90a4-03edfda59e11.jpeg" alt="" style="width:100%; height:100%; object-fit:cover; object-position:center 30%; display:block;">
+              </div>
               <div class="week-detail-header">
                 <div class="back-btn" onclick="showScreen('screen-hub')">&larr; Back to Hub</div>
                 <h3>Week 1: Spark Transformation</h3>
@@ -672,12 +744,15 @@
 
             <!-- Screen 3: Article view -->
             <div class="screen-content" id="screen-article">
+              <img class="article-hero" src="https://d3k81ch9hvuctc.cloudfront.net/company/QhJaGL/images/3a150f50-aa09-4d69-bce3-4be4ba159734.jpeg" alt="Thesis ingredients">
               <div class="article-view">
                 <div class="back-btn" onclick="showScreen('screen-week1')">&larr; Week 1</div>
                 <div class="article-cat">Neuroscience 101</div>
                 <h3>Meet the Brain's Messengers: Neurotransmitters</h3>
                 <p><strong>Dopamine</strong> is often called the "motivation molecule." It sustains our focus and attention, driving our pursuit of goals. Your willingness to push through a workout or finish a crossword? That's dopamine.</p>
                 <p><strong>Norepinephrine</strong> plays a critical role in our body's response to stress, impacting motivation and alertness. An upcoming deadline triggering a burst of focus? That's norepinephrine at work.</p>
+
+                <img class="benefits-graphic" src="https://d3k81ch9hvuctc.cloudfront.net/company/YsCgQB/images/ac458a8b-a0f4-48b7-bbfc-be9f5518c7dd.jpeg" alt="Dopamine, focus, and energy benefits">
 
                 <div class="inline-quiz">
                   <div class="quiz-q">Quick check: Which neurotransmitter drives your motivation to finish a challenging task?</div>
@@ -729,6 +804,7 @@
 
             <!-- Screen 5: Article with product tie-in -->
             <div class="screen-content" id="screen-article2">
+              <img class="article-hero" src="https://d3k81ch9hvuctc.cloudfront.net/company/QhJaGL/images/607f0726-5a85-4dd9-8291-c418b97c9750.png" alt="Thesis product with ingredients">
               <div class="article-view">
                 <div class="back-btn" onclick="showScreen('screen-week1')">&larr; Week 1</div>
                 <div class="article-cat">Neuroscience 101</div>
@@ -736,6 +812,14 @@
                 <p>Just like you can strengthen muscles by hitting the gym, you can strengthen the brain by forming new connections between brain cells.</p>
                 <p><em>Neuroplasticity</em> is the brain's ability to change over time, involving the strengthening of synapses through repeated behaviors and experiences.</p>
                 <p>One of the best ways to boost neurogenesis is to stimulate proteins like Brain-Derived Neurotrophic Factor (BDNF). Key BDNF-supporting nutrients include omega-3 fatty acids, polyphenols, and Lion's Mane.</p>
+
+                <div class="product-callout">
+                  <img src="https://d3k81ch9hvuctc.cloudfront.net/company/QhJaGL/images/db73b01d-50d3-49d0-b7b5-585579960f30.jpeg" alt="Thesis container">
+                  <div class="pc-info">
+                    <div class="pc-name">Thesis Clarity Blend</div>
+                    <div class="pc-desc">Contains Lion's Mane to support BDNF production and neuroplasticity</div>
+                  </div>
+                </div>
 
                 <div class="inline-quiz">
                   <div class="quiz-q">Which Thesis blend supports neuroplasticity?</div>
