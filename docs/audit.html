@@ -1442,19 +1442,22 @@
             <li><strong>Opt-in friction:</strong> Both brands use rigorous double opt-in for SMS instead of smart opt-in. Neither collects SMS consent at checkout.</li>
           </ul>
 
-          <h4>Revenue impact of higher SMS penetration</h4>
-          <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.5rem;">Based on current SMS Welcome RPR ($6.23 Thesis, $2.58 Stasis). Lifecycle SMS (onboarding, refill, winback) would add on top but can&rsquo;t be modeled until built.</p>
+          <h4>What higher SMS penetration is actually worth</h4>
+          <div class="callout" style="margin-bottom:1rem;">
+            <strong>The honest answer:</strong> we can&rsquo;t model this as a linear revenue add. New SMS subscribers aren&rsquo;t new customers; they&rsquo;re existing email subscribers opting into a second channel. Some SMS-attributed purchases would have happened via email anyway. The real question is how revenue per customer changes when they&rsquo;re reachable on both channels.
+          </div>
+          <p style="font-size:0.85rem; margin-bottom:0.75rem;"><strong>What we&rsquo;d need to measure first:</strong></p>
           <table>
             <thead>
-              <tr><th>Penetration</th><th>Thesis SMS list</th><th>Stasis SMS list</th><th>Thesis Welcome rev/mo</th><th>Stasis Welcome rev/mo</th><th>Combined annual uplift</th></tr>
+              <tr><th>Customer group</th><th>What to measure</th><th>Why it matters</th></tr>
             </thead>
             <tbody>
-              <tr><td>5% (today)</td><td>49K</td><td>12K</td><td>baseline</td><td>baseline</td><td>baseline</td></tr>
-              <tr><td>10%</td><td>97K</td><td>21K</td><td>+$25K</td><td>+$1.9K</td><td style="font-weight:600;">+$323K/yr</td></tr>
-              <tr><td>15%</td><td>146K</td><td>31K</td><td>+$50K</td><td>+$3.9K</td><td style="font-weight:600;">+$647K/yr</td></tr>
-              <tr><td>20%</td><td>195K</td><td>41K</td><td>+$75K</td><td>+$6.0K</td><td style="font-weight:600;">+$972K/yr</td></tr>
+              <tr><td>Email-only</td><td>Avg annual revenue per profile</td><td>Baseline: what a single-channel customer is worth</td></tr>
+              <tr><td>SMS-only</td><td>Avg annual revenue per profile</td><td>Rare group, but shows SMS-first conversion behavior</td></tr>
+              <tr><td>Email + SMS</td><td>Avg annual revenue per profile</td><td>The lift: how much more a dual-channel customer spends</td></tr>
             </tbody>
           </table>
+          <p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.5rem;">As SMS penetration grows from 5% to 15%, the customer base shifts from mostly email-only to a larger share of dual-channel subscribers. Revenue shifts with it, but it&rsquo;s not additive &mdash; it&rsquo;s a rate change on existing customers. The value of SMS isn&rsquo;t &ldquo;more revenue per message.&rdquo; It&rsquo;s reaching people at moments email can&rsquo;t: feedback collection via reply, time-sensitive winback, cart abandonment within minutes. Those are conversations that don&rsquo;t happen on email.</p>
           <h4>Recommendation</h4>
           <ul>
             <li>Rebuild Thesis SMS list with proper lifecycle usage, not blasts</li>
