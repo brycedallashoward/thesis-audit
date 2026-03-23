@@ -3,8 +3,8 @@
   var currentPage = location.pathname.split('/').pop() || 'index.html';
   var links = [
     { href: 'factsheet.html', label: 'Fact Sheet' },
-    { href: 'audit.html', label: 'Audit' },
-    { href: 'campaigns.html', label: 'Campaigns' },
+    { href: 'audit.html', label: 'Flows & Mechanics Audit' },
+    { href: 'campaigns.html', label: 'Campaigns Audit' },
     { href: 'mindshift.html', label: 'Mindshift Concept WIP' }
   ];
 
