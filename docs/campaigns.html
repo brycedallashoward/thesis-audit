@@ -191,6 +191,32 @@
       font-size: 0.78rem;
     }
 
+    /* Section group containers */
+    .section-group-container {
+      border-left: 3px solid var(--border);
+      padding-left: 1.5rem;
+      margin: 2rem 0 3rem;
+    }
+
+    .section-group-container.content { border-left-color: var(--accent); }
+    .section-group-container.segments { border-left-color: var(--purple); }
+    .section-group-container.channel { border-left-color: var(--green); }
+
+    .section-group-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .section-group-label.content { background: rgba(9, 105, 218, 0.08); color: var(--accent); }
+    .section-group-label.segments { background: rgba(130, 80, 223, 0.08); color: var(--purple); }
+    .section-group-label.channel { background: rgba(63, 185, 80, 0.08); color: var(--green); }
+
     /* SMS section */
     .sms-divider {
       margin: 3rem 0 2rem;
@@ -227,37 +253,6 @@
 
     <div class="callout">
       <strong>How to read this:</strong> Campaigns are grouped by audience segment. Each group has its own baseline metrics. Winners and losers are evaluated relative to their segment&rsquo;s baseline, not against the full program. A 0.3% click rate is strong on a 60K broad send; the same rate would be weak on a 2K purchaser-only send. Arrow links (<a href="#" style="text-decoration:none;">&#8599;</a>) open the campaign in Klaviyo.
-    </div>
-
-    <!-- INDEX -->
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:2.5rem;">
-      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:1rem;">
-        <h4 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin:0 0 0.5rem;">Content insights</h4>
-        <div style="font-size:0.82rem; line-height:1.8;">
-          <a href="#content-type" style="display:block; color:var(--text); text-decoration:none;">Performance by content type</a>
-          <a href="#send-timing" style="display:block; color:var(--text); text-decoration:none;">Send day &amp; time</a>
-          <a href="#monthly-trends" style="display:block; color:var(--text); text-decoration:none;">Monthly volume &amp; revenue</a>
-          <a href="#plaintext" style="display:block; color:var(--text); text-decoration:none;">Plaintext / clinical trial</a>
-        </div>
-      </div>
-      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:1rem;">
-        <h4 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin:0 0 0.5rem;">Segment insights</h4>
-        <div style="font-size:0.82rem; line-height:1.8;">
-          <a href="#seg-broad" style="display:block; color:var(--text); text-decoration:none;">Broad engaged list</a>
-          <a href="#seg-otp" style="display:block; color:var(--text); text-decoration:none;">OTP + engaged leads</a>
-          <a href="#seg-refined" style="display:block; color:var(--text); text-decoration:none;">Refined prospects (Feb 2026)</a>
-          <a href="#seg-split" style="display:block; color:var(--text); text-decoration:none;">Purchaser vs. non-purchaser split</a>
-          <a href="#seg-kids" style="display:block; color:var(--text); text-decoration:none;">Stasis Kids</a>
-          <a href="#seg-sale" style="display:block; color:var(--text); text-decoration:none;">Anniversary Sale (Jul 2025)</a>
-        </div>
-      </div>
-      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:1rem;">
-        <h4 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin:0 0 0.5rem;">Channel insights</h4>
-        <div style="font-size:0.82rem; line-height:1.8;">
-          <a href="#sms-full" style="display:block; color:var(--text); text-decoration:none;">SMS: Full subscriber list</a>
-          <a href="#sms-refined" style="display:block; color:var(--text); text-decoration:none;">SMS: Refined prospects</a>
-        </div>
-      </div>
     </div>
 
     <!-- KEY FINDINGS -->
@@ -320,6 +315,9 @@
         </div>
       </div>
     </section>
+
+    <div class="section-group-container content">
+    <div class="section-group-label content">Content insights</div>
 
     <!-- CONTENT CATEGORY -->
     <section>
@@ -388,46 +386,39 @@
 
     <!-- SEND TIMING -->
     <section>
-      <h2 id="send-timing">Performance by send day &amp; time</h2>
-      <p class="muted">188 email campaigns, April 2025 &ndash; March 2026. Times in EST.</p>
+      <h2 id="send-timing">Click rate by send day &amp; time</h2>
+      <p class="muted">162 email campaigns with measurable clicks, March 2025 &ndash; March 2026. Times in EST.</p>
 
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1rem 0;">
         <div>
-          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); margin-bottom:0.5rem;">By day of week</h4>
+          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); margin-bottom:0.5rem;">Click rate by day of week</h4>
           <table class="campaign-table">
-            <thead><tr><th>Day</th><th class="num">Sends</th><th class="num">Share</th><th></th></tr></thead>
+            <thead><tr><th>Day</th><th class="num">Sends</th><th class="num">CTR</th><th></th></tr></thead>
             <tbody>
-              <tr><td>Monday</td><td class="num">19</td><td class="num">10%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:48%;"></div></td></tr>
-              <tr><td style="font-weight:600;">Tuesday</td><td class="num" style="font-weight:600;">39</td><td class="num" style="font-weight:600;">21%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:100%;"></div></td></tr>
-              <tr><td>Wednesday</td><td class="num">24</td><td class="num">13%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:62%;"></div></td></tr>
-              <tr><td style="font-weight:600;">Thursday</td><td class="num" style="font-weight:600;">40</td><td class="num" style="font-weight:600;">21%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:100%;"></div></td></tr>
-              <tr><td>Friday</td><td class="num">19</td><td class="num">10%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:48%;"></div></td></tr>
-              <tr><td>Saturday</td><td class="num">18</td><td class="num">10%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:46%;"></div></td></tr>
-              <tr><td>Sunday</td><td class="num">29</td><td class="num">15%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:74%;"></div></td></tr>
+              <tr><td>Monday</td><td class="num">17</td><td class="num">0.31%</td><td><div style="background:var(--accent); opacity:0.7; height:8px; border-radius:3px; width:86%;"></div></td></tr>
+              <tr><td>Tuesday</td><td class="num">32</td><td class="num">0.35%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:97%;"></div></td></tr>
+              <tr><td>Wednesday</td><td class="num">23</td><td class="num">0.35%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:97%;"></div></td></tr>
+              <tr><td>Thursday</td><td class="num">33</td><td class="num">0.34%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:94%;"></div></td></tr>
+              <tr><td>Friday</td><td class="num">14</td><td class="num">0.35%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:97%;"></div></td></tr>
+              <tr><td style="font-weight:600;">Saturday</td><td class="num" style="font-weight:600;">16</td><td class="num" style="font-weight:600; color:var(--green);">0.36%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:100%;"></div></td></tr>
+              <tr><td>Sunday</td><td class="num">27</td><td class="num">0.32%</td><td><div style="background:var(--accent); opacity:0.7; height:8px; border-radius:3px; width:89%;"></div></td></tr>
             </tbody>
           </table>
-          <p style="font-size:0.72rem; color:var(--text-muted); margin-top:0.5rem;">Tuesday and Thursday account for 42% of all sends. Weekend sends are less common but Sunday outpaces Friday.</p>
         </div>
         <div>
-          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); margin-bottom:0.5rem;">By time of day (EST)</h4>
+          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); margin-bottom:0.5rem;">Click rate by time window (EST)</h4>
           <table class="campaign-table">
-            <thead><tr><th>Window</th><th class="num">Sends</th><th class="num">Share</th><th></th></tr></thead>
+            <thead><tr><th>Window</th><th class="num">Sends</th><th class="num">CTR</th><th></th></tr></thead>
             <tbody>
-              <tr><td style="font-weight:600;">6&ndash;7 AM</td><td class="num" style="font-weight:600;">41</td><td class="num" style="font-weight:600;">22%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:100%;"></div></td></tr>
-              <tr><td>8&ndash;9 AM</td><td class="num">6</td><td class="num">3%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:15%;"></div></td></tr>
-              <tr><td style="font-weight:600;">9&ndash;10 AM</td><td class="num" style="font-weight:600;">38</td><td class="num" style="font-weight:600;">20%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:93%;"></div></td></tr>
-              <tr><td>10&ndash;11 AM</td><td class="num">11</td><td class="num">6%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:27%;"></div></td></tr>
-              <tr><td>11 AM&ndash;12 PM</td><td class="num">16</td><td class="num">9%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:39%;"></div></td></tr>
-              <tr><td>12&ndash;2 PM</td><td class="num">13</td><td class="num">7%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:32%;"></div></td></tr>
-              <tr><td>2&ndash;5 PM</td><td class="num">13</td><td class="num">7%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:32%;"></div></td></tr>
-              <tr><td>After 5 PM</td><td class="num">8</td><td class="num">4%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:20%;"></div></td></tr>
+              <tr><td>Before 10 AM</td><td class="num">110</td><td class="num">0.33%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:97%;"></div></td></tr>
+              <tr><td>10 AM &ndash; 2 PM</td><td class="num">32</td><td class="num">0.34%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:100%;"></div></td></tr>
+              <tr><td>After 2 PM</td><td class="num">20</td><td class="num">0.34%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:100%;"></div></td></tr>
             </tbody>
           </table>
-          <p style="font-size:0.72rem; color:var(--text-muted); margin-top:0.5rem;">Two clear windows: early morning (6&ndash;7 AM, 22%) and mid-morning (9&ndash;10 AM, 20%). 42% of all sends land before 10 AM.</p>
         </div>
       </div>
       <div class="callout">
-        <strong>Observation:</strong> Send timing has been consistent but there&rsquo;s no evidence of A/B testing across time slots. The 6 AM and 9 AM windows are habitual, not optimized. Worth testing afternoon sends (2&ndash;4 PM, the &ldquo;3PM Wall&rdquo; window) given the ADHD audience.
+        <strong>Finding:</strong> Send timing does not meaningfully impact click rates on this account. CTR ranges from 0.31% to 0.36% regardless of day or time. Content quality is the variable that matters, not when it lands. No A/B time-slot testing has been done to confirm, but the existing data shows no signal.
       </div>
     </section>
 
@@ -454,10 +445,54 @@
       </table>
     </section>
 
-    <div style="margin:3rem 0 2rem; padding:1rem 0; border-top:2px solid var(--border);">
-      <h2 style="font-size:1.1rem; color:var(--purple); margin:0;">Segment insights</h2>
-      <p class="muted" style="margin:0.25rem 0 0;">Performance grouped by audience. Each segment has its own baseline.</p>
-    </div>
+    <!-- PLAINTEXT -->
+    <section class="segment-group">
+      <div class="segment-header"><h3 id="plaintext">Plaintext / clinical trial</h3><span class="seg-count">4 campaigns</span></div>
+      <table class="campaign-table">
+        <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th></tr></thead>
+        <tbody>
+          <tr><td>6/17</td><td class="name-cell">Plaintext Clinical Trial <a class="kl-link" href="https://www.klaviyo.com/campaign/01JXX6X0VA3KEF9MZ6MHNH41M3/reports/overview" target="_blank">&#8599;</a></td><td class="num">2,336</td><td class="num">64.4%</td><td class="num winner">4.30%</td><td class="num">0.086%</td><td class="num">$0.068</td></tr>
+          <tr><td>7/2</td><td class="name-cell">Clinical Trial (resend) <a class="kl-link" href="https://www.klaviyo.com/campaign/01JYS7PB1MRCBEMXR3T9QXW4F8/reports/overview" target="_blank">&#8599;</a></td><td class="num">5,689</td><td class="num">64.6%</td><td class="num winner">3.41%</td><td class="num">0.053%</td><td class="num">$0.062</td></tr>
+          <tr><td>8/8</td><td class="name-cell">Clinical Trial (resend 2) <a class="kl-link" href="https://www.klaviyo.com/campaign/01K2364W1AJ05XG84HFS38AYVN/reports/overview" target="_blank">&#8599;</a></td><td class="num">1,980</td><td class="num">54.1%</td><td class="num winner">3.25%</td><td class="num winner">0.254%</td><td class="num winner">$0.221</td></tr>
+          <tr><td>12/31</td><td class="name-cell">Note From Dan <a class="kl-link" href="https://www.klaviyo.com/campaign/01KCSH1HB1HNNXGJ8NCPCX7S14/reports/overview" target="_blank">&#8599;</a></td><td class="num">34,587</td><td class="num">53.4%</td><td class="num">0.13%</td><td class="num">0.020%</td><td class="num">$0.021</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><strong>Format or content?</strong> The clinical trial emails used plaintext and hit 3&ndash;4% CTR, but the content itself (clinical data, personal tone) is also different from standard sends. Worth A/B testing plaintext vs. designed across different content types to isolate the variable.</div>
+    </section>
+
+
+    <!-- ANNIVERSARY SALE -->
+    <section class="segment-group">
+      <div class="segment-header"><h3 id="seg-sale">Anniversary Sale (July 2025)</h3><span class="seg-count">14 campaigns &middot; 15-day run &middot; $56,900 total</span></div>
+      <p class="muted">Full sale run from launch (7/10) through extension (7/25). Audience sizes varied from 18K targeted leads to 136K broad blasts. Unsub rates climbed steadily on tail-end sends.</p>
+      <table class="campaign-table">
+        <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th><th class="num">Revenue</th><th class="num">Unsub</th></tr></thead>
+        <tbody>
+          <tr><td>7/10</td><td class="name-cell">Anniversary Sale Launch <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZQW4JWA56TJNRXK2MB7HST8/reports/overview" target="_blank">&#8599;</a></td><td class="num">102,802</td><td class="num">38.2%</td><td class="num">0.16%</td><td class="num">0.011%</td><td class="num">$0.013</td><td class="num">$1,322</td><td class="num">0.61%</td></tr>
+          <tr><td>7/11</td><td class="name-cell">Non-Opener Follow-up <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZQWW87G3B1J366Z6EBY618S/reports/overview" target="_blank">&#8599;</a></td><td class="num">116,339</td><td class="num loser">24.3%</td><td class="num">0.30%</td><td class="num">0.126%</td><td class="num">$0.134</td><td class="num winner">$15,479</td><td class="num">0.63%</td></tr>
+          <tr><td>7/12</td><td class="name-cell">Social Proof Spotlight <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZV1E8S4KK3F5CHT3Q57YZBB/reports/overview" target="_blank">&#8599;</a></td><td class="num">19,073</td><td class="num">61.4%</td><td class="num">0.25%</td><td class="num">0.189%</td><td class="num">$0.155</td><td class="num">$2,955</td><td class="num">0.79%</td></tr>
+          <tr><td>7/13</td><td class="name-cell">Bundle &amp; Save Deep Dive <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZV40R0GWJ873NHCWVRFWY0B/reports/overview" target="_blank">&#8599;</a></td><td class="num">27,687</td><td class="num">57.8%</td><td class="num winner">0.47%</td><td class="num winner">0.362%</td><td class="num winner">$0.310</td><td class="num winner">$8,556</td><td class="num">0.84%</td></tr>
+          <tr><td>7/15</td><td class="name-cell">Freedom from Side Effects <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZWX1ZFWTDY1KX39DZHPSKRY/reports/overview" target="_blank">&#8599;</a></td><td class="num">73,214</td><td class="num">46.5%</td><td class="num">0.29%</td><td class="num">0.234%</td><td class="num">$0.223</td><td class="num winner">$16,186</td><td class="num loser">0.95%</td></tr>
+          <tr><td>7/17</td><td class="name-cell">One Week Warning <a class="kl-link" href="https://www.klaviyo.com/campaign/01K09QHFQW9Y82K7H4V6BY4YYT/reports/overview" target="_blank">&#8599;</a></td><td class="num">18,132</td><td class="num">56.0%</td><td class="num">0.16%</td><td class="num loser">0.017%</td><td class="num loser">$0.017</td><td class="num">$298</td><td class="num">0.84%</td></tr>
+          <tr><td>7/18</td><td class="name-cell">Science of Savings <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0CSKM8GGNR3HHPBFS163G5Z/reports/overview" target="_blank">&#8599;</a></td><td class="num">135,897</td><td class="num">42.4%</td><td class="num">0.13%</td><td class="num loser">0.010%</td><td class="num loser">$0.013</td><td class="num">$1,719</td><td class="num">0.79%</td></tr>
+          <tr><td>7/19</td><td class="name-cell">Last Weekend Notice <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0CV1ABC7YYNHETRYVAYBGKA/reports/overview" target="_blank">&#8599;</a></td><td class="num">37,170</td><td class="num">57.8%</td><td class="num">0.14%</td><td class="num">0.041%</td><td class="num">$0.044</td><td class="num">$1,635</td><td class="num loser">0.95%</td></tr>
+          <tr><td>7/20</td><td class="name-cell">Mid-Sale Surge <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0D222NSDDBS72TEYDP7EF0T/reports/overview" target="_blank">&#8599;</a></td><td class="num">135,545</td><td class="num">44.1%</td><td class="num">0.15%</td><td class="num">0.018%</td><td class="num">$0.018</td><td class="num">$2,407</td><td class="num">0.89%</td></tr>
+          <tr><td>7/21</td><td class="name-cell">Cart Recovery Blitz <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0PSK64DW0PNAZNEJT97CHNP/reports/overview" target="_blank">&#8599;</a></td><td class="num">136,200</td><td class="num">43.4%</td><td class="num">0.20%</td><td class="num">0.027%</td><td class="num">$0.028</td><td class="num">$3,843</td><td class="num loser">1.03%</td></tr>
+          <tr><td>7/22</td><td class="name-cell">Freedom Side Effects (Resend) <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0PTVYEJH319Q2Z1CP5XA7PM/reports/overview" target="_blank">&#8599;</a></td><td class="num">80,393</td><td class="num loser">21.7%</td><td class="num loser">0.07%</td><td class="num loser">0.008%</td><td class="num loser">$0.009</td><td class="num">$684</td><td class="num">0.36%</td></tr>
+          <tr><td>7/23</td><td class="name-cell">24-Hour Warning <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SCVBA0XE91ZB0GTM5GABE3/reports/overview" target="_blank">&#8599;</a></td><td class="num">53,389</td><td class="num winner">74.8%</td><td class="num">0.14%</td><td class="num">0.024%</td><td class="num">$0.030</td><td class="num">$1,623</td><td class="num loser">0.93%</td></tr>
+          <tr><td>7/24</td><td class="name-cell">Final Hours <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SK7W8SK6N5Q0GGRF75NZC7/reports/overview" target="_blank">&#8599;</a></td><td class="num">38,676</td><td class="num">53.9%</td><td class="num">0.15%</td><td class="num">0.044%</td><td class="num">$0.053</td><td class="num">$2,025</td><td class="num loser">1.27%</td></tr>
+          <tr><td>7/25</td><td class="name-cell">Procrastinator Extension <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SKW24W7FXNZNTW8XCGH31P/reports/overview" target="_blank">&#8599;</a></td><td class="num">18,561</td><td class="num">69.9%</td><td class="num">0.34%</td><td class="num">0.081%</td><td class="num">$0.077</td><td class="num">$1,430</td><td class="num loser">1.77%</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warning"><strong>Unsub trajectory:</strong> 0.61% on launch day, 1.03% by day 11, 1.77% by the extension on day 15. Cart Recovery Blitz and Final Hours both crossed 1%.</div>
+      <div class="callout success"><strong>Top:</strong> &ldquo;Bundle &amp; Save Deep Dive&rdquo; (7/13) at $0.310 RPR, targeting single-month purchasers + leads with product education instead of urgency. &ldquo;Freedom from Side Effects&rdquo; (7/15) drove the most total revenue ($16,186) with an ADHD lifestyle angle to 73K.</div>
+    </section>
+
+
+    </div><!-- end content container -->
+
+    <div class="section-group-container segments">
+    <div class="section-group-label segments">Segment insights</div>
 
     <!-- AUDIENCE: BROAD ENGAGED -->
     <section class="segment-group">
@@ -562,54 +597,12 @@
       <div class="callout success"><strong>Top:</strong> Kids Announcement was the 2nd highest-revenue email of the year ($15,550) from a 53K broad send at 0.34% conversion.</div>
     </section>
 
-    <!-- PLAINTEXT -->
-    <section class="segment-group">
-      <div class="segment-header"><h3 id="plaintext">Plaintext / clinical trial</h3><span class="seg-count">4 campaigns</span></div>
-      <table class="campaign-table">
-        <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th></tr></thead>
-        <tbody>
-          <tr><td>6/17</td><td class="name-cell">Plaintext Clinical Trial <a class="kl-link" href="https://www.klaviyo.com/campaign/01JXX6X0VA3KEF9MZ6MHNH41M3/reports/overview" target="_blank">&#8599;</a></td><td class="num">2,336</td><td class="num">64.4%</td><td class="num winner">4.30%</td><td class="num">0.086%</td><td class="num">$0.068</td></tr>
-          <tr><td>7/2</td><td class="name-cell">Clinical Trial (resend) <a class="kl-link" href="https://www.klaviyo.com/campaign/01JYS7PB1MRCBEMXR3T9QXW4F8/reports/overview" target="_blank">&#8599;</a></td><td class="num">5,689</td><td class="num">64.6%</td><td class="num winner">3.41%</td><td class="num">0.053%</td><td class="num">$0.062</td></tr>
-          <tr><td>8/8</td><td class="name-cell">Clinical Trial (resend 2) <a class="kl-link" href="https://www.klaviyo.com/campaign/01K2364W1AJ05XG84HFS38AYVN/reports/overview" target="_blank">&#8599;</a></td><td class="num">1,980</td><td class="num">54.1%</td><td class="num winner">3.25%</td><td class="num winner">0.254%</td><td class="num winner">$0.221</td></tr>
-          <tr><td>12/31</td><td class="name-cell">Note From Dan <a class="kl-link" href="https://www.klaviyo.com/campaign/01KCSH1HB1HNNXGJ8NCPCX7S14/reports/overview" target="_blank">&#8599;</a></td><td class="num">34,587</td><td class="num">53.4%</td><td class="num">0.13%</td><td class="num">0.020%</td><td class="num">$0.021</td></tr>
-        </tbody>
-      </table>
-      <div class="callout"><strong>Format or content?</strong> The clinical trial emails used plaintext and hit 3&ndash;4% CTR, but the content itself (clinical data, personal tone) is also different from standard sends. Worth A/B testing plaintext vs. designed across different content types to isolate the variable.</div>
-    </section>
+    </div><!-- end segments container -->
 
-    <!-- ANNIVERSARY SALE -->
-    <section class="segment-group">
-      <div class="segment-header"><h3 id="seg-sale">Anniversary Sale (July 2025)</h3><span class="seg-count">14 campaigns &middot; 15-day run &middot; $56,900 total</span></div>
-      <p class="muted">Full sale run from launch (7/10) through extension (7/25). Audience sizes varied from 18K targeted leads to 136K broad blasts. Unsub rates climbed steadily on tail-end sends.</p>
-      <table class="campaign-table">
-        <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th><th class="num">Revenue</th><th class="num">Unsub</th></tr></thead>
-        <tbody>
-          <tr><td>7/10</td><td class="name-cell">Anniversary Sale Launch <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZQW4JWA56TJNRXK2MB7HST8/reports/overview" target="_blank">&#8599;</a></td><td class="num">102,802</td><td class="num">38.2%</td><td class="num">0.16%</td><td class="num">0.011%</td><td class="num">$0.013</td><td class="num">$1,322</td><td class="num">0.61%</td></tr>
-          <tr><td>7/11</td><td class="name-cell">Non-Opener Follow-up <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZQWW87G3B1J366Z6EBY618S/reports/overview" target="_blank">&#8599;</a></td><td class="num">116,339</td><td class="num loser">24.3%</td><td class="num">0.30%</td><td class="num">0.126%</td><td class="num">$0.134</td><td class="num winner">$15,479</td><td class="num">0.63%</td></tr>
-          <tr><td>7/12</td><td class="name-cell">Social Proof Spotlight <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZV1E8S4KK3F5CHT3Q57YZBB/reports/overview" target="_blank">&#8599;</a></td><td class="num">19,073</td><td class="num">61.4%</td><td class="num">0.25%</td><td class="num">0.189%</td><td class="num">$0.155</td><td class="num">$2,955</td><td class="num">0.79%</td></tr>
-          <tr><td>7/13</td><td class="name-cell">Bundle &amp; Save Deep Dive <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZV40R0GWJ873NHCWVRFWY0B/reports/overview" target="_blank">&#8599;</a></td><td class="num">27,687</td><td class="num">57.8%</td><td class="num winner">0.47%</td><td class="num winner">0.362%</td><td class="num winner">$0.310</td><td class="num winner">$8,556</td><td class="num">0.84%</td></tr>
-          <tr><td>7/15</td><td class="name-cell">Freedom from Side Effects <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZWX1ZFWTDY1KX39DZHPSKRY/reports/overview" target="_blank">&#8599;</a></td><td class="num">73,214</td><td class="num">46.5%</td><td class="num">0.29%</td><td class="num">0.234%</td><td class="num">$0.223</td><td class="num winner">$16,186</td><td class="num loser">0.95%</td></tr>
-          <tr><td>7/17</td><td class="name-cell">One Week Warning <a class="kl-link" href="https://www.klaviyo.com/campaign/01K09QHFQW9Y82K7H4V6BY4YYT/reports/overview" target="_blank">&#8599;</a></td><td class="num">18,132</td><td class="num">56.0%</td><td class="num">0.16%</td><td class="num loser">0.017%</td><td class="num loser">$0.017</td><td class="num">$298</td><td class="num">0.84%</td></tr>
-          <tr><td>7/18</td><td class="name-cell">Science of Savings <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0CSKM8GGNR3HHPBFS163G5Z/reports/overview" target="_blank">&#8599;</a></td><td class="num">135,897</td><td class="num">42.4%</td><td class="num">0.13%</td><td class="num loser">0.010%</td><td class="num loser">$0.013</td><td class="num">$1,719</td><td class="num">0.79%</td></tr>
-          <tr><td>7/19</td><td class="name-cell">Last Weekend Notice <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0CV1ABC7YYNHETRYVAYBGKA/reports/overview" target="_blank">&#8599;</a></td><td class="num">37,170</td><td class="num">57.8%</td><td class="num">0.14%</td><td class="num">0.041%</td><td class="num">$0.044</td><td class="num">$1,635</td><td class="num loser">0.95%</td></tr>
-          <tr><td>7/20</td><td class="name-cell">Mid-Sale Surge <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0D222NSDDBS72TEYDP7EF0T/reports/overview" target="_blank">&#8599;</a></td><td class="num">135,545</td><td class="num">44.1%</td><td class="num">0.15%</td><td class="num">0.018%</td><td class="num">$0.018</td><td class="num">$2,407</td><td class="num">0.89%</td></tr>
-          <tr><td>7/21</td><td class="name-cell">Cart Recovery Blitz <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0PSK64DW0PNAZNEJT97CHNP/reports/overview" target="_blank">&#8599;</a></td><td class="num">136,200</td><td class="num">43.4%</td><td class="num">0.20%</td><td class="num">0.027%</td><td class="num">$0.028</td><td class="num">$3,843</td><td class="num loser">1.03%</td></tr>
-          <tr><td>7/22</td><td class="name-cell">Freedom Side Effects (Resend) <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0PTVYEJH319Q2Z1CP5XA7PM/reports/overview" target="_blank">&#8599;</a></td><td class="num">80,393</td><td class="num loser">21.7%</td><td class="num loser">0.07%</td><td class="num loser">0.008%</td><td class="num loser">$0.009</td><td class="num">$684</td><td class="num">0.36%</td></tr>
-          <tr><td>7/23</td><td class="name-cell">24-Hour Warning <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SCVBA0XE91ZB0GTM5GABE3/reports/overview" target="_blank">&#8599;</a></td><td class="num">53,389</td><td class="num winner">74.8%</td><td class="num">0.14%</td><td class="num">0.024%</td><td class="num">$0.030</td><td class="num">$1,623</td><td class="num loser">0.93%</td></tr>
-          <tr><td>7/24</td><td class="name-cell">Final Hours <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SK7W8SK6N5Q0GGRF75NZC7/reports/overview" target="_blank">&#8599;</a></td><td class="num">38,676</td><td class="num">53.9%</td><td class="num">0.15%</td><td class="num">0.044%</td><td class="num">$0.053</td><td class="num">$2,025</td><td class="num loser">1.27%</td></tr>
-          <tr><td>7/25</td><td class="name-cell">Procrastinator Extension <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SKW24W7FXNZNTW8XCGH31P/reports/overview" target="_blank">&#8599;</a></td><td class="num">18,561</td><td class="num">69.9%</td><td class="num">0.34%</td><td class="num">0.081%</td><td class="num">$0.077</td><td class="num">$1,430</td><td class="num loser">1.77%</td></tr>
-        </tbody>
-      </table>
-      <div class="callout warning"><strong>Unsub trajectory:</strong> 0.61% on launch day, 1.03% by day 11, 1.77% by the extension on day 15. Cart Recovery Blitz and Final Hours both crossed 1%.</div>
-      <div class="callout success"><strong>Top:</strong> &ldquo;Bundle &amp; Save Deep Dive&rdquo; (7/13) at $0.310 RPR, targeting single-month purchasers + leads with product education instead of urgency. &ldquo;Freedom from Side Effects&rdquo; (7/15) drove the most total revenue ($16,186) with an ADHD lifestyle angle to 73K.</div>
-    </section>
+    <div class="section-group-container channel">
+    <div class="section-group-label channel">Channel insights: SMS</div>
 
-    <!-- SMS -->
-    <div style="margin:3rem 0 2rem; padding:1rem 0; border-top:2px solid var(--border);">
-      <h2 style="font-size:1.1rem; color:var(--purple); margin:0;">Channel insights: SMS</h2>
-      <p class="muted" style="margin:0.25rem 0 0;">SMS metrics are not comparable to email. Evaluated against SMS-only baselines.</p>
-    </div>
-    <div class="callout"><strong>Note:</strong> SMS metrics are not comparable to email. Evaluated against SMS-only baselines below.</div>
+    <div class="callout"><strong>Note:</strong> SMS metrics are not comparable to email. Evaluated against SMS-only baselines.</div>
 
     <section class="segment-group">
       <div class="segment-header"><h3 id="sms-full">SMS: Full subscriber list</h3><span class="seg-count">~4&ndash;7K &middot; 8 campaigns (top and bottom shown)</span></div>
@@ -647,6 +640,8 @@
       </table>
       <div class="callout warning"><strong>SMS unsub rates are consistently above 1%.</strong> Every send loses ~1% of the list. With a small list, this attrition is unsustainable. The channel converts, but cadence needs careful management.</div>
     </section>
+
+    </div><!-- end channel container -->
 
   </div>
   <script src="nav.js"></script>
