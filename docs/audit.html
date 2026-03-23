@@ -665,24 +665,23 @@
 <body>
   <nav>
     <div class="nav-inner">
-      <a href="index.html" class="brand">Thesis <span>Klaviyo Audit</span></a>
+      <a href="index.html" class="brand">Thesis + Stasis <span>Klaviyo Audit</span></a>
       <a href="factsheet.html">Fact Sheet</a>
-      <a href="planning.html">Planning</a>
-      <a href="planning2.html">Planning II</a>
       <a href="audit.html" class="active">Audit</a>
-      <a href="mindshift.html">Mindshift</a>
+      <a href="mindshift.html">Mindshift Concept WIP</a>
     </div>
   </nav>
 
   <div class="container">
-    <div class="page-header">
-      <h1>The Audit</h1>
-      <p class="subtitle">Walkthrough for Dan Freed</p>
-      <p class="meta">Thesis + Stasis Klaviyo &middot; March 2026</p>
-    </div>
-
-    <div class="callout">
-      <strong>Where things stand:</strong> Stasis is 49&ndash;53% of combined revenue, up from 35% eleven months ago, with net subscriber growth in 8 of 11 months. Thesis is the opposite: net loss 10 of 13 months, ~5,000 cancels/mo regardless of acquisition. The business is already investing behind Stasis, including Kids. Neither brand has had a retention person. That&rsquo;s what we&rsquo;re here for.
+    <div class="page-header" style="display:flex; align-items:center; gap:1.5rem;">
+      <div style="display:flex; gap:1rem; align-items:center; flex-shrink:0;">
+        <img src="https://takethesis.zendesk.com/hc/theming_assets/01JV2NAQ5Z0Q7605QX9CHEE5Y6" alt="Thesis" style="height:32px;">
+        <img src="https://takestasis.zendesk.com/hc/theming_assets/01J5NWHSTVGR6YC1817PVKH7Q2" alt="Stasis" style="height:32px;">
+      </div>
+      <div>
+        <h1>The Audit</h1>
+        <p class="meta">Thesis + Stasis Klaviyo &middot; March 2026</p>
+      </div>
     </div>
 
     <!-- ======================== -->
@@ -998,7 +997,7 @@
       <div class="stat-row">
         <div class="stat">
           <span class="value red">20 days</span>
-          <span class="label">Current post-purchase length</span>
+          <span class="label">Stasis post-purchase length</span>
         </div>
         <div class="stat">
           <span class="value accent">0</span>
@@ -1014,7 +1013,7 @@
 
         <!-- BEFORE -->
         <div class="compare-side">
-          <div class="compare-label before">Today: one email, 20-day flow</div>
+          <div class="compare-label before">Stasis today: one email, 20-day flow</div>
           <div class="compare-body">
             <img src="https://d3k81ch9hvuctc.cloudfront.net/company/YsCgQB/images/7697eb10-1012-4d97-a61a-d15485f29b9c.png" alt="Stasis Commit to Consistency timeline">
             <p>This entire timeline is delivered in <strong>one email</strong> inside a 20-day post-purchase flow. The customer sees all four stages at once, and the flow ends at day 20.</p>
@@ -1139,8 +1138,9 @@
 
       <!-- Revenue simulator -->
       <div class="sim-container" style="background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin:1.5rem 0;">
-        <h3 style="margin:0 0 0.25rem; font-size:1rem;">Revenue impact of improving lead campaign click rates</h3>
-        <p class="muted" style="font-size:0.8rem; margin-bottom:1rem;">Baseline: Q1 2026 combined (Thesis + Stasis), 55 campaigns, 2.35M recipients/mo at 0.32% click rate.</p>
+        <h3 style="margin:0 0 0.25rem; font-size:1rem;">Incremental revenue from improving campaign click rates</h3>
+        <p class="muted" style="font-size:0.78rem; margin-bottom:0.25rem;">Baseline: Q1 2026, 55 lead campaigns across both brands. 2.35M recipients/mo at 0.32% click rate.</p>
+        <p class="muted" style="font-size:0.72rem; margin-bottom:1rem; color:var(--text-dim);">Assumes 3% click-to-purchase rate and $59 first-month subscription price. All figures are incremental over current performance.</p>
 
         <div style="margin-bottom:1.25rem;">
           <label style="font-size:0.75rem; font-weight:600; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.04em; display:block; margin-bottom:0.5rem;">Target click rate</label>
@@ -1152,39 +1152,28 @@
           </div>
         </div>
 
-        <div style="display:grid; grid-template-columns:auto auto 1fr; gap:0.5rem; align-items:center; font-size:0.85rem; line-height:1.8;">
-          <span style="color:var(--text-muted);">Current clicks/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-current-clicks">7,631</span>
-          <span></span>
-
-          <span style="color:var(--text-muted);">New clicks/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem; font-weight:600; color:var(--accent);" id="sim-new-clicks">23,521</span>
-          <span style="font-size:0.75rem; color:var(--green);" id="sim-delta-clicks">+15,890</span>
-
-          <span style="color:var(--text-muted);">Additional first orders/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem;" id="sim-orders">476</span>
-          <span style="font-size:0.72rem; color:var(--text-dim);">at 3% click-to-purchase</span>
-
-          <span style="color:var(--text-muted); font-weight:600;">Incremental first-order revenue/mo</span>
-          <span style="font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green);" id="sim-revenue">$28,125</span>
-          <span style="font-size:0.72rem; color:var(--text-dim);">at $59 first month</span>
-
-          <span style="color:var(--text-muted); font-weight:600;">Annualized incremental revenue</span>
-          <span style="font-family:var(--mono); font-size:1.1rem; font-weight:700; color:var(--green);" id="sim-annual">$337,504</span>
-          <span></span>
-
-          <span style="color:var(--text-muted);">Recurring value/mo</span>
-          <span style="font-family:var(--mono); font-size:0.82rem; color:var(--purple);" id="sim-recurring">$37,659</span>
-          <span style="font-size:0.72rem; color:var(--text-dim);">if retained at $79/mo</span>
-        </div>
-
-        <div style="margin-top:1rem; padding-top:0.75rem; border-top:1px solid var(--border); font-size:0.78rem; color:var(--text-muted);">
-          <strong style="color:var(--text);">Assumptions:</strong> Baseline: Q1 2026, 55 lead campaigns across both brands. 3% click-to-purchase. $59 first month, $79 recurring. Retention not modeled; recurring line shows full cohort value.
+        <div class="stat-row" style="margin:0;">
+          <div class="stat">
+            <span class="value" id="sim-delta-clicks" style="color:var(--accent);">+15,890</span>
+            <span class="label">Additional campaign clicks/mo</span>
+          </div>
+          <div class="stat">
+            <span class="value" id="sim-orders">476</span>
+            <span class="label">Additional first orders/mo</span>
+          </div>
+          <div class="stat">
+            <span class="value green" id="sim-revenue">$28,125</span>
+            <span class="label">Incremental revenue/mo</span>
+          </div>
+          <div class="stat">
+            <span class="value green" id="sim-annual">$337,504</span>
+            <span class="label">Annualized</span>
+          </div>
         </div>
       </div>
 
       <p class="narrative">
-        Subscriber emails (M1, refill reminders) are a different story. The goal is often just to be read, and 57% opens says they are. But when there&rsquo;s a CTA worth clicking, like the Mindshift 30-day habit reset <a class="kl" href="https://www.klaviyo.com/flow/Y6nDb2/edit" target="_blank" title="Mindshift"></a>, engagement jumps to 6.8%. The move is adding purposeful CTAs where they make sense, not chasing click rate on every send.
+        Subscriber emails (M1, refill reminders) are a different story. The goal is often just to be read, and 57% opens says they are. But when there&rsquo;s a CTA worth clicking, like the Mindshift 30-day habit reset, engagement jumps to 6.8%. The move is adding purposeful CTAs where they make sense, not chasing click rate on every send.
       </p>
 
       <div class="rec-box">
@@ -1232,7 +1221,7 @@
       </table>
 
       <p class="narrative">
-        The problem: we can&rsquo;t see why any of them leave in Klaviyo. ReCharge cancel events land in Klaviyo with empty properties. No reason, no product context, nothing actionable. That data lives in ReCharge&rsquo;s native reporting only, so the winback <a class="kl" href="https://www.klaviyo.com/flow/YgVEQB/edit" target="_blank" title="Stasis Winback"></a> and save flows send the same generic message whether someone left over price, side effects, or because they meant to hit pause.
+        The problem: we can&rsquo;t see why any of them leave in Klaviyo. ReCharge cancel events land in Klaviyo with empty properties. No reason, no product context, nothing actionable. That data lives in ReCharge&rsquo;s native reporting only, so the winback and save flows send the same generic message whether someone left over price, side effects, or because they meant to hit pause.
       </p>
 
       <p class="narrative">
@@ -1280,7 +1269,7 @@
       </div>
 
       <p class="narrative">
-        Thesis winback <a class="kl" href="https://www.klaviyo.com/flow/WEFcjQ/edit" target="_blank" title="Thesis Winback"></a>: 0.21% across 46K. Stasis <a class="kl" href="https://www.klaviyo.com/flow/YgVEQB/edit" target="_blank" title="Stasis Winback"></a>: 0.25% across 118K. (All-time flow stats.) Both flows send generic &ldquo;we miss you&rdquo; content. 165K people are reading and have no reason to act.
+        Thesis winback: 0.21% across 46K. Stasis: 0.25% across 118K. (All-time flow stats.) Both flows send generic &ldquo;we miss you&rdquo; content. 165K people are reading and have no reason to act.
       </p>
 
       <div class="rec-box">
@@ -1754,15 +1743,11 @@
       var orders = Math.round(delta * 0.03);
       var revenue = orders * 59;
       var annual = revenue * 12;
-      var recurring = orders * 79;
 
-      document.getElementById('sim-current-clicks').textContent = fmt(currentClicks);
-      document.getElementById('sim-new-clicks').textContent = fmt(newClicks);
       document.getElementById('sim-delta-clicks').textContent = '+' + fmt(delta);
       document.getElementById('sim-orders').textContent = fmt(orders);
       document.getElementById('sim-revenue').textContent = '$' + revenue.toLocaleString();
       document.getElementById('sim-annual').textContent = '$' + annual.toLocaleString();
-      document.getElementById('sim-recurring').textContent = '$' + recurring.toLocaleString();
 
       document.querySelectorAll('.sim-btn').forEach(function(btn) {
         btn.style.borderColor = 'var(--border)';
