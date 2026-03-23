@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campaign Analysis | Thesis Klaviyo</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Campaign analysis styles */
+    .segment-group {
+      margin-bottom: 3rem;
+    }
+
+    .segment-header {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .segment-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .segment-header .seg-count {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .baseline-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.75rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+
+    .baseline-stat {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 0.85rem;
+      text-align: center;
+    }
+
+    .baseline-stat .bs-value {
+      font-size: 1.1rem;
+      font-weight: 700;
+      display: block;
+    }
+
+    .baseline-stat .bs-label {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Campaign table */
+    .campaign-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+      margin: 0.75rem 0 1.25rem;
+    }
+
+    .campaign-table th {
+      text-align: left;
+      padding: 0.5rem 0.5rem;
+      border-bottom: 2px solid var(--border);
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    .campaign-table td {
+      padding: 0.4rem 0.5rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .campaign-table tr:hover td {
+      background: var(--bg-card);
+    }
+
+    .campaign-table .num {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .campaign-table .winner {
+      color: var(--green);
+      font-weight: 600;
+    }
+
+    .campaign-table .loser {
+      color: var(--red);
+    }
+
+    .campaign-table .name-cell {
+      max-width: 280px;
+    }
+
+    .campaign-table .name-cell a {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .campaign-table .name-cell a:hover {
+      color: var(--accent);
+    }
+
+    /* External link icon */
+    .kl-link {
+      display: inline-block;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      margin-left: 0.25rem;
+      vertical-align: super;
+    }
+
+    .kl-link:hover {
+      color: var(--accent);
+    }
+
+    /* Performance tags */
+    .perf-tag {
+      display: inline-block;
+      font-size: 0.62rem;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .perf-tag.top { background: rgba(63, 185, 80, 0.12); color: var(--green); }
+    .perf-tag.bottom { background: rgba(248, 81, 73, 0.12); color: var(--red); }
+
+    /* Category summary */
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.85rem;
+      margin: 1rem 0;
+    }
+
+    .cat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .cat-card h4 {
+      margin: 0 0 0.5rem;
+      font-size: 0.85rem;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .cat-card .cat-metric {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      padding: 0.15rem 0;
+    }
+
+    .cat-card .cat-metric .cat-val {
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+
+    /* Timing heatmap */
+    .timing-table th.day-header {
+      text-align: center;
+      min-width: 60px;
+    }
+
+    .timing-table td.day-cell {
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+
+    /* SMS section */
+    .sms-divider {
+      margin: 3rem 0 2rem;
+      padding: 1rem 0;
+      border-top: 2px solid var(--border);
+    }
+
+    .sms-divider h2 {
+      border: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    @media (max-width: 640px) {
+      .campaign-table { font-size: 0.72rem; }
+      .campaign-table th, .campaign-table td { padding: 0.3rem 0.35rem; }
+      .baseline-row { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="brand">Thesis + Stasis <span>Klaviyo Audit</span></a>
+      <a href="factsheet.html">Fact Sheet</a>
+      <a href="audit.html">Audit</a>
+      <a href="mindshift.html">Mindshift Concept WIP</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>Stasis Campaign Analysis</h1>
+      <p class="subtitle">12-month performance review, segmented by audience</p>
+      <p class="meta">April 2025 &ndash; March 2026 &middot; Email + SMS</p>
+    </div>
+
+    <div class="callout">
+      <strong>How to read this:</strong> Campaigns are grouped by audience segment. Each group has its own baseline metrics. Winners and losers are evaluated relative to their segment&rsquo;s baseline, not against the full program. A 0.3% click rate is strong on a 60K broad send; the same rate would be weak on a 2K purchaser-only send.
+    </div>
+
+    <!-- Content will be populated once the analysis agent returns -->
+    <p class="muted" style="margin-top:2rem; text-align:center; padding:3rem 0;">Analysis data loading&hellip;</p>
+
+  </div>
+</body>
+</html>
