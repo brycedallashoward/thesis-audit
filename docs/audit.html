@@ -637,6 +637,34 @@
     .channel.sms { background: rgba(63, 185, 80, 0.12); color: var(--green); }
     .channel.action { background: rgba(210, 153, 34, 0.12); color: var(--orange); }
 
+    /* Rec checklist items */
+    .rec-box .rec-items {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .rec-box .rec-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.6rem 0.75rem;
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .rec-box .rec-item input[type="checkbox"] {
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      accent-color: var(--red);
+    }
+
     /* Klaviyo deep links */
     .kl {
       display: inline-block;
@@ -968,12 +996,12 @@
 
       <div class="rec-box">
         <h4>Recommendation</h4>
-        <ul>
-          <li><strong>Kids browse abandonment:</strong> parent messaging with safety data, clinical backing, other parents' experiences</li>
-          <li><strong>Kids checkout flow:</strong> parental concerns, not adult self-optimization</li>
-          <li><strong>Kids post-purchase journey:</strong> what to look for in the first week, dosing, when to adjust</li>
-          <li><strong>Quiz data gap:</strong> the Kids pop-up on the Kids URL is working (segment growing daily), but the main quiz&rsquo;s &ldquo;shopping for you or a child&rdquo; response doesn&rsquo;t sync to Klaviyo. Parents who enter through the quiz instead of the Kids page get no segmentation. Fix the quiz &rarr; Klaviyo pipe to close the gap.</li>
-          <li><strong>Segment enforcement:</strong> parents should never receive adult ADHD creative, regardless of how they entered</li>
+        <ul class="rec-items">
+          <li class="rec-item"><input type="checkbox"><span><strong>Kids browse abandonment:</strong> parent messaging with safety data, clinical backing, other parents' experiences</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Kids checkout flow:</strong> parental concerns, not adult self-optimization</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Kids post-purchase journey:</strong> what to look for in the first week, dosing, when to adjust</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Quiz data gap:</strong> the Kids pop-up on the Kids URL is working (segment growing daily), but the main quiz&rsquo;s &ldquo;shopping for you or a child&rdquo; response doesn&rsquo;t sync to Klaviyo. Fix the quiz &rarr; Klaviyo pipe to close the gap.</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Segment enforcement:</strong> parents should never receive adult ADHD creative, regardless of how they entered</span></li>
         </ul>
       </div>
     </div>
@@ -1176,10 +1204,10 @@
 
       <div class="rec-box">
         <h4>Recommendation</h4>
-        <ul>
-          <li>Audit the highest-volume lead campaigns on both brands for CTA clarity and relevance to the audience</li>
-          <li>Resume Thesis campaigns &mdash; the lead acquisition channel has been off since Jan 31</li>
-          <li>For subscriber flows: add purposeful CTAs modeled on Mindshift where the click leads somewhere valuable</li>
+        <ul class="rec-items">
+          <li class="rec-item"><input type="checkbox"><span><strong>Campaign CTA audit:</strong> review the highest-volume lead campaigns on both brands for CTA clarity and relevance to the audience</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Resume Thesis campaigns:</strong> the lead acquisition channel has been off since Jan 31</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Subscriber flow CTAs:</strong> add purposeful CTAs modeled on Mindshift where the click leads somewhere valuable</span></li>
         </ul>
       </div>
     </div>
@@ -1228,11 +1256,11 @@
 
       <div class="rec-box">
         <h4>Recommendation</h4>
-        <ul>
-          <li>Get cancel reason data from ReCharge. Direct access or an export. This unlocks everything below.</li>
-          <li>Build reason-specific save flows: price &rarr; downgrade/pause, product fit &rarr; SKU swap, &ldquo;didn&rsquo;t work&rdquo; &rarr; onset timeline content, accidental cancel &rarr; one-click reactivation</li>
-          <li>Winback by reason, not by calendar date. Someone who left over price needs a different email than someone who had side effects.</li>
-          <li>Feed the trends back into onboarding. If the top cancel reason is &ldquo;didn&rsquo;t feel anything,&rdquo; set expectations earlier.</li>
+        <ul class="rec-items">
+          <li class="rec-item"><input type="checkbox"><span><strong>Cancel reason data:</strong> get cancel reasons from ReCharge into Klaviyo. Direct access or an export. This unlocks everything below.</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Reason-specific save flows:</strong> price &rarr; downgrade/pause, product fit &rarr; SKU swap, &ldquo;didn&rsquo;t work&rdquo; &rarr; onset timeline content, accidental cancel &rarr; one-click reactivation</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Winback by reason:</strong> someone who left over price needs a different email than someone who had side effects. Segment by reason, not by calendar date.</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Feed back into onboarding:</strong> if the top cancel reason is &ldquo;didn&rsquo;t feel anything,&rdquo; set expectations earlier in the journey.</span></li>
         </ul>
       </div>
     </div>
@@ -1272,12 +1300,12 @@
 
       <div class="rec-box">
         <h4>Winback rebuild, force-ranked</h4>
-        <ol>
-          <li><strong>SMS feedback at 30 days post-cancel</strong> &mdash; ask a question, not for a purchase. &ldquo;Got questions or feedback? Reply to this message.&rdquo;</li>
-          <li><strong>Interactive self-sort in email</strong> &mdash; let them tell you: &ldquo;felt the benefit&rdquo; vs. &ldquo;didn&rsquo;t notice a difference.&rdquo; Branch on the response: warm candidates get a re-engagement path, cold candidates stop getting winback.</li>
-          <li><strong>Cross-brand cancel redirect</strong> &mdash; Stasis cancellers get introduced to Thesis (the stimulant problem doesn&rsquo;t go away when they cancel). Thesis cancellers with focus/energy issues get introduced to Stasis. The need that brought them in doesn&rsquo;t disappear.</li>
-          <li><strong>Segment by response, not by time</strong> &mdash; what the customer tells you matters more than how long ago they cancelled.</li>
-        </ol>
+        <ul class="rec-items">
+          <li class="rec-item"><input type="checkbox"><span><strong>SMS feedback at 30 days post-cancel:</strong> ask a question, not for a purchase. &ldquo;Got questions or feedback? Reply to this message.&rdquo;</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Interactive self-sort in email:</strong> let them tell you &ldquo;felt the benefit&rdquo; vs. &ldquo;didn&rsquo;t notice a difference.&rdquo; Branch on the response: warm candidates get a re-engagement path, cold candidates stop getting winback.</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Cross-brand cancel redirect:</strong> Stasis cancellers get introduced to Thesis (the stimulant problem doesn&rsquo;t go away when they cancel). Thesis cancellers with focus/energy issues get introduced to Stasis.</span></li>
+          <li class="rec-item"><input type="checkbox"><span><strong>Segment by response, not by time:</strong> what the customer tells you matters more than how long ago they cancelled.</span></li>
+        </ul>
       </div>
     </div>
 
