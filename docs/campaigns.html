@@ -263,22 +263,24 @@
     <!-- CONTENT CATEGORY -->
     <section>
       <h2>Performance by content type</h2>
-      <p class="muted">Ranked by average RPR. New product launches are revenue outliers but not repeatable at cadence.</p>
+      <p class="muted">Ranked by average RPR. Est. revenue/send = RPR &times; 40K avg recipients. New product launches are revenue outliers but not repeatable at cadence.</p>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; margin:1rem 0;">
         <div class="cat-card" style="border-left:3px solid var(--green);">
-          <div style="display:flex; justify-content:space-between; align-items:baseline;"><h4>1. New Product Launch</h4><span class="perf-tag top">Top</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;"><h4>1. New Product Launch</h4><span class="perf-tag top">Highest revenue</span></div>
           <div class="cat-metric"><span>Avg RPR</span><span class="cat-val" style="color:var(--green);">$0.215</span></div>
           <div class="cat-metric"><span>Avg click</span><span class="cat-val">1.50%</span></div>
           <div class="cat-metric"><span>Avg open</span><span class="cat-val">52.5%</span></div>
           <div class="cat-metric"><span>Sends</span><span class="cat-val">6</span></div>
+          <div class="cat-metric" style="border-top:1px solid var(--border); padding-top:0.3rem; margin-top:0.2rem;"><span>Est. revenue/send</span><span class="cat-val" style="color:var(--green);">$8,600</span></div>
           <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">Kids launch, formula update. Not repeatable at cadence.</p>
         </div>
         <div class="cat-card" style="border-left:3px solid var(--green);">
-          <div style="display:flex; justify-content:space-between; align-items:baseline;"><h4>2. ADHD Lifestyle / Identity</h4><span class="perf-tag top">Top</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;"><h4>2. ADHD Lifestyle / Identity</h4><span class="perf-tag top">Most efficient</span></div>
           <div class="cat-metric"><span>Avg RPR</span><span class="cat-val" style="color:var(--green);">$0.108</span></div>
           <div class="cat-metric"><span>Avg click</span><span class="cat-val">0.35%</span></div>
           <div class="cat-metric"><span>Avg open</span><span class="cat-val">57.8%</span></div>
           <div class="cat-metric"><span>Sends</span><span class="cat-val">12</span></div>
+          <div class="cat-metric" style="border-top:1px solid var(--border); padding-top:0.3rem; margin-top:0.2rem;"><span>Est. revenue/send</span><span class="cat-val" style="color:var(--green);">$4,320</span></div>
           <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">Best repeatable content type. Daily-life ADHD moments drive action.</p>
         </div>
         <div class="cat-card">
@@ -287,6 +289,7 @@
           <div class="cat-metric"><span>Avg click</span><span class="cat-val">0.22%</span></div>
           <div class="cat-metric"><span>Avg open</span><span class="cat-val">54.0%</span></div>
           <div class="cat-metric"><span>Sends</span><span class="cat-val">8</span></div>
+          <div class="cat-metric" style="border-top:1px solid var(--border); padding-top:0.3rem; margin-top:0.2rem;"><span>Est. revenue/send</span><span class="cat-val">$3,920</span></div>
           <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">DST, holidays, seasonal hooks. Strong when audience-split.</p>
         </div>
         <div class="cat-card">
@@ -295,23 +298,26 @@
           <div class="cat-metric"><span>Avg click</span><span class="cat-val">0.22%</span></div>
           <div class="cat-metric"><span>Avg open</span><span class="cat-val">50.4%</span></div>
           <div class="cat-metric"><span>Sends</span><span class="cat-val">15</span></div>
+          <div class="cat-metric" style="border-top:1px solid var(--border); padding-top:0.3rem; margin-top:0.2rem;"><span>Est. revenue/send</span><span class="cat-val">$2,720</span></div>
           <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">Avg inflated by DST purchaser split. Without it, closer to $0.03.</p>
         </div>
         <div class="cat-card">
-          <h4>5. Social Proof / Results</h4>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;"><h4>5. Social Proof / Results</h4><span class="perf-tag bottom" style="background:rgba(210,153,34,0.12); color:var(--orange);">Engages, doesn&rsquo;t convert</span></div>
           <div class="cat-metric"><span>Avg RPR</span><span class="cat-val">$0.050</span></div>
           <div class="cat-metric"><span>Avg click</span><span class="cat-val">0.35%</span></div>
           <div class="cat-metric"><span>Avg open</span><span class="cat-val">55.2%</span></div>
           <div class="cat-metric"><span>Sends</span><span class="cat-val">10</span></div>
-          <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">Clicks but doesn&rsquo;t convert. Better as a support element than a standalone send.</p>
+          <div class="cat-metric" style="border-top:1px solid var(--border); padding-top:0.3rem; margin-top:0.2rem;"><span>Est. revenue/send</span><span class="cat-val">$2,000</span></div>
+          <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">Clicks match ADHD Lifestyle but doesn&rsquo;t close. Better as a support element than a standalone send.</p>
         </div>
         <div class="cat-card" style="border-left:3px solid var(--red);">
-          <div style="display:flex; justify-content:space-between; align-items:baseline;"><h4>6. Sale / Promotional</h4><span class="perf-tag bottom">Low</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline;"><h4>6. Sale / Promotional</h4><span class="perf-tag bottom">Least efficient</span></div>
           <div class="cat-metric"><span>Avg RPR</span><span class="cat-val">$0.035</span></div>
           <div class="cat-metric"><span>Avg click</span><span class="cat-val">0.20%</span></div>
           <div class="cat-metric"><span>Avg open</span><span class="cat-val">50.1%</span></div>
           <div class="cat-metric"><span>Sends</span><span class="cat-val">30</span></div>
-          <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">Highest volume, lowest efficiency. GWP (Gift With Purchase) fatigue visible in Jan.</p>
+          <div class="cat-metric" style="border-top:1px solid var(--border); padding-top:0.3rem; margin-top:0.2rem;"><span>Est. revenue/send</span><span class="cat-val" style="color:var(--red);">$1,400</span></div>
+          <p style="font-size:0.72rem; color:var(--text-muted); margin:0.35rem 0 0;">Highest volume, lowest efficiency. GWP fatigue visible in Jan.</p>
         </div>
       </div>
       <div class="callout">
@@ -474,17 +480,29 @@
 
     <!-- ANNIVERSARY SALE -->
     <section class="segment-group">
-      <div class="segment-header"><h3>Anniversary Sale (July 2025)</h3><span class="seg-count">12 campaigns &middot; 15-day run &middot; $56,900 total</span></div>
+      <div class="segment-header"><h3>Anniversary Sale (July 2025)</h3><span class="seg-count">14 campaigns &middot; 15-day run &middot; $56,900 total</span></div>
+      <p class="muted">Full sale run from launch (7/10) through extension (7/25). Audience sizes varied from 18K targeted leads to 136K broad blasts. Unsub rates climbed steadily on tail-end sends.</p>
       <table class="campaign-table">
         <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th><th class="num">Revenue</th><th class="num">Unsub</th></tr></thead>
         <tbody>
-          <tr><td>7/13</td><td class="name-cell">Bundle &amp; Save Deep Dive <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZV40R0GWJ/wizard" target="_blank">&#8599;</a></td><td class="num">27,687</td><td class="num">57.8%</td><td class="num winner">0.47%</td><td class="num winner">0.362%</td><td class="num winner">$0.310</td><td class="num">$8,556</td><td class="num">0.84%</td></tr>
-          <tr><td>7/15</td><td class="name-cell">Freedom from Side Effects <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZWX1ZFWTD/wizard" target="_blank">&#8599;</a></td><td class="num">73,214</td><td class="num">46.5%</td><td class="num">0.29%</td><td class="num">0.234%</td><td class="num">$0.223</td><td class="num winner">$16,186</td><td class="num loser">0.95%</td></tr>
-          <tr><td>7/25</td><td class="name-cell">Procrastinator Extension <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SKW24W7F/wizard" target="_blank">&#8599;</a></td><td class="num">18,561</td><td class="num">69.9%</td><td class="num">0.34%</td><td class="num">0.081%</td><td class="num">$0.077</td><td class="num">$1,430</td><td class="num loser">1.77%</td></tr>
-          <tr><td>7/24</td><td class="name-cell">Final Hours <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SK7W8SK6/wizard" target="_blank">&#8599;</a></td><td class="num">38,676</td><td class="num">53.9%</td><td class="num">0.15%</td><td class="num">0.044%</td><td class="num">$0.053</td><td class="num">$2,025</td><td class="num loser">1.27%</td></tr>
+          <tr><td>7/10</td><td class="name-cell">Anniversary Sale Launch <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZQW4JWA56TJNRXK2MB7HST8/wizard" target="_blank">&#8599;</a></td><td class="num">102,802</td><td class="num">38.2%</td><td class="num">0.16%</td><td class="num">0.011%</td><td class="num">$0.013</td><td class="num">$1,322</td><td class="num">0.61%</td></tr>
+          <tr><td>7/11</td><td class="name-cell">Non-Opener Follow-up <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZQWW87G3B1J366Z6EBY618S/wizard" target="_blank">&#8599;</a></td><td class="num">116,339</td><td class="num loser">24.3%</td><td class="num">0.30%</td><td class="num">0.126%</td><td class="num">$0.134</td><td class="num winner">$15,479</td><td class="num">0.63%</td></tr>
+          <tr><td>7/12</td><td class="name-cell">Social Proof Spotlight <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZV1E8S4KK3F5CHT3Q57YZBB/wizard" target="_blank">&#8599;</a></td><td class="num">19,073</td><td class="num">61.4%</td><td class="num">0.25%</td><td class="num">0.189%</td><td class="num">$0.155</td><td class="num">$2,955</td><td class="num">0.79%</td></tr>
+          <tr><td>7/13</td><td class="name-cell">Bundle &amp; Save Deep Dive <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZV40R0GWJ873NHCWVRFWY0B/wizard" target="_blank">&#8599;</a></td><td class="num">27,687</td><td class="num">57.8%</td><td class="num winner">0.47%</td><td class="num winner">0.362%</td><td class="num winner">$0.310</td><td class="num winner">$8,556</td><td class="num">0.84%</td></tr>
+          <tr><td>7/15</td><td class="name-cell">Freedom from Side Effects <a class="kl-link" href="https://www.klaviyo.com/campaign/01JZWX1ZFWTDY1KX39DZHPSKRY/wizard" target="_blank">&#8599;</a></td><td class="num">73,214</td><td class="num">46.5%</td><td class="num">0.29%</td><td class="num">0.234%</td><td class="num">$0.223</td><td class="num winner">$16,186</td><td class="num loser">0.95%</td></tr>
+          <tr><td>7/17</td><td class="name-cell">One Week Warning <a class="kl-link" href="https://www.klaviyo.com/campaign/01K09QHFQW9Y82K7H4V6BY4YYT/wizard" target="_blank">&#8599;</a></td><td class="num">18,132</td><td class="num">56.0%</td><td class="num">0.16%</td><td class="num loser">0.017%</td><td class="num loser">$0.017</td><td class="num">$298</td><td class="num">0.84%</td></tr>
+          <tr><td>7/18</td><td class="name-cell">Science of Savings <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0CSKM8GGNR3HHPBFS163G5Z/wizard" target="_blank">&#8599;</a></td><td class="num">135,897</td><td class="num">42.4%</td><td class="num">0.13%</td><td class="num loser">0.010%</td><td class="num loser">$0.013</td><td class="num">$1,719</td><td class="num">0.79%</td></tr>
+          <tr><td>7/19</td><td class="name-cell">Last Weekend Notice <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0CV1ABC7YYNHETRYVAYBGKA/wizard" target="_blank">&#8599;</a></td><td class="num">37,170</td><td class="num">57.8%</td><td class="num">0.14%</td><td class="num">0.041%</td><td class="num">$0.044</td><td class="num">$1,635</td><td class="num loser">0.95%</td></tr>
+          <tr><td>7/20</td><td class="name-cell">Mid-Sale Surge <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0D222NSDDBS72TEYDP7EF0T/wizard" target="_blank">&#8599;</a></td><td class="num">135,545</td><td class="num">44.1%</td><td class="num">0.15%</td><td class="num">0.018%</td><td class="num">$0.018</td><td class="num">$2,407</td><td class="num">0.89%</td></tr>
+          <tr><td>7/21</td><td class="name-cell">Cart Recovery Blitz <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0PSK64DW0PNAZNEJT97CHNP/wizard" target="_blank">&#8599;</a></td><td class="num">136,200</td><td class="num">43.4%</td><td class="num">0.20%</td><td class="num">0.027%</td><td class="num">$0.028</td><td class="num">$3,843</td><td class="num loser">1.03%</td></tr>
+          <tr><td>7/22</td><td class="name-cell">Freedom Side Effects (Resend) <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0PTVYEJH319Q2Z1CP5XA7PM/wizard" target="_blank">&#8599;</a></td><td class="num">80,393</td><td class="num loser">21.7%</td><td class="num loser">0.07%</td><td class="num loser">0.008%</td><td class="num loser">$0.009</td><td class="num">$684</td><td class="num">0.36%</td></tr>
+          <tr><td>7/23</td><td class="name-cell">24-Hour Warning <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SCVBA0XE91ZB0GTM5GABE3/wizard" target="_blank">&#8599;</a></td><td class="num">53,389</td><td class="num winner">74.8%</td><td class="num">0.14%</td><td class="num">0.024%</td><td class="num">$0.030</td><td class="num">$1,623</td><td class="num loser">0.93%</td></tr>
+          <tr><td>7/24</td><td class="name-cell">Final Hours <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SK7W8SK6N5Q0GGRF75NZC7/wizard" target="_blank">&#8599;</a></td><td class="num">38,676</td><td class="num">53.9%</td><td class="num">0.15%</td><td class="num">0.044%</td><td class="num">$0.053</td><td class="num">$2,025</td><td class="num loser">1.27%</td></tr>
+          <tr><td>7/25</td><td class="name-cell">Procrastinator Extension <a class="kl-link" href="https://www.klaviyo.com/campaign/01K0SKW24W7FXNZNTW8XCGH31P/wizard" target="_blank">&#8599;</a></td><td class="num">18,561</td><td class="num">69.9%</td><td class="num">0.34%</td><td class="num">0.081%</td><td class="num">$0.077</td><td class="num">$1,430</td><td class="num loser">1.77%</td></tr>
         </tbody>
       </table>
-      <div class="callout warning"><strong>Sale fatigue.</strong> Procrastinator Extension hit 1.77% unsub &mdash; highest of the year. Product education during a sale (&ldquo;Bundle &amp; Save Deep Dive&rdquo;) converts better than generic urgency.</div>
+      <div class="callout warning"><strong>Sale fatigue is visible in the data.</strong> Unsub rates start at 0.61% on launch day and climb to 1.77% by the extension. The Cart Recovery Blitz (7/21) and Final Hours (7/24) both crossed 1%. After 15 days and 14 sends, the audience was burned.</div>
+      <div class="callout success"><strong>Best sale email:</strong> &ldquo;Bundle &amp; Save Deep Dive&rdquo; (7/13) hit $0.310 RPR and 0.362% conversion by targeting single-month purchasers + leads with product education rather than generic urgency. &ldquo;Freedom from Side Effects&rdquo; (7/15) generated the most total revenue ($16,186) by going broad to 73K with an ADHD lifestyle angle.</div>
     </section>
 
     <!-- SMS -->
