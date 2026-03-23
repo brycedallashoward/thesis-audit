@@ -229,6 +229,37 @@
       <strong>How to read this:</strong> Campaigns are grouped by audience segment. Each group has its own baseline metrics. Winners and losers are evaluated relative to their segment&rsquo;s baseline, not against the full program. A 0.3% click rate is strong on a 60K broad send; the same rate would be weak on a 2K purchaser-only send. Arrow links (<a href="#" style="text-decoration:none;">&#8599;</a>) open the campaign in Klaviyo.
     </div>
 
+    <!-- INDEX -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin-bottom:2.5rem;">
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:1rem;">
+        <h4 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin:0 0 0.5rem;">Content insights</h4>
+        <div style="font-size:0.82rem; line-height:1.8;">
+          <a href="#content-type" style="display:block; color:var(--text); text-decoration:none;">Performance by content type</a>
+          <a href="#send-timing" style="display:block; color:var(--text); text-decoration:none;">Send day &amp; time</a>
+          <a href="#monthly-trends" style="display:block; color:var(--text); text-decoration:none;">Monthly volume &amp; revenue</a>
+          <a href="#plaintext" style="display:block; color:var(--text); text-decoration:none;">Plaintext / clinical trial</a>
+        </div>
+      </div>
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:1rem;">
+        <h4 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin:0 0 0.5rem;">Segment insights</h4>
+        <div style="font-size:0.82rem; line-height:1.8;">
+          <a href="#seg-broad" style="display:block; color:var(--text); text-decoration:none;">Broad engaged list</a>
+          <a href="#seg-otp" style="display:block; color:var(--text); text-decoration:none;">OTP + engaged leads</a>
+          <a href="#seg-refined" style="display:block; color:var(--text); text-decoration:none;">Refined prospects (Feb 2026)</a>
+          <a href="#seg-split" style="display:block; color:var(--text); text-decoration:none;">Purchaser vs. non-purchaser split</a>
+          <a href="#seg-kids" style="display:block; color:var(--text); text-decoration:none;">Stasis Kids</a>
+          <a href="#seg-sale" style="display:block; color:var(--text); text-decoration:none;">Anniversary Sale (Jul 2025)</a>
+        </div>
+      </div>
+      <div style="background:var(--bg-card); border:1px solid var(--border); border-radius:8px; padding:1rem;">
+        <h4 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); margin:0 0 0.5rem;">Channel insights</h4>
+        <div style="font-size:0.82rem; line-height:1.8;">
+          <a href="#sms-full" style="display:block; color:var(--text); text-decoration:none;">SMS: Full subscriber list</a>
+          <a href="#sms-refined" style="display:block; color:var(--text); text-decoration:none;">SMS: Refined prospects</a>
+        </div>
+      </div>
+    </div>
+
     <!-- KEY FINDINGS -->
     <section>
       <h2>Key findings</h2>
@@ -292,7 +323,7 @@
 
     <!-- CONTENT CATEGORY -->
     <section>
-      <h2>Performance by content type</h2>
+      <h2 id="content-type">Performance by content type</h2>
       <p class="muted">Ranked by average RPR. Est. revenue/send = RPR &times; 40K avg recipients. New product launches are revenue outliers but not repeatable at cadence.</p>
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; margin:1rem 0;">
         <div class="cat-card" style="border-left:3px solid var(--green);">
@@ -355,9 +386,54 @@
       </div>
     </section>
 
+    <!-- SEND TIMING -->
+    <section>
+      <h2 id="send-timing">Performance by send day &amp; time</h2>
+      <p class="muted">188 email campaigns, April 2025 &ndash; March 2026. Times in EST.</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin:1rem 0;">
+        <div>
+          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); margin-bottom:0.5rem;">By day of week</h4>
+          <table class="campaign-table">
+            <thead><tr><th>Day</th><th class="num">Sends</th><th class="num">Share</th><th></th></tr></thead>
+            <tbody>
+              <tr><td>Monday</td><td class="num">19</td><td class="num">10%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:48%;"></div></td></tr>
+              <tr><td style="font-weight:600;">Tuesday</td><td class="num" style="font-weight:600;">39</td><td class="num" style="font-weight:600;">21%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:100%;"></div></td></tr>
+              <tr><td>Wednesday</td><td class="num">24</td><td class="num">13%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:62%;"></div></td></tr>
+              <tr><td style="font-weight:600;">Thursday</td><td class="num" style="font-weight:600;">40</td><td class="num" style="font-weight:600;">21%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:100%;"></div></td></tr>
+              <tr><td>Friday</td><td class="num">19</td><td class="num">10%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:48%;"></div></td></tr>
+              <tr><td>Saturday</td><td class="num">18</td><td class="num">10%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:46%;"></div></td></tr>
+              <tr><td>Sunday</td><td class="num">29</td><td class="num">15%</td><td><div style="background:var(--accent); height:8px; border-radius:3px; width:74%;"></div></td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.72rem; color:var(--text-muted); margin-top:0.5rem;">Tuesday and Thursday account for 42% of all sends. Weekend sends are less common but Sunday outpaces Friday.</p>
+        </div>
+        <div>
+          <h4 style="font-size:0.78rem; text-transform:uppercase; letter-spacing:0.04em; color:var(--text-muted); margin-bottom:0.5rem;">By time of day (EST)</h4>
+          <table class="campaign-table">
+            <thead><tr><th>Window</th><th class="num">Sends</th><th class="num">Share</th><th></th></tr></thead>
+            <tbody>
+              <tr><td style="font-weight:600;">6&ndash;7 AM</td><td class="num" style="font-weight:600;">41</td><td class="num" style="font-weight:600;">22%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:100%;"></div></td></tr>
+              <tr><td>8&ndash;9 AM</td><td class="num">6</td><td class="num">3%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:15%;"></div></td></tr>
+              <tr><td style="font-weight:600;">9&ndash;10 AM</td><td class="num" style="font-weight:600;">38</td><td class="num" style="font-weight:600;">20%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:93%;"></div></td></tr>
+              <tr><td>10&ndash;11 AM</td><td class="num">11</td><td class="num">6%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:27%;"></div></td></tr>
+              <tr><td>11 AM&ndash;12 PM</td><td class="num">16</td><td class="num">9%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:39%;"></div></td></tr>
+              <tr><td>12&ndash;2 PM</td><td class="num">13</td><td class="num">7%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:32%;"></div></td></tr>
+              <tr><td>2&ndash;5 PM</td><td class="num">13</td><td class="num">7%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:32%;"></div></td></tr>
+              <tr><td>After 5 PM</td><td class="num">8</td><td class="num">4%</td><td><div style="background:var(--green); height:8px; border-radius:3px; width:20%;"></div></td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:0.72rem; color:var(--text-muted); margin-top:0.5rem;">Two clear windows: early morning (6&ndash;7 AM, 22%) and mid-morning (9&ndash;10 AM, 20%). 42% of all sends land before 10 AM.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>Observation:</strong> Send timing has been consistent but there&rsquo;s no evidence of A/B testing across time slots. The 6 AM and 9 AM windows are habitual, not optimized. Worth testing afternoon sends (2&ndash;4 PM, the &ldquo;3PM Wall&rdquo; window) given the ADHD audience.
+      </div>
+    </section>
+
     <!-- MONTHLY TRENDS -->
     <section>
-      <h2>Monthly send volume and revenue</h2>
+      <h2 id="monthly-trends">Monthly send volume and revenue</h2>
       <table class="campaign-table">
         <thead><tr><th>Month</th><th class="num">Campaigns</th><th class="num">Avg recip.</th><th class="num">Total revenue</th><th>Notes</th></tr></thead>
         <tbody>
@@ -378,9 +454,14 @@
       </table>
     </section>
 
+    <div style="margin:3rem 0 2rem; padding:1rem 0; border-top:2px solid var(--border);">
+      <h2 style="font-size:1.1rem; color:var(--purple); margin:0;">Segment insights</h2>
+      <p class="muted" style="margin:0.25rem 0 0;">Performance grouped by audience. Each segment has its own baseline.</p>
+    </div>
+
     <!-- AUDIENCE: BROAD ENGAGED -->
     <section class="segment-group">
-      <div class="segment-header"><h3>Broad engaged list</h3><span class="seg-count">~50&ndash;70K &middot; 25 campaigns (top and bottom performers shown)</span></div>
+      <div class="segment-header"><h3 id="seg-broad">Broad engaged list</h3><span class="seg-count">~50&ndash;70K &middot; 25 campaigns (top and bottom performers shown)</span></div>
       <p class="muted">Full engaged list incl. leads, lapsed, OTPs. Minimal exclusions. Used Jan 2026, Mar 2026, and some Dec 2025 sends.</p>
       <div class="baseline-row">
         <div class="baseline-stat"><span class="bs-value">47.5%</span><span class="bs-label">Open rate</span></div>
@@ -406,7 +487,7 @@
 
     <!-- AUDIENCE: OTP + LEADS -->
     <section class="segment-group">
-      <div class="segment-header"><h3>OTP + engaged leads</h3><span class="seg-count">~21&ndash;40K &middot; 26 campaigns &middot; Mar&ndash;Jul 2025 (top and bottom performers shown)</span></div>
+      <div class="segment-header"><h3 id="seg-otp">OTP + engaged leads</h3><span class="seg-count">~21&ndash;40K &middot; 26 campaigns &middot; Mar&ndash;Jul 2025 (top and bottom performers shown)</span></div>
       <p class="muted">One-time purchasers + 90&ndash;120 day engaged leads. Primary audience Mar&ndash;Sep 2025. June saw a breakout: 5 campaigns averaged 0.25% conversion, $0.22 RPR.</p>
       <div class="baseline-row">
         <div class="baseline-stat"><span class="bs-value">52.8%</span><span class="bs-label">Open rate</span></div>
@@ -432,7 +513,7 @@
 
     <!-- AUDIENCE: REFINED FEB 2026 -->
     <section class="segment-group">
-      <div class="segment-header"><h3>Refined non-purchaser prospects (Feb 2026)</h3><span class="seg-count">~26&ndash;37K &middot; 9 campaigns</span></div>
+      <div class="segment-header"><h3 id="seg-refined">Refined non-purchaser prospects (Feb 2026)</h3><span class="seg-count">~26&ndash;37K &middot; 9 campaigns</span></div>
       <p class="muted">Current strategy. Excludes active subs, recent purchasers, flow profiles, unengaged, suppressed. Tightest non-customer targeting used.</p>
       <div class="baseline-row">
         <div class="baseline-stat"><span class="bs-value" style="color:var(--green);">61.1%</span><span class="bs-label">Open rate</span></div>
@@ -456,7 +537,7 @@
 
     <!-- AUDIENCE: PURCHASER SPLIT -->
     <section class="segment-group">
-      <div class="segment-header"><h3>Purchaser vs. non-purchaser split</h3><span class="seg-count">The proof point for audience segmentation</span></div>
+      <div class="segment-header"><h3 id="seg-split">Purchaser vs. non-purchaser split</h3><span class="seg-count">The proof point for audience segmentation</span></div>
       <table class="campaign-table">
         <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th><th class="num">Revenue</th></tr></thead>
         <tbody>
@@ -469,7 +550,7 @@
 
     <!-- STASIS KIDS -->
     <section class="segment-group">
-      <div class="segment-header"><h3>Stasis Kids</h3><span class="seg-count">8 campaigns &middot; varied audiences (key sends shown)</span></div>
+      <div class="segment-header"><h3 id="seg-kids">Stasis Kids</h3><span class="seg-count">8 campaigns &middot; varied audiences (key sends shown)</span></div>
       <table class="campaign-table">
         <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th><th class="num">Revenue</th></tr></thead>
         <tbody>
@@ -483,7 +564,7 @@
 
     <!-- PLAINTEXT -->
     <section class="segment-group">
-      <div class="segment-header"><h3>Plaintext / clinical trial</h3><span class="seg-count">4 campaigns</span></div>
+      <div class="segment-header"><h3 id="plaintext">Plaintext / clinical trial</h3><span class="seg-count">4 campaigns</span></div>
       <table class="campaign-table">
         <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th></tr></thead>
         <tbody>
@@ -498,7 +579,7 @@
 
     <!-- ANNIVERSARY SALE -->
     <section class="segment-group">
-      <div class="segment-header"><h3>Anniversary Sale (July 2025)</h3><span class="seg-count">14 campaigns &middot; 15-day run &middot; $56,900 total</span></div>
+      <div class="segment-header"><h3 id="seg-sale">Anniversary Sale (July 2025)</h3><span class="seg-count">14 campaigns &middot; 15-day run &middot; $56,900 total</span></div>
       <p class="muted">Full sale run from launch (7/10) through extension (7/25). Audience sizes varied from 18K targeted leads to 136K broad blasts. Unsub rates climbed steadily on tail-end sends.</p>
       <table class="campaign-table">
         <thead><tr><th>Date</th><th>Campaign</th><th class="num">Recip.</th><th class="num">Open</th><th class="num">Click</th><th class="num">Conv</th><th class="num">RPR</th><th class="num">Revenue</th><th class="num">Unsub</th></tr></thead>
@@ -524,11 +605,14 @@
     </section>
 
     <!-- SMS -->
-    <div class="sms-divider"><h2>SMS campaigns</h2></div>
+    <div style="margin:3rem 0 2rem; padding:1rem 0; border-top:2px solid var(--border);">
+      <h2 style="font-size:1.1rem; color:var(--purple); margin:0;">Channel insights: SMS</h2>
+      <p class="muted" style="margin:0.25rem 0 0;">SMS metrics are not comparable to email. Evaluated against SMS-only baselines.</p>
+    </div>
     <div class="callout"><strong>Note:</strong> SMS metrics are not comparable to email. Evaluated against SMS-only baselines below.</div>
 
     <section class="segment-group">
-      <div class="segment-header"><h3>SMS: Full subscriber list</h3><span class="seg-count">~4&ndash;7K &middot; 8 campaigns (top and bottom shown)</span></div>
+      <div class="segment-header"><h3 id="sms-full">SMS: Full subscriber list</h3><span class="seg-count">~4&ndash;7K &middot; 8 campaigns (top and bottom shown)</span></div>
       <div class="baseline-row">
         <div class="baseline-stat"><span class="bs-value">0.87%</span><span class="bs-label">Click rate</span></div>
         <div class="baseline-stat"><span class="bs-value">0.059%</span><span class="bs-label">Conv rate</span></div>
@@ -546,7 +630,7 @@
     </section>
 
     <section class="segment-group">
-      <div class="segment-header"><h3>SMS: Refined prospects (Feb 2026)</h3><span class="seg-count">~1.2&ndash;3.2K &middot; 5 campaigns (top and bottom shown)</span></div>
+      <div class="segment-header"><h3 id="sms-refined">SMS: Refined prospects (Feb 2026)</h3><span class="seg-count">~1.2&ndash;3.2K &middot; 5 campaigns (top and bottom shown)</span></div>
       <div class="baseline-row">
         <div class="baseline-stat"><span class="bs-value" style="color:var(--green);">1.27%</span><span class="bs-label">Click rate</span></div>
         <div class="baseline-stat"><span class="bs-value" style="color:var(--green);">0.080%</span><span class="bs-label">Conv rate</span></div>
